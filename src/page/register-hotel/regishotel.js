@@ -33,7 +33,7 @@ function regishotel() {
             hôm nay
           </div>
         </div>
-        <div className="register-for-partner ">
+        <div className="register-for-partner rounded">
           <div className="text1">Tạo Đăng Ký Mới</div>
           <div>
             <div className="navbar-text d-flex">
