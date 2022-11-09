@@ -3,17 +3,16 @@
   font-weight: bold;
   font-family: cursive;
 }
-.infor-for-partner {
+.introduce-for-partner {
   background-image: linear-gradient(-90deg, #1aa37a, #9dffb3);
-  position: fixed;
   width: 100%;
-  height: 40rem;
+  height: 36rem;
   z-index: 100;
 }
 .introduce-and-register{
   display: flex;
   position: relative;
-  margin-top: 5%;
+  margin-top: 3%;
 }
 .introduce {
   width: 38%;
