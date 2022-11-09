@@ -118,3 +118,51 @@
     transition: transform .6s ease-in-out;
     transition: transform .6s ease-in-out, -webkit-transform .6s ease-in-out;
   } */
+
+.headerSearch{
+  height: 30px;
+  background-color: aliceblue;
+  border: 3px solid rgb(33, 201, 109);
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  padding: absolute;
+}
+
+.headerSearchItem{
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.headerSearchInput{
+  border: none;
+  outline: none;
+}
+
+.headerSearcText {
+  color: lightgray;
+  cursor: pointer;
+}
+
+.date{
+  position: absolute;
+  top: 140px;
+  display: flex;
+}
+
+.people{
+  position: absolute;
+  top: 140px;
+  background-color: white;
+  color: gray;
+  border-radius: 5px;
+
+}
+.peopleItem{
+  width: 200px;
+  display: flex;
+  justify-content: space-between;
+  margin: 10px;
+
+}
