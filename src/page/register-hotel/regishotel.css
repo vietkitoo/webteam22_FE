@@ -31,9 +31,11 @@
   background: #ffffff;
   width: 24%;
   padding: 2rem;
+  border-radius: 3rem;
 }
 .register-for-partner button {
   width: 100%;
+  border-radius: 2rem;
 }
 .register-for-partner .text1{
   font-weight: bold;

@@ -24,8 +24,22 @@ function regishotel() {
       <div className="introduce-and-register">
         <div className="introduce">
           <div className="text-1"> Đăng </div>
-          <div className="text-2"> của Qúy Vị </div>
-          <div className="text-3 font-weight-bold h1 ">
+          <div
+            id="carouselExampleSlidesOnly"
+            className="carousel slide"
+            data-bs-ride="carousel"
+          >
+            <div className="carousel-inner d-table-cell fw-bolder fs-2 link-primary">
+              <div className="carousel-item active"> Căn Hộ </div>
+              <div className="carousel-item "> Khách Sạn</div>
+              <div className="carousel-item "> Nhà Nghỉ Dưỡng</div>
+              <div className="carousel-item "> Guest House</div>
+              <div className="carousel-item "> Nhà Nghỉ B&B</div>
+              <div className="carousel-item "> Bất cứ chỗ nghỉ nào </div>
+            </div>
+            <div className='fs-4  h1 '>Của Qúy Vị</div>
+          </div>
+          <div className="text-3 h1 ">
             trên Tour and Travel
           </div>
           <div className="text-4">
@@ -33,7 +47,7 @@ function regishotel() {
             hôm nay
           </div>
         </div>
-        <div className="register-for-partner rounded">
+        <div className="register-for-partner  ">
           <div className="text1">Tạo Đăng Ký Mới</div>
           <div>
             <div className="navbar-text d-flex">
@@ -50,9 +64,10 @@ function regishotel() {
             </div>
 
             <div className="navbar-text d-flex">
-              <FcCheckmark className='width1'/>
+              <FcCheckmark className="width1" />
               <div className="px-1">
-                Hơn 40% nhà nghỉ dưỡng nhận được đơn đặt đầu tiên trong vòng một tuần sau khi đăng kí
+                Hơn 40% nhà nghỉ dưỡng nhận được đơn đặt đầu tiên trong vòng một
+                tuần sau khi đăng kí
               </div>
             </div>
           </div>
@@ -65,7 +80,7 @@ function regishotel() {
               vị về việc đăng ký chỗ nghỉ.
             </div>
             <button type="button" className="btn btn-primary">
-              Bắt Đầu ->
+              Bắt Đầu {'->'}
             </button>
           </div>
           <div>
