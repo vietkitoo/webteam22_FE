@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import './home.css';
 import '../../styles/css/bootstrap.min.css';
 import '../../styles/css/App.css';
@@ -173,6 +174,19 @@ function home() {
       </div>
     </div>
   );
+=======
+import React from 'react';
+import Header from '../../component/header/header';
+import City from '../../component/city/city';
+function home() {
+  return (
+<>
+<Header />
+   <City/>
+</>
+  
+  )
+>>>>>>> 349b9f2fd00a64633e0f8b5a88674638d101c5ef
 }
 
 export default home;

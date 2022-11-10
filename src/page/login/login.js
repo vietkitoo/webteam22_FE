@@ -1,10 +1,18 @@
+<<<<<<< HEAD
 import '../login/login.css';
+=======
+import './login.css';
+>>>>>>> 349b9f2fd00a64633e0f8b5a88674638d101c5ef
 import React, { useState } from 'react';
 import axios from 'axios';
 import { BsFacebook, BsGoogle, BsTwitter, BsGithub } from 'react-icons/bs';
 import { useNavigate } from 'react-router-dom';
+<<<<<<< HEAD
 // import '../styles/css/bootstrap.min.css';
 import '../../styles/css/bootstrap.min.css'
+=======
+import '../../styles/css/bootstrap.min.css';
+>>>>>>> 349b9f2fd00a64633e0f8b5a88674638d101c5ef
 
 import {
   MDBContainer,
@@ -41,7 +49,11 @@ function Login() {
   };
   const handlelogin = (e) => {
     e.preventDefault();
+<<<<<<< HEAD
     // console.log({ email, password });
+=======
+    console.log({ email, password });
+>>>>>>> 349b9f2fd00a64633e0f8b5a88674638d101c5ef
     axios
       .post('https://backend-web-app-1.herokuapp.com/api/author/login', {
         email: email,
