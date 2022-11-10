@@ -1,9 +1,10 @@
-import '../page/login.css';
+import '../login/login.css';
 import React, { useState } from 'react';
 import axios from 'axios';
 import { BsFacebook, BsGoogle, BsTwitter, BsGithub } from 'react-icons/bs';
 import { useNavigate } from 'react-router-dom';
-import '../styles/css/bootstrap.min.css';
+// import '../styles/css/bootstrap.min.css';
+import '../../styles/css/bootstrap.min.css'
 
 import {
   MDBContainer,
@@ -40,7 +41,7 @@ function Login() {
   };
   const handlelogin = (e) => {
     e.preventDefault();
-    console.log({ email, password });
+    // console.log({ email, password });
     axios
       .post('https://backend-web-app-1.herokuapp.com/api/author/login', {
         email: email,

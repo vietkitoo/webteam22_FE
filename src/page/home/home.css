@@ -48,6 +48,10 @@
   width: 25%;
   z-index: 16;
 }
+.info_select button:hover{
+  color: black;
+  background: #fff;
+}
 .text_3 {
   font-size: 21px;
 }
