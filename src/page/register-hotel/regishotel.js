@@ -140,12 +140,63 @@ function regishotel() {
             </div>
             <div className="py-3">
               <button type="button" className="btn btn-outline-primary ">
-                Tìm Hiểu Thêm
+                Tìm hiểu thêm
               </button>
             </div>
           </div>
           <div className=" ">
             <img className="col-10 " src={register_image} alt="register" />
+          </div>
+        </div>
+      </div>
+      <div className="describe-for-partner justify-content-center   btn-light">
+        <div className="offset-lg-2 ps-5 py-5">
+          <div className=" fw-bold fs-2">
+            Mô tả nào sau đây phù hợp với Quý vị nhất?
+          </div>
+          <div className="">
+            Chọn một trong những lựa chọn sau để xem thông tin đã được tùy chỉnh
+            riêng
+          </div>
+          <div className="pt-5 row">
+            <div className="pt-3 pb-3 px-5 shadow col-md-4 col-xs-10">
+              <div className="fw-bold navbar-text">
+                Tôi có một chỗ nghỉ thi thoảng mới cho thuê
+              </div>
+              <div className="navbar-text d-flex">
+                <FcCheckmark />
+                <div className='px-1'> Chỗ nghỉ này là nơi tôi cất giữ đồ dùng cá nhân</div>
+              </div>
+              <div className="navbar-text d-flex">
+                <FcCheckmark />
+                <div className='px-1'>
+                  Tôi có rất ít kinh nghiệm trong ngành du lịch khách sạn
+                </div>
+              </div>
+              <div className="pt-3">
+                <button type="button" className="btn btn-outline-primary ">
+                  Tìm hiểu thêm
+                </button>
+              </div>
+            </div>
+            <div className="pt-3 pb-3 px-5 shadow col-md-4 col-xs-10 offset-sm-1">
+              <div className="fw-bold navbar-text">
+                Tôi có nhiều chỗ nghỉ cho thuê quanh năm
+              </div>
+              <div className="navbar-text d-flex">
+                <FcCheckmark />
+                <div className='px-1'>Những chỗ nghỉ này chủ yếu cho khách sử dụng</div>
+              </div>
+              <div className="navbar-text d-flex">
+                <FcCheckmark />
+                <div className='px-1'>Tôi có kinh nghiệm trong ngành du lịch khách sạn</div>
+              </div>
+              <div className="pt-3">
+                <button type="button" className="btn btn-outline-primary ">
+                  Tìm hiểu thêm
+                </button>
+              </div>
+            </div>
           </div>
         </div>
       </div>
