@@ -48,10 +48,13 @@
   width: 25%;
   z-index: 16;
 }
+<<<<<<< HEAD
 .info_select button:hover{
   color: black;
   background: #fff;
 }
+=======
+>>>>>>> 349b9f2fd00a64633e0f8b5a88674638d101c5ef
 .text_3 {
   font-size: 21px;
 }
