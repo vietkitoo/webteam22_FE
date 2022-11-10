@@ -95,7 +95,7 @@ function regishotel() {
           </div>
         </div>
       </div>
-      <div className="infor-for-partner justify-content-center d-grid offset-lg-2 ps-5 ">
+      <div className="infor-for-partner justify-content-center d-grid offset-lg-2 ps-5 py-5">
         <div className=" navbar-text fw-bold fs-2">
           Sự an tâm của Quý vị là ưu tiên hàng đầu của chúng tôi
         </div>
