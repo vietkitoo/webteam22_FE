@@ -5,6 +5,7 @@ import App from './App';
 import Home from './page/home/home';
 import Login from './page/login/login';
 import reportWebVitals from './reportWebVitals';
+import Regishotel from './page/register-hotel/regishotel';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
@@ -12,6 +13,7 @@ root.render(
   <Routes>
     <Route path='/' element={<Home />} />
     <Route path='/login' element={<Login />} />
+    <Route path="/register-hotel" element = {<Regishotel />} />
   </Routes>
 </Router>
 );

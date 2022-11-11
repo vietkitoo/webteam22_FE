@@ -6,7 +6,7 @@ import { Link } from 'react-router-dom';
 function header() {
   return (
     <div>
-        <header >
+        <header>
             <h1>The best city </h1>
         </header>
         <div></div>
