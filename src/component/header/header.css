@@ -36,7 +36,7 @@
   }
   .contener {
     position: relative;
-    padding-top: 6.9rem;
+    /* padding-top: 6.9rem; */
   }
   .info_select {
     position: absolute;

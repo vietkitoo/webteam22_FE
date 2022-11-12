@@ -1,5 +1,4 @@
 import './styles/css/bootstrap.min.css';
-import './styles/css/App.css';
 import Login from './page/login/login';
 import Home from './page/home/home';
 import Regishotel from './page/register-hotel/regishotel';

@@ -47,3 +47,11 @@
 .width1{
   width: 6.5%;
 }
+.infor-for-partner-2{
+  background: no-repeat 50% url("../../image/world-map-gray.png");
+  background-size: 38rem;
+}
+.infor-for-partner-2 .infor{
+  padding-top: 7rem;
+  padding-bottom: 7rem;
+}
