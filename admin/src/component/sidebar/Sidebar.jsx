@@ -18,13 +18,15 @@ const Sidebar = () => {
       </div>
       <div className="center">
         <ul>
+            <p className="title"> Main</p>
             <li>
                 <DashboardIcon/>
                 <span>Bảng điều khiển</span>
             </li>
+            <p className="title"> Danh sách</p>
             <li>
                 <AccountBoxIcon/>
-                <span>Người dùng</span>
+                <span>Khách hàng</span>
             </li>
             <li>
                 <HotelIcon/>
@@ -34,6 +36,7 @@ const Sidebar = () => {
                 <CreditCardIcon/>
                 <span>Đơn hàng</span>
             </li>
+            <p className="title"> Tiện ích</p>
             <li>
                 <EqualizerIcon/>
                 <span>Thống kê</span>
@@ -50,6 +53,7 @@ const Sidebar = () => {
                 <SettingsIcon/>
                 <span>Cài đặt</span>
             </li>
+            <p className="title"> Người dùng</p>
             <li>
                 <AccountCircleIcon/>
                 <span>Thông tin cá nhân</span>
@@ -60,7 +64,7 @@ const Sidebar = () => {
             </li>
         </ul>
       </div>
-      <div className="bottom">options</div>
+      <div className="bottom"></div>
     </div>
   )
 }
