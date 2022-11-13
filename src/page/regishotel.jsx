@@ -75,7 +75,6 @@ function regishotel() {
                   Bắt Đầu {'->'}
                 </button>
               </Link>
-
               <div>
                 <div className="navbar-text fw-bold ">
                   Quý vị đã bắt đầu quá trình đăng ký?
