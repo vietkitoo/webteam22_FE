@@ -21,6 +21,7 @@ function App() {
           <Route path="/register-hotel" element = {<Regishotel />} ></Route>
           <Route path="/register-partner" element = {<Regispartner />} ></Route>
           <Route path="/support" element = {<Support />} ></Route>
+          ,
         </Routes>
       </BrowserRouter>
     </main>
