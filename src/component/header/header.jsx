@@ -67,9 +67,9 @@ const Header = () => {
                 Đăng Nhập
               </button>
             </Link>
-            <Link to="../register-partner">
+            <Link to="../support">
               <button type="button" className="btn btn-light btn_sign">
-                Đăng ký đối tác
+               Trợ giúp
               </button>
             </Link>
           </form>
