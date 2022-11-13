@@ -64,7 +64,7 @@ function regishotel() {
                 </div>
               </div>
               <div className="text2 navbar-text">
-                Tạo tài khoản đối tác để bắt đầu
+                Tạo tài khoản đối tác để bắt đầu:
               </div>
               <div className="navbar-text">
                 Bằng cách đi tiếp, Quý vị đồng ý cho Booking.com gửi email tới
