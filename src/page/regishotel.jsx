@@ -91,7 +91,7 @@ function regishotel() {
             Sự an tâm của Quý vị là ưu tiên hàng đầu của chúng tôi
           </div>
           <div className="navbar-text">
-            Đây là cách chúng tôi giúp Quý vị cảm thấy tự tin chào đón khách
+            Đây là cách chúng tôi giúp Quý vị cảm thấy tự tin chào đón khách:
           </div>
           <div className="regulation-for-partner d-flex ">
             <div className="col-6">
