@@ -5,9 +5,10 @@ import register_image from '../image/register-partner.png';
 import { FcCheckmark } from 'react-icons/fc';
 import { BsCheckCircle } from 'react-icons/bs';
 import { Link } from 'react-router-dom';
-import Header from '../component/header/header';
+import Header from '../component/Header/Header';
 import family_image from '../image/meet-guests.0e575a58.png';
 import Elvira from '../image/meet_elivra.1a77fdf3.jpg';
+import Footer from '../component/Footer/Footer';
 
 function regishotel() {
   return (
@@ -401,6 +402,7 @@ function regishotel() {
           </div>
         </div>
       </div>
+      <Footer />
     </>
   );
 }

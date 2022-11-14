@@ -14,7 +14,8 @@ import {
   MDBInput,
   MDBCheckbox,
 } from 'mdb-react-ui-kit';
-import Header from '../component/header/header';
+import Header from '../component/Header/Header';
+import Footer from '../component/Footer/Footer';
 
 function Login() {
   const [justifyActive, setJustifyActive] = useState('tab1');
@@ -255,6 +256,7 @@ function Login() {
         </div>
       </div>
     </div>
+    <Footer />
     </>
   );
 }

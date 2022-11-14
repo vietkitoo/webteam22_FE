@@ -1,5 +1,6 @@
 import React from 'react';
-import Header from '../component/header/header';
+import Footer from '../component/Footer/Footer';
+import Header from '../component/Header/Header';
 import hinh1 from '../image/1.jpg';
 import hinh2 from '../image/2.jpg';
 import hinh3 from '../image/3.jpg';
@@ -74,16 +75,17 @@ function home() {
           </button>
         </div>
         <div className="info_select">
-          <div className="text_1">Áp dụng đến 3/1/2023</div>
-          <div className="text_2">Tiết kiệm 15% với Ưu Đãi Cuối Năm</div>
-          <div className="text_3">
+          <h1 className="text_1">Áp dụng đến 3/1/2023</h1>
+          <p className="text_2">Tiết kiệm 15% với Ưu Đãi Cuối Năm</p>
+          <p className="text_3">
             Vẫn còn kịp để thực hiện thêm một chuyến đi trong danh sách của bạn
-          </div>
+          </p>
           <button type="button" className="btn btn-primary buton_text zindex">
             Khám phá ưu đãi
           </button>
         </div>
       </div>
+      <Footer />
     </>
   );
 }

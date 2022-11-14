@@ -1,7 +1,8 @@
 import Loginform from "../component/Form/LoginForm";
-import Header from "../component/header/header";
+import Header from "../component/Header/Header";
 import './style.css'
 import { Button } from 'react-bootstrap'
+import Footer from "../component/Footer/Footer";
 
 function support() {
     return(
@@ -146,10 +147,11 @@ function support() {
                     </div>
                 </div>
 
-                <Button className="btn btn-primary mb-4 color-btn btn-support" variant="primary" href="#intro">
+                <Button className="btn btn-primary mb-4 color-btn btn-support" variant="primary" href={"#intro"}>
                     Đăng chỗ nghĩ của quý vị
                 </Button>
             </div>
+            <Footer />
         </>
     );
 }
