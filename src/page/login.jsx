@@ -79,8 +79,8 @@ function Login() {
     <Header />
     <div className="content login">
       <div className="row">
-        <div className="col">
-          <MDBContainer className="p-3 my-5 d-flex flex-column login-form">
+        <div className="col-8">
+          <MDBContainer className="p-3 d-flex flex-column login-form">
             <MDBTabs
               pills
               justify

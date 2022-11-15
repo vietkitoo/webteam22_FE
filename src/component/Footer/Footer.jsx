@@ -6,7 +6,7 @@ const Footer = () => {
     return (
         <footer className="text-center text-lg-start text-light font-weight-bold footer">
             <section className="d-flex justify-content-center justify-content-lg-between p-4 border-bottom">
-                <div className="me-5 d-none d-lg-block">
+                <div className="me-5 d-none d-lg-block mg-auto">
                     <span>Get connected with us on social networks:</span>
                 </div>
 

@@ -16,6 +16,10 @@ svg {
   width: 24px;
 }
 
+.mg-auto {
+  margin: auto;
+}
+
 /* HOME */
 
 .home img {
@@ -126,9 +130,8 @@ svg {
   z-index: 100;
 }
 .introduce {
-  width: 38%;
-  margin-left: 20%;
-  margin-top: 5%;
+  margin-left: 300px;
+  margin-top: 100px
 }
 .text-1{
   font-size: 45px;
@@ -138,7 +141,6 @@ svg {
   font-size: 26px;
 }
 .register-partner {
-  margin: auto;
   margin-top: 5rem;
   background-color: #ffffff;
   width: 75%;
@@ -167,6 +169,9 @@ svg {
 .infor-for-partner-2 .infor{
   padding-top: 7rem;
   padding-bottom: 7rem;
+}
+.size-fix {
+  width: 1265px;
 }
 
 /* REGISTER PARTNER */
