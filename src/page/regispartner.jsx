@@ -1,6 +1,6 @@
 import Footer from "../component/Footer/Footer";
 import LoginForm from "../component/Form/LoginForm";
-import Header from "../component/Header/Header";
+import Header from "../component/header/header";
 import './style.css'
 
 

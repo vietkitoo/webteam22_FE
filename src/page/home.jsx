@@ -1,6 +1,6 @@
 import React from 'react';
 import Footer from '../component/Footer/Footer';
-import Header from '../component/Header/Header';
+import Header from '../component/header/header';
 import hinh1 from '../image/1.jpg';
 import hinh2 from '../image/2.jpg';
 import hinh3 from '../image/3.jpg';
