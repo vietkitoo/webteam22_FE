@@ -1,5 +1,5 @@
 import Loginform from "../component/Form/LoginForm";
-import Header from "../component/Header/Header";
+import Header from "../component/header/header";
 import './style.css'
 import { Button } from 'react-bootstrap'
 import Footer from "../component/Footer/Footer";

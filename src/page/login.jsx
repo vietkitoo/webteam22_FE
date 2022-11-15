@@ -14,7 +14,7 @@ import {
   MDBInput,
   MDBCheckbox,
 } from 'mdb-react-ui-kit';
-import Header from '../component/Header/Header';
+import Header from '../component/header/header';
 import Footer from '../component/Footer/Footer';
 
 function Login() {
