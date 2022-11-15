@@ -21,7 +21,51 @@ svg {
 }
 
 /* HOME */
+.carousel-inner {
+  display: contents;
+}
+.carousel-indicators {
+  top: 26rem;
+}
+.Sites {
+  height: 15rem;
+}
+.setbackgroud{
+  background: no-repeat  url('../image/long_stays_banner_wide.a1b12d47.png');
+  color: #ffffff;
+  background-size: 100% 100%;
+  border-radius: 1rem;
+}
 
+.Ha_noi{
+  background: no-repeat  url('../image/hoguom.jpg');
+  color: #ffffff;
+  background-size: 100% 100%;
+}
+.Hoi_an{
+  background: no-repeat url('../image/Hoi-An.jpeg');
+  color: #ffffff;
+  background-size: 100% 100%;
+}
+.TPHCM{
+  background: no-repeat url('../image/thanh-pho-thu-duc-tp-ho-chi-minh-41120.jpg');
+  color: #ffffff;
+  background-size: 100% 100%;
+}
+.Hue{
+  background: no-repeat  url('../image/hue.jpeg');
+  color: #ffffff;
+  background-size: 100% 100%;
+}
+.NhaTrang{
+  background: no-repeat url('../image/nhatrang.jpg');
+  color: #ffffff;
+  background-size: 100% 100%;
+}
+.National_flag img{
+  height: 2rem !important;
+  width: 2rem !important;
+}
 .home img {
   position: absolute;
   width: 100%;
@@ -50,40 +94,7 @@ svg {
   font-weight: bold;
   font-size: 40px;
 }
-.carousel-control-prev {
-  padding-top: 13rem;
-}
-.carousel-control-next {
-  padding-top: 13rem;
-}
-.carousel-inner {
-  display: contents;
-}
-.carousel-indicators {
-  top: 26rem;
-}
-.carousel-indicators [data-bs-target] {
-  box-sizing: content-box;
-  top: 26rem;
-  flex: 0 1 auto;
-  width: 46px;
-  height: 3px;
-  padding: 0;
-  margin-right: 3px;
-  margin-left: 3px;
-  text-indent: -999px;
-  cursor: pointer;
-  background-color: #fff;
-  background-clip: padding-box;
-  border: 0;
-  border-top: 10px solid transparent;
-  border-bottom: 10px solid transparent;
-  opacity: 0.5;
-  transition: opacity 0.6s ease;
-}
-.carousel-indicators .active {
-  opacity: 1;
-}
+
 
 /* LOGIN */
 

@@ -204,7 +204,7 @@ function regishotel() {
               Lợi ích khi hợp tác cùng chúng tôi
             </div>
             <div className="pt-5 row">
-              <div className="pt-3 pb-3 px-5 shadow col-md-4 col-xs-10">
+              <div className="pt-3 pb-3 px-5 shadow col-md-5 col-xs-10 mx-4 my-1">
                 <div className="fw-bold navbar-text">
                   Đăng bất kỳ loại chỗ nghỉ nào
                 </div>
@@ -215,7 +215,7 @@ function regishotel() {
                   </div>
                 </div>
               </div>
-              <div className="pt-3 pb-3 px-5 shadow col-md-4 col-xs-10 offset-sm-1">
+              <div className="pt-3 pb-3 px-5 shadow col-md-5 col-xs-10 mx-4 my-1">
                 <div className="fw-bold navbar-text">
                   Nhập thông tin dễ dàng
                 </div>
@@ -228,7 +228,7 @@ function regishotel() {
               </div>
             </div>
             <div className="pt-5 row">
-              <div className="pt-3 pb-3 px-5 shadow col-md-4 col-xs-10">
+              <div className="pt-3 pb-3 px-5 shadow col-md-5 col-xs-10 mx-4 my-1">
                 <div className="fw-bold navbar-text">Hướng dẫn từng bước</div>
                 <div className="navbar-text d-flex">
                   <div className="px-1">
@@ -237,7 +237,7 @@ function regishotel() {
                   </div>
                 </div>
               </div>
-              <div className="pt-3 pb-3 px-5 shadow col-md-4 col-xs-10 offset-sm-1">
+              <div className="pt-3 pb-3 px-5 shadow col-md-5 col-xs-10 mx-4 my-1">
                 <div className="fw-bold navbar-text">Giảm giá đặc biệt</div>
                 <div className="navbar-text d-flex">
                   <div className="px-1">
@@ -254,7 +254,7 @@ function regishotel() {
             <div className="navbar-text">
               Hãy xem vì sao Elvira thích cho thuê chỗ nghỉ trên Booking.com.
             </div>
-            <div className="row">
+            <div className=" mt-md-3 row accordion-item ">
               <div className="col-4">
                 <img width={'360px'} height={'400px'} src={Elvira} alt="Elvira" />
               </div>
@@ -305,7 +305,7 @@ function regishotel() {
             </div>
           </div>
         </div>
-        <div className="row d-grid size-fix offset-lg-2 py-5">
+        <div className=" infor-for-partner-2 row d-grid size-fix offset-lg-2 py-5">
             <div className="navbar-text fw-bold fs-2">Booking.com qua những con số</div>
             <div className="regulation-for-partner row">
               <div className="col">
