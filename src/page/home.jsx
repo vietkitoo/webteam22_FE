@@ -111,7 +111,7 @@ function home() {
             </div>
           </div>
         </div>
-        <div className="justify-content-center  offset-lg-2 ps-5 pb-md-5">
+        <div className="justify-content-center offset-lg-2 ps-5 pb-md-5">
           <div className="fw-bold fs-3">Khám phá Việt Nam</div>
           <div className="figure-caption">
             Các điểm đến phổ biến này có nhiều điều chờ đón bạn
@@ -161,6 +161,7 @@ function home() {
             </div>
           </div>
         </div>
+
       </div>
       <Footer />
     </>
