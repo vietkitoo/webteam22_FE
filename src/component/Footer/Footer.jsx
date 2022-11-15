@@ -1,6 +1,6 @@
 import './Footer.css'
 import 'react-bootstrap'
-import { BsFacebook, BsGithub, BsInstagram } from 'react-icons/bs'
+import { BsFacebook, BsGithub, BsInstagram, BsFillTelephoneFill, BsLink } from 'react-icons/bs'
 
 const Footer = () => {
     return (
@@ -36,9 +36,9 @@ const Footer = () => {
                             </p>
                         </div>
 
-                        <div class="col-md-3 col-lg-2 col-xl-2 mx-auto mb-4">
+                        <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mb-4">
                             <h6 class="text-uppercase fw-bold mb-4">
-                                Các đường dẫn hữu ích
+                                <BsLink /> Các đường dẫn hữu ích
                             </h6>
                             <p>
                                 <a href="/support" class="text-reset">Trợ giúp Đối tác</a>
@@ -56,14 +56,16 @@ const Footer = () => {
 
                         <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mb-md-0 mb-4">
 
-                        <h6 class="text-uppercase fw-bold mb-4">Liên hệ</h6>
-                        <p><i class="fas fa-home me-3"></i> Linh Trung, Thủ Đức, TP Hồ Chí Minh</p>
-                        <p>
-                            <i class="fas fa-envelope me-3"></i>
-                            email@gm.uit.edu.vn
-                        </p>
-                        <p><i class="fas fa-phone me-3"></i> + 01 234 567 88</p>
-                        <p><i class="fas fa-print me-3"></i> + 01 234 567 89</p>
+                            <h6 class="text-uppercase fw-bold mb-4">
+                                <BsFillTelephoneFill />  Liên hệ
+                            </h6>
+                            <p>Linh Trung, Thủ Đức, TP Hồ Chí Minh</p>
+                            <p>
+                            
+                                email@gm.uit.edu.vn
+                            </p>
+                            <p><i class="fas fa-phone me-3"></i> + 01 234 567 88</p>
+                            <p><i class="fas fa-print me-3"></i> + 01 234 567 89</p>
                         </div>
                     </div>
                 </div>

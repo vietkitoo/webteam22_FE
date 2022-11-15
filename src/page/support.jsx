@@ -3,6 +3,7 @@ import Header from "../component/header/header";
 import './style.css'
 import { Button } from 'react-bootstrap'
 import Footer from "../component/Footer/Footer";
+import { BsFillFileCheckFill, BsChatDotsFill, BsHeadset, BsOption, BsFillLockFill, BsHammer } from "react-icons/bs";
 
 function support() {
     return(
@@ -32,7 +33,7 @@ function support() {
                         <div className="row">
                             <div className="col">
                                 <div className="detail_icon" style={{backgroundColor: '#EBF3FF'}}>
-                                    1
+                                    <BsFillFileCheckFill />
                                 </div>
                                 <h2 className="feature_header">Truyền tải quy định chung</h2>
                                 <p className="feature_column feature-small">
@@ -43,7 +44,7 @@ function support() {
                             </div>
                             <div className="col">
                                 <div className="detail_icon" style={{backgroundColor: '#E7FDE9'}}>
-                                    2
+                                    <BsChatDotsFill />
                                 </div>
                                 <h2 className="feature_header">Thống nhất với khách trước khi đặt</h2>
                                 <p className="feature_column feature-small">
@@ -55,7 +56,7 @@ function support() {
                         <div className="row">
                             <div className="col">
                                 <div className="detail_icon" style={{backgroundColor: '#FFF0F0'}}>
-                                    3
+                                    <BsHeadset />
                                 </div>
                                 <h2 className="feature_header">Nhận hỗ trợ dễ dàng</h2>
                                 <p className="feature_column feature-small">
@@ -65,7 +66,7 @@ function support() {
                             </div>
                             <div className="col">
                                 <div className="detail_icon" style={{backgroundColor: '#f0daf7'}}>
-                                    4
+                                    <BsOption />
                                 </div>
                                 <h2 className="feature_header">Nhận loại đặt phòng Quý vị muốn</h2>
                                 <p className="feature_column feature-small">
@@ -78,7 +79,7 @@ function support() {
                         <div className="row">
                             <div className="col">
                                 <div className="detail_icon" style={{backgroundColor: '#FDF4D8'}}>
-                                    5
+                                    <BsFillLockFill />
                                 </div>
                                 <h2 className="feature_header">Bảo vệ vật chất đã đầu tư</h2>
                                 <p className="feature_column feature-small">
@@ -89,7 +90,7 @@ function support() {
                             </div>
                             <div className="col">
                                 <div className="detail_icon" style={{backgroundColor: '#FFC489'}}>
-                                    6
+                                    <BsHammer />
                                 </div>
                                 <h2 className="feature_header">Dễ dàng hành động khi có vấn đề xảy ra</h2>
                                 <p className="feature_column feature-small">
