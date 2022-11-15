@@ -1,7 +1,8 @@
 import '../../styles/css/bootstrap.min.css';
 import Carousel from 'react-bootstrap/Carousel';
 import { Link } from 'react-router-dom';
-function header() {
+
+const city = () => {
   return (
     <div>
         <header>
@@ -13,4 +14,4 @@ function header() {
   );
 }
 
-export default header;
+export default city;
