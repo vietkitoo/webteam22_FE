@@ -5,7 +5,28 @@ import hinh1 from '../image/1.jpg';
 import hinh2 from '../image/2.jpg';
 import hinh3 from '../image/3.jpg';
 import './style.css';
-import vietnam from '../image/vietnam.png'
+import '../styles/css/bootstrap.min.css';
+import vietnam from '../image/vietnam.png';
+import khachsan from '../image/khachsan.jpg';
+import canho from '../image/canho.jpg';
+import resort from '../image/resort.jpg';
+import bietthu from '../image/bietthu.jpg';
+import nhago from '../image/nha-go-cap-4-dep.jpg';
+import nhanghithonda from '../image/nha-nghi-o-que-3.jpg';
+import glamping from '../image/glamping.jpg';
+import nhanghibandb from '../image/b&b.jpg';
+import Ryokan from '../image/ryokan.jpeg';
+import riad from '../image/riad.jpg';
+import khucamtrai from '../image/khu-cam-trai.jpg';
+import nhathuyen from '../image/nha-thuyen.jpg';
+import dalat from '../image/da-lat.jpg'
+import phuquoc from '../image/phuquoc.jpg'
+import sapa from '../image/sapa.jpg'
+import vungtau from '../image/vungtau.jpg'
+import danang from '../image/danang.jpg'
+import quynhon from '../image/quynhon.jpg'
+import quangbinh from '../image/quangbinh.jpg'
+import quangninh from '../image/quangninh.png'
 function home() {
   return (
     <>
@@ -90,6 +111,7 @@ function home() {
             </div>
           </div>
         </div>
+        {/* Phần ưu đãi */}
         <div className="justify-content-center offset-lg-2 ps-5 py-5">
           <div className="fw-bold fs-3">Ưu Đãi</div>
           <div className="figure-caption">
@@ -111,7 +133,8 @@ function home() {
             </div>
           </div>
         </div>
-        <div className="justify-content-center  offset-lg-2 ps-5 pb-md-5">
+        {/* Phần Khám phá Việt Nam */}
+        <div className="justify-content-center offset-lg-2 ps-5 pb-md-5">
           <div className="fw-bold fs-3">Khám phá Việt Nam</div>
           <div className="figure-caption">
             Các điểm đến phổ biến này có nhiều điều chờ đón bạn
@@ -158,6 +181,338 @@ function home() {
                   <img className="" src={vietnam} alt="lá cờ quốc gia" />
                 </div>
               </div>
+            </div>
+          </div>
+          <div className="slide1">
+            <div
+              id="carouselExampleSlides"
+              className="carousel slide "
+              data-bs-ride="true"
+            >
+              <div className="carousel-inner">
+                <div className="carousel-item active">
+                  <div className="d-flex row">
+                    <div className="col">
+                      <div className="type_of_r_place">
+                        <img
+                          className="d-block w-100"
+                          src={dalat}
+                          alt="image canho"
+                        />
+                      </div>
+                      <div>
+                        <div>Đà Lạt</div>
+                      </div>
+                    </div>
+                    <div className="col">
+                      <div className="type_of_r_place">
+                        <img
+                          className="d-block w-100"
+                          src={phuquoc}
+                          alt="image resort"
+                        />
+                      </div>
+                      <div>
+                        <div>Phú Quốc</div>
+                      </div>
+                    </div>
+                    <div className="col">
+                      <div className="type_of_r_place">
+                        <img
+                          className="d-block w-100"
+                          src={sapa}
+                          alt="image resort"
+                        />
+                      </div>
+                      <div>
+                        <div>Sapa</div>
+                      </div>
+                    </div>
+                    <div className="col">
+                      <div className="type_of_r_place">
+                        <img
+                          className="d-block w-100"
+                          src={vungtau}
+                          alt="image canho"
+                        />
+                      </div>
+                      <div>
+                        <div>Vũng tàu</div>
+                      </div>
+                    </div>                 
+                  </div>
+                </div>
+                <div className="carousel-item">
+                  <div className="d-flex row">
+                    <div className="col">
+                      <div className="type_of_r_place">
+                        <img
+                          className="d-block w-100"
+                          src={danang}
+                          alt="image canho"
+                        />
+                      </div>
+                      <div>
+                        <div>Đà Nẵng</div>
+                      </div>
+                    </div>
+                    <div className="col">
+                      <div className="type_of_r_place">
+                        <img
+                          className="d-block w-100"
+                          src={quynhon}
+                          alt="image resort"
+                        />
+                      </div>
+                      <div>
+                        <div>Quy Nhơn</div>
+                      </div>
+                    </div>
+                    <div className="col">
+                      <div className="type_of_r_place">
+                        <img
+                          className="d-block w-100"
+                          src={quangbinh}
+                          alt="image resort"
+                        />
+                      </div>
+                      <div>
+                        <div>Quảng Bình</div>
+                      </div>
+                    </div>
+                    <div className="col">
+                      <div className="type_of_r_place">
+                        <img
+                          className="d-block w-100"
+                          src={quangninh}
+                          alt="image canho"
+                        />
+                      </div>
+                      <div>
+                        <div>Quảng Ninh</div>
+                      </div>
+                    </div>
+                  </div>
+                </div> 
+              </div>
+              <button
+                className="carousel-control-prev"
+                type="button"
+                data-bs-target="#carouselExampleSlides"
+                data-bs-slide="prev"
+              >
+                <span
+                  className="carousel-control-prev-icon"
+                  aria-hidden="true"
+                ></span>
+                <span className="visually-hidden">Previous</span>
+              </button>
+              <button
+                className="carousel-control-next"
+                type="button"
+                data-bs-target="#carouselExampleSlides"
+                data-bs-slide="next"
+              >
+                <span
+                  className="carousel-control-next-icon"
+                  aria-hidden="true"
+                ></span>
+                <span className="visually-hidden">Next</span>
+              </button>
+            </div>
+          </div>
+        </div>
+        {/* Phần chỗ nghỉ dưỡng  */}
+        <div className="justify-content-center offset-lg-2 ps-5 pb-md-5">
+          <div className="fw-bold fs-3">Tìm theo loại chỗ nghỉ</div>
+          <div className="slide1">
+            <div
+              id="carouselExampleSlidesOnly"
+              className="carousel slide "
+              data-bs-ride="true"
+            >
+              <div className="carousel-inner">
+                <div className="carousel-item active">
+                  <div className="d-flex row">
+                    <div className="col">
+                      <div className="type_of_r_place">
+                        <img
+                          className="d-block w-100"
+                          src={canho}
+                          alt="image canho"
+                        />
+                      </div>
+                      <div>
+                        <div className="fw-bold">Căn hộ</div>
+                      </div>
+                    </div>
+                    <div className="col">
+                      <div className="type_of_r_place">
+                        <img
+                          className="d-block w-100"
+                          src={khachsan}
+                          alt="image resort"
+                        />
+                      </div>
+                      <div>
+                        <div className="fw-bold">Khách sạn</div>
+                      </div>
+                    </div>
+                    <div className="col">
+                      <div className="type_of_r_place">
+                        <img
+                          className="d-block w-100"
+                          src={resort}
+                          alt="image resort"
+                        />
+                      </div>
+                      <div>
+                        <div className="fw-bold">Resort</div>
+                      </div>
+                    </div>
+                    <div className="col">
+                      <div className="type_of_r_place">
+                        <img
+                          className="d-block w-100"
+                          src={bietthu}
+                          alt="image canho"
+                        />
+                      </div>
+                      <div>
+                        <div className="fw-bold">Biệt thự</div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div className="carousel-item">
+                  <div className="d-flex row">
+                    <div className="col">
+                      <div className="type_of_r_place">
+                        <img
+                          className="d-block w-100"
+                          src={nhago}
+                          alt="image canho"
+                        />
+                      </div>
+                      <div>
+                        <div className="fw-bold">Nhà gỗ</div>
+                      </div>
+                    </div>
+                    <div className="col">
+                      <div className="type_of_r_place">
+                        <img
+                          className="d-block w-100"
+                          src={nhanghithonda}
+                          alt="image resort"
+                        />
+                      </div>
+                      <div>
+                        <div className="fw-bold">Nhà nghỉ thôn dã</div>
+                      </div>
+                    </div>
+                    <div className="col">
+                      <div className="type_of_r_place">
+                        <img
+                          className="d-block w-100"
+                          src={glamping}
+                          alt="image resort"
+                        />
+                      </div>
+                      <div>
+                        <div className="fw-bold">Glamping</div>
+                      </div>
+                    </div>
+                    <div className="col">
+                      <div className="type_of_r_place">
+                        <img
+                          className="d-block w-100"
+                          src={nhanghibandb}
+                          alt="image canho"
+                        />
+                      </div>
+                      <div>
+                        <div className="fw-bold">Nhà nghỉ B&B</div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div className="carousel-item">
+                  <div className="d-flex row">
+                    <div className="col">
+                      <div className="type_of_r_place">
+                        <img
+                          className="d-block w-100"
+                          src={Ryokan}
+                          alt="image canho"
+                        />
+                      </div>
+                      <div>
+                        <div className="fw-bold">Ryokan</div>
+                      </div>
+                    </div>
+                    <div className="col">
+                      <div className="type_of_r_place">
+                        <img
+                          className="d-block w-100"
+                          src={riad}
+                          alt="image resort"
+                        />
+                      </div>
+                      <div>
+                        <div className="fw-bold">Riad</div>
+                      </div>
+                    </div>
+                    <div className="col">
+                      <div className="type_of_r_place">
+                        <img
+                          className="d-block w-100"
+                          src={khucamtrai}
+                          alt="image resort"
+                        />
+                      </div>
+                      <div>
+                        <div className="fw-bold">Khu cam trai</div>
+                      </div>
+                    </div>
+                    <div className="col">
+                      <div className="type_of_r_place">
+                        <img
+                          className="d-block w-100"
+                          src={nhathuyen}
+                          alt="image canho"
+                        />
+                      </div>
+                      <div>
+                        <div className="fw-bold">Nhà thuyền</div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <button
+                className="carousel-control-prev"
+                type="button"
+                data-bs-target="#carouselExampleSlidesOnly"
+                data-bs-slide="prev"
+              >
+                <span
+                  className="carousel-control-prev-icon"
+                  aria-hidden="true"
+                ></span>
+                <span className="visually-hidden">Previous</span>
+              </button>
+              <button
+                className="carousel-control-next"
+                type="button"
+                data-bs-target="#carouselExampleSlidesOnly"
+                data-bs-slide="next"
+              >
+                <span
+                  className="carousel-control-next-icon"
+                  aria-hidden="true"
+                ></span>
+                <span className="visually-hidden">Next</span>
+              </button>
             </div>
           </div>
         </div>
