@@ -145,6 +145,14 @@ svg {
 
 /* REGISTER HOTEL */
 
+.background_div{
+  background-color: #f8f9fa;
+}
+.background_div .infor-Elvira
+{
+  background-color: #ffffff;
+  /* border: 1px #00000046 solid; */
+}
 .logo_team {
   margin-right: 50rem;
   font-weight: bold;
