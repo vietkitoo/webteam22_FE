@@ -8,6 +8,7 @@ import { Link } from 'react-router-dom';
 import Header from '../component/header/header';
 import family_image from '../image/meet-guests.0e575a58.png';
 import Elvira from '../image/meet_elivra.1a77fdf3.jpg';
+import Footer from '../component/Footer/Footer';
 
 function regishotel() {
   return (
@@ -86,15 +87,15 @@ function regishotel() {
             </div>
           </div>
         </div>
-        <div className="infor-for-partner justify-content-center d-grid offset-lg-2 ps-5 py-5">
-          <div className=" navbar-text fw-bold fs-2">
+        <div className="row d-grid size-fix offset-lg-2 py-5">
+          <div className="navbar-text fw-bold fs-2">
             Sự an tâm của Quý vị là ưu tiên hàng đầu của chúng tôi
           </div>
           <div className="navbar-text">
             Đây là cách chúng tôi giúp Quý vị cảm thấy tự tin chào đón khách:
           </div>
-          <div className="regulation-for-partner d-flex ">
-            <div className="col-6">
+          <div className="regulation-for-partner row">
+            <div className="col">
               <div className="navbar-text d-flex py-3">
                 <BsCheckCircle className="width1" />
                 <div className="d-block mx-2">
@@ -136,22 +137,22 @@ function regishotel() {
                 </button>
               </div>
             </div>
-            <div className=" ">
-              <img className="col-10 " src={register_image} alt="register" />
+            <div className="col">
+              <img src={register_image} alt="register" />
             </div>
           </div>
         </div>
-        <div className="describe-for-partner justify-content-center   btn-light">
-          <div className="offset-lg-2 ps-5 py-5">
-            <div className=" fw-bold fs-2">
+        <div className="row d-grid size-fix offset-lg-2 py-5">
+
+            <div className="navbar-text fw-bold fs-2">
               Mô tả nào sau đây phù hợp với Quý vị nhất?
             </div>
-            <div className="">
+            <div className="navbar-text">
               Chọn một trong những lựa chọn sau để xem thông tin đã được tùy
               chỉnh riêng
             </div>
             <div className="pt-5 row">
-              <div className="pt-3 pb-3 px-5 shadow col-md-4 col-xs-10">
+              <div className="pt-3 pb-3 px-5 shadow col-sm-5 mx-4">
                 <div className="fw-bold navbar-text">
                   Tôi có một chỗ nghỉ thi thoảng mới cho thuê
                 </div>
@@ -174,7 +175,7 @@ function regishotel() {
                   </button>
                 </div>
               </div>
-              <div className="pt-3 pb-3 px-5 shadow col-md-4 col-xs-10 offset-sm-1">
+              <div className="pt-3 pb-3 px-5 shadow col-sm-5 mx-4">
                 <div className="fw-bold navbar-text">
                   Tôi có nhiều chỗ nghỉ cho thuê quanh năm
                 </div>
@@ -197,15 +198,13 @@ function regishotel() {
                 </div>
               </div>
             </div>
-          </div>
         </div>
-        <div className="describe-for-partner-2 justify-content-center">
-          <div className="offset-lg-2 ps-5 py-5">
-            <div className=" fw-bold fs-2">
+        <div className="row d-grid size-fix offset-lg-2 py-5">
+            <div className="navbar-text fw-bold fs-2">
               Lợi ích khi hợp tác cùng chúng tôi
             </div>
             <div className="pt-5 row">
-              <div className="pt-3 pb-3 px-5 shadow col-md-4 col-xs-10">
+              <div className="pt-3 pb-3 px-5 shadow col-md-5 col-xs-10 mx-4 my-1">
                 <div className="fw-bold navbar-text">
                   Đăng bất kỳ loại chỗ nghỉ nào
                 </div>
@@ -216,7 +215,7 @@ function regishotel() {
                   </div>
                 </div>
               </div>
-              <div className="pt-3 pb-3 px-5 shadow col-md-4 col-xs-10 offset-sm-1">
+              <div className="pt-3 pb-3 px-5 shadow col-md-5 col-xs-10 mx-4 my-1">
                 <div className="fw-bold navbar-text">
                   Nhập thông tin dễ dàng
                 </div>
@@ -229,7 +228,7 @@ function regishotel() {
               </div>
             </div>
             <div className="pt-5 row">
-              <div className="pt-3 pb-3 px-5 shadow col-md-4 col-xs-10">
+              <div className="pt-3 pb-3 px-5 shadow col-md-5 col-xs-10 mx-4 my-1">
                 <div className="fw-bold navbar-text">Hướng dẫn từng bước</div>
                 <div className="navbar-text d-flex">
                   <div className="px-1">
@@ -238,7 +237,7 @@ function regishotel() {
                   </div>
                 </div>
               </div>
-              <div className="pt-3 pb-3 px-5 shadow col-md-4 col-xs-10 offset-sm-1">
+              <div className="pt-3 pb-3 px-5 shadow col-md-5 col-xs-10 mx-4 my-1">
                 <div className="fw-bold navbar-text">Giảm giá đặc biệt</div>
                 <div className="navbar-text d-flex">
                   <div className="px-1">
@@ -248,19 +247,19 @@ function regishotel() {
                 </div>
               </div>
             </div>
-          </div>
+
         </div>
-        <div className="describe-for-partner-3 justify-content-center btn-light">
-          <div className="offset-lg-2 ps-5 py-5">
-            <div className=" fw-bold fs-2">Gặp gỡ Elvira</div>
-            <div className="">
+        <div className="row d-grid size-fix offset-lg-2 py-5">
+            <div className="navbar-text fw-bold fs-2">Gặp gỡ Elvira</div>
+            <div className="navbar-text">
               Hãy xem vì sao Elvira thích cho thuê chỗ nghỉ trên Booking.com.
             </div>
-            <div className=" mt-md-3 row accordion-item  col-md-9 ">
-              <div className=" d-flex">
-                <img className="col-4" src={Elvira} alt="Elvira" />
-                <div className="px-md-5">
-                  <div className=" fw-bold fs-2">
+            <div className=" mt-md-3 row accordion-item ">
+              <div className="col-4">
+                <img width={'360px'} height={'400px'} src={Elvira} alt="Elvira" />
+              </div>
+              <div className="col-6">
+                  <div className="fw-bold fs-2">
                     "Tôi cảm thấy tự tin hơn khi biết rằng tôi có thể báo cáo
                     hành vi sai phạm của khách cho tất cả chỗ nghỉ trong danh
                     mục của tôi trên Booking.com."
@@ -269,20 +268,18 @@ function regishotel() {
                   <div className="figure-caption">
                     Palma Homes Mallorca, Mallorca
                   </div>
-                </div>
               </div>
             </div>
-          </div>
         </div>
-        <div className="infor-for-partner justify-content-center d-grid  ps-5 py-5">
+        <div className="row d-grid size-fix offset-lg-2 py-5">
           <div className=" navbar-text fw-bold fs-2">
             Biết thêm thông tin về khách
           </div>
           <div className="navbar-text">
             Dù có từ đâu đến, khách của chúng tôi đều có một vài điểm chung.
           </div>
-          <div className="regulation-for-partner d-flex">
-            <div className="col-6 pt-md-5">
+          <div className="row regulation-for-partner">
+            <div className="col pt-md-5">
               <div className="navbar-text d-flex py-3">
                 <BsCheckCircle className="width1" />
                 <div className="d-block mx-2">
@@ -303,104 +300,33 @@ function regishotel() {
                 </div>
               </div>
             </div>
-            <div className=" ">
-              <img className="col-10 " src={family_image} alt="family" />
+            <div className="col">
+              <img width={'450px'} height={'300px'} src={family_image} alt="family" />
             </div>
           </div>
         </div>
-        <div className="infor-for-partner-2 justify-content-center d-grid ">
-          <div className="infor">
-            <div className="fw-bold fs-3">Booking.com qua những con số</div>
-            <div className="regulation-for-partner d-flex">
-              <div className="col-4 me-md-5">
-                <div className="  fw-bold fs-1 ">Trên 28 triệu</div>
+        <div className=" infor-for-partner-2 row d-grid size-fix offset-lg-2 py-5">
+            <div className="navbar-text fw-bold fs-2">Booking.com qua những con số</div>
+            <div className="regulation-for-partner row">
+              <div className="col">
+                <div className="fw-bold fs-1 ">Trên 28 triệu</div>
                 <div>
                   Đăng ký tại 226 quốc gia và vùng lãnh thổ trên toàn cầu
                 </div>
               </div>
-              <div className="col-4 me-md-5">
-                <div className="  fw-bold fs-1 ">Trên 6,2 Triệu</div>
+              <div className="col">
+                <div className="fw-bold fs-1 ">Trên 6,2 Triệu</div>
                 <div>Nhà, căn hộ và những chỗ nghỉ độc đáo khác</div>
               </div>
-              <div className="col-4 me-md-5">
-                <div className=" fw-bold fs-1 ">Trên 43</div>
+              <div className="col">
+                <div className="fw-bold fs-1 ">Trên 43</div>
                 <div>Ngôn ngữ trên trang của chúng tôi</div>
               </div>
             </div>
-          </div>
-        </div>
-        <div className="banner row">
-          <div className="introduce col">
-            <div className="text-1"> Đăng </div>
-            <div
-              id="carouselExampleSlidesOnly"
-              className="carousel slide"
-              data-bs-ride="carousel"
-            >
-              <div className="carousel-inner d-table-cell fw-bolder fs-2 link-primary">
-                <div className="carousel-item active"> Căn Hộ </div>
-                <div className="carousel-item "> Khách Sạn</div>
-                <div className="carousel-item "> Nhà Nghỉ Dưỡng</div>
-                <div className="carousel-item "> Guest House</div>
-                <div className="carousel-item "> Nhà Nghỉ B&B</div>
-                <div className="carousel-item "> Bất cứ chỗ nghỉ nào </div>
-              </div>
-              <div className="fs-4  h1 ">Của Qúy Vị</div>
-            </div>
-            <div className="text-3 h1 ">trên Tour and Travel</div>
-            <div className="text-4">
-              Đăng kí miễn phí và chỉ mất 15 phút để hoàn tất – hãy bắt đầu ngay
-              hôm nay
-            </div>
-          </div>
-          <div className="col">
-            <div className="register-partner">
-              <div className="text1">Tạo Đăng Ký Mới</div>
 
-              <div className="navbar-text d-flex">
-                <FcCheckmark />
-                <div className="px-1">
-                  Hơn 6,4 triệu nhà nghỉ dưỡng đã được đăng kí
-                </div>
-              </div>
-
-              <div className="navbar-text d-flex">
-                <FcCheckmark />
-                <div className="px-1">
-                  Hơn 1 tỉ lượt khách đã lưu trú tại nhà nghỉ dưỡng
-                </div>
-              </div>
-
-              <div className="navbar-text d-flex">
-                <FcCheckmark className="size-issue" />
-                <div className="px-1">
-                  Hơn 40% nhà nghỉ dưỡng nhận được đơn đặt đầu tiên trong vòng
-                  một tuần sau khi đăng kí
-                </div>
-              </div>
-              <div className="text2 navbar-text">
-                Tạo tài khoản đối tác để bắt đầu:
-              </div>
-              <div className="navbar-text">
-                Bằng cách đi tiếp, Quý vị đồng ý cho Booking.com gửi email tới
-                Quý vị về việc đăng ký chỗ nghỉ.
-              </div>
-              <button type="button" className="btn btn-primary">
-                Bắt Đầu {'->'}
-              </button>
-
-              <div>
-                <div className="navbar-text fw-bold ">
-                  Quý vị đã bắt đầu quá trình đăng ký?
-                </div>
-                <div>
-                  <a href="#">Tiếp tục các bước đăng ký</a>
-                </div>
-              </div>
-            </div>
-          </div>
         </div>
       </div>
+      <Footer />
     </>
   );
 }

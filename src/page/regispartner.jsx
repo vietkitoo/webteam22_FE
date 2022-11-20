@@ -1,3 +1,4 @@
+import Footer from "../component/Footer/Footer";
 import LoginForm from "../component/Form/LoginForm";
 import Header from "../component/header/header";
 import './style.css'
@@ -12,6 +13,7 @@ function regispartner() {
                     <LoginForm />
                 </div>
             </div>
+            <Footer />
         </>
     );
 }
