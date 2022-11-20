@@ -1,4 +1,6 @@
 import './header.css';
+import '../../styles/css/bootstrap.min.css';
+import '../../styles/css/App.css';
 import { Link } from 'react-router-dom';
 import {
   faBed,
@@ -45,186 +47,189 @@ const Header = () => {
     });
   };
   return (
-    <header className="App-header">
-      <nav className="navbar navbar-light justify-content-center">
-        <a href="/" className="navbar-brand logo_team">
-          Tour & Travel
-        </a>
-        <form className="form-inline">
-          <Link to="../register-hotel">
+    <div>
+      <header className="App-header">
+        <nav className="navbar navbar-light justify-content-center">
+          <a href="/" className="navbar-brand logo_team">
+            Tour & Travel
+          </a>
+          <form className="form-inline">
+            <Link to="../register-hotel">
+              <button
+                type="button"
+                className="btn btn-outline-info color_hover_btn_outline_info"
+              >
+                Đăng thông tin phòng nghỉ của quý khách
+              </button>
+            </Link>
+            <Link to="../login">
+              <button type="button" className="btn btn-light btn_sign">
+                Đăng Nhập
+              </button>
+            </Link>
+            <Link to="../support">
+              <button type="button" className="btn btn-light btn_sign">
+               Trợ giúp
+              </button>
+            </Link>
+          </form>
+        </nav>
+
+        <nav className="navbar navbar-light justify-content-center">
+          <Link to="/">
             <button
               type="button"
-              className="btn btn-outline-info color_hover_btn_outline_info"
+              className="btn btn-light button-navbar btn_sign btn_select_list"
             >
-              Đăng thông tin phòng nghỉ của quý khách
+              <FontAwesomeIcon icon={faBed} />
+              Lưu Trú
             </button>
           </Link>
-          <Link to="../login">
-            <button type="button" className="btn btn-light btn_sign">
-              Đăng Nhập
+          <Link to="/">
+            <button
+              type="button"
+              className="btn btn-light button-navbar btn_sign btn_select_list"
+            >
+              <FontAwesomeIcon icon={faPlane} className="headerIcon" />
+              Chuyến Bay
             </button>
           </Link>
-          <Link to="../support">
-            <button type="button" className="btn btn-light btn_sign">
-              Trợ giúp
+          <Link to="/">
+            <button
+              type="button"
+              className="btn btn-light button-navbar btn_sign btn_select_list"
+            >
+              <FontAwesomeIcon icon={faBed} className="headerIcon" />
+              Chuyến Bay + Khách sạn
             </button>
           </Link>
-        </form>
-      </nav>
+          <Link to="/">
+            <button
+              type="button"
+              className="btn btn-light button-navbar btn_sign btn_select_list"
+            >
+              <FontAwesomeIcon icon={faCar} className="headerIcon" />
+              Thuê xe
+            </button>
+          </Link>
+          <Link to="/ ">
+            <button
+              type="button"
+              className="btn btn-light button-navbar btn_sign btn_select_list"
+            >
+              <FontAwesomeIcon icon={faCamera} className="headerIcon" />
+              Địa điểm tham quan
+            </button>
+          </Link>
+          <Link to="/">
+            <button
+              type="button"
+              className="btn btn-light button-navbar btn_sign btn_select_list"
+            >
+              <FontAwesomeIcon icon={faTaxi} className="headerIcon" />
+              Taxi sân bay
+            </button>
+          </Link>
+        </nav>
 
-      <nav className="navbar navbar-light justify-content-center">
-        <Link to="/">
-          <button
-            type="button"
-            className="btn btn-light button-navbar btn_sign btn_select_list"
-          >
+        <div className="headerSearch">
+          <FontAwesomeIcon icon={faHotel} className="headerIcon" />
+          <input
+            type="text"
+            placeholder="Mình đi đâu thế?"
+            className="headerSearchInput"
+          />
+          <div type="button">
+            <FontAwesomeIcon icon={faCalendarDays} className="headerIcon" />
+            <span
+              onClick={() => setOpenDate(!OpenDate)}
+              className="headerSearchText"
+            >{`${format(date[0].startDate, 'MM/dd/yyyy')} to ${format(
+              date[0].endDate,
+              'MM/dd/yyyy'
+            )} `}</span>
+
+            {OpenDate && (
+              <DateRangePicker
+                onChange={(item) => setDate([item.selection])}
+                showSelectionPreview={true}
+                moveRangeOnFirstSelection={false}
+                months={2}
+                ranges={date}
+                direction="horizontal"
+                className="date"
+              />
+            )}
+          </div>
+          <div>
             <FontAwesomeIcon icon={faBed} />
-            Lưu Trú
-          </button>
-        </Link>
-        <Link to="/">
-          <button
-            type="button"
-            className="btn btn-light button-navbar btn_sign btn_select_list"
-          >
-            <FontAwesomeIcon icon={faPlane} className="headerIcon" />
-            Chuyến Bay
-          </button>
-        </Link>
-        <Link to="/">
-          <button
-            type="button"
-            className="btn btn-light button-navbar btn_sign btn_select_list"
-          >
-            <FontAwesomeIcon icon={faBed} className="headerIcon" />
-            Chuyến Bay + Khách sạn
-          </button>
-        </Link>
-        <Link to="/">
-          <button
-            type="button"
-            className="btn btn-light button-navbar btn_sign btn_select_list"
-          >
-            <FontAwesomeIcon icon={faCar} className="headerIcon" />
-            Thuê xe
-          </button>
-        </Link>
-        <Link to="/ ">
-          <button
-            type="button"
-            className="btn btn-light button-navbar btn_sign btn_select_list"
-          >
-            <FontAwesomeIcon icon={faCamera} className="headerIcon" />
-            Địa điểm tham quan
-          </button>
-        </Link>
-        <Link to="/">
-          <button
-            type="button"
-            className="btn btn-light button-navbar btn_sign btn_select_list"
-          >
-            <FontAwesomeIcon icon={faTaxi} className="headerIcon" />
-            Taxi sân bay
-          </button>
-        </Link>
-      </nav>
-
-      <div className="headerSearch">
-        <FontAwesomeIcon icon={faHotel} className="headerIcon" />
-        <input
-          type="text"
-          placeholder="Mình đi đâu thế?"
-          className="headerSearchInput"
-        />
-        <div type="button">
-          <FontAwesomeIcon icon={faCalendarDays} className="headerIcon" />
-          <span
-            onClick={() => setOpenDate(!OpenDate)}
-            className="headerSearchText"
-          >{`${format(date[0].startDate, 'MM/dd/yyyy')} to ${format(
-            date[0].endDate,
-            'MM/dd/yyyy'
-          )} `}</span>
-
-          {OpenDate && (
-            <DateRangePicker
-              onChange={(item) => setDate([item.selection])}
-              showSelectionPreview={true}
-              moveRangeOnFirstSelection={false}
-              months={2}
-              ranges={date}
-              direction="horizontal"
-              className="date"
-            />
-          )}
-        </div>
-        <div>
-          <FontAwesomeIcon icon={faBed} />
-          <span
-            onClick={() => setChoosePeople(!ChoosePeople)}
-            className="headerSearchText"
-          >{`${People.Adult} Người lớn - ${People.Children} Trẻ em - ${People.Room} Phòng`}</span>
-          {ChoosePeople && (
-            <div className="people">
-              <div className="peopleItem">
-                <span className="peopletext">Người lớn</span>
-                <button
-                  disabled={People.Adult <= 1}
-                  className="couter"
-                  onClick={() => handlePeople('Adult', 'd')}
-                >
-                  -
-                </button>
-                <span className="couter">{People.Adult}</span>
-                <button
-                  className="couter"
-                  onClick={() => handlePeople('Adult', 'i')}
-                >
-                  +
-                </button>
+            <span
+              onClick={() => setChoosePeople(!ChoosePeople)}
+              className="headerSearchText"
+            >{`${People.Adult} Người lớn - ${People.Children} Trẻ em - ${People.Room} Phòng`}</span>
+            {ChoosePeople && (
+              <div className="people">
+                <div className="peopleItem">
+                  <span className="peopletext">Người lớn</span>
+                  <button
+                    disabled={People.Adult <= 1}
+                    className="couter"
+                    onClick={() => handlePeople('Adult', 'd')}
+                  >
+                    -
+                  </button>
+                  <span className="couter">{People.Adult}</span>
+                  <button
+                    className="couter"
+                    onClick={() => handlePeople('Adult', 'i')}
+                  >
+                    +
+                  </button>
+                </div>
+                <div className="peopleItem">
+                  <span className="peopletext">Trẻ em</span>
+                  <button
+                    disabled={People.Children <= 0}
+                    className="couter"
+                    onClick={() => handlePeople('Children', 'd')}
+                  >
+                    -
+                  </button>
+                  <span className="couter">{People.Children}</span>
+                  <button
+                    className="couter"
+                    onClick={() => handlePeople('Children', 'i')}
+                  >
+                    +
+                  </button>
+                </div>
+                <div className="peopleItem">
+                  <span className="peopletext">Phòng</span>
+                  <button
+                    disabled={People.Room <= 1}
+                    className="couter"
+                    onClick={() => handlePeople('Room', 'd')}
+                  >
+                    -
+                  </button>
+                  <span className="couter">{People.Room}</span>
+                  <button
+                    className="couter"
+                    onClick={() => handlePeople('Room', 'i')}
+                  >
+                    +
+                  </button>
+                </div>
               </div>
-              <div className="peopleItem">
-                <span className="peopletext">Trẻ em</span>
-                <button
-                  disabled={People.Children <= 0}
-                  className="couter"
-                  onClick={() => handlePeople('Children', 'd')}
-                >
-                  -
-                </button>
-                <span className="couter">{People.Children}</span>
-                <button
-                  className="couter"
-                  onClick={() => handlePeople('Children', 'i')}
-                >
-                  +
-                </button>
-              </div>
-              <div className="peopleItem">
-                <span className="peopletext">Phòng</span>
-                <button
-                  disabled={People.Room <= 1}
-                  className="couter"
-                  onClick={() => handlePeople('Room', 'd')}
-                >
-                  -
-                </button>
-                <span className="couter">{People.Room}</span>
-                <button
-                  className="couter"
-                  onClick={() => handlePeople('Room', 'i')}
-                >
-                  +
-                </button>
-              </div>
-            </div>
-          )}
+            )}
+          </div>
+          <div className="headerSearchItem">
+            <button className="headerBtn">Tìm kiếm</button>
+          </div>
         </div>
-        <div className="headerSearchItem">
-          <button className="headerBtn">Tìm kiếm</button>
-        </div>
-      </div>
-    </header>
+      </header>
+      
+    </div>
   );
 };
 
