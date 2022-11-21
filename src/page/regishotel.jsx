@@ -40,7 +40,7 @@ function regishotel() {
             </div>
           </div>
           <div className="col">
-            <div className="register-partner">
+            <div className="register-partner"> 
               <div className="text1">Tạo Đăng Ký Mới</div>
 
               <div className="navbar-text d-flex">
