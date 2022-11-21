@@ -11,7 +11,7 @@ const Widget = ({ type }) => {
     let data;
   
     //temporary
-    const amount = 100;
+    const amount = 100000;
     const diff = 20;
   
     switch (type) {
@@ -49,9 +49,9 @@ const Widget = ({ type }) => {
         break;
       case "earning":
         data = {
-          title: "Thanh toán",
+          title: "Doanh thu",
           isMoney: true,
-          link: "Xem tất cả thanh toán",
+          link: "Xem tất cả doanh thu",
           icon: (
             <MonetizationOnOutlinedIcon
               className="icon"
@@ -62,9 +62,9 @@ const Widget = ({ type }) => {
         break;
       case "balance":
         data = {
-          title: "Doanh thu",
+          title: "Số dư",
           isMoney: true,
-          link: "Xem doanh thu",
+          link: "Xem số dư",
           icon: (
             <AccountBalanceWalletOutlinedIcon
               className="icon"
@@ -85,7 +85,7 @@ const Widget = ({ type }) => {
         <div className="left">
           <span className="title">{data.title}</span>
           <span className="counter">
-            {data.isMoney && "$"} {amount}
+          {amount} {data.isMoney && "đ"} 
           </span>
           <span className="link">{data.link}</span>
         </div>

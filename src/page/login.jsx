@@ -15,7 +15,6 @@ import {
   MDBCheckbox,
 } from 'mdb-react-ui-kit';
 import Header from '../component/header/header';
-import Footer from '../component/Footer/Footer';
 
 function Login() {
   const [justifyActive, setJustifyActive] = useState('tab1');
@@ -79,8 +78,8 @@ function Login() {
     <Header />
     <div className="content login">
       <div className="row">
-        <div className="col-8">
-          <MDBContainer className="p-3 d-flex flex-column login-form">
+        <div className="col">
+          <MDBContainer className="p-3 my-5 d-flex flex-column login-form">
             <MDBTabs
               pills
               justify
@@ -256,7 +255,6 @@ function Login() {
         </div>
       </div>
     </div>
-    <Footer />
     </>
   );
 }
