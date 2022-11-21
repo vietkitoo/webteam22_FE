@@ -13,9 +13,7 @@ import { useContext } from 'react';
 
 
 function App() {
-  const ProtectedRoute = ({ children }) => {
-    const {user} = useContext{AuthContext}
-  }
+
   return (
     <div className="App">
       <Router>

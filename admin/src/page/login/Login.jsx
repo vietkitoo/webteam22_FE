@@ -2,8 +2,8 @@ import React, { useState } from 'react';
 import axios from 'axios';
 import { BsFacebook, BsGoogle, BsTwitter, BsGithub } from 'react-icons/bs';
 import { useNavigate } from 'react-router-dom';
-import './style.css'
-import '../styles/css/bootstrap.min.css';
+import './login.css'
+import './css/bootstrap.min.css';
 import {
   MDBContainer,
   MDBTabs,
@@ -14,9 +14,10 @@ import {
   MDBInput,
   MDBCheckbox,
 } from 'mdb-react-ui-kit';
-import Header from '../component/header/header';
+
 
 function Login() {
+  
   const [justifyActive, setJustifyActive] = useState('tab1');
   const handleJustifyClick = (value) => {
     if (value === justifyActive) {
@@ -47,6 +48,7 @@ function Login() {
       .post('https://backend-web-app-1.herokuapp.com/api/author/login', {
         email: email,
         password: password,
+        isAdmin: true,
       })
       .then(function (response) {
         navigate('/');
@@ -71,11 +73,12 @@ function Login() {
       })
       .catch(function (error) {
         console.log(error);
+       
       });
   };
   return (
     <>
-    <Header />
+
     <div className="content login">
       <div className="row">
         <div className="col">
