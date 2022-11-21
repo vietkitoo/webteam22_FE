@@ -51,7 +51,7 @@ const Header = () => {
       <header className="App-header">
         <nav className="navbar navbar-light justify-content-center">
           <a href="/" className="navbar-brand logo_team">
-            Tour & Travel
+            T&T HOTEL
           </a>
           <form className="form-inline">
             <Link to="../register-hotel">
@@ -69,7 +69,7 @@ const Header = () => {
             </Link>
             <Link to="../support">
               <button type="button" className="btn btn-light btn_sign">
-               Trợ giúp
+               Hỗ trợ
               </button>
             </Link>
           </form>
@@ -90,26 +90,8 @@ const Header = () => {
               type="button"
               className="btn btn-light button-navbar btn_sign btn_select_list"
             >
-              <FontAwesomeIcon icon={faPlane} className="headerIcon" />
-              Chuyến Bay
-            </button>
-          </Link>
-          <Link to="/">
-            <button
-              type="button"
-              className="btn btn-light button-navbar btn_sign btn_select_list"
-            >
               <FontAwesomeIcon icon={faBed} className="headerIcon" />
-              Chuyến Bay + Khách sạn
-            </button>
-          </Link>
-          <Link to="/">
-            <button
-              type="button"
-              className="btn btn-light button-navbar btn_sign btn_select_list"
-            >
-              <FontAwesomeIcon icon={faCar} className="headerIcon" />
-              Thuê xe
+              Khách sạn
             </button>
           </Link>
           <Link to="/ ">
@@ -121,7 +103,7 @@ const Header = () => {
               Địa điểm tham quan
             </button>
           </Link>
-          <Link to="/">
+          <Link to="../Taxi">
             <button
               type="button"
               className="btn btn-light button-navbar btn_sign btn_select_list"
