@@ -129,7 +129,7 @@ const Header = () => {
         </Link>
       </nav>
 
-      <div className="headerSearch">
+      {/* <div className="headerSearch">
         <FontAwesomeIcon icon={faHotel} className="headerIcon" />
         <input
           type="text"
@@ -223,7 +223,7 @@ const Header = () => {
         <div className="headerSearchItem">
           <button className="headerBtn">Tìm kiếm</button>
         </div>
-      </div>
+      </div> */}
     </header>
   );
 };
