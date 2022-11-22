@@ -247,7 +247,7 @@ function Home() {
         </div>
         <div className="headerSearchItem">
             <button className="headerBtn">Tìm kiếm</button>
-          </div>
+        </div>
         {/* Phần ưu đãi */}
         <div className="justify-content-center offset-lg-2 ps-5 py-5">
           <div className="fw-bold fs-3">Ưu Đãi</div>
