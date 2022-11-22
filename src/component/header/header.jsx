@@ -47,7 +47,6 @@ const Header = () => {
     });
   };
   return (
-    <div>
       <header className="App-header">
         <nav className="navbar navbar-light justify-content-center">
           <a href="/" className="navbar-brand logo_team">
@@ -114,22 +113,22 @@ const Header = () => {
           </Link>
         </nav>
 
-        <div className="headerSearch">
-          <FontAwesomeIcon icon={faHotel} className="headerIcon" />
-          <input
-            type="text"
-            placeholder="Mình đi đâu thế?"
-            className="headerSearchInput"
-          />
-          <div type="button">
-            <FontAwesomeIcon icon={faCalendarDays} className="headerIcon" />
-            <span
-              onClick={() => setOpenDate(!OpenDate)}
-              className="headerSearchText"
-            >{`${format(date[0].startDate, 'MM/dd/yyyy')} to ${format(
-              date[0].endDate,
-              'MM/dd/yyyy'
-            )} `}</span>
+      {/* <div className="headerSearch">
+        <FontAwesomeIcon icon={faHotel} className="headerIcon" />
+        <input
+          type="text"
+          placeholder="Mình đi đâu thế?"
+          className="headerSearchInput"
+        />
+        <div type="button">
+          <FontAwesomeIcon icon={faCalendarDays} className="headerIcon" />
+          <span
+            onClick={() => setOpenDate(!OpenDate)}
+            className="headerSearchText"
+          >{`${format(date[0].startDate, 'MM/dd/yyyy')} to ${format(
+            date[0].endDate,
+            'MM/dd/yyyy'
+          )} `}</span>
 
             {OpenDate && (
               <DateRangePicker
@@ -209,9 +208,8 @@ const Header = () => {
             <button className="headerBtn">Tìm kiếm</button>
           </div>
         </div>
-      </header>
-      
-    </div>
+      </div> */}
+    </header>
   );
 };
 
