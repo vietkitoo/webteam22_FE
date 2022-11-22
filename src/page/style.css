@@ -1,19 +1,87 @@
-@import url(../styles/css/bootstrap-grid.min.css);
+@import url('../styles/css/bootstrap-grid.min.css');
 
 /* GENERAL */
 
-#root .App{
+#root .App {
   min-height: 100vh;
 }
 
 .content {
-  position: absolute;
   padding-top: 6.9rem;
   width: 100%;
 }
 
-/* HOME */
+svg {
+  height: 24px;
+  width: 24px;
+}
 
+.mg-auto {
+  margin: auto;
+}
+
+/* HOME */
+.slide1{
+  margin-right: 23rem;
+}
+.slide1 .carousel-inner{
+  display: inherit !important;
+}
+
+.type_of_r_place img {
+  width: 15rem !important;
+  height: 10rem !important;
+}
+.type_of_r_place {
+  height: 10rem !important;
+  width: 25%;
+}
+.carousel-inner {
+  display: contents;
+}
+.carousel-indicators {
+  top: 26rem;
+}
+.Sites {
+  height: 15rem;
+}
+.setbackgroud {
+  background: no-repeat url('../image/long_stays_banner_wide.a1b12d47.png');
+  color: #ffffff;
+  background-size: 100% 100%;
+  border-radius: 1rem;
+}
+
+.Ha_noi {
+  background: no-repeat url('../image/hoguom.jpg');
+  color: #ffffff;
+  background-size: 100% 100%;
+}
+.Hoi_an {
+  background: no-repeat url('../image/Hoi-An.jpeg');
+  color: #ffffff;
+  background-size: 100% 100%;
+}
+.TPHCM {
+  background: no-repeat
+    url('../image/thanh-pho-thu-duc-tp-ho-chi-minh-41120.jpg');
+  color: #ffffff;
+  background-size: 100% 100%;
+}
+.Hue {
+  background: no-repeat url('../image/hue.jpeg');
+  color: #ffffff;
+  background-size: 100% 100%;
+}
+.NhaTrang {
+  background: no-repeat url('../image/nhatrang.jpg');
+  color: #ffffff;
+  background-size: 100% 100%;
+}
+.National_flag img {
+  height: 2rem !important;
+  width: 2rem !important;
+}
 .home img {
   position: absolute;
   width: 100%;
@@ -22,14 +90,19 @@
 }
 
 .info_select {
-  position: absolute;
+  position: relative;
   font-size: 2rem;
   color: aliceblue;
-  margin-left: 25%;
-  margin-top: 5%;
-  height: 20px;
-  width: 25%;
+  height: 500px;
+  width: 800px;
   z-index: 16;
+  top: 100px;
+  left: 200px;
+}
+.text_1,
+.text_2,
+.text_3 {
+  color: #fff;
 }
 .text_3 {
   font-size: 21px;
@@ -38,44 +111,10 @@
   font-weight: bold;
   font-size: 40px;
 }
-.carousel-control-prev {
-  padding-top: 13rem;
-}
-.carousel-control-next {
-  padding-top: 13rem;
-}
-.carousel-inner {
-  display: contents;
-}
-.carousel-indicators {
-  top: 26rem;
-}
-.carousel-indicators [data-bs-target] {
-  box-sizing: content-box;
-  top: 26rem;
-  flex: 0 1 auto;
-  width: 46px;
-  height: 3px;
-  padding: 0;
-  margin-right: 3px;
-  margin-left: 3px;
-  text-indent: -999px;
-  cursor: pointer;
-  background-color: #fff;
-  background-clip: padding-box;
-  border: 0;
-  border-top: 10px solid transparent;
-  border-bottom: 10px solid transparent;
-  opacity: 0.5;
-  transition: opacity 0.6s ease;
-}
-.carousel-indicators .active {
-  opacity: 1;
-}
 
 /* LOGIN */
 
-.login-form{
+.login-form {
   width: 40%;
 }
 .icon-link {
@@ -105,6 +144,15 @@
 }
 
 /* REGISTER HOTEL */
+
+.background_div{
+  background-color: #f8f9fa;
+}
+.background_div .infor-Elvira
+{
+  background-color: #ffffff;
+  /* border: 1px #00000046 solid; */
+}
 .logo_team {
   margin-right: 50rem;
   font-weight: bold;
@@ -117,11 +165,10 @@
   z-index: 100;
 }
 .introduce {
-  width: 38%;
-  margin-left: 20%;
-  margin-top: 5%;
+  margin-left: 300px;
+  margin-top: 100px;
 }
-.text-1{
+.text-1 {
   font-size: 45px;
   font-weight: bold;
 }
@@ -129,7 +176,6 @@
   font-size: 26px;
 }
 .register-partner {
-  margin: auto;
   margin-top: 5rem;
   background-color: #ffffff;
   width: 75%;
@@ -140,55 +186,127 @@
   width: 100%;
   border-radius: 2rem;
 }
-.register-partner .text1{
+.register-partner .text1 {
   font-weight: bold;
   font-size: 24px;
 }
-.register-partner .text2{
+.register-partner .text2 {
   font-weight: bold;
   font-size: 15px;
 }
-.size-issue{
+.size-issue {
   width: 8%;
 }
-.infor-for-partner-2{
-  background: no-repeat 50% url("../image/world-map-gray.png");
+.infor-for-partner-2 {
+  background: no-repeat 50% url('../image/world-map-gray.png');
   background-size: 38rem;
 }
-.infor-for-partner-2 .infor{
+.infor-for-partner-2 .infor {
   padding-top: 7rem;
   padding-bottom: 7rem;
+}
+.size-fix {
+  width: 1265px;
 }
 
 /* REGISTER PARTNER */
 
-
 /* SUPPORT */
-.intro {
-    background-image: url("https://cf.bstatic.com/backend_static/common/img/joinapp/trust_landing/trust_safety_mini_site_bg/0a660b81fa358d6c5a964233b961654dafae513e.png");
-    background-color: rgba(0, 0, 0, 0.5);
-    width: 100%;
-    height: 580px;
-    background-size: cover;
-    position: absolute;
+#intro {
+  background-image: url('https://cf.bstatic.com/backend_static/common/img/joinapp/trust_landing/trust_safety_mini_site_bg/0a660b81fa358d6c5a964233b961654dafae513e.png');
+  background-color: rgba(0, 0, 0, 0.5);
+  width: 100%;
+  height: 580px;
+  background-size: cover;
 }
 
 .color-overlay {
-    position: absolute;
-    height: 100%;
-    width: 100%;
-    background-color: rgba(0, 0, 0, 0.5);
+  height: 100%;
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
 }
 
 .col {
-    float: left;
-    padding: 10px;
+  float: left;
+  padding: 10px;
 }
 
 .left {
-    width: 25%;
+  width: 25%;
 }
 
 .right {
-    width: 75%;
+  width: 75%;
+}
+
+.color-white {
+  color: white;
+}
+
+.info-container {
+  padding-top: 10rem;
+  padding-left: 15rem;
+  height: 100%;
+  width: 100%;
+}
+
+.info_header {
+  font-size: 40px;
+  line-height: 55px;
+  font-weight: bold;
+}
+
+.info_body {
+  font-size: 24px;
+  line-height: 32px;
+}
+
+.info_subheader {
+  font-size: 20px;
+  line-height: 28px;
+}
+
+#detail {
+  width: 100%;
+}
+
+.text-container-medium {
+  padding-bottom: 10px;
+  padding-top: 40px;
+  padding-left: 15rem;
+}
+
+.detail_icon {
+  border-radius: 50%;
+  width: 48px;
+  height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+.feature_header {
+  font-size: 24px;
+  font-weight: 700;
+  line-height: 32px;
+}
+
+.feature_column {
+  margin-right: 13rem;
+}
+
+.feature-small {
+  font-size: 14px;
+}
+
+#privacy {
+  margin-top: 10rem;
+}
+
+.btn-support {
+  text-align: center;
+  margin-left: 45%;
+  border: none;
+  box-shadow: 5px 5px rgba(0, 0, 0, 0.2);
 }

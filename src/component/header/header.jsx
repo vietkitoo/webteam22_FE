@@ -1,6 +1,4 @@
 import './header.css';
-import '../../styles/css/bootstrap.min.css';
-import '../../styles/css/App.css';
 import { Link } from 'react-router-dom';
 import {
   faBed,
@@ -47,9 +45,8 @@ const Header = () => {
     });
   };
   return (
-    <div>
-      <header className="App-header">
-        <nav className="navbar navbar-light justify-content-center">
+    <header className="App-header">
+       <nav className="navbar navbar-light justify-content-center">
           <a href="/" className="navbar-brand logo_team">
             T&T HOTEL
           </a>
@@ -114,104 +111,102 @@ const Header = () => {
           </Link>
         </nav>
 
-        <div className="headerSearch">
-          <FontAwesomeIcon icon={faHotel} className="headerIcon" />
-          <input
-            type="text"
-            placeholder="Mình đi đâu thế?"
-            className="headerSearchInput"
-          />
-          <div type="button">
-            <FontAwesomeIcon icon={faCalendarDays} className="headerIcon" />
-            <span
-              onClick={() => setOpenDate(!OpenDate)}
-              className="headerSearchText"
-            >{`${format(date[0].startDate, 'MM/dd/yyyy')} to ${format(
-              date[0].endDate,
-              'MM/dd/yyyy'
-            )} `}</span>
+      {/* <div className="headerSearch">
+        <FontAwesomeIcon icon={faHotel} className="headerIcon" />
+        <input
+          type="text"
+          placeholder="Mình đi đâu thế?"
+          className="headerSearchInput"
+        />
+        <div type="button">
+          <FontAwesomeIcon icon={faCalendarDays} className="headerIcon" />
+          <span
+            onClick={() => setOpenDate(!OpenDate)}
+            className="headerSearchText"
+          >{`${format(date[0].startDate, 'MM/dd/yyyy')} to ${format(
+            date[0].endDate,
+            'MM/dd/yyyy'
+          )} `}</span>
 
-            {OpenDate && (
-              <DateRangePicker
-                onChange={(item) => setDate([item.selection])}
-                showSelectionPreview={true}
-                moveRangeOnFirstSelection={false}
-                months={2}
-                ranges={date}
-                direction="horizontal"
-                className="date"
-              />
-            )}
-          </div>
-          <div>
-            <FontAwesomeIcon icon={faBed} />
-            <span
-              onClick={() => setChoosePeople(!ChoosePeople)}
-              className="headerSearchText"
-            >{`${People.Adult} Người lớn - ${People.Children} Trẻ em - ${People.Room} Phòng`}</span>
-            {ChoosePeople && (
-              <div className="people">
-                <div className="peopleItem">
-                  <span className="peopletext">Người lớn</span>
-                  <button
-                    disabled={People.Adult <= 1}
-                    className="couter"
-                    onClick={() => handlePeople('Adult', 'd')}
-                  >
-                    -
-                  </button>
-                  <span className="couter">{People.Adult}</span>
-                  <button
-                    className="couter"
-                    onClick={() => handlePeople('Adult', 'i')}
-                  >
-                    +
-                  </button>
-                </div>
-                <div className="peopleItem">
-                  <span className="peopletext">Trẻ em</span>
-                  <button
-                    disabled={People.Children <= 0}
-                    className="couter"
-                    onClick={() => handlePeople('Children', 'd')}
-                  >
-                    -
-                  </button>
-                  <span className="couter">{People.Children}</span>
-                  <button
-                    className="couter"
-                    onClick={() => handlePeople('Children', 'i')}
-                  >
-                    +
-                  </button>
-                </div>
-                <div className="peopleItem">
-                  <span className="peopletext">Phòng</span>
-                  <button
-                    disabled={People.Room <= 1}
-                    className="couter"
-                    onClick={() => handlePeople('Room', 'd')}
-                  >
-                    -
-                  </button>
-                  <span className="couter">{People.Room}</span>
-                  <button
-                    className="couter"
-                    onClick={() => handlePeople('Room', 'i')}
-                  >
-                    +
-                  </button>
-                </div>
-              </div>
-            )}
-          </div>
-          <div className="headerSearchItem">
-            <button className="headerBtn">Tìm kiếm</button>
-          </div>
+          {OpenDate && (
+            <DateRangePicker
+              onChange={(item) => setDate([item.selection])}
+              showSelectionPreview={true}
+              moveRangeOnFirstSelection={false}
+              months={2}
+              ranges={date}
+              direction="horizontal"
+              className="date"
+            />
+          )}
         </div>
-      </header>
-      
-    </div>
+        <div>
+          <FontAwesomeIcon icon={faBed} />
+          <span
+            onClick={() => setChoosePeople(!ChoosePeople)}
+            className="headerSearchText"
+          >{`${People.Adult} Người lớn - ${People.Children} Trẻ em - ${People.Room} Phòng`}</span>
+          {ChoosePeople && (
+            <div className="people">
+              <div className="peopleItem">
+                <span className="peopletext">Người lớn</span>
+                <button
+                  disabled={People.Adult <= 1}
+                  className="couter"
+                  onClick={() => handlePeople('Adult', 'd')}
+                >
+                  -
+                </button>
+                <span className="couter">{People.Adult}</span>
+                <button
+                  className="couter"
+                  onClick={() => handlePeople('Adult', 'i')}
+                >
+                  +
+                </button>
+              </div>
+              <div className="peopleItem">
+                <span className="peopletext">Trẻ em</span>
+                <button
+                  disabled={People.Children <= 0}
+                  className="couter"
+                  onClick={() => handlePeople('Children', 'd')}
+                >
+                  -
+                </button>
+                <span className="couter">{People.Children}</span>
+                <button
+                  className="couter"
+                  onClick={() => handlePeople('Children', 'i')}
+                >
+                  +
+                </button>
+              </div>
+              <div className="peopleItem">
+                <span className="peopletext">Phòng</span>
+                <button
+                  disabled={People.Room <= 1}
+                  className="couter"
+                  onClick={() => handlePeople('Room', 'd')}
+                >
+                  -
+                </button>
+                <span className="couter">{People.Room}</span>
+                <button
+                  className="couter"
+                  onClick={() => handlePeople('Room', 'i')}
+                >
+                  +
+                </button>
+              </div>
+            </div>
+          )}
+        </div>
+        <div className="headerSearchItem">
+          <button className="headerBtn">Tìm kiếm</button>
+        </div>
+      </div> */}
+    </header>
   );
 };
 
