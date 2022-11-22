@@ -21,6 +21,12 @@ svg {
 }
 
 /* HOME */
+.setheight22rem{
+  height: 22rem !important;
+}
+.setheight28rem{
+  height: 28rem !important;
+}
 .slide1{
   margin-right: 23rem;
 }

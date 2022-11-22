@@ -77,7 +77,7 @@ function Home() {
         <div className="content1">
           <div
             id="carouselExampleIndicators"
-            className="carousel slide "
+            className="carousel slide setheight28rem"
             data-bs-ride="true"
           >
             <div className="carousel-indicators ">
@@ -137,7 +137,7 @@ function Home() {
               ></span>
               <span className="visually-hidden">Next</span>
             </button>
-            <div className="info_select">
+            <div className="info_select setheight22rem">
               <div className="text_1">Áp dụng đến 3/1/2023</div>
               <div className="text_2">Tiết kiệm 15% với Ưu Đãi Cuối Năm</div>
               <div className="text_3">
