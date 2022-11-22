@@ -1,6 +1,4 @@
 import './header.css';
-import '../../styles/css/bootstrap.min.css';
-import '../../styles/css/App.css';
 import { Link } from 'react-router-dom';
 import {
   faBed,
@@ -47,32 +45,32 @@ const Header = () => {
     });
   };
   return (
-      <header className="App-header">
-        <nav className="navbar navbar-light justify-content-center">
-          <a href="/" className="navbar-brand logo_team">
-            T&T HOTEL
-          </a>
-          <form className="form-inline">
-            <Link to="../register-hotel">
-              <button
-                type="button"
-                className="btn btn-outline-info color_hover_btn_outline_info"
-              >
-                Đăng thông tin phòng nghỉ của quý khách
-              </button>
-            </Link>
-            <Link to="../login">
-              <button type="button" className="btn btn-light btn_sign">
-                Đăng Nhập
-              </button>
-            </Link>
-            <Link to="../support">
-              <button type="button" className="btn btn-light btn_sign">
-               Hỗ trợ
-              </button>
-            </Link>
-          </form>
-        </nav>
+    <header className="App-header">
+      <nav className="navbar navbar-light justify-content-center">
+        <a href="/" className="navbar-brand logo_team">
+          Tour & Travel
+        </a>
+        <form className="form-inline">
+          <Link to="../register-hotel">
+            <button
+              type="button"
+              className="btn btn-outline-info color_hover_btn_outline_info"
+            >
+              Đăng thông tin phòng nghỉ của quý khách
+            </button>
+          </Link>
+          <Link to="../login">
+            <button type="button" className="btn btn-light btn_sign">
+              Đăng Nhập
+            </button>
+          </Link>
+          <Link to="../support">
+            <button type="button" className="btn btn-light btn_sign">
+              Trợ giúp
+            </button>
+          </Link>
+        </form>
+      </nav>
 
         <nav className="navbar navbar-light justify-content-center">
           <Link to="/">
