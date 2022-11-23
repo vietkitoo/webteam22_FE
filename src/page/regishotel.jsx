@@ -40,11 +40,7 @@ function regishotel() {
             </div>
           </div>
           <div className="col">
-<<<<<<< HEAD
             <div className="register-partner"> 
-=======
-            <div className="register-partner">
->>>>>>> c0d0a62b957eabc1042f1ae3359f419a4980c31d
               <div className="text1">Tạo Đăng Ký Mới</div>
 
               <div className="navbar-text d-flex">
@@ -69,11 +65,7 @@ function regishotel() {
                 </div>
               </div>
               <div className="text2 navbar-text">
-<<<<<<< HEAD
                 Tạo tài khoản đối tác để bắt đầu
-=======
-                Tạo tài khoản đối tác để bắt đầu:
->>>>>>> c0d0a62b957eabc1042f1ae3359f419a4980c31d
               </div>
               <div className="navbar-text">
                 Bằng cách đi tiếp, Quý vị đồng ý cho Booking.com gửi email tới
@@ -92,7 +84,6 @@ function regishotel() {
                   <a href="#">Tiếp tục các bước đăng ký</a>
                 </div>
               </div>
-<<<<<<< HEAD
             </div>
           </div>
         </div>
@@ -333,8 +324,6 @@ function regishotel() {
             <div className="col">
               <div className="fw-bold fs-1 ">Trên 43</div>
               <div>Ngôn ngữ trên trang của chúng tôi</div>
-=======
->>>>>>> c0d0a62b957eabc1042f1ae3359f419a4980c31d
             </div>
           </div>
         </div>
