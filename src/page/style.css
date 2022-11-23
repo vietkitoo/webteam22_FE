@@ -11,87 +11,7 @@
   width: 100%;
 }
 
-<<<<<<< HEAD
 /* HOME */
-=======
-svg {
-  height: 24px;
-  width: 24px;
-}
-
-.mg-auto {
-  margin: auto;
-}
-
-/* HOME */
-.setheight22rem{
-  height: 22rem !important;
-}
-.setheight28rem{
-  height: 28rem !important;
-}
-.slide1{
-  margin-right: 23rem;
-}
-.slide1 .carousel-inner{
-  display: inherit !important;
-}
-
-.type_of_r_place img {
-  width: 15rem !important;
-  height: 10rem !important;
-}
-.type_of_r_place {
-  height: 10rem !important;
-  width: 25%;
-}
-.carousel-inner {
-  display: contents;
-}
-.carousel-indicators {
-  top: 26rem;
-}
-.Sites {
-  height: 15rem;
-}
-.setbackgroud {
-  background: no-repeat url('../image/long_stays_banner_wide.a1b12d47.png');
-  color: #ffffff;
-  background-size: 100% 100%;
-  border-radius: 1rem;
-}
-
-.Ha_noi {
-  background: no-repeat url('../image/hoguom.jpg');
-  color: #ffffff;
-  background-size: 100% 100%;
-}
-.Hoi_an {
-  background: no-repeat url('../image/Hoi-An.jpeg');
-  color: #ffffff;
-  background-size: 100% 100%;
-}
-.TPHCM {
-  background: no-repeat
-    url('../image/thanh-pho-thu-duc-tp-ho-chi-minh-41120.jpg');
-  color: #ffffff;
-  background-size: 100% 100%;
-}
-.Hue {
-  background: no-repeat url('../image/hue.jpeg');
-  color: #ffffff;
-  background-size: 100% 100%;
-}
-.NhaTrang {
-  background: no-repeat url('../image/nhatrang.jpg');
-  color: #ffffff;
-  background-size: 100% 100%;
-}
-.National_flag img {
-  height: 2rem !important;
-  width: 2rem !important;
-}
->>>>>>> c0d0a62b957eabc1042f1ae3359f419a4980c31d
 .home img {
   position: absolute;
   width: 100%;
@@ -247,8 +167,6 @@ svg {
 
 .right {
   width: 75%;
-<<<<<<< HEAD
-=======
 }
 
 .color-white {
@@ -321,5 +239,4 @@ svg {
   margin-left: 45%;
   border: none;
   box-shadow: 5px 5px rgba(0, 0, 0, 0.2);
->>>>>>> c0d0a62b957eabc1042f1ae3359f419a4980c31d
 }

@@ -77,17 +77,10 @@ function Home() {
         <div className="content1">
           <div
             id="carouselExampleIndicators"
-<<<<<<< HEAD
             className="carousel slide "
             data-bs-ride="true"
           >
             <div className="carousel-indicators">
-=======
-            className="carousel slide setheight28rem"
-            data-bs-ride="true"
-          >
-            <div className="carousel-indicators ">
->>>>>>> c0d0a62b957eabc1042f1ae3359f419a4980c31d
               <button
                 type="button"
                 data-bs-target="#carouselExampleIndicators"
@@ -119,142 +112,6 @@ function Home() {
               <div className="carousel-item">
                 <img src={hinh3} alt="Third slide" className="d-block w-100" />
               </div>
-<<<<<<< HEAD
-=======
-            </div>
-            <button
-              className="carousel-control-prev"
-              type="button"
-              data-bs-target="#carouselExampleIndicators"
-              data-bs-slide="prev"
-            >
-              <span
-                className="carousel-control-prev-icon"
-                aria-hidden="true"
-              ></span>
-              <span className="visually-hidden">Previous</span>
-            </button>
-            <button
-              className="carousel-control-next"
-              type="button"
-              data-bs-target="#carouselExampleIndicators"
-              data-bs-slide="next"
-            >
-              <span
-                className="carousel-control-next-icon"
-                aria-hidden="true"
-              ></span>
-              <span className="visually-hidden">Next</span>
-            </button>
-            <div className="info_select setheight22rem">
-              <div className="text_1">Áp dụng đến 3/1/2023</div>
-              <div className="text_2">Tiết kiệm 15% với Ưu Đãi Cuối Năm</div>
-              <div className="text_3">
-                Vẫn còn kịp để thực hiện thêm một chuyến đi trong danh sách của
-                bạn
-              </div>
-              <button
-                type="button"
-                className="btn btn-primary buton_text zindex"
-              >
-                Khám phá ưu đãi
-              </button>
-            </div>
-          </div>
-          <div className="headerSearch">
-            <FontAwesomeIcon icon={faHotel} className="headerIcon" />
-            <input
-              type="text"
-              placeholder="Mình đi đâu thế?"
-              className="headerSearchInput"
-            />
-            <div type="button">
-              <FontAwesomeIcon icon={faCalendarDays} className="headerIcon" />
-              <span
-                onClick={() => setOpenDate(!OpenDate)}
-                className="headerSearchText"
-              >{`${format(date[0].startDate, 'MM/dd/yyyy')} to ${format(
-                date[0].endDate,
-                'MM/dd/yyyy'
-              )} `}</span>
-
-              {OpenDate && (
-                <DateRangePicker
-                  onChange={(item) => setDate([item.selection])}
-                  showSelectionPreview={true}
-                  moveRangeOnFirstSelection={false}
-                  months={2}
-                  ranges={date}
-                  direction="horizontal"
-                  className="date"
-                />
-              )}
-            </div>
-            <div>
-              <FontAwesomeIcon icon={faBed} />
-              <span
-                onClick={() => setChoosePeople(!ChoosePeople)}
-                className="headerSearchText"
-              >{`${People.Adult} Người lớn - ${People.Children} Trẻ em - ${People.Room} Phòng`}</span>
-              {ChoosePeople && (
-                <div className="people">
-                  <div className="peopleItem">
-                    <span className="peopletext">Người lớn</span>
-                    <button
-                      disabled={People.Adult <= 1}
-                      className="couter"
-                      onClick={() => handlePeople('Adult', 'd')}
-                    >
-                      -
-                    </button>
-                    <span className="couter">{People.Adult}</span>
-                    <button
-                      className="couter"
-                      onClick={() => handlePeople('Adult', 'i')}
-                    >
-                      +
-                    </button>
-                  </div>
-                  <div className="peopleItem">
-                    <span className="peopletext">Trẻ em</span>
-                    <button
-                      disabled={People.Children <= 0}
-                      className="couter"
-                      onClick={() => handlePeople('Children', 'd')}
-                    >
-                      -
-                    </button>
-                    <span className="couter">{People.Children}</span>
-                    <button
-                      className="couter"
-                      onClick={() => handlePeople('Children', 'i')}
-                    >
-                      +
-                    </button>
-                  </div>
-                  <div className="peopleItem">
-                    <span className="peopletext">Phòng</span>
-                    <button
-                      disabled={People.Room <= 1}
-                      className="couter"
-                      onClick={() => handlePeople('Room', 'd')}
-                    >
-                      -
-                    </button>
-                    <span className="couter">{People.Room}</span>
-                    <button
-                      className="couter"
-                      onClick={() => handlePeople('Room', 'i')}
-                    >
-                      +
-                    </button>
-                  </div>
-                </div>
-              )}
-            </div>
-            <div className="headerSearchItem">
-              <button className="headerBtn">Tìm kiếm</button>
->>>>>>> c0d0a62b957eabc1042f1ae3359f419a4980c31d
             </div>
           </div>
         </div>
@@ -663,7 +520,6 @@ function Home() {
               </button>
             </div>
           </div>
-<<<<<<< HEAD
           <div className="headerSearch">
             <FontAwesomeIcon icon={faHotel} className="headerIcon" />
             <input
@@ -1165,8 +1021,6 @@ function Home() {
               </button>
             </div>
           </div>
-=======
->>>>>>> c0d0a62b957eabc1042f1ae3359f419a4980c31d
         </div>
       </div>
       <Footer />

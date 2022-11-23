@@ -46,7 +46,6 @@ const Header = () => {
   };
   return (
     <header className="App-header">
-<<<<<<< HEAD
       <nav className="navbar navbar-light justify-content-center">
         <a href="/" className="navbar-brand logo_team">
           Tour & Travel
@@ -72,7 +71,6 @@ const Header = () => {
           </Link>
         </form>
       </nav>
-=======
        <nav className="navbar navbar-light justify-content-center">
           <a href="/" className="navbar-brand logo_team">
             T&T HOTEL
@@ -98,7 +96,6 @@ const Header = () => {
             </Link>
           </form>
         </nav>
->>>>>>> c0d0a62b957eabc1042f1ae3359f419a4980c31d
 
         <nav className="navbar navbar-light justify-content-center">
           <Link to="/">
@@ -168,8 +165,6 @@ const Header = () => {
             />
           )}
         </div>
-<<<<<<< HEAD
-=======
         <div>
           <FontAwesomeIcon icon={faBed} />
           <span
