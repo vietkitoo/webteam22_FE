@@ -100,7 +100,7 @@ const Header = () => {
               Địa điểm tham quan
             </button>
           </Link>
-          <Link to="../Taxi">
+          <Link to="../location">
             <button
               type="button"
               className="btn btn-light button-navbar btn_sign btn_select_list"

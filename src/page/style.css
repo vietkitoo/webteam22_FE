@@ -316,3 +316,9 @@ svg {
   border: none;
   box-shadow: 5px 5px rgba(0, 0, 0, 0.2);
 }
+
+/* LOCATION */
+.date_location{
+  margin-top: -6rem;
+  z-index: 1;
+}
