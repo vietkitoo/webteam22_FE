@@ -46,70 +46,68 @@ const Header = () => {
   };
   return (
     <header className="App-header">
-       <nav className="navbar navbar-light justify-content-center">
-          <a href="/" className="navbar-brand logo_team">
-            T&T HOTEL
-          </a>
-          <form className="form-inline">
-            <Link to="../register-hotel">
-              <button
-                type="button"
-                className="btn btn-outline-info color_hover_btn_outline_info"
-              >
-                Đăng thông tin phòng nghỉ của quý khách
-              </button>
-            </Link>
-            <Link to="../login">
-              <button type="button" className="btn btn-light btn_sign">
-                Đăng Nhập
-              </button>
-            </Link>
-            <Link to="../support">
-              <button type="button" className="btn btn-light btn_sign">
-               Hỗ trợ
-              </button>
-            </Link>
-          </form>
-        </nav>
+      <nav className="navbar navbar-light justify-content-center">
+        <a href="/" className="navbar-brand logo_team">
+          T&T HOTEL
+        </a>
+        <form className="form-inline">
+          <Link to="../register-hotel">
+            <button
+              type="button"
+              className="btn btn-outline-info color_hover_btn_outline_info"
+            >
+              Đăng thông tin phòng nghỉ của quý khách
+            </button>
+          </Link>
+          <Link to="../login">
+            <button type="button" className="btn btn-light btn_sign">
+              Đăng Nhập
+            </button>
+          </Link>
+          <Link to="../support">
+            <button type="button" className="btn btn-light btn_sign">
+              Hỗ trợ
+            </button>
+          </Link>
+        </form>
+      </nav>
 
-        <nav className="navbar navbar-light justify-content-center">
-          <Link to="/">
-            <button
-              type="button"
-              className="btn btn-light button-navbar btn_sign btn_select_list"
-            >
-              <FontAwesomeIcon icon={faBed} />
-              Lưu Trú
-            </button>
-          </Link>
-          <Link to="/">
-            <button
-              type="button"
-              className="btn btn-light button-navbar btn_sign btn_select_list"
-            >
-              <FontAwesomeIcon icon={faBed} className="headerIcon" />
-              Khách sạn
-            </button>
-          </Link>
-          <Link to="/ ">
-            <button
-              type="button"
-              className="btn btn-light button-navbar btn_sign btn_select_list"
-            >
-              <FontAwesomeIcon icon={faCamera} className="headerIcon" />
-              Địa điểm tham quan
-            </button>
-          </Link>
-          <Link to="../location">
-            <button
-              type="button"
-              className="btn btn-light button-navbar btn_sign btn_select_list"
-            >
-              <FontAwesomeIcon icon={faTaxi} className="headerIcon" />
-              Taxi sân bay
-            </button>
-          </Link>
-        </nav>
+      <nav className="navbar navbar-light justify-content-center">
+        <Link to="/">
+          <button
+            type="button"
+            className="btn btn-light button-navbar btn_sign btn_select_list"
+          >
+            <FontAwesomeIcon icon={faBed} />
+            Lưu Trú
+          </button>
+        </Link>
+        <Link to="/">
+          <button
+            type="button"
+            className="btn btn-light button-navbar btn_sign btn_select_list"
+          >
+            <FontAwesomeIcon icon={faBed} className="headerIcon" />
+            Khách sạn
+          </button>
+        </Link>
+        <Link to="/ ">
+          <button
+            type="button"
+            className="btn btn-light button-navbar btn_sign btn_select_list"
+          >
+            <FontAwesomeIcon icon={faCamera} className="headerIcon" />
+            Địa điểm tham quan
+          </button>
+        </Link>
+        <button
+          type="button"
+          className="btn btn-light button-navbar btn_sign btn_select_list"
+        >
+          <FontAwesomeIcon icon={faTaxi} className="headerIcon" />
+          Taxi sân bay
+        </button>
+      </nav>
 
       {/* <div className="headerSearch">
         <FontAwesomeIcon icon={faHotel} className="headerIcon" />

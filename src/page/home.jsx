@@ -27,6 +27,7 @@ import danang from '../image/danang.jpg';
 import quynhon from '../image/quynhon.jpg';
 import quangbinh from '../image/quangbinh.jpg';
 import quangninh from '../image/quangninh.png';
+import { Link } from 'react-router-dom';
 import {
   faBed,
   faCalendarDays,
@@ -279,20 +280,24 @@ function Home() {
           </div>
           <div className="row w-75">
             <div className=" pt-3 w-50 col-xs-10 ">
-              <div className="Sites Ha_noi d-flex  ">
-                <div className="px-1 fw-bold fs-3">Hà Nội </div>
-                <div className="National_flag ">
-                  <img className="" src={vietnam} alt="lá cờ quốc gia" />
+              <Link to="../location">
+                <div className="Sites Ha_noi d-flex  ">
+                  <div className="px-1 fw-bold fs-3">Hà Nội </div>
+                  <div className="National_flag ">
+                    <img className="" src={vietnam} alt="lá cờ quốc gia" />
+                  </div>
                 </div>
-              </div>
+              </Link>
             </div>
             <div className="pt-3 w-50 col-xs-10 ">
-              <div className="Sites Hoi_an d-flex">
-                <div className="px-1 fw-bold fs-3">Hội An </div>
-                <div className="National_flag ">
-                  <img className="" src={vietnam} alt="lá cờ quốc gia" />
+              <Link to="../location">
+                <div className="Sites Hoi_an d-flex">
+                  <div className="px-1 fw-bold fs-3">Hội An </div>
+                  <div className="National_flag ">
+                    <img className="" src={vietnam} alt="lá cờ quốc gia" />
+                  </div>
                 </div>
-              </div>
+              </Link>
             </div>
           </div>
           <div className="row w-75">
