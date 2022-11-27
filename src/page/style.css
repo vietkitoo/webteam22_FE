@@ -326,9 +326,12 @@ svg {
   padding: 10%;
 }
 .setbackgroundsearch{
-  background-color: yellow;
+  background-color: #99FCB1;
 }
 .people{
   z-index: 1;
   margin-top: -5rem;
+}
+.item-hotel {
+  height: 15rem;
 }

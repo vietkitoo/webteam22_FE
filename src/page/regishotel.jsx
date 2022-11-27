@@ -99,7 +99,7 @@ function regishotel() {
               <div className="navbar-text d-flex py-3">
                 <BsCheckCircle className="width1" />
                 <div className="d-block mx-2">
-                  Thiết lập<strong> quy tắc chung {'  '}</strong> mà khách phải
+                  Thiết lập<strong> quy tắc chung </strong> mà khách phải
                   chấp thuận trước khi đến lưu trú
                 </div>
               </div>

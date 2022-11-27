@@ -5,12 +5,14 @@ import '../styles/css/bootstrap.min.css';
 import { Button } from 'react-bootstrap';
 import Footer from '../component/Footer/Footer';
 import { BiSearch } from 'react-icons/bi';
-import { FaBed } from 'react-icons/fa';
+import { FaBed, FaLeaf } from 'react-icons/fa';
+import { TbBeach } from 'react-icons/tb';
 import { AiOutlineCalendar } from 'react-icons/ai';
 import format from 'date-fns/format';
 import { DateRange, DateRangePicker } from 'react-date-range';
 import { useState } from 'react';
 import { MDBCheckbox } from 'mdb-react-ui-kit';
+import imageroomhotel from '../image/234762091.jpg';
 function Location_app() {
   const [OpenDate, setOpenDate] = useState(false);
   const [date, setDate] = useState([
@@ -39,7 +41,7 @@ function Location_app() {
   return (
     <>
       <Header />
-      <div className="content container">
+      <div className="content container d-flex">
         <div className="w-25 setbackgroundsearch ">
           <div className="search">
             <div>Tên chỗ nghỉ / điểm đến:</div>
@@ -170,7 +172,67 @@ function Location_app() {
                 label="Tôi đi công tác"
               />
             </div>
-            <button className="btn btn-primary input-group " type="submit">Tìm</button>
+            <button className="btn btn-primary input-group " type="submit">
+              Tìm
+            </button>
+          </div>
+        </div>
+        <div className="w-75 ">
+          <div className="m-4">
+            <div>
+              <div className=" h4 d-block mx-2">
+                <span>Địa điểm</span> : Tìm thấy <span> (số lượng) </span> Chi
+                nhánh
+              </div>
+              <div className=" h5 d-block mx-2">
+                Những điểm thăm quan gần đó: ....
+              </div>
+            </div>
+            <div className="shadow item-hotel ">
+              <div className="d-flex m-2">
+                <img
+                  className="w-25"
+                  src={imageroomhotel}
+                  alt="hình ảnh phòng"
+                />
+                <div className="m-2 w-75">
+                  <div className="d-flex">
+                    <div className="w-75">
+                      <div className="h2"> Tên chi nhánh </div>
+                      <div> Khoảng cách trung tâm</div>
+                      <div>
+                        <TbBeach /> <span> Giáp biển</span>
+                      </div>
+                      <div>
+                        <FaLeaf /> <span>Chỗ nghỉ du lịch </span>
+                      </div>
+                    </div>
+                    <div className="w-25">
+                      <div className="d-flex">
+                        <div>Tuyệt vời</div>
+                        <div>9.0</div>
+                      </div>
+                      <div>
+                        <a>Thoái mái 9.0</a>
+                      </div>
+                    </div>
+                  </div>
+                  <div className="d-flex">
+                    <div className="fs-6 w-75">
+                      MÔ TẢ CHỖ NGHỈ THEO TÌM KIẾM CỦA KHÁCH HÀNG
+                    </div>
+                    <div className='w-25'>
+                      <div>
+                       <span>1.000.000</span> VND
+                      </div>
+                      <button type="button" class="btn btn-primary">
+                        Xem chỗ trống
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </div>

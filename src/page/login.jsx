@@ -45,7 +45,7 @@ function Login() {
     // console.log({ email, password });
 
     axios
-      .post('/api/author/login', {
+      .post('https://backend-web-app-1.herokuapp.com/api/author/login', {
         email: email,
         password: password,
       })
@@ -61,7 +61,7 @@ function Login() {
     e.preventDefault();
     console.log({ username, email, password });
     axios
-      .post('/api/author/register', {
+      .post('https://backend-web-app-1.herokuapp.com/api/author/register', {
         username: username,
         email: email,
         password: password,
