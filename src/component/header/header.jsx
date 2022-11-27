@@ -48,6 +48,31 @@ const Header = () => {
     <header className="App-header">
       <nav className="navbar navbar-light justify-content-center">
         <a href="/" className="navbar-brand logo_team">
+          Tour & Travel
+        </a>
+        <form className="form-inline">
+          <Link to="../register-hotel">
+            <button
+              type="button"
+              className="btn btn-outline-info color_hover_btn_outline_info"
+            >
+              Đăng thông tin phòng nghỉ của quý khách
+            </button>
+          </Link>
+          <Link to="../login">
+            <button type="button" className="btn btn-light btn_sign">
+              Đăng Nhập
+            </button>
+          </Link>
+          <Link to="../support">
+            <button type="button" className="btn btn-light btn_sign">
+              Trợ giúp
+            </button>
+          </Link>
+        </form>
+      </nav>
+      <nav className="navbar navbar-light justify-content-center">
+        <a href="/" className="navbar-brand logo_team">
           T&T HOTEL
         </a>
         <form className="form-inline">
@@ -203,6 +228,7 @@ const Header = () => {
         <div className="headerSearchItem">
           <button className="headerBtn">Tìm kiếm</button>
         </div>
+>>>>>>> c0d0a62b957eabc1042f1ae3359f419a4980c31d
       </div> */}
     </header>
   );

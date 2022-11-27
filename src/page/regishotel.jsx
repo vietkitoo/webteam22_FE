@@ -40,7 +40,7 @@ function regishotel() {
             </div>
           </div>
           <div className="col">
-            <div className="register-partner">
+            <div className="register-partner"> 
               <div className="text1">Tạo Đăng Ký Mới</div>
 
               <div className="navbar-text d-flex">
@@ -65,7 +65,7 @@ function regishotel() {
                 </div>
               </div>
               <div className="text2 navbar-text">
-                Tạo tài khoản đối tác để bắt đầu:
+                Tạo tài khoản đối tác để bắt đầu
               </div>
               <div className="navbar-text">
                 Bằng cách đi tiếp, Quý vị đồng ý cho Booking.com gửi email tới
@@ -84,6 +84,246 @@ function regishotel() {
                   <a href="#">Tiếp tục các bước đăng ký</a>
                 </div>
               </div>
+            </div>
+          </div>
+        </div>
+        <div className="infor-for-partner justify-content-center d-grid offset-lg-2 ps-5 py-5">
+          <div className=" navbar-text fw-bold fs-2">
+            Sự an tâm của Quý vị là ưu tiên hàng đầu của chúng tôi
+          </div>
+          <div className="navbar-text">
+            Đây là cách chúng tôi giúp Quý vị cảm thấy tự tin chào đón khách:
+          </div>
+          <div className="regulation-for-partner d-flex ">
+            <div className="col-6">
+              <div className="navbar-text d-flex py-3">
+                <BsCheckCircle className="width1" />
+                <div className="d-block mx-2">
+                  Thiết lập<strong> quy tắc chung {'  '}</strong> mà khách phải
+                  chấp thuận trước khi đến lưu trú
+                </div>
+              </div>
+              <div className="navbar-text d-flex py-3">
+                <BsCheckCircle className="width1" />
+                <div className="d-block mx-2">
+                  Yêu cầu <strong> đặt cọc đề phòng hư hại </strong> để an tâm
+                  hơn
+                </div>
+              </div>
+              <div className="navbar-text d-flex py-3">
+                <BsCheckCircle className="width1" />
+                <div className="d-block mx-2">
+                  <strong>Báo cáo hành vi sai phạm của khách</strong> nếu có vấn
+                  đề xảy ra
+                </div>
+              </div>
+              <div className="navbar-text d-flex py-3">
+                <BsCheckCircle className="width1" />
+                <div className="d-block mx-2">
+                  Được <strong>hỗ trợ 24/7</strong> với hơn 43 ngôn ngữ
+                </div>
+              </div>
+              <div className="navbar-text d-flex py-3">
+                <BsCheckCircle className="width1" />
+                <div className="mx-1 w-75">
+                  Được bảo vệ trước các yêu cầu bồi thường liên quan đến trách
+                  nhiệm từ khách và cư dân xung quanh lên đến 1.000.000 USD cho
+                  mỗi đơn đặt
+                </div>
+              </div>
+              <div className="py-3">
+                <button type="button" className="btn btn-outline-primary ">
+                  Tìm hiểu thêm
+                </button>
+              </div>
+            </div>
+            <div className=" ">
+              <img className="col-10 " src={register_image} alt="register" />
+            </div>
+          </div>
+        </div>
+        <div className="background_div">
+          <div className="row d-grid size-fix offset-lg-2 py-5 ">
+            <div className="navbar-text fw-bold fs-2">
+              Mô tả nào sau đây phù hợp với Quý vị nhất?
+            </div>
+            <div className="">
+              Chọn một trong những lựa chọn sau để xem thông tin đã được tùy
+              chỉnh riêng
+            </div>
+            <div className="pt-5 row">
+              <div className="pt-3 pb-3 px-5 shadow col-md-4 col-xs-10">
+                <div className="fw-bold navbar-text">
+                  Tôi có một chỗ nghỉ thi thoảng mới cho thuê
+                </div>
+                <div className="navbar-text d-flex">
+                  <FcCheckmark />
+                  <div className="px-1">
+                    {' '}
+                    Chỗ nghỉ này là nơi tôi cất giữ đồ dùng cá nhân
+                  </div>
+                </div>
+                <div className="navbar-text d-flex">
+                  <FcCheckmark />
+                  <div className="px-1">
+                    Tôi có rất ít kinh nghiệm trong ngành du lịch khách sạn
+                  </div>
+                </div>
+                <div className="pt-3">
+                  <button type="button" className="btn btn-outline-primary ">
+                    Tìm hiểu thêm
+                  </button>
+                </div>
+              </div>
+              <div className="pt-3 pb-3 px-5 shadow col-md-4 col-xs-10 offset-sm-1">
+                <div className="fw-bold navbar-text">
+                  Tôi có nhiều chỗ nghỉ cho thuê quanh năm
+                </div>
+                <div className="navbar-text d-flex">
+                  <FcCheckmark />
+                  <div className="px-1">
+                    Những chỗ nghỉ này chủ yếu cho khách sử dụng
+                  </div>
+                </div>
+                <div className="navbar-text d-flex">
+                  <FcCheckmark />
+                  <div className="px-1">
+                    Tôi có kinh nghiệm trong ngành du lịch khách sạn
+                  </div>
+                </div>
+                <div className="pt-3">
+                  <button type="button" className="btn btn-outline-primary ">
+                    Tìm hiểu thêm
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div className="row d-grid size-fix offset-lg-2 py-5">
+          <div className="navbar-text fw-bold fs-2">
+            Lợi ích khi hợp tác cùng chúng tôi
+          </div>
+          <div className="pt-5 row">
+            <div className="pt-3 pb-3 px-5 shadow col-md-5 col-xs-10 mx-4 my-1">
+              <div className="fw-bold navbar-text">
+                Đăng bất kỳ loại chỗ nghỉ nào
+              </div>
+              <div className="navbar-text d-flex">
+                <div className="px-1">
+                  Từ căn hộ cho đến biệt thự và các loại chỗ nghỉ khác đều có
+                  thể được đăng miễn phí.
+                </div>
+              </div>
+            </div>
+            <div className="pt-3 pb-3 px-5 shadow col-md-5 col-xs-10 mx-4 my-1">
+              <div className="fw-bold navbar-text">Nhập thông tin dễ dàng</div>
+              <div className="navbar-text d-flex">
+                <div className="px-1">
+                  Để tiết kiệm thời gian, Quý vị có thể nhập nhiều thông tin từ
+                  các đăng ký có sẵn.
+                </div>
+              </div>
+            </div>
+          </div>
+          <div className="pt-5 row">
+            <div className="pt-3 pb-3 px-5 shadow col-md-5 col-xs-10 mx-4 my-1">
+              <div className="fw-bold navbar-text">Hướng dẫn từng bước</div>
+              <div className="navbar-text d-flex">
+                <div className="px-1">
+                  Quý vị sẽ được biết cách thức hoạt động của trang chúng tôi,
+                  các phương pháp thực hành tốt nhất và những điều cần chú ý.
+                </div>
+              </div>
+            </div>
+            <div className="pt-3 pb-3 px-5 shadow col-md-5 col-xs-10 mx-4 my-1">
+              <div className="fw-bold navbar-text">Giảm giá đặc biệt</div>
+              <div className="navbar-text d-flex">
+                <div className="px-1">
+                  Được giảm giá cho các sản phẩm và dịch vụ giúp tiết kiệm thời
+                  gian cho Quý vị và cải thiện trải nghiệm cho khách.
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div className="background_div">
+          <div className="row d-grid size-fix offset-lg-2 py-5">
+            <div className="navbar-text fw-bold fs-2">Gặp gỡ Elvira</div>
+            <div className="navbar-text">
+              Hãy xem vì sao Elvira thích cho thuê chỗ nghỉ trên Booking.com.
+            </div>
+            <div className=" mt-md-3 shadow infor-Elvira w-75  ">
+            <div className=" d-flex">
+              <img className="col-4 py-1" src={Elvira} alt="Elvira" />
+              <div className="px-md-5">
+                <div className=" fw-bold fs-2">
+                  "Tôi cảm thấy tự tin hơn khi biết rằng tôi có thể báo cáo hành
+                  vi sai phạm của khách cho tất cả chỗ nghỉ trong danh mục của
+                  tôi trên Booking.com."
+                </div>
+                <div className="fw-bold fs-5">Elvira Cuéllar</div>
+                <div className="figure-caption">
+                  Palma Homes Mallorca, Mallorca
+                </div>
+              </div>
+            </div>
+          </div>
+          </div>
+        </div>
+
+        <div className="row d-grid size-fix offset-lg-2 py-5">
+          <div className=" navbar-text fw-bold fs-2">
+            Biết thêm thông tin về khách
+          </div>
+          <div className="navbar-text">
+            Dù có từ đâu đến, khách của chúng tôi đều có một vài điểm chung.
+          </div>
+          <div className="regulation-for-partner d-flex">
+            <div className="col-6 pt-md-5">
+              <div className="navbar-text d-flex py-3">
+                <BsCheckCircle className="width1" />
+                <div className="d-block mx-2">
+                  75% đêm được đặt bởi khách đã thực hiện từ năm đặt phòng trở
+                  lên
+                </div>
+              </div>
+              <div className="navbar-text d-flex py-3">
+                <BsCheckCircle className="width1" />
+                <div className="d-block mx-2">
+                  68% đêm được đặt bởi các gia đình và cặp đôi
+                </div>
+              </div>
+              <div className="navbar-text d-flex py-3">
+                <BsCheckCircle className="width1" />
+                <div className="d-block mx-2">
+                  42% đêm được đặt ở các chỗ nghỉ không phải khách sạn
+                </div>
+              </div>
+            </div>
+            <div className="col">
+              <img width={'450px'} height={'300px'} src={family_image} alt="family" />
+            </div>
+          </div>
+        </div>
+        
+        <div className=" infor-for-partner-2 row d-grid size-fix offset-lg-2 py-5">
+          <div className="navbar-text fw-bold fs-2">
+            Booking.com qua những con số
+          </div>
+          <div className="regulation-for-partner row">
+            <div className="col">
+              <div className="fw-bold fs-1 ">Trên 28 triệu</div>
+              <div>Đăng ký tại 226 quốc gia và vùng lãnh thổ trên toàn cầu</div>
+            </div>
+            <div className="col">
+              <div className="fw-bold fs-1 ">Trên 6,2 Triệu</div>
+              <div>Nhà, căn hộ và những chỗ nghỉ độc đáo khác</div>
+            </div>
+            <div className="col">
+              <div className="fw-bold fs-1 ">Trên 43</div>
+              <div>Ngôn ngữ trên trang của chúng tôi</div>
             </div>
           </div>
         </div>
