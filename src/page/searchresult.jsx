@@ -13,7 +13,7 @@ import { DateRange, DateRangePicker } from 'react-date-range';
 import { useState } from 'react';
 import { MDBCheckbox } from 'mdb-react-ui-kit';
 import imageroomhotel from '../image/234762091.jpg';
-function Location_app() {
+function Searchresult_app() {
   const [OpenDate, setOpenDate] = useState(false);
   const [date, setDate] = useState([
     {
@@ -241,4 +241,4 @@ function Location_app() {
   );
 }
 
-export default Location_app;
+export default Searchresult_app;

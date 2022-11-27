@@ -280,7 +280,7 @@ function Home() {
           </div>
           <div className="row w-75">
             <div className=" pt-3 w-50 col-xs-10 ">
-              <Link to="../location">
+              <Link to="../searchresult">
                 <div className="Sites Ha_noi d-flex  ">
                   <div className="px-1 fw-bold fs-3">Hà Nội </div>
                   <div className="National_flag ">
@@ -290,7 +290,7 @@ function Home() {
               </Link>
             </div>
             <div className="pt-3 w-50 col-xs-10 ">
-              <Link to="../location">
+              <Link to="../searchresult">
                 <div className="Sites Hoi_an d-flex">
                   <div className="px-1 fw-bold fs-3">Hội An </div>
                   <div className="National_flag ">
