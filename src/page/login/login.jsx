@@ -2,8 +2,7 @@ import React, { useState } from 'react';
 import axios from 'axios';
 import { BsFacebook, BsGoogle, BsTwitter, BsGithub } from 'react-icons/bs';
 import { useNavigate } from 'react-router-dom';
-import './style.css'
-import '../styles/css/bootstrap.min.css';
+import './login.scss'
 import {
   MDBContainer,
   MDBTabs,
@@ -14,8 +13,8 @@ import {
   MDBInput,
   MDBCheckbox,
 } from 'mdb-react-ui-kit';
-import Header from '../component/header/header';
-import Footer from '../component/Footer/Footer';
+import Header from '../../component/header/header';
+import Footer from '../../component/Footer/Footer';
 
 function Login() {
   const [justifyActive, setJustifyActive] = useState('tab1');
