@@ -6,7 +6,6 @@ function visit(){
         <>
             <Header />
             <div className="content">
-                visit
             </div>
         </>
     );
