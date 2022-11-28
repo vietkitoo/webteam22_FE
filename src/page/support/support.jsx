@@ -1,8 +1,8 @@
-import Loginform from "../component/Form/LoginForm";
-import Header from "../component/header/header";
-import './style.css'
+import Loginform from "../../component/Form/LoginForm";
+import Header from "../../component/header/header";
+import './support.scss'
 import { Button } from 'react-bootstrap'
-import Footer from "../component/Footer/Footer";
+import Footer from "../../component/Footer/Footer";
 
 function support() {
     return(

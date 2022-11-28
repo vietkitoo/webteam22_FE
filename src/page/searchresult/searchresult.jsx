@@ -1,9 +1,8 @@
-import Loginform from '../component/Form/LoginForm';
-import Header from '../component/header/header';
-import './style.css';
-import '../styles/css/bootstrap.min.css';
+import Loginform from '../../component/Form/LoginForm';
+import Header from '../../component/header/header';
+import './searchresult.scss';
 import { Button } from 'react-bootstrap';
-import Footer from '../component/Footer/Footer';
+import Footer from '../../component/Footer/Footer';
 import { BiSearch } from 'react-icons/bi';
 import { FaBed, FaLeaf } from 'react-icons/fa';
 import { TbBeach } from 'react-icons/tb';
@@ -12,7 +11,7 @@ import format from 'date-fns/format';
 import { DateRange, DateRangePicker } from 'react-date-range';
 import { useState } from 'react';
 import { MDBCheckbox } from 'mdb-react-ui-kit';
-import imageroomhotel from '../image/234762091.jpg';
+import imageroomhotel from '../../image/234762091.jpg';
 function Searchresult_app() {
   const [OpenDate, setOpenDate] = useState(false);
   const [date, setDate] = useState([
