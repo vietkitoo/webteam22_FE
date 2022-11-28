@@ -2,14 +2,7 @@ import './header.css';
 import { Link, useNavigate } from 'react-router-dom';
 import {
   faBed,
-  faCalendarDays,
   faCamera,
-  faCar,
-  faHome,
-  faHotel,
-  faLocation,
-  faPerson,
-  faPlane,
   faTaxi,
 } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -21,7 +14,6 @@ import React, { useContext, useState } from 'react';
 import format from 'date-fns/format';
 import { SearchContext } from '../../context/SearchContext';
 import { AuthContext } from '../../context/AuthContext';
-import avatar from '../../image/avatar.jpg';
 import Dropdown from 'react-bootstrap/Dropdown';
 
 const Header = () => {
@@ -51,12 +43,6 @@ const Header = () => {
             </button>
           </Link>
 
-          <Link to="../support">
-            <button type="button" className="btn btn-light btn_sign">
-              Hỗ trợ
-            </button>
-          </Link>
-
           {user ? (
             <>
               <Dropdown>
@@ -77,6 +63,11 @@ const Header = () => {
               </button>
             </Link>
           )}
+          <Link to="../support">
+            <button type="button" className="btn btn-light btn_sign">
+              Hỗ trợ
+            </button>
+          </Link>
         </form>
       </nav>
 
@@ -108,6 +99,7 @@ const Header = () => {
             Địa điểm tham quan
           </button>
         </Link>
+
         <button
           type="button"
           className="btn btn-light button-navbar btn_sign btn_select_list"
