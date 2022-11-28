@@ -19,6 +19,8 @@ import 'react-date-range/dist/theme/default.css';
 import { addDays } from 'date-fns';
 import { useState } from 'react';
 import format from 'date-fns/format';
+import Dropdown from 'react-bootstrap/Dropdown';
+import DropdownButton from 'react-bootstrap/DropdownButton';
 
 const Header = () => {
   const [OpenDate, setOpenDate] = useState(false);
@@ -69,6 +71,18 @@ const Header = () => {
               Hỗ trợ
             </button>
           </Link>
+          <Dropdown>
+            <Dropdown.Toggle className="btn btn-light btn_sign" variant="success" id="dropdown-basic">
+              
+            </Dropdown.Toggle>
+
+            <Dropdown.Menu>
+              <Dropdown.Item href="#/action-1">Action</Dropdown.Item>
+              <Dropdown.Divider />
+              <Dropdown.Item href="#/action-2">Another action</Dropdown.Item>
+              <Dropdown.Item href="#/action-3">Something else</Dropdown.Item>
+            </Dropdown.Menu>
+          </Dropdown>
         </form>
       </nav>
 
