@@ -1,6 +1,6 @@
 import Loginform from '../../component/Form/LoginForm';
 import Header from '../../component/header/header';
-import './searchresult.scss';
+import './hotel.scss';
 import { Button } from 'react-bootstrap';
 import Footer from '../../component/Footer/Footer';
 import { BiSearch } from 'react-icons/bi';
@@ -12,7 +12,6 @@ import { DateRange, DateRangePicker } from 'react-date-range';
 import { useState } from 'react';
 import { MDBCheckbox } from 'mdb-react-ui-kit';
 import imageroomhotel from '../../image/234762091.jpg';
-import { Link } from 'react-router-dom';
 function Searchresult_app() {
   const [OpenDate, setOpenDate] = useState(false);
   const [date, setDate] = useState([
@@ -42,6 +41,7 @@ function Searchresult_app() {
     <>
       <Header />
       <div className="content container d-flex">
+        {/* Phần bảng tìm kiếm  */}
         <div className="w-25 setbackgroundsearch ">
           <div className="search">
             <div>Tên chỗ nghỉ / điểm đến:</div>
@@ -221,15 +221,13 @@ function Searchresult_app() {
                     <div className="fs-6 w-75">
                       MÔ TẢ CHỖ NGHỈ THEO TÌM KIẾM CỦA KHÁCH HÀNG
                     </div>
-                    <div className="w-25">
+                    <div className='w-25'>
                       <div>
-                        <span>1.000.000</span> VND
+                       <span>1.000.000</span> VND
                       </div>
-                      <Link to="../hotel">
-                        <button type="button" class="btn btn-primary">
-                          Xem chỗ trống
-                        </button>
-                      </Link>
+                      <button type="button" class="btn btn-primary">
+                        Xem chỗ trống
+                      </button>
                     </div>
                   </div>
                 </div>
