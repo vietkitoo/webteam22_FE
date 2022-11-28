@@ -17,12 +17,12 @@ function App() {
     <main className="App">
       <BrowserRouter>
         <Routes>
-          <Route path="/" element={<Home />}></Route>
-          <Route path="/login" element={<Login />}></Route>
-          <Route path="/register-hotel" element = {<Regishotel />} ></Route>
-          <Route path="/register-partner" element = {<Regispartner />} ></Route>
-          <Route path="/support" element = {<Support />} ></Route>
-          <Route path="/searchresult" element = {<Searchresult  />} ></Route>
+          <Route path="/" element={<Home />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/register-hotel" element = {<Regishotel />} />
+          <Route path="/register-partner" element = {<Regispartner />} />
+          <Route path="/support" element = {<Support />} />
+          <Route path="/searchresult" element = {<Searchresult  />} />
         </Routes>
       </BrowserRouter>
     </main>

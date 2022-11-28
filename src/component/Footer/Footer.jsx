@@ -24,46 +24,46 @@ const Footer = () => {
 
             </section>
 
-            <section class="">
-                <div class="container text-center text-md-start mt-5">
-                    <div class="row mt-3">
-                        <div class="col-md-3 col-lg-4 col-xl-3 mx-auto mb-4">
-                            <h6 class="text-uppercase fw-bold mb-4">
-                                <i class="fas fa-gem me-3"></i>Tour & Travel
+            <section className="">
+                <div className="container text-center text-md-start mt-5">
+                    <div className="row mt-3">
+                        <div className="col-md-3 col-lg-4 col-xl-3 mx-auto mb-4">
+                            <h6 className="text-uppercase fw-bold mb-4">
+                                <i className="fas fa-gem me-3"></i>Tour & Travel
                             </h6>
                             <p>
                                 Giúp bạn đặt phòng mọi lúc, mọi nơi.
                             </p>
                         </div>
 
-                        <div class="col-md-3 col-lg-2 col-xl-2 mx-auto mb-4">
-                            <h6 class="text-uppercase fw-bold mb-4">
+                        <div className="col-md-3 col-lg-2 col-xl-2 mx-auto mb-4">
+                            <h6 className="text-uppercase fw-bold mb-4">
                                 Các đường dẫn hữu ích
                             </h6>
                             <p>
-                                <a href="/support" class="text-reset">Trợ giúp Đối tác</a>
+                                <a href="/support" className="text-reset">Trợ giúp Đối tác</a>
                             </p>
                             <p>
-                                <a href="/register-partner" class="text-reset">Đăng ký Đối tác</a>
+                                <a href="/register-partner" className="text-reset">Đăng ký Đối tác</a>
                             </p>
                             <p>
-                                <a href="/support#privacy" class="text-reset">An toàn và bảo mật</a>
+                                <a href="/support#privacy" className="text-reset">An toàn và bảo mật</a>
                             </p>
                             <p>
-                                <a href="/support#detail" class="text-reset">Các quyền lợi</a>
+                                <a href="/support#detail" className="text-reset">Các quyền lợi</a>
                             </p>
                         </div>
 
-                        <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mb-md-0 mb-4">
+                        <div className="col-md-4 col-lg-3 col-xl-3 mx-auto mb-md-0 mb-4">
 
-                        <h6 class="text-uppercase fw-bold mb-4">Liên hệ</h6>
-                        <p><i class="fas fa-home me-3"></i> Linh Trung, Thủ Đức, TP Hồ Chí Minh</p>
+                        <h6 className="text-uppercase fw-bold mb-4">Liên hệ</h6>
+                        <p><i className="fas fa-home me-3"></i> Linh Trung, Thủ Đức, TP Hồ Chí Minh</p>
                         <p>
-                            <i class="fas fa-envelope me-3"></i>
+                            <i className="fas fa-envelope me-3"></i>
                             email@gm.uit.edu.vn
                         </p>
-                        <p><i class="fas fa-phone me-3"></i> + 01 234 567 88</p>
-                        <p><i class="fas fa-print me-3"></i> + 01 234 567 89</p>
+                        <p><i className="fas fa-phone me-3"></i> + 01 234 567 88</p>
+                        <p><i className="fas fa-print me-3"></i> + 01 234 567 89</p>
                         </div>
                     </div>
                 </div>

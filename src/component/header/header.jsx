@@ -91,7 +91,7 @@ const Header = () => {
             Khách sạn
           </button>
         </Link>
-        <Link to="/ ">
+        <Link to="/visit">
           <button
             type="button"
             className="btn btn-light button-navbar btn_sign btn_select_list"
