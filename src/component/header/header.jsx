@@ -2,14 +2,7 @@ import './header.css';
 import { Link, useNavigate } from 'react-router-dom';
 import {
   faBed,
-  faCalendarDays,
   faCamera,
-  faCar,
-  faHome,
-  faHotel,
-  faLocation,
-  faPerson,
-  faPlane,
   faTaxi,
 } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -21,6 +14,7 @@ import React, { useContext, useState } from 'react';
 import format from 'date-fns/format';
 import { SearchContext } from '../../context/SearchContext';
 import { AuthContext } from '../../context/AuthContext';
+import Dropdown from 'react-bootstrap/Dropdown';
 
 const Header = () => {
   const { user } = useContext(AuthContext);
@@ -39,7 +33,7 @@ const Header = () => {
         <a href="/" className="navbar-brand logo_team">
           STYLISH HOTEL
         </a>
-        <form className="form-inline">
+        <form className="form-inline d-flex">
           <Link to="../register-hotel">
             <button
               type="button"
@@ -48,18 +42,19 @@ const Header = () => {
               Đăng thông tin phòng nghỉ của quý khách
             </button>
           </Link>
+
           {user ? (
             <>
-              <button type="button" className="btn btn-light btn_sign">
-                {user.username}
-              </button>
-              <button
-                onClick={handleLogout}
-                type="button"
-                className="btn btn-light btn_sign"
-              >
-                LogOut
-              </button>
+              <Dropdown>
+                <Dropdown.Toggle variant="success" id="dropdown-basic" className="btn btn-light btn-user">
+                </Dropdown.Toggle>
+
+                <Dropdown.Menu>
+                  <Dropdown.Item className="dropdown_user-info">{user.username}</Dropdown.Item>
+                  <Dropdown.Divider />
+                  <Dropdown.Item onClick={handleLogout} href="#/action-2">Logout</Dropdown.Item>
+                </Dropdown.Menu>
+              </Dropdown>
             </>
           ) : (
             <Link to="../login">
@@ -68,7 +63,6 @@ const Header = () => {
               </button>
             </Link>
           )}
-
           <Link to="../support">
             <button type="button" className="btn btn-light btn_sign">
               Hỗ trợ
@@ -105,6 +99,7 @@ const Header = () => {
             Địa điểm tham quan
           </button>
         </Link>
+
         <button
           type="button"
           className="btn btn-light button-navbar btn_sign btn_select_list"
