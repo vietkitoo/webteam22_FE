@@ -5,6 +5,7 @@
   "dependencies": {
     "@fortawesome/free-solid-svg-icons": "^6.2.0",
     "@fortawesome/react-fontawesome": "^0.2.0",
+    "@react-google-maps/api": "^2.17.0",
     "@react-icons/all-files": "^4.1.0",
     "@testing-library/jest-dom": "^5.16.5",
     "@testing-library/react": "^13.4.0",
@@ -13,6 +14,7 @@
     "bootstrap": "^5.2.2",
     "date-fns": "^2.29.3",
     "express-load": "^1.1.16",
+    "google-map-react": "^2.2.0",
     "http-proxy-middleware": "^2.0.6",
     "mdb-react-ui-kit": "^4.2.0",
     "react": "^18.2.0",
