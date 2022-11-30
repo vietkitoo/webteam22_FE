@@ -12,6 +12,7 @@ import { DateRange, DateRangePicker } from 'react-date-range';
 import { useState } from 'react';
 import { MDBCheckbox } from 'mdb-react-ui-kit';
 import imageroomhotel from '../../image/234762091.jpg';
+import { Link } from 'react-router-dom';
 function Searchresult_app() {
   const [OpenDate, setOpenDate] = useState(false);
   const [date, setDate] = useState([
@@ -220,13 +221,15 @@ function Searchresult_app() {
                     <div className="fs-6 w-75">
                       MÔ TẢ CHỖ NGHỈ THEO TÌM KIẾM CỦA KHÁCH HÀNG
                     </div>
-                    <div className='w-25'>
+                    <div className="w-25">
                       <div>
-                       <span>1.000.000</span> VND
+                        <span>1.000.000</span> VND
                       </div>
-                      <button type="button" class="btn btn-primary">
-                        Xem chỗ trống
-                      </button>
+                      <Link to="../hotel">
+                        <button type="button" class="btn btn-primary">
+                          Xem chỗ trống
+                        </button>
+                      </Link>
                     </div>
                   </div>
                 </div>
