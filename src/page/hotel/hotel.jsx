@@ -8,7 +8,7 @@ import { CiParking1 } from 'react-icons/ci';
 import { FaBed, FaCity, FaShower } from 'react-icons/fa';
 import { MdBalcony, MdEmojiNature, MdFamilyRestroom } from 'react-icons/md';
 import { AiOutlineCalendar, AiOutlineFieldTime } from 'react-icons/ai';
-import {IoIosMan} from 'react-icons/io'
+import { IoIosMan } from 'react-icons/io';
 import { SiGooglemaps } from 'react-icons/si';
 import { FcCheckmark } from 'react-icons/fc';
 import { BsWifi, BsSnow } from 'react-icons/bs';
@@ -22,6 +22,7 @@ import { MDBCheckbox } from 'mdb-react-ui-kit';
 import { Image } from 'cloudinary-react';
 import { faBed, faCalendarDays } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { Link } from 'react-router-dom';
 function Searchresult_app() {
   const [OpenDate, setOpenDate] = useState(false);
   useEffect(() => {
@@ -193,9 +194,14 @@ function Searchresult_app() {
                     label="Tôi đi công tác"
                   />
                 </div>
-                <button className="btn btn-primary input-group " type="submit">
-                  Tìm
-                </button>
+                <Link to="../searchresult">
+                  <button
+                    className="btn btn-primary input-group "
+                    type="submit"
+                  >
+                    Tìm
+                  </button>
+                </Link>
               </div>
             </div>
           </div>
@@ -443,7 +449,7 @@ Vung Tau Melody Apartment đã chào đón khách Booking.com từ 23 tháng 4 2
       </div>
       <div className=" table w-75 ms-md-4">
         <div className="h4">Phòng trống</div>
-        <div className="mark d-flex w-75">
+        {/* <div className="mark d-flex w-75">
           <div type="button" className="mx-2 flex-fill text-bg-info">
             <FontAwesomeIcon icon={faCalendarDays} className="headerIcon" />
             <span
@@ -531,7 +537,7 @@ Vung Tau Melody Apartment đã chào đón khách Booking.com từ 23 tháng 4 2
           <button type="button" className="btn btn-light">
             Thay đổi tìm kiếm
           </button>
-        </div>
+        </div> */}
       </div>
       <div className="table">
         <table className=" table table-bordered w-75">
@@ -546,7 +552,7 @@ Vung Tau Melody Apartment đã chào đón khách Booking.com từ 23 tháng 4 2
           <tbody>
             <tr>
               <td>
-                <a href='#'>Căn hộ có ban công</a>
+                <a href="#">Căn hộ có ban công</a>
               </td>
               <td>
                 <IoIosMan /> x 10
