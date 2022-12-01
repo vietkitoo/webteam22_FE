@@ -43,6 +43,12 @@ const Header = () => {
             </button>
           </Link>
 
+          <Link to="../support">
+            <button type="button" className="btn btn-light btn_sign">
+              Hỗ trợ
+            </button>
+          </Link>
+
           {user ? (
             <>
               <Dropdown>
@@ -64,23 +70,6 @@ const Header = () => {
               </button>
             </Link>
           )}
-          <Link to="../support">
-            <button type="button" className="btn btn-light btn_sign">
-              Hỗ trợ
-            </button>
-          </Link>
-          <Dropdown>
-            <Dropdown.Toggle className="btn btn-light btn_sign" variant="success" id="dropdown-basic">
-              
-            </Dropdown.Toggle>
-
-            <Dropdown.Menu>
-              <Dropdown.Item href="#/action-1">Action</Dropdown.Item>
-              <Dropdown.Divider />
-              <Dropdown.Item href="#/action-2">Another action</Dropdown.Item>
-              <Dropdown.Item href="#/action-3">Something else</Dropdown.Item>
-            </Dropdown.Menu>
-          </Dropdown>
         </form>
       </nav>
 
