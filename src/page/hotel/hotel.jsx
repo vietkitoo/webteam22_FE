@@ -1,17 +1,18 @@
 import Header from '../../component/header/header';
 import './hotel.scss';
 import Footer from '../../component/Footer/Footer';
+import { IoLogoNoSmoking } from 'react-icons/io';
 import { BiSearch } from 'react-icons/bi';
 import { GiChickenOven, GiWashingMachine } from 'react-icons/gi';
 import { CiParking1 } from 'react-icons/ci';
 import { FaBed, FaCity, FaShower } from 'react-icons/fa';
-import { MdBalcony, MdEmojiNature } from 'react-icons/md';
+import { MdBalcony, MdEmojiNature, MdFamilyRestroom } from 'react-icons/md';
 import { AiOutlineCalendar, AiOutlineFieldTime } from 'react-icons/ai';
 import { SiGooglemaps } from 'react-icons/si';
 import { FcCheckmark } from 'react-icons/fc';
 import { BsWifi, BsSnow } from 'react-icons/bs';
 import { GoLocation } from 'react-icons/go';
-import { RiSecurePaymentLine } from 'react-icons/ri';
+import { RiSecurePaymentLine, RiErrorWarningLine } from 'react-icons/ri';
 import format from 'date-fns/format';
 import { DateRange, DateRangePicker } from 'react-date-range';
 import { useState } from 'react';
@@ -20,6 +21,19 @@ import { MDBCheckbox } from 'mdb-react-ui-kit';
 import nhago from '../../image/nha-go-cap-4-dep.jpg';
 import nhanghithonda from '../../image/nha-nghi-o-que-3.jpg';
 import glamping from '../../image/glamping.jpg';
+import {
+  faBed,
+  faCalendarDays,
+  faCamera,
+  faCar,
+  faHome,
+  faHotel,
+  faLocation,
+  faPerson,
+  faPlane,
+  faTaxi,
+} from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 function Searchresult_app() {
   const [OpenDate, setOpenDate] = useState(false);
   useEffect(() => {
@@ -333,6 +347,29 @@ Bãi Dứa nằm trong bán kính 2,7 km từ Vung Tau Melody Apartment trong kh
 2,4 km. Sân bay gần nhất là Sân bay Vũng Tàu,cách chỗ nghỉ 6 km.
 Các cặp đôi đặc biệt thích địa điểm này — họ cho điểm 8,9 cho kỳ nghỉ dành cho 2 người.
 Vung Tau Melody Apartment đã chào đón khách Booking.com từ 23 tháng 4 2019.`}</pre>
+            <div>
+              <strong>
+                Vung Tau Melody Apartment đã chào đón khách Booking.com từ 23
+                tháng 4 2019.
+              </strong>
+            </div>
+            <div>
+              <strong>Các tiện nghi được ưa chuộng nhất: </strong>
+            </div>
+            <div className="d-flex">
+              <div className="mx-2">
+                <BsWifi /> Wifi miễn phí
+              </div>
+              <div className="mx-2">
+                <CiParking1 /> Chỗ đậu xe
+              </div>
+              <div className="mx-2">
+                <MdFamilyRestroom /> Phòng gia đình
+              </div>
+              <div className="mx-2">
+                <IoLogoNoSmoking /> Phòng không hút thuốc lá
+              </div>
+            </div>
           </div>
           <div className="order-2 flex-shrink-1 ">
             <div className="p-3 shadow mx-md-3 mb-3 bg-custom-1">
@@ -366,7 +403,98 @@ Vung Tau Melody Apartment đã chào đón khách Booking.com từ 23 tháng 4 2
             </div>
           </div>
         </div>
-        <div className='border-bottom mb-5'></div>
+        <div className="border-bottom mb-5"></div>
+      </div>
+      <div className=" content-hotel-page w-75 ms-md-4">
+        <div className="h4">Phòng trống</div>
+        <div className="mark d-flex w-75">
+          <div type="button" className="mx-2 flex-fill text-bg-info">
+            <FontAwesomeIcon icon={faCalendarDays} className="headerIcon" />
+            <span
+              onClick={() => setOpenDate(!OpenDate)}
+              className="headerSearchText"
+            >{`${format(date[0].startDate, 'MM/dd/yyyy')} to ${format(
+              date[0].endDate,
+              'MM/dd/yyyy'
+            )} `}</span>
+
+            {OpenDate && (
+              <DateRangePicker
+                onChange={(item) => setDate([item.selection])}
+                showSelectionPreview={true}
+                moveRangeOnFirstSelection={false}
+                months={2}
+                ranges={date}
+                direction="horizontal"
+                className="date"
+              />
+            )}
+          </div>
+          <div className="mx-2 flex-fill text-bg-info">
+            <FontAwesomeIcon icon={faBed} />
+            <span
+              onClick={() => setChoosePeople(!ChoosePeople)}
+              className="headerSearchText"
+            >{`${People.Adult} Người lớn - ${People.Children} Trẻ em - ${People.Room} Phòng`}</span>
+            {ChoosePeople && (
+              <div className="people">
+                <div className="peopleItem">
+                  <span className="peopletext">Người lớn</span>
+                  <button
+                    disabled={People.Adult <= 1}
+                    className="couter"
+                    onClick={() => handlePeople('Adult', 'd')}
+                  >
+                    -
+                  </button>
+                  <span className="couter">{People.Adult}</span>
+                  <button
+                    className="couter"
+                    onClick={() => handlePeople('Adult', 'i')}
+                  >
+                    +
+                  </button>
+                </div>
+                <div className="peopleItem">
+                  <span className="peopletext">Trẻ em</span>
+                  <button
+                    disabled={People.Children <= 0}
+                    className="couter"
+                    onClick={() => handlePeople('Children', 'd')}
+                  >
+                    -
+                  </button>
+                  <span className="couter">{People.Children}</span>
+                  <button
+                    className="couter"
+                    onClick={() => handlePeople('Children', 'i')}
+                  >
+                    +
+                  </button>
+                </div>
+                <div className="peopleItem">
+                  <span className="peopletext">Phòng</span>
+                  <button
+                    disabled={People.Room <= 1}
+                    className="couter"
+                    onClick={() => handlePeople('Room', 'd')}
+                  >
+                    -
+                  </button>
+                  <span className="couter">{People.Room}</span>
+                  <button
+                    className="couter"
+                    onClick={() => handlePeople('Room', 'i')}
+                  >
+                    +
+                  </button>
+                </div>
+              </div>
+            )}
+          </div>
+          <button type="button" className="btn btn-light" >Thay đổi tìm kiếm</button>
+         
+        </div>
       </div>
       <Footer />
     </>
