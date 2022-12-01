@@ -1,5 +1,6 @@
 import React, { useContext, useState } from 'react';
 import axios from 'axios';
+import {axiosInstance} from '../../config'
 import { BsFacebook, BsGoogle, BsTwitter, BsGithub } from 'react-icons/bs';
 import { useNavigate } from 'react-router-dom';
 import './login.scss'
@@ -56,8 +57,8 @@ function Login() {
     dispatch({type: 'LOGIN_START'});
 
     try {
-      const res = await axios.post(
-        "/api/author/login",
+      const res = await axiosInstance.post(
+        "/author/login",
         credentials
       );
       dispatch({ type: 'LOGIN_SUCCESS', payload: res.data });
@@ -71,8 +72,8 @@ function Login() {
     dispatch({type: 'REGISTER_START'});
 
     try {
-      const res = await axios.post(
-        "/api/author/register",
+      const res = await axiosInstance.post(
+        "/author/register",
         credentials
       );
       dispatch({ type: 'REGISTER_SUCCESS', payload: res.data });
