@@ -8,6 +8,7 @@ import { CiParking1 } from 'react-icons/ci';
 import { FaBed, FaCity, FaShower } from 'react-icons/fa';
 import { MdBalcony, MdEmojiNature, MdFamilyRestroom } from 'react-icons/md';
 import { AiOutlineCalendar, AiOutlineFieldTime } from 'react-icons/ai';
+import {IoIosMan} from 'react-icons/io'
 import { SiGooglemaps } from 'react-icons/si';
 import { FcCheckmark } from 'react-icons/fc';
 import { BsWifi, BsSnow } from 'react-icons/bs';
@@ -19,10 +20,7 @@ import { useState } from 'react';
 import { useEffect } from 'react';
 import { MDBCheckbox } from 'mdb-react-ui-kit';
 import { Image } from 'cloudinary-react';
-import {
-  faBed,
-  faCalendarDays,
-} from '@fortawesome/free-solid-svg-icons';
+import { faBed, faCalendarDays } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 function Searchresult_app() {
   const [OpenDate, setOpenDate] = useState(false);
@@ -443,7 +441,7 @@ Vung Tau Melody Apartment đã chào đón khách Booking.com từ 23 tháng 4 2
         </div>
         <div className="border-bottom mb-5"></div>
       </div>
-      <div className=" content-hotel-page w-75 ms-md-4">
+      <div className=" table w-75 ms-md-4">
         <div className="h4">Phòng trống</div>
         <div className="mark d-flex w-75">
           <div type="button" className="mx-2 flex-fill text-bg-info">
@@ -530,10 +528,42 @@ Vung Tau Melody Apartment đã chào đón khách Booking.com từ 23 tháng 4 2
               </div>
             )}
           </div>
-          <button type="button" className="btn btn-light" >Thay đổi tìm kiếm</button>
-         
+          <button type="button" className="btn btn-light">
+            Thay đổi tìm kiếm
+          </button>
         </div>
       </div>
+      <div className="table">
+        <table className=" table table-bordered w-75">
+          <thead className="table-primary">
+            <tr>
+              <th scope="flex-fill">Loại chỗ ở</th>
+              <th scope="flex-fill">Phù hợp cho</th>
+              <th scope="flex-fill">Gía thuê</th>
+              <th scope="flex-fill"></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>
+                <a href='#'>Căn hộ có ban công</a>
+              </td>
+              <td>
+                <IoIosMan /> x 10
+              </td>
+              <td>
+                <div>10.000.000 VND</div>
+              </td>
+              <td>
+                <button type="button" className="w-100 btn btn-primary">
+                  Đặt chỗ
+                </button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
       <Footer />
     </>
   );
