@@ -18,20 +18,10 @@ import { DateRange, DateRangePicker } from 'react-date-range';
 import { useState } from 'react';
 import { useEffect } from 'react';
 import { MDBCheckbox } from 'mdb-react-ui-kit';
-import nhago from '../../image/nha-go-cap-4-dep.jpg';
-import nhanghithonda from '../../image/nha-nghi-o-que-3.jpg';
-import glamping from '../../image/glamping.jpg';
+import { Image } from 'cloudinary-react';
 import {
   faBed,
   faCalendarDays,
-  faCamera,
-  faCar,
-  faHome,
-  faHotel,
-  faLocation,
-  faPerson,
-  faPlane,
-  faTaxi,
 } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 function Searchresult_app() {
@@ -235,33 +225,81 @@ function Searchresult_app() {
                 <div className="d-flex">
                   <div className=" description_picture_left">
                     <span>
-                      <img className="col w-100" src={nhago} alt="" />
+                      <Image
+                        cloudName="dxivl2lh5"
+                        publicId="rest/nha-go-cap-4-dep_qe5wjy"
+                        className="col w-100"
+                        crop="scale"
+                        alt="image canho"
+                      />
                     </span>
                     <span>
-                      <img className="col w-100" src={nhanghithonda} alt="" />
+                      <Image
+                        cloudName="dxivl2lh5"
+                        publicId="rest/nha-nghi-o-que-3_rhizkm"
+                        className="col w-100"
+                        crop="scale"
+                        alt="image canho"
+                      />
                     </span>
                   </div>
                   <div className="description_picture_right">
                     <span>
-                      <img className="col w-100 " src={glamping} alt="" />
+                      <Image
+                        cloudName="dxivl2lh5"
+                        publicId="rest/glamping_kzu5wb"
+                        className="col w-100"
+                        crop="scale"
+                        alt="image canho"
+                      />
                     </span>
                   </div>
                 </div>
                 <div className="col d-flex">
                   <span>
-                    <img className="col w-100" src={nhago} alt="" />
+                    <Image
+                      cloudName="dxivl2lh5"
+                      publicId="rest/nha-go-cap-4-dep_qe5wjy"
+                      className="col w-100"
+                      crop="scale"
+                      alt="image canho"
+                    />
                   </span>
                   <span>
-                    <img className="col w-100" src={nhanghithonda} alt="" />
+                    <Image
+                      cloudName="dxivl2lh5"
+                      publicId="rest/nha-nghi-o-que-3_rhizkm"
+                      className="col w-100"
+                      crop="scale"
+                      alt="image canho"
+                    />
                   </span>
                   <span>
-                    <img className="col w-100" src={nhago} alt="" />
+                    <Image
+                      cloudName="dxivl2lh5"
+                      publicId="rest/nha-go-cap-4-dep_qe5wjy"
+                      className="col w-100"
+                      crop="scale"
+                      alt="image canho"
+                    />
                   </span>
                   <span>
-                    <img className="col w-100" src={nhanghithonda} alt="" />
+                    <Image
+                      cloudName="dxivl2lh5"
+                      publicId="rest/nha-nghi-o-que-3_rhizkm"
+                      className="col w-100"
+                      crop="scale"
+                      alt="image canho"
+                    />
                   </span>
                   <span>
-                    <img className="col w-100" src={nhanghithonda} alt="" />
+                    <Image
+                      cloudName="dxivl2lh5"
+                      publicId="rest/nha-nghi-o-que-3_rhizkm"
+                      className="col w-100"
+                      crop="scale"
+                      alt="image canho"
+                    />
                   </span>
                 </div>
               </div>
