@@ -54,7 +54,7 @@ const Datatable = () => {
           Add New
         </Link>
       <DataGrid
-        rows={list}
+        rows={data}
         columns={userColumns.concat(actionColumn)}
         pageSize={5}
         rowsPerPageOptions={[5]}
