@@ -561,7 +561,7 @@ Vung Tau Melody Apartment đã chào đón khách Booking.com từ 23 tháng 4 2
                 <div>10.000.000 VND</div>
               </td>
               <td>
-                <Link to="../booking-id">
+                <Link to="../booking">
                   <button type="button" className="w-100 btn btn-primary">
                     Đặt chỗ
                   </button>
