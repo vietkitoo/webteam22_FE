@@ -6,8 +6,8 @@ import Regispartner from './page/regispartner/regispartner';
 import Support from './page/support/support';
 import Searchresult  from './page/searchresult/searchresult';
 import Visit from './page/visit/visit';
-import Hotel from './page/hotel/hotel'
-import Booking from './page/booking/booking'
+import Hotel from './page/hotel/hotel';
+import Booking from './page/booking/booking';
 import { useContext } from 'react';
 import {
   BrowserRouter,
@@ -28,7 +28,7 @@ function App() {
           <Route path="/searchresult" element = {<Searchresult  />} />
           <Route path="/visit" element = {<Visit  />} />
           <Route path="/hotel" element = {<Hotel />} />
-          <Route path='/booking-id' element ={<Booking />} />
+          <Route path="/booking" element = {<Booking />} />
         </Routes>
       </BrowserRouter>
     </main>

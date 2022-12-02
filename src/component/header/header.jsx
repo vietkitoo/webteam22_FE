@@ -1,4 +1,4 @@
-import './header.css';
+import './header.scss';
 import { Link, useNavigate } from 'react-router-dom';
 import {
   faBed,
@@ -14,6 +14,12 @@ import React, { useContext, useState } from 'react';
 import format from 'date-fns/format';
 import { SearchContext } from '../../context/SearchContext';
 import { AuthContext } from '../../context/AuthContext';
+import { 
+  BsFillQuestionCircleFill, 
+  BsQuestionLg, 
+  BsBoxArrowInLeft, 
+  BsHouseFill,
+  BsPersonFill } from 'react-icons/bs'
 import Dropdown from 'react-bootstrap/Dropdown';
 
 const Header = () => {
@@ -30,9 +36,14 @@ const Header = () => {
   return (
     <header className="App-header">
       <nav className="navbar navbar-light justify-content-center">
-        <a href="/" className="navbar-brand logo_team">
-          STYLISH HOTEL
-        </a>
+       
+          <a href="/#" className="navbar-brand logo_team">
+            <Link to="../">
+              STYLISH HOTEL
+            </Link>
+          </a>
+        
+        
         <form className="form-inline d-flex">
           <Link to="../register-hotel">
             <button
@@ -44,9 +55,9 @@ const Header = () => {
           </Link>
 
           <Link to="../support">
-            <button type="button" className="btn btn-light btn_sign">
-              Hỗ trợ
-            </button>
+            <BsFillQuestionCircleFill 
+              className='ms-2'
+            />
           </Link>
 
           {user ? (
@@ -56,10 +67,14 @@ const Header = () => {
                 </Dropdown.Toggle>
 
                 <Dropdown.Menu>
-                  <Dropdown.Item className="dropdown_user-info">{user.username}</Dropdown.Item>
+                  <Dropdown.Item className="user-info"><BsPersonFill />{user.username}</Dropdown.Item>
                   <Dropdown.Divider />
-                  <Dropdown.Item href="#/action-2">Phòng đã đặt</Dropdown.Item>
-                  <Dropdown.Item onClick={handleLogout} href="#/action-2">Đăng xuất</Dropdown.Item>
+                  <Dropdown.Item href="#/action-2"><BsHouseFill />Phòng đã đặt</Dropdown.Item>
+                  <Link to="../support">
+                    <Dropdown.Item href="#/"><BsQuestionLg />Hỗ trợ</Dropdown.Item>
+                  </Link>
+                  
+                  <Dropdown.Item onClick={handleLogout} href="#/action-2"><BsBoxArrowInLeft />Đăng xuất</Dropdown.Item>
                 </Dropdown.Menu>
               </Dropdown>
             </>
