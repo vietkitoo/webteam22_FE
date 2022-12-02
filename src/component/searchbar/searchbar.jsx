@@ -11,7 +11,7 @@ import {
     faCalendarDays,
     faHotel,
 } from '@fortawesome/free-solid-svg-icons';
-import { BsFillGeoAltFill, BsCalendarRangeFill } from 'react-icons/bs';
+import { BsFillGeoAltFill, BsCalendarRangeFill, BsSearch } from 'react-icons/bs';
 
 const SearchBar = () => {
     const [OpenDate, setOpenDate] = useState(false);
@@ -90,7 +90,7 @@ const SearchBar = () => {
                         </div>
                         
                         <div className="button">
-                            <button id='search-btn'>Tìm kiếm</button>
+                            <button id='search-btn'><BsSearch />Tìm kiếm</button>
                         </div>
                     </div>
                 </form>
