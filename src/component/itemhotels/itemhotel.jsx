@@ -60,7 +60,7 @@ const ItemHotels = ({ item }) => {
             <span>VNĐ</span>
             <p>phòng/đêm</p>
           </div>
-          <Link to="#">
+          <Link to={`/hotel`}>
             <Button> Đặt ngay </Button>
           </Link>
         </div>

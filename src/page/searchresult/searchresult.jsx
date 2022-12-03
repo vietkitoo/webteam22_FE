@@ -22,7 +22,9 @@ function Searchresult_app() {
   const { data, loading, error, reFetch } = useFetch(
     `api/hotels?city=${destination}&min=${min || 0}&max=${max || 9999}`
   );
-  
+  const { data1 } = useFetch(
+    `api/hotels/bycity?cities=${destination}&min=${min || 0}&max=${max || 9999}`
+  );
   return (
     <>
       <Header />
@@ -49,7 +51,7 @@ function Searchresult_app() {
             <div className="list-search-item">
               <div className="count-sort bg-box">
                 <div className="count text-uppercase text-success desktop">
-                  Có (số) khách sạn gần/tại (nơi)
+                  Có {data1[0]} khách sạn gần/tại {destination}
                 </div>
               </div>
               <div id="list-hotels" className="list-hotels">
