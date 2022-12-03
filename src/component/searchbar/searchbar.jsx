@@ -2,100 +2,143 @@ import './searchbar.scss';
 import 'react-date-range/dist/styles.css';
 import 'react-date-range/dist/theme/default.css';
 import { addDays } from 'date-fns';
-import { useState } from 'react';
+import React, { useContext, useState,  useEffect  } from 'react'
 import format from 'date-fns/format';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { DateRange, DateRangePicker } from 'react-date-range';
 import {
-    faBed,
-    faCalendarDays,
-    faHotel,
+  faBed,
+  faCalendarDays,
+  faHotel,
 } from '@fortawesome/free-solid-svg-icons';
-import { BsFillGeoAltFill, BsCalendarRangeFill, BsSearch } from 'react-icons/bs';
-
+import {
+  BsFillGeoAltFill,
+  BsCalendarRangeFill,
+  BsSearch,
+} from 'react-icons/bs';
+import { SearchContext } from '../../context/SearchContext';
+import { AuthContext } from '../../context/AuthContext';
+import { Link, useNavigate } from 'react-router-dom'
+import useFetch from '../../hooks/useFetch';
 const SearchBar = () => {
-    const [OpenDate, setOpenDate] = useState(false);
-    const [date, setDate] = useState([
-        {
-        startDate: new Date(),
-        endDate: new Date(),
-        key: 'selection',
-        },[]
-    ]);
-    const [ChoosePeople, setChoosePeople] = useState(false);
-    const [People, setPeople] = useState({
-        Adult: 1,
-        Children: 0,
-        Room: 1,
-    });
-
-    const handlePeople = (name, operation) => {
-        setPeople((prev) => {
-        return {
-            ...prev,
-            [name]: operation === 'i' ? People[name] + 1 : People[name] - 1,
-        };
-        });
+  const [destination, setDestination] = useState('');
+  const [OpenDate, setOpenDate] = useState(false);
+  useEffect(() => {
+    const closecalendar = (e) => {
+      if (e.path[0].tagName !== 'INPUT') {
+        setOpenDate(false);
+      }
     };
+    document.body.addEventListener('click', closecalendar);
+    return () => document.body.removeEventListener('click', closecalendar);
+  }, []);
+  const [date, setDate] = useState([
+    {
+      startDate: new Date(),
+      endDate: new Date(),
+      key: 'selection',
+    },
+  ]);
+  const [ChoosePeople, setChoosePeople] = useState(false);
+  const [People, setPeople] = useState({
+    Adult: 1,
+    Children: 0,
+    Room: 1,
+  });
+  const navigate = useNavigate();
+  const handlePeople = (name, operation) => {
+    setPeople((prev) => {
+      return {
+        ...prev,
+        [name]: operation === 'i' ? People[name] + 1 : People[name] - 1,
+      };
+    });
+  };
+  const [min, setMin] = useState(undefined);
+  const [max, setMax] = useState(undefined);
+  const { data, loading, error, reFetch } = useFetch(
+    `api/hotels?city=${destination}&min=${min || 0}&max=${max || 9999}`
+  );
+  const { dispatch } = useContext(SearchContext);
 
-    return (
-        <>
-            <div className="booking-search-bar">
-                <form
-                    action=''
-                    target=''
-                    method='get'
-                    id='search-form'
-                    name='search-form'
-                >
-                    <div className="search">
-                        <div className="input">
-                            <h2>Bạn muốn nghỉ dưỡng ở đâu ?</h2>
-                            <div className="select-location d-flex">
-                                <BsFillGeoAltFill className='input_icon' />
-                                <input type='text' name='location_search' placeholder=
-                                'Nhập Khách sạn / Điểm đến' className='form-control' />
-                                {/* <input type='hidden' id='location' name='location' placeholder=
+  const handleSearch = () => {
+    dispatch({ type: 'NEW_SEARCH', payload: { destination, date, People } });
+    navigate('/searchresult', { state: { destination, date, People } });
+    window.location.reload();
+  };
+  const handllesubmit  =(e) => {
+    e.preventDefault();
+  }
+  return (
+    <>
+      <div className="booking-search-bar">
+        <form
+          action="/searchresult" 
+          target=""
+          onSubmit={handllesubmit}
+          method="get"
+          id="search-form"
+          name="search-form"
+        >
+          <div className="search">
+            <div className="input">
+              <h2>Bạn muốn nghỉ dưỡng ở đâu ?</h2>
+              <div className="select-location d-flex">
+                <BsFillGeoAltFill className="input_icon" />
+                <input
+                  type="text"
+                  name="location_search"
+                  onChange={(e) => setDestination(e.target.value)}
+                  placeholder="Nhập Khách sạn / Điểm đến"
+                  className="form-control"
+                />
+                {/* <input type='hidden' id='location' name='location' placeholder=
                                 'Nhập Khách sạn / Điểm đến' className='form-control' />
                                 <input type='hidden' id='hotel' name='hotel' /> */}
-                            
-                            </div>
-                        </div>
-                        <div className="input">
-                            <h2>Ngày nhận - trả phòng</h2>
-                            <div className="d-flex">
-                                <BsCalendarRangeFill className='input_icon' />
-                                <input type='text' name='location_search' className='form-control'
-                                onFocus={() => setOpenDate(true)}
-                                value={`${format(date[0].startDate, 'MM/dd/yyyy')} - ${format(
-                                    date[0].endDate,
-                                    'MM/dd/yyyy'
-                                )}`} />
-                            </div>
-                            
-                            {OpenDate && (
-                                <DateRangePicker
-                                    onChange={(item) => {
-                                        setDate([item.selection]);
-                                        setOpenDate(false)
-                                    }}
-                                    showSelectionPreview={true}
-                                    moveRangeOnFirstSelection={false}
-                                    months={2}
-                                    ranges={date}
-                                    direction="horizontal"
-                                    className="date"
-                                />
-                            )}
-                        </div>
-                        
-                        <div className="button">
-                            <button id='search-btn'><BsSearch />Tìm kiếm</button>
-                        </div>
-                    </div>
-                </form>
+              </div>
+            </div>
+            <div className="input">
+              <h2>Ngày nhận - trả phòng</h2>
+              <div className="d-flex">
+                <BsCalendarRangeFill className="input_icon" />
+                <input
+                  type="text"
+                  name="location_search"
+                  className="form-control"
+                  onFocus={() => setOpenDate(true)}
+                  value={`${format(date[0].startDate, 'MM/dd/yyyy')} - ${format(
+                    date[0].endDate,
+                    'MM/dd/yyyy'
+                  )}`}
+                />
+              </div>
 
-                {/* <FontAwesomeIcon icon={faHotel} className="headerIcon" />
+              {OpenDate && (
+                <DateRangePicker
+                  onChange={(item) => {
+                    setDate([item.selection]);
+                    setOpenDate(false);
+                  }}
+                  showSelectionPreview={true}
+                  moveRangeOnFirstSelection={false}
+                  months={2}
+                  ranges={date}
+                  direction="horizontal"
+                  className="date"
+                />
+              )}
+            </div>
+
+            <div className="button">
+              <button id="search-btn" onClick={handleSearch}>
+                <BsSearch />
+                Tìm kiếm
+              </button>
+            </div>
+          </div>
+        </form>
+
+        {/* <FontAwesomeIcon icon={faHotel} className="headerIcon" />
                 <input
                     type="text"
                     placeholder="Mình đi đâu thế?"
@@ -188,9 +231,9 @@ const SearchBar = () => {
             <div className="headerSearchItem">
               <button className="headerBtn">Tìm kiếm</button>
             </div>*/}
-          </div> 
-        </>
-    );
+      </div>
+    </>
+  );
 };
 
 export default SearchBar;
