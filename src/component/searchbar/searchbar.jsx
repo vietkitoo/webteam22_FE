@@ -12,6 +12,8 @@ import {
     faHotel,
 } from '@fortawesome/free-solid-svg-icons';
 import { BsFillGeoAltFill, BsCalendarRangeFill, BsSearch } from 'react-icons/bs';
+import { Link, useNavigate } from 'react-router-dom';
+
 
 const SearchBar = () => {
     const [OpenDate, setOpenDate] = useState(false);
@@ -38,11 +40,16 @@ const SearchBar = () => {
         });
     };
 
+    const handleSubmit = (e) => {
+        e.preventDefault();
+    }
+
     return (
         <>
             <div className="booking-search-bar">
                 <form
-                    action=''
+                    action='/searchresult'
+                    onSubmit={handleSubmit}
                     target=''
                     method='get'
                     id='search-form'
@@ -90,7 +97,9 @@ const SearchBar = () => {
                         </div>
                         
                         <div className="button">
-                            <button id='search-btn'><BsSearch />Tìm kiếm</button>
+                            <Link to="../searchresult">
+                                <button type='submit' id='search-btn'><BsSearch />Tìm kiếm</button>
+                            </Link>
                         </div>
                     </div>
                 </form>
