@@ -4,6 +4,7 @@
     align-items: center;
     justify-content: center;
     padding: absolute;
+    width: 100%;
 }
 
 .booking-search-bar .search{
@@ -19,11 +20,6 @@
     grid-gap: 30px;
     position: relative;
     border: 3px solid rgb(33, 201, 109);
-    
-}
-
-.search input{
-    
 }
 
 .booking-search-bar form{
@@ -41,4 +37,25 @@
 .input_icon{
     margin-top: 5px;
     margin-right: 0.5rem;
+}
+
+#search-btn{
+    background-color: rgb(33, 201, 109);
+    border-radius: 3px;
+    border: #ffffff;
+    color: #ffffff;
+    height: 38px;
+    width: 120px;
+    height: 50px;
+}
+
+#search-btn svg{
+    height: 15px;
+    width: 15px;
+    margin-right: 5px;
+    margin-left: 5px;
+}
+
+#search-btn:hover{
+    background-color: rgb(4, 122, 57);
 }
