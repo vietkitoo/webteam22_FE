@@ -28,7 +28,7 @@ function App() {
           <Route path="/support" element = {<Support />} />
           <Route path="/searchresult" element = {<Searchresult  />} />
           <Route path="/visit" element = {<Visit  />} />
-          <Route path="/hotel" element = {<Hotel />} />
+          <Route path="/hotel/:id" element = {<Hotel />} />
           <Route path="/booking" element = {<Booking />} />
           <Route path="/user" element = {<User />} />
         </Routes>

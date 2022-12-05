@@ -22,8 +22,19 @@ import { MDBCheckbox } from 'mdb-react-ui-kit';
 import { Image } from 'cloudinary-react';
 import { faBed, faCalendarDays } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import useFetch from '../../hooks/useFetch';
+import { useLocation, useNavigate } from 'react-router-dom';
 import { Link } from 'react-router-dom';
+import Itemrooms from '../../component/itemrooms/itemrooms';
 function Searchresult_app() {
+  const location = useLocation();
+  console.log(location);
+  const id = location.pathname.split('/')[2];
+
+  // Lấy data hotel
+  const { data, loading, error, reFetch } = useFetch(`/api/hotels/find/${id}`);
+  //Lấy data của room của từng hotel
+  const { data1, loading1 } = useFetch(`/api/hotels/room/${id}`);
   const [OpenDate, setOpenDate] = useState(false);
   useEffect(() => {
     const closecalendar = (e) => {
@@ -211,11 +222,11 @@ function Searchresult_app() {
               <div className=" m-2 d-flex">
                 <div className="w-75">
                   <div className=" h4 d-block mx-2">
-                    <span>tên địa điểm</span>
+                    <span>{data.name}</span>
                   </div>
                   <div className=" d-block mx-2">
                     <SiGooglemaps />
-                    <span>Địa chỉ chi nhánh</span>
+                    <span>{data.address}</span>
                   </div>
                 </div>
                 <div className=" w-25">
@@ -539,7 +550,7 @@ Vung Tau Melody Apartment đã chào đón khách Booking.com từ 23 tháng 4 2
           </button>
         </div> */}
       </div>
-      <div className="table">
+      {/* <div className="table">
         <table className=" table table-bordered w-75">
           <thead className="table-primary">
             <tr>
@@ -569,6 +580,27 @@ Vung Tau Melody Apartment đã chào đón khách Booking.com từ 23 tháng 4 2
               </td>
             </tr>
           </tbody>
+        </table>
+      </div> */}
+      <div className="table">
+        <table className=" table table-bordered w-75">
+          <thead className="table-primary">
+            <tr>
+              <th scope="flex-fill">Loại chỗ ở</th>
+              <th scope="flex-fill">Phù hợp cho</th>
+              <th scope="flex-fill">Giá thuê</th>
+              <th scope="flex-fill"></th>
+            </tr>
+          </thead>
+          {loading1 ? (
+            <h2>Loading...</h2>
+          ) : (
+            <>
+              {data1.map((item) => (
+                <Itemrooms item={item} key={item._id} />
+              ))}
+            </>
+          )}
         </table>
       </div>
       <Footer />
