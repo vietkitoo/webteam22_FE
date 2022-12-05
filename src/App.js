@@ -8,6 +8,7 @@ import Searchresult  from './page/searchresult/searchresult';
 import Visit from './page/visit/visit';
 import Hotel from './page/hotel/hotel';
 import Booking from './page/booking/booking';
+import User from './page/user/user'
 import { useContext } from 'react';
 import {
   BrowserRouter,
@@ -29,6 +30,7 @@ function App() {
           <Route path="/visit" element = {<Visit  />} />
           <Route path="/hotel" element = {<Hotel />} />
           <Route path="/booking" element = {<Booking />} />
+          <Route path="/user" element = {<User />} />
         </Routes>
       </BrowserRouter>
     </main>
