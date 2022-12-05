@@ -43,7 +43,7 @@ const ItemHotels = ({ item }) => {
       <img src={item.image} alt={item.name} />
       
       <div className="item-content">
-        <Link to="#">
+        <Link to={`/hotel`}>
           <h4>{item.name}</h4>
         </Link>
         <p className="address">
@@ -56,11 +56,11 @@ const ItemHotels = ({ item }) => {
         <div className="content-price">
           <div className="d-price">
             <p>Chỉ từ</p>
-            <p className="c-price">${(item.price).toFixed(2)}</p>
+            <p className="c-price">{(item.price)}VND</p>
             <span>VNĐ</span>
             <p>phòng/đêm</p>
           </div>
-          <Link to="#">
+          <Link to={`/hotel`}>
             <Button> Đặt ngay </Button>
           </Link>
         </div>
