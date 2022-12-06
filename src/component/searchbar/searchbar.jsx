@@ -1,16 +1,9 @@
 import './searchbar.scss';
 import 'react-date-range/dist/styles.css';
 import 'react-date-range/dist/theme/default.css';
-import { addDays } from 'date-fns';
 import React, { useContext, useState,  useEffect  } from 'react'
 import format from 'date-fns/format';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { DateRange, DateRangePicker } from 'react-date-range';
-import {
-  faBed,
-  faCalendarDays,
-  faHotel,
-} from '@fortawesome/free-solid-svg-icons';
 import {
   BsFillGeoAltFill,
   BsCalendarRangeFill,
@@ -18,7 +11,7 @@ import {
 } from 'react-icons/bs';
 import { SearchContext } from '../../context/SearchContext';
 import { AuthContext } from '../../context/AuthContext';
-import { Link, useNavigate } from 'react-router-dom'
+import {useNavigate } from 'react-router-dom'
 import useFetch from '../../hooks/useFetch';
 const SearchBar = () => {
   const [destination, setDestination] = useState('');
@@ -64,7 +57,6 @@ const SearchBar = () => {
   const handleSearch = () => {
     dispatch({ type: 'NEW_SEARCH', payload: { destination, date, People } });
     navigate('/searchresult', { state: { destination, date, People } });
-    window.location.reload();
   };
   const handllesubmit  =(e) => {
     e.preventDefault();
@@ -114,7 +106,7 @@ const SearchBar = () => {
               </div>
 
               {OpenDate && (
-                <DateRangePicker
+                <DateRange
                   onChange={(item) => {
                     setDate([item.selection]);
                     setOpenDate(false);
@@ -123,6 +115,7 @@ const SearchBar = () => {
                   moveRangeOnFirstSelection={false}
                   months={2}
                   ranges={date}
+                  minDate={new Date()}
                   direction="horizontal"
                   className="date"
                 />
