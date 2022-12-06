@@ -2,7 +2,7 @@ import React, { useContext, useState } from 'react';
 import axios from 'axios';
 import {axiosInstance} from '../../config'
 import { BsFacebook, BsGoogle, BsTwitter, BsGithub } from 'react-icons/bs';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
 import './login.scss'
 import {
   MDBContainer,
@@ -179,7 +179,10 @@ function Login() {
                       id="flexCheckDefault"
                       label="Remember me"
                     />
-                    <a href="#">Forgot password?</a>
+                    <Link to="../forgot">
+                      <a href="#">Forgot password?</a>
+                    </Link>
+                    
                   </div>
                   <div>
                     <button
