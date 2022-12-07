@@ -4,7 +4,7 @@ import Footer from '../../component/Footer/Footer';
 import { IoLogoNoSmoking } from 'react-icons/io';
 import { GiChickenOven, GiWashingMachine } from 'react-icons/gi';
 import { CiParking1 } from 'react-icons/ci';
-import {FaCity, FaShower } from 'react-icons/fa';
+import { FaCity, FaShower } from 'react-icons/fa';
 import { MdBalcony, MdEmojiNature, MdFamilyRestroom } from 'react-icons/md';
 import { AiOutlineCalendar, AiOutlineFieldTime } from 'react-icons/ai';
 import { SiGooglemaps } from 'react-icons/si';
@@ -41,7 +41,7 @@ function Hotel() {
   // Lấy data hotel
 
   //Lấy data của room của từng hotel
-  const {data1, loading1} = useFetch(`/api/hotels/room/${id}`);
+  const { data1, loading1 } = useFetch(`/api/hotels/room/${id}`);
   // console.log(data1);
   const [OpenDate, setOpenDate] = useState(false);
 
@@ -49,28 +49,17 @@ function Hotel() {
 
   const getDates = (startDate, endDate) => {
     const start = new Date(startDate);
-    // const start = new Date(format(startDate, 'MM/dd/yyyy'));
-    // console.log(start);
     const end = new Date(endDate);
-    // const end = new Date(format(endDate, 'MM/dd/yyyy'));
-    console.log(end);
-    // const dates = new Date(format(start.getTime(), 'MM/dd/yyyy'));
-    const dates = new Date(start.getTime());  
-    console.log(dates);
+    const dates = new Date(start.getTime());
     const date = [];
-    // date.push(new Date(dates).getTime());
-    // dates.setDate(dates.getDate() + 1);
     while (dates <= end) {
-     date.push(new Date(dates).getTime());
-      // date.push(new Date(format(new Date(dates).getTime(), 'MM/dd/yyyy')));
-    dates.setDate(dates.getDate() + 1);
+       date.push(new Date(dates).getTime());
+      dates.setDate(dates.getDate() + 1);
     }
-    console.log(date);
     return date;
   };
 
   const allDates = getDates(date[0].startDate, date[0].endDate);
-  console.log(allDates);
   useEffect(() => {
     const closecalendar = (e) => {
       if (e.path[0].tagName !== 'SPAN') {
@@ -84,10 +73,11 @@ function Hotel() {
   const isAvailable = (roomNumber) => {
     const isFound = roomNumber.unavailableDates.some((date) =>
       allDates.includes(new Date(date).getTime())
-    );
 
+    );
     return !isFound;
   };
+
   const handleSelect = (e) => {
     const selected = e.target.checked;
     const value = e.target.value;
@@ -102,10 +92,9 @@ function Hotel() {
     try {
       await Promise.all(
         selectedRoom.map((roomId) => {
-          // console.log(roomId);
-          // console.log(format(allDates, 'MM/dd/yyyy'));
+          // console.log(allDates);
           const res = axios.put(`/api/rooms/availability/${roomId}`, {
-            Dates: allDates
+            date: allDates,
           });
           return res.data;
         })
@@ -401,6 +390,7 @@ Vung Tau Melody Apartment đã chào đón khách Booking.com từ 23 tháng 4 2
                           <input
                             type="checkbox"
                             disabled={!isAvailable(roomNumber)}
+                            // disabled={false}
                             id={roomNumber.number}
                             value={roomNumber._id}
                             onChange={handleSelect}
@@ -414,7 +404,11 @@ Vung Tau Melody Apartment đã chào đón khách Booking.com từ 23 tháng 4 2
                   </td>
                   <td>
                     <Link to="../booking">
-                      <button type="button" className="w-100 btn btn-primary" onClick={handleClick}>
+                      <button
+                        type="button"
+                        className="w-100 btn btn-primary"
+                        onClick={handleClick}
+                      >
                         Đặt chỗ
                       </button>
                     </Link>
