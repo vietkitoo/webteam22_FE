@@ -1,7 +1,7 @@
 import './searchbar.scss';
 import 'react-date-range/dist/styles.css';
 import 'react-date-range/dist/theme/default.css';
-import React, { useContext, useState,  useEffect  } from 'react'
+import React, { useContext, useState, useEffect } from 'react';
 import format from 'date-fns/format';
 import { DateRange, DateRangePicker } from 'react-date-range';
 import {
@@ -11,20 +11,20 @@ import {
 } from 'react-icons/bs';
 import { SearchContext } from '../../context/SearchContext';
 import { AuthContext } from '../../context/AuthContext';
-import {useNavigate } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom';
 import useFetch from '../../hooks/useFetch';
 const SearchBar = () => {
   const [destination, setDestination] = useState('');
   const [OpenDate, setOpenDate] = useState(false);
-  useEffect(() => {
-    const closecalendar = (e) => {
-      if (e.path[0].tagName !== 'INPUT') {
-        setOpenDate(false);
-      }
-    };
-    document.body.addEventListener('click', closecalendar);
-    return () => document.body.removeEventListener('click', closecalendar);
-  }, []);
+  // useEffect(() => {
+  //   const closecalendar = (e) => {
+  //     if (e.path[0].tagName !== 'INPUT') {
+  //       setOpenDate(false);
+  //     }
+  //   };
+  //   document.body.addEventListener('click', closecalendar);
+  //   return () => document.body.removeEventListener('click', closecalendar);
+  // }, []);
   const [date, setDate] = useState([
     {
       startDate: new Date(),
@@ -58,14 +58,14 @@ const SearchBar = () => {
     dispatch({ type: 'NEW_SEARCH', payload: { destination, date, People } });
     navigate('/searchresult', { state: { destination, date, People } });
   };
-  const handllesubmit  =(e) => {
+  const handllesubmit = (e) => {
     e.preventDefault();
-  }
+  };
   return (
     <>
       <div className="booking-search-bar">
         <form
-          action="/searchresult" 
+          action="/searchresult"
           target=""
           onSubmit={handllesubmit}
           method="get"
@@ -97,7 +97,8 @@ const SearchBar = () => {
                   type="text"
                   name="location_search"
                   className="form-control"
-                  onFocus={() => setOpenDate(true)}
+                  // onFocus={() => setOpenDate(true)}
+                  onClick={() => setOpenDate(!OpenDate)}
                   value={`${format(date[0].startDate, 'MM/dd/yyyy')} - ${format(
                     date[0].endDate,
                     'MM/dd/yyyy'

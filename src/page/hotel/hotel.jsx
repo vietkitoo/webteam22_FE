@@ -53,7 +53,7 @@ function Hotel() {
     const dates = new Date(start.getTime());
     const date = [];
     while (dates <= end) {
-       date.push(new Date(dates).getTime());
+      date.push(new Date(dates).getTime());
       dates.setDate(dates.getDate() + 1);
     }
     return date;
