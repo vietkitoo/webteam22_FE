@@ -21,13 +21,16 @@ import { useLocation, useNavigate } from 'react-router-dom';
 import { Link } from 'react-router-dom';
 import { SearchContext } from '../../context/SearchContext';
 import { AuthContext } from '../../context/AuthContext';
-function Searchresult_app() {
-
+import format from 'date-fns/format';
+import axios from 'axios';
+function Hotel() {
+  const navigate = useNavigate();
   const location = useLocation();
+  const [open, setOpen] = useState(false);
   const id = location.pathname.split('/')[2];
   const { data, loading, error, reFetch } = useFetch(`/api/hotels/find/${id}`);
   const { date } = useContext(SearchContext);
-  console.log(date);
+  // console.log(date);
   const MILLISECONDS_PER_DAYS = 1000 * 60 * 60 * 24;
   function dayDifference(date1, date2) {
     const timeDifferent = Math.abs(date2.getTime() - date1.getTime());
@@ -39,29 +42,35 @@ function Searchresult_app() {
 
   //Lấy data của room của từng hotel
   const {data1, loading1} = useFetch(`/api/hotels/room/${id}`);
-  console.log(data1);
+  // console.log(data1);
   const [OpenDate, setOpenDate] = useState(false);
 
   const [selectedRoom, setSelectedRoom] = useState([]);
 
   const getDates = (startDate, endDate) => {
     const start = new Date(startDate);
+    // const start = new Date(format(startDate, 'MM/dd/yyyy'));
+    // console.log(start);
     const end = new Date(endDate);
-
-    const dates = new Date(start.getTime());
-
+    // const end = new Date(format(endDate, 'MM/dd/yyyy'));
+    console.log(end);
+    // const dates = new Date(format(start.getTime(), 'MM/dd/yyyy'));
+    const dates = new Date(start.getTime());  
+    console.log(dates);
     const date = [];
-
-    while (date <= end) {
-      date.push(new Date(dates).getTime());
-      dates.setDate(dates.getDate() + 1);
+    date.push(new Date(dates).getTime());
+    dates.setDate(dates.getDate() + 1);
+    while (dates <= end) {
+     if (dates === end) date.push(new Date(dates).getTime())
+      // date.push(new Date(format(new Date(dates).getTime(), 'MM/dd/yyyy')));
+      else dates.setDate(dates.getDate() + 1);
     }
-
+    console.log(date);
     return date;
   };
 
   const allDates = getDates(date[0].startDate, date[0].endDate);
-
+  console.log(allDates);
   useEffect(() => {
     const closecalendar = (e) => {
       if (e.path[0].tagName !== 'SPAN') {
@@ -89,154 +98,31 @@ function Searchresult_app() {
     );
   };
 
+  const handleClick = async () => {
+    try {
+      await Promise.all(
+        selectedRoom.map((roomId) => {
+          // console.log(roomId);
+          console.log(format(allDates[0], 'MM/dd/yyyy'));
+          console.log(format(allDates[1], 'MM/dd/yyyy'));
+          console.log(allDates);
+          const res = axios.put(`/api/rooms/availability/${roomId}`, {
+            Dates: allDates
+          });
+          return res.data;
+        })
+      );
+
+      setOpen(false);
+      navigate('/');
+    } catch (err) {}
+  };
+
   return (
     <>
       <Header />
       <div className="content w-100 d-flex content-hotel-page">
         <div className="d-flex w-75 my-4">
-          {/* <div className="w-25 ">
-           
-            <div className="setbackgroundsearch">
-              <div className="search">
-                <div>Tên chỗ nghỉ / điểm đến:</div>
-                <div className="input-group mb-3">
-                  <span className="input-group-text" id="basic-addon1">
-                    <BiSearch />
-                  </span>
-                  <input
-                    type="text"
-                    className="form-control"
-                    placeholder="Địa danh"
-                    aria-describedby="basic-addon1"
-                  />
-                </div>
-                <div>Ngày nhận phòng</div>
-                <div className="input-group mb-3" type="button">
-                  <span className="input-group-text" id="basic-addon1">
-                    <AiOutlineCalendar />
-                  </span>
-                  <span
-                    onClick={() => setOpenDate((prev) => !prev)}
-                    className="headerSearchText form-control"
-                  >
-                    {`${format(date[0].startDate, 'MM/dd/yyyy')}`}
-                  </span>
-                </div>
-                <div>Ngày trả phòng</div>
-                <div className="input-group mb-3 " type="button">
-                  <span className="input-group-text" id="basic-addon1">
-                    <AiOutlineCalendar />
-                  </span>
-                  <span
-                    onClick={() => setOpenDate(!OpenDate)}
-                    className="headerSearchText form-control"
-                  >
-                    {`${format(date[0].endDate, 'MM/dd/yyyy')} `}
-                  </span>
-                </div>
-                {OpenDate && (
-                  <DateRangePicker
-                    onChange={(item) => setDate([item.selection])}
-                    showSelectionPreview={true}
-                    moveRangeOnFirstSelection={false}
-                    months={2}
-                    ranges={date}
-                    direction="horizontal"
-                    className="date date_location"
-                  />
-                )}
-                <div>Số thành viên và số phòng</div>
-                <div className="input-group mb-3" type="button">
-                  <span className="input-group-text" id="basic-addon1">
-                    <FaBed />
-                  </span>
-                  <span
-                    onClick={() => setChoosePeople(!ChoosePeople)}
-                    className="headerSearchText form-control"
-                  >{`${People.Adult} Người lớn - ${People.Children} Trẻ em - ${People.Room} Phòng`}</span>
-                  {ChoosePeople && (
-                    <div className="people">
-                      <div className="peopleItem ">
-                        <span className="peopletext">Người lớn</span>
-                        <button
-                          disabled={People.Adult <= 1}
-                          className="couter"
-                          onClick={() => handlePeople('Adult', 'd')}
-                        >
-                          -
-                        </button>
-                        <span className="couter">{People.Adult}</span>
-                        <button
-                          className="couter"
-                          onClick={() => handlePeople('Adult', 'i')}
-                        >
-                          +
-                        </button>
-                      </div>
-                      <div className="peopleItem">
-                        <span className="peopletext">Trẻ em</span>
-                        <button
-                          disabled={People.Children <= 0}
-                          className="couter"
-                          onClick={() => handlePeople('Children', 'd')}
-                        >
-                          -
-                        </button>
-                        <span className="couter">{People.Children}</span>
-                        <button
-                          className="couter"
-                          onClick={() => handlePeople('Children', 'i')}
-                        >
-                          +
-                        </button>
-                      </div>
-                      <div className="peopleItem">
-                        <span className="peopletext">Phòng</span>
-                        <button
-                          disabled={People.Room <= 1}
-                          className="couter"
-                          onClick={() => handlePeople('Room', 'd')}
-                        >
-                          -
-                        </button>
-                        <span className="couter">{People.Room}</span>
-                        <button
-                          className="couter"
-                          onClick={() => handlePeople('Room', 'i')}
-                        >
-                          +
-                        </button>
-                      </div>
-                    </div>
-                  )}
-                </div>
-                <div>
-                  <MDBCheckbox
-                    name="flexCheck"
-                    value=""
-                    id="flexCheckDefault"
-                    label="Nhà và căn hộ nguyên căn"
-                  />
-                </div>
-                <div>
-                  <MDBCheckbox
-                    name="flexCheck1"
-                    value="1"
-                    id="flexCheckDefault1"
-                    label="Tôi đi công tác"
-                  />
-                </div>
-                <Link to="../searchresult">
-                  <button
-                    className="btn btn-primary input-group "
-                    type="submit"
-                  >
-                    Tìm
-                  </button>
-                </Link>
-              </div>
-            </div>
-          </div> */}
           {/* Thông tin hotel */}
           <div className="w-75 ">
             <div className="m-4">
@@ -267,13 +153,6 @@ function Searchresult_app() {
                 <div className="d-flex">
                   <div className=" description_picture_left">
                     <span>
-                      {/* <Image
-                        cloudName="dxivl2lh5"
-                        publicId="rest/nha-go-cap-4-dep_qe5wjy"
-                        className="col w-100"
-                        crop="scale"
-                        alt="image canho"
-                      /> */}
                       <img
                         className="col w-100"
                         src={data.image2}
@@ -282,13 +161,6 @@ function Searchresult_app() {
                       />
                     </span>
                     <span>
-                      {/* <Image
-                        cloudName="dxivl2lh5"
-                        publicId="rest/nha-nghi-o-que-3_rhizkm"
-                        className="col w-100"
-                        crop="scale"
-                        alt="image canho"
-                      /> */}
                       <img
                         className="col w-100"
                         src={data.image3}
@@ -299,13 +171,6 @@ function Searchresult_app() {
                   </div>
                   <div className="description_picture_right">
                     <span>
-                      {/* <Image
-                        cloudName="dxivl2lh5"
-                        publicId="rest/glamping_kzu5wb"
-                        className="col w-100"
-                        crop="scale"
-                        alt="image canho"
-                      /> */}
                       <img
                         className="col w-100"
                         src={data.image4}
@@ -317,13 +182,6 @@ function Searchresult_app() {
                 </div>
                 <div className="col d-flex">
                   <span>
-                    {/* <Image
-                      cloudName="dxivl2lh5"
-                      publicId="rest/nha-go-cap-4-dep_qe5wjy"
-                      className="col w-100"
-                      crop="scale"
-                      alt="image canho"
-                    /> */}
                     <img
                       className="col w-100"
                       src={data.image5}
@@ -510,95 +368,6 @@ Vung Tau Melody Apartment đã chào đón khách Booking.com từ 23 tháng 4 2
       </div>
       <div className=" table w-75 ms-md-4">
         <div className="h4">Phòng trống</div>
-        {/* <div className="mark d-flex w-75">
-          <div type="button" className="mx-2 flex-fill text-bg-info">
-            <FontAwesomeIcon icon={faCalendarDays} className="headerIcon" />
-            <span
-              onClick={() => setOpenDate(!OpenDate)}
-              className="headerSearchText"
-            >{`${format(date[0].startDate, 'MM/dd/yyyy')} to ${format(
-              date[0].endDate,
-              'MM/dd/yyyy'
-            )} `}</span>
-
-            {OpenDate && (
-              <DateRangePicker
-                onChange={(item) => setDate([item.selection])}
-                showSelectionPreview={true}
-                moveRangeOnFirstSelection={false}
-                months={2}
-                ranges={date}
-                direction="horizontal"
-                className="date"
-              />
-            )}
-          </div>
-          <div className="mx-2 flex-fill text-bg-info">
-            <FontAwesomeIcon icon={faBed} />
-            <span
-              onClick={() => setChoosePeople(!ChoosePeople)}
-              className="headerSearchText"
-            >{`${People.Adult} Người lớn - ${People.Children} Trẻ em - ${People.Room} Phòng`}</span>
-            {ChoosePeople && (
-              <div className="people">
-                <div className="peopleItem">
-                  <span className="peopletext">Người lớn</span>
-                  <button
-                    disabled={People.Adult <= 1}
-                    className="couter"
-                    onClick={() => handlePeople('Adult', 'd')}
-                  >
-                    -
-                  </button>
-                  <span className="couter">{People.Adult}</span>
-                  <button
-                    className="couter"
-                    onClick={() => handlePeople('Adult', 'i')}
-                  >
-                    +
-                  </button>
-                </div>
-                <div className="peopleItem">
-                  <span className="peopletext">Trẻ em</span>
-                  <button
-                    disabled={People.Children <= 0}
-                    className="couter"
-                    onClick={() => handlePeople('Children', 'd')}
-                  >
-                    -
-                  </button>
-                  <span className="couter">{People.Children}</span>
-                  <button
-                    className="couter"
-                    onClick={() => handlePeople('Children', 'i')}
-                  >
-                    +
-                  </button>
-                </div>
-                <div className="peopleItem">
-                  <span className="peopletext">Phòng</span>
-                  <button
-                    disabled={People.Room <= 1}
-                    className="couter"
-                    onClick={() => handlePeople('Room', 'd')}
-                  >
-                    -
-                  </button>
-                  <span className="couter">{People.Room}</span>
-                  <button
-                    className="couter"
-                    onClick={() => handlePeople('Room', 'i')}
-                  >
-                    +
-                  </button>
-                </div>
-              </div>
-            )}
-          </div>
-          <button type="button" className="btn btn-light">
-            Thay đổi tìm kiếm
-          </button>
-        </div> */}
       </div>
       <div className="table">
         <table className=" table table-bordered w-75">
@@ -614,25 +383,8 @@ Vung Tau Melody Apartment đã chào đón khách Booking.com từ 23 tháng 4 2
           {loading1 ? (
             <h2>Loading...</h2>
           ) : (
-            // <>
-            //   {data1.map((roomNumber) => (
-            //     // <Itemrooms item={item} key={item._id} />
-            //     <div>
-            //       <input
-            //         type="checkbox"
-            //         // disabled={!isAvailable(roomNumber)}
-            //         id={roomNumber.number}
-            //         value={roomNumber._id}
-            //         // onChange={handleSelect}
-            //       />
-            //       <label htmlFor={roomNumber.number}>
-            //         Number of Room: <strong>{roomNumber.number}</strong>
-            //       </label>
-            //     </div>
-            //   ))}
-            // </>
             data1.map((item) => (
-              console.log(item),
+              // console.log(item),
               <tbody>
                 <tr>
                   <td>
@@ -664,7 +416,7 @@ Vung Tau Melody Apartment đã chào đón khách Booking.com từ 23 tháng 4 2
                   </td>
                   <td>
                     <Link to="../booking">
-                      <button type="button" className="w-100 btn btn-primary">
+                      <button type="button" className="w-100 btn btn-primary" onClick={handleClick}>
                         Đặt chỗ
                       </button>
                     </Link>
@@ -680,4 +432,4 @@ Vung Tau Melody Apartment đã chào đón khách Booking.com từ 23 tháng 4 2
   );
 }
 
-export default Searchresult_app;
+export default Hotel;

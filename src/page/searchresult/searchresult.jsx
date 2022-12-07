@@ -373,45 +373,6 @@ function Searchresult_app() {
                 </div>
               </div>
               <div id="list-hotels" className="list-hotels">
-                {/* <div className="item-hotel bg-box">
-                  <Image 
-                    cloudName='dxivl2lh5'
-                    publicId='rest/khachsan_kib5dt'
-                    crop='scale'
-                    width='300'
-                    height='200'
-                    alt='khachsan'
-                  />
-                  <div className="item-content">
-                    <Link to="#">
-                      <h4>Stylish hotel Quy Nhơn</h4>
-                    </Link>
-                    <p className="address">
-                      <BsGeoAlt />
-                      Số 51, đường Tháp Đôi, phường Quang Trung, Quy Nhơn
-                    </p>
-                    <div className="rate">
-                      (Đánh giá)
-                    </div>
-                  </div>
-                  <div className="price">
-                    <div className="content-price">
-                      <div className="d-price">
-                        <p>Chỉ từ</p>
-                        <p className="c-price">
-                          1,092,001
-                        </p>
-                        <span>VNĐ</span>
-                        <p>phòng/đêm</p>
-                      </div>
-                      <Link to="#">
-                        <Button>
-                          Đặt ngay
-                        </Button>
-                      </Link>
-                    </div>
-                  </div>
-                </div> */}
                 {loading ? (
                   <h2>Loading...</h2>
                 ) : (
