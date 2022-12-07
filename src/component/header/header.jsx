@@ -67,7 +67,9 @@ const Header = () => {
                 </Dropdown.Toggle>
 
                 <Dropdown.Menu>
-                  <Dropdown.Item className="user-info"><BsPersonFill />{user.username}</Dropdown.Item>
+                  <Link to="../user">
+                    <Dropdown.Item href="#/"><BsPersonFill />{user.username}</Dropdown.Item>
+                  </Link>
                   <Dropdown.Divider />
                   <Dropdown.Item href="#/action-2"><BsHouseFill />Phòng đã đặt</Dropdown.Item>
                   <Link to="../support">

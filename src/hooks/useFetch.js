@@ -5,12 +5,13 @@ const useFetch = (url) => {
     const [data, setData] = useState([]);
     const [data1, setData1] = useState([]);
     const [loading, setLoading] = useState(false);
+    const [loading1, setLoading1] = useState(false);
     const [error, setError] = useState(false);
 
     useEffect(() => {
         const fetchData = async () => {
             setLoading(true);
-
+            setLoading1(true);
             try {
                 const res = await axios.get(url);
                 setData(res.data);
@@ -19,6 +20,7 @@ const useFetch = (url) => {
                 setError(err);
             }
             setLoading(false);
+            setLoading1(false);
         };
         fetchData();
         //for live refresh or reFetch, put url here, but if i want on button click, only remove url
@@ -35,7 +37,7 @@ const useFetch = (url) => {
         }
         setLoading(false);
     };
-    return {data1, data, loading, error, reFetch};
+    return {data1, data, loading, loading1,error, reFetch};
 };
 
 export default useFetch;
