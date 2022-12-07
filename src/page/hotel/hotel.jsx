@@ -58,12 +58,12 @@ function Hotel() {
     const dates = new Date(start.getTime());  
     console.log(dates);
     const date = [];
-    date.push(new Date(dates).getTime());
-    dates.setDate(dates.getDate() + 1);
+    // date.push(new Date(dates).getTime());
+    // dates.setDate(dates.getDate() + 1);
     while (dates <= end) {
-     if (dates === end) date.push(new Date(dates).getTime())
+     date.push(new Date(dates).getTime());
       // date.push(new Date(format(new Date(dates).getTime(), 'MM/dd/yyyy')));
-      else dates.setDate(dates.getDate() + 1);
+    dates.setDate(dates.getDate() + 1);
     }
     console.log(date);
     return date;
@@ -103,9 +103,7 @@ function Hotel() {
       await Promise.all(
         selectedRoom.map((roomId) => {
           // console.log(roomId);
-          console.log(format(allDates[0], 'MM/dd/yyyy'));
-          console.log(format(allDates[1], 'MM/dd/yyyy'));
-          console.log(allDates);
+          console.log(format(allDates, 'MM/dd/yyyy'));
           const res = axios.put(`/api/rooms/availability/${roomId}`, {
             Dates: allDates
           });
