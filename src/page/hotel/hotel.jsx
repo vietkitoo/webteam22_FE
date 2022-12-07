@@ -103,7 +103,7 @@ function Hotel() {
       await Promise.all(
         selectedRoom.map((roomId) => {
           // console.log(roomId);
-          console.log(format(allDates, 'MM/dd/yyyy'));
+          // console.log(format(allDates, 'MM/dd/yyyy'));
           const res = axios.put(`/api/rooms/availability/${roomId}`, {
             Dates: allDates
           });
