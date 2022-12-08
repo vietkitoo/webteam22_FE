@@ -1,4 +1,5 @@
 import axios from 'axios';
+import { AxiosInstance } from 'axios';
 import React, { useContext, useState } from 'react'
 import { useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../context/AuthContext';
@@ -7,7 +8,7 @@ import "./login.css"
 const Login = () => {
 
     const [credentials, setCredentials] = useState({
-        username: undefined,
+        email: undefined,
         password: undefined
     });
 
@@ -24,7 +25,7 @@ const Login = () => {
 
         try {
 
-            const res = await axios.post("/api/auth/login", credentials);
+            const res = await axios.post("http://localhost:5000/api/author/login", credentials);
             if (res.data.isAdmin) {
             dispatch({type: "LOGIN_SUCCESS", payload: res.data.details})
             navigate("/");}
@@ -46,7 +47,7 @@ const Login = () => {
         </div>
         <div className="loginRow">
             <div className="loginCol">
-                <input type="text" id="username" onChange={handleChange} className="loginInput" placeholder='Username' />
+                <input type="text" id="email" onChange={handleChange} className="loginInput" placeholder='Username' />
                 <input type="password" id="password" onChange={handleChange} className="loginInput" placeholder='Password' />
                 <div className="loginButton">
                     <button disabled={loading} onClick={handleClick}>Login</button>
