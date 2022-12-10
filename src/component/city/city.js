@@ -1,12 +1,12 @@
-
 import '../../styles/css/bootstrap.min.css';
 import '../../styles/css/App.css';
 import Carousel from 'react-bootstrap/Carousel';
 import { Link } from 'react-router-dom';
-function header() {
+
+const city = () => {
   return (
     <div>
-        <header >
+        <header>
             <h1>The best city </h1>
         </header>
         <div></div>
@@ -15,4 +15,4 @@ function header() {
   );
 }
 
-export default header;
+export default city;
