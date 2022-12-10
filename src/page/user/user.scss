@@ -1,0 +1,48 @@
+.main-info{
+    margin-top: 20px !important;
+    display: grid;
+    grid-template-columns: 350px auto;
+    grid-gap: 20px;
+}
+
+.info-nav{
+    position: fixed;
+    width: 340px;
+}
+
+.user-info{
+    position: relative;
+    left: 350px;
+    width: 1000px;
+}
+
+.item-info{
+    display: grid;
+    margin-bottom: 20px;
+    border-radius: 5px;
+    grid-template-columns: 350px auto;
+    grid-gap: 20px;
+}
+
+.user-info .bg-box{
+    padding: 0;
+}
+
+.item-info-intro{
+    padding: 20px;
+    padding-left: 40px;
+}
+
+.item-info h2{
+    font-weight: bold;
+}
+
+.item-info .item-info-intro{
+    background-color: #c6c6a6;
+}
+
+.item-info .item-content{
+    padding: 10px;
+    padding-left: 20px;
+
+}

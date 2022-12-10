@@ -11,7 +11,7 @@ const NewRoom = () => {
   const [hotelId, setHotelId] = useState(undefined);
   const [rooms, setRooms] = useState([]);
 
-  const { data, loading, error } = useFetch("/api/hotels");
+  const { data, loading, error } = useFetch("api/hotels");
 
   const handleChange = (e) => {
     setInfo((prev) => ({ ...prev, [e.target.id]: e.target.value }));
@@ -21,7 +21,7 @@ const NewRoom = () => {
     e.preventDefault();
     const roomNumbers = rooms.split(",").map((room) => ({ number: room }));
     try {
-      await axios.post(`/api/rooms/${hotelId}`, { ...info, roomNumbers });
+      await axios.post(`api/rooms/${hotelId}`, { ...info, roomNumbers });
     } catch (err) {
       console.log(err);
     }
@@ -54,11 +54,11 @@ const NewRoom = () => {
                 <label>Rooms</label>
                 <textarea
                   onChange={(e) => setRooms(e.target.value)}
-                  placeholder="thêm dấu phẩy sau mỗi phòng"
+                  placeholder="give comma between room numbers."
                 />
               </div>
               <div className="formInput">
-                <label>Chọn khách sạn</label>
+                <label>Choose a hotel</label>
                 <select
                   id="hotelId"
                   onChange={(e) => setHotelId(e.target.value)}
