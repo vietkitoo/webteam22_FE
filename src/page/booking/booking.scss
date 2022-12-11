@@ -1,49 +1,43 @@
 /* LOCATION */
 
-.date_location {
-    margin-top: 14rem;
-    z-index: 1;
-  }
-  .search {
-    padding: 10%;
-  }
-  .setbackgroundsearch {
-    background-color: #99fcb1;
-    height: 30rem;
-  }
-  .people {
-    z-index: 1;
-    margin-top: -5rem;
-  }
-  .item-hotel {
-    height: 15rem;
-  }
-  .type_of_r_place img {
-    width: 15rem !important;
-    height: 10rem !important;
-  }
-  .description_picture{
-      height: 30rem;
-      box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 1.02) !important;
-  }
-  .description_picture_left {
-    width: 22rem !important;
-    height: 22rem !important;
-  }
-  .description_picture_right {
-    width: 44.5rem !important;
-    height: 22rem !important;
-  }
-  .content-hotel-page{
-      padding-left: 20rem;
-      height: 40rem;
-  }
-  .table{
-    padding-left: 20rem;
-  }
-  .color-text-green{
-    color: #1AA37A;
-  }
-  .bg-custom-1{
-    background-color: #DEF5E5;
-  }
+.content-booking{
+  padding-left: 200px;
+  padding-right: 200px;
+  padding-top: 150px;
+}
+
+.content-top .back{
+  position: absolute;
+  left: 0;
+}
+
+.content-top svg{
+  width: 30px;
+  height: 35px;
+  margin-right: 15px;
+}
+
+.content-top a{
+  font-size: 25px;
+}
+
+.main-grid{  
+  display: grid;
+  grid-gap: 50px;
+  grid-template-columns: 1000px auto;
+}
+
+.grid-item{
+  background-color: #F7F6DC;
+}
+
+.form-block{
+  padding-left: 30px;
+  padding-right: 50px;
+}
+
+.form-block h4{
+  border-bottom: 2px solid rgb(156, 153, 153);
+  padding-top: 50px;
+  padding-bottom: 30px;
+}

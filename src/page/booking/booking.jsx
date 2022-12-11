@@ -1,57 +1,62 @@
 import Header from '../../component/header/header';
 import './booking.scss';
 import Footer from '../../component/Footer/Footer';
-import { IoLogoNoSmoking } from 'react-icons/io';
-import { BiSearch } from 'react-icons/bi';
-import { GiChickenOven, GiWashingMachine } from 'react-icons/gi';
-import { CiParking1 } from 'react-icons/ci';
-import { FaBed, FaCity, FaShower } from 'react-icons/fa';
-import { MdBalcony, MdEmojiNature, MdFamilyRestroom } from 'react-icons/md';
-import { AiOutlineCalendar, AiOutlineFieldTime } from 'react-icons/ai';
-import { IoIosMan } from 'react-icons/io';
-import { SiGooglemaps } from 'react-icons/si';
-import { FcCheckmark } from 'react-icons/fc';
-import { BsWifi, BsSnow } from 'react-icons/bs';
-import { GoLocation } from 'react-icons/go';
-import { RiSecurePaymentLine, RiErrorWarningLine } from 'react-icons/ri';
-import format from 'date-fns/format';
-import { DateRange, DateRangePicker } from 'react-date-range';
-import { useState } from 'react';
-import { useEffect } from 'react';
-import { MDBCheckbox } from 'mdb-react-ui-kit';
-import { Image } from 'cloudinary-react';
-import { faBed, faCalendarDays } from '@fortawesome/free-solid-svg-icons';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { BsFillCaretLeftFill } from 'react-icons/bs';
 import { Link } from 'react-router-dom';
+import React, { useContext, useState } from 'react';
+import Form from 'react-bootstrap/Form';
+import { Button } from 'react-bootstrap';
+import { AuthContext } from '../../context/AuthContext';
+
 function Searchresult_app() {
+  const { user } = useContext(AuthContext);
   return (
     <>
       <Header />
-      <div className="content content-hotel-page w-75 ms-md-4">
-        <div className="d-flex">
-          <div className="border p-2  ">
-            <div className="h6">Chi tiết đặt phòng của bạn:</div>
-            <div>
-              <table className="table  table-sm ">
-                <thead>
-                  <tr>
-                    <th>Nhận phòng</th>
-                    <th>Trả phòng</th>
-                  </tr>
-                </thead>
-                <tbody className="table-bordered">
-                  <tr>
-                    <td>T5, 1 tháng 12 2022</td>
-                    <td>T7, 17 tháng 12 2022</td>
-                  </tr>
-                </tbody>
-              </table>
-            </div>
-            <div className="h6">Tổng thời gian lưu trú:</div>
-            <div>16 đêm</div>
-          </div>
-          <div className="border p-2 flex-grow-1"> abc </div>
+      <div className="content content-booking">
+        <div className="content-top position-relative d-flex align-items-center justify-content-center">
+          <Link to="#" className="back">
+            <BsFillCaretLeftFill />
+            Quay lại
+          </Link>
+          <h2>Thông tin đặt phòng</h2>
         </div>
+
+        <div className="main-booking">
+          <Form>
+            <div className="main-grid">
+              <div className="grid-item">
+                <div className="form-block">
+                  <h4>Thông tin người đặt phòng</h4>
+                  <Form.Group className="mb-3 " >
+                    <Form.Label>Địa chỉ email</Form.Label>
+                    <Form.Control type="email" defaultValue={user.email} disabled/>
+                  </Form.Group>
+                  <Form.Group className="mb-3 " >
+                      <Form.Label>Tên người dùng</Form.Label>
+                      <Form.Control type="text" defaultValue={user.username} disabled/>
+                  </Form.Group>
+                </div>
+                
+              </div>
+              <div className="grid-item">
+                <div className="form-block">
+                  <h4>Yêu cầu đặt phòng của bạn</h4>
+                  <div className="d-md-flex justify-content-center">
+                    <Button variant="primary" type="submit" className="me-md-2" disabled>
+                        Lưu thay đổi
+                    </Button>
+                  </div>
+                </div>
+              </div>
+            </div>
+            
+            
+
+          </Form>
+          
+        </div>
+
       </div>
 
       <Footer />

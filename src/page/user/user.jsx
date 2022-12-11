@@ -7,7 +7,8 @@ import Form from 'react-bootstrap/Form';
 import { AuthContext } from '../../context/AuthContext';
 import React, { useContext, useState } from 'react';
 import axios from "axios";
-import {axiosInstance} from '../../config'
+import {axiosInstance} from '../../config';
+import {Link} from 'react-scroll';
 
 function User() {
     const { user } = useContext(AuthContext);
@@ -39,7 +40,8 @@ function User() {
                 <div className="container main-info">
                     <Nav defaultActiveKey="/home" className="flex-column info-nav">
                         <h2 className="top-filter">Quản lý tài khoản người dùng</h2>
-                        <Nav.Link href="/#">Thông tin cá nhân</Nav.Link>
+                        <Nav.Link href="#userInfo">Thông tin cá nhân</Nav.Link>
+                        <Nav.Link href="#changePassword">Thay đổi mật khẩu</Nav.Link>
                         <Nav.Link eventKey="link-1">Thông tin đặt phòng</Nav.Link>
                         <Nav.Link eventKey="link-2">Lịch sử</Nav.Link>
                     </Nav>
@@ -54,7 +56,7 @@ function User() {
                         <div id="list-infos" className="list-infos">
                             <div className="item-info bg-box">
                                 <div className="item-info-intro">
-                                    <h2>Thông tin cá nhân</h2>
+                                    <h2 id="userInfo">Thông tin cá nhân</h2>
                                 </div>
                                 <div className="item-content">
                                     <Form>
@@ -77,24 +79,24 @@ function User() {
                             </div>
                             <div className="item-info bg-box">
                                 <div className="item-info-intro">
-                                    <h2>Thay đổi mật khẩu</h2>
+                                    <h2 id="changePassword">Thay đổi mật khẩu</h2>
                                 </div>
                                 <div className="item-content">
                                     <Form onSubmit={handleSubmit}>
                                         <Form.Group className="mb-3" >
                                             <Form.Label>Mật khẩu hiện tại</Form.Label>
                                             <Form.Control type="password" value={password} 
-                                            onChange={e => setPassword(e.target.value)} />
+                                            onChange={e => setPassword(e.target.value)} required />
                                         </Form.Group>
                                         <Form.Group className="mb-3" >
                                             <Form.Label>Mật khẩu mới</Form.Label>
                                             <Form.Control type="password" value={newPassword}
-                                            onChange={e => setNewPassword(e.target.value)} />
+                                            onChange={e => setNewPassword(e.target.value)} required />
                                         </Form.Group>
                                         <Form.Group className="mb-3" >
                                             <Form.Label>Xác nhận mật khẩu mới</Form.Label>
                                             <Form.Control type="password" value={confirmNewPassword}
-                                            onChange={e => setConfirmNewPassword(e.target.value)}/>
+                                            onChange={e => setConfirmNewPassword(e.target.value)} />
                                         </Form.Group>
                                         <div className="d-md-flex justify-content-md-end">
                                             <Button variant="primary" className="me-md-2" disabled>
