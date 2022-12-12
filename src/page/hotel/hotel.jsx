@@ -21,8 +21,10 @@ import { useLocation, useNavigate } from 'react-router-dom';
 import { Link } from 'react-router-dom';
 import { SearchContext } from '../../context/SearchContext';
 import { AuthContext } from '../../context/AuthContext';
+import {axiosInstance} from '../../config'
 import format from 'date-fns/format';
 import axios from 'axios';
+import moment from 'moment';
 function Hotel() {
   const navigate = useNavigate();
   const location = useLocation();
@@ -73,7 +75,6 @@ function Hotel() {
   const isAvailable = (roomNumber) => {
     const isFound = roomNumber.unavailableDates.some((date) =>
       allDates.includes(new Date(date).getTime())
-
     );
     return !isFound;
   };
@@ -99,11 +100,22 @@ function Hotel() {
           return res.data;
         })
       );
-
+      const res1 = await axiosInstance.post('/booking/booking', {
+        room: data1.title,
+        userId: JSON.parse(localStorage.getItem('user'))._id,
+        fromDate: moment(date[0].startDate).format('DD-MM-YY'),
+        toDate: moment(date[0].endDate).format('DD-MM-YY'),
+        totalPrice: days * data.price,
+        totalDays: days,
+      });
       setOpen(false);
       navigate('/');
     } catch (err) {}
   };
+  // console.log(JSON.parse(localStorage.getItem('user'))._id);
+  // console.log(format(date[0].startDate, 'MM/dd/yyyy'));
+  // console.log(days * data.price);
+  // console.log(days);
 
   return (
     <>

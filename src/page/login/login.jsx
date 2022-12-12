@@ -58,7 +58,7 @@ function Login() {
 
     try {
       const res = await axiosInstance.post(
-        "/author/login",
+        "/auth/login",
         credentials
       );
       dispatch({ type: 'LOGIN_SUCCESS', payload: res.data });
@@ -73,7 +73,7 @@ function Login() {
 
     try {
       const res = await axiosInstance.post(
-        "/author/register",
+        "/auth/register",
         credentials
       );
       dispatch({ type: 'REGISTER_SUCCESS', payload: res.data });
@@ -158,9 +158,9 @@ function Login() {
                   </div>
                   <MDBInput
                     wrapperClass="mb-4"
-                    label="Email address"
-                    id="email"
-                    placeholder="name@example.com"
+                    label="User Name"
+                    id="username"
+                    placeholder="User Name"
                     type="text"
                     onChange={handleChange}
                   />
