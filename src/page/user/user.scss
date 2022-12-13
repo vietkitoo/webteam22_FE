@@ -54,8 +54,26 @@
 
 .nav-menu .nav-item{
     height: 40px;
+    font-size: large;
+    font-weight: bold;
 }
 
 .nav-menu .nav-item:hover{
     cursor: pointer;
+    color: black;
+    opacity: 1;
+}
+
+.active{
+    color: black;
+    opacity: 1;
+}
+
+.nav-item{
+    display: block;
+    color: gray;
+}
+
+.nav-menu .nav-item svg{
+    margin-right: 20px;
 }

@@ -1,5 +1,6 @@
 import './styles/css/bootstrap.min.css';
 import Login from './page/login/login';
+import HomeAdmin from './admin/page/home/HomeAdmin';
 import Home from './page/home/home';
 import Regishotel from './page/registerhotel/regishotel';
 import Regispartner from './page/regispartner/regispartner';
@@ -10,7 +11,7 @@ import Hotel from './page/hotel/hotel';
 import Booking from './page/booking/booking';
 import User from './page/user/user';
 import Forgot from './page/forgot/forgot';
-import HomeAdmin from './admin/page/home/HomeAdmin';
+
 import { hotelColumns, roomColumns, userColumns } from "./admin/datatablesource";
 import List from './admin/page/list/List';
 import New from './admin/page/new/New';
@@ -33,16 +34,18 @@ function App() {
     const { user } = useContext(AuthContext);
 
     if (!user) {
-      return <Navigate to="/admin/login" />;
+      return <Navigate to="/home" />;
     }
-
+    if (!user.isAdmin) {
+      return <Navigate to="/home" />;
+    }
     return children;
   };
   return (
     <main className="App">
       <BrowserRouter>
         <Routes>
-          <Route path="/" element={<Home />} />
+          <Route path="/home" element={<Home />} />
           <Route path="/login" element={<Login />} />
           <Route path="/register-hotel" element = {<Regishotel />} />
           <Route path="/register-partner" element = {<Regispartner />} />
@@ -54,8 +57,8 @@ function App() {
           <Route path="/user" element = {<User />} />
           <Route path="/forgot" element = {<Forgot />} />
 
-          <Route path="/admin/">
-            <Route path="login" element={<LoginAdmin />} />
+          <Route path="/">
+            <Route path="/admin" element={<LoginAdmin />} />
             <Route index element={
                 <ProtectedRoute>
                   <HomeAdmin />
