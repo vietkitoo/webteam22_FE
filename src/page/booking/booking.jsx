@@ -25,34 +25,61 @@ function Searchresult_app() {
         <div className="main-booking">
           <Form>
             <div className="main-grid">
-              <div className="grid-item">
+              <div className="grid-item ">
                 <div className="form-block">
                   <h4>Thông tin người đặt phòng</h4>
                   <Form.Group className="mb-3 " >
                     <Form.Label>Địa chỉ email</Form.Label>
-                    <Form.Control type="email" defaultValue={user.email} disabled/>
+                    <Form.Control type="email" defaultValue={user.details.email} />
                   </Form.Group>
                   <Form.Group className="mb-3 " >
                       <Form.Label>Tên người dùng</Form.Label>
-                      <Form.Control type="text" defaultValue={user.username} disabled/>
+                      <Form.Control type="text" defaultValue={user.details.username} />
                   </Form.Group>
+                  <Form.Group className="mb-3 " >
+                    <Form.Label>Số điện thoại</Form.Label>
+                    <Form.Control type="text" defaultValue={user.details.phonenum} placeholder="+84 987654321" />
+                  </Form.Group>
+                  <Form.Group className="mb-4" controlId="exampleForm.ControlTextarea1">
+                    <Form.Label>Yêu cầu thêm</Form.Label>
+                    <Form.Control as="textarea" rows={3} />
+                  </Form.Group> 
                 </div>
-                
               </div>
               <div className="grid-item">
                 <div className="form-block">
                   <h4>Yêu cầu đặt phòng của bạn</h4>
-                  <div className="d-md-flex justify-content-center">
-                    <Button variant="primary" type="submit" className="me-md-2" disabled>
+                  <div className="hotel-info">
+                    <h5>Khách sạn</h5>
+                    <div className="">Nhận phòng:</div>
+                    <div className="">Trả phòng:</div>
+                  </div>
+                  <div className="room-info">
+                    <h5>Thông tin phòng</h5>
+                    <div className="room">
+                      Phòng 1:
+                      <div className="d-md-flex justify-content-md-end">(Giá tiền)</div>
+                    </div>
+                    <div className="room">
+                      Phòng 2:
+                      <div className="d-md-flex justify-content-md-end">(Giá tiền)</div>
+                    </div>
+                  </div>
+                  <div className="mt-4 mb-4 total-price d-flex justify-content-center">
+                    (Total price)
+                  </div>
+                  
+                </div>
+                <div className="mt-2 d-md-flex justify-content-center">
+                    <Button type="submit" className="pay-btn">
                         Lưu thay đổi
                     </Button>
                   </div>
-                </div>
               </div>
+              
             </div>
             
             
-
           </Form>
           
         </div>

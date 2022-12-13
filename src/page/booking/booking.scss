@@ -24,20 +24,39 @@
 .main-grid{  
   display: grid;
   grid-gap: 50px;
-  grid-template-columns: 1000px auto;
+  grid-template-columns: 60% auto;
 }
 
 .grid-item{
-  background-color: #F7F6DC;
+  
 }
 
 .form-block{
   padding-left: 30px;
   padding-right: 50px;
+  background-color: #F7F6DC;
+  padding-bottom: 30px;
 }
 
 .form-block h4{
   border-bottom: 2px solid rgb(156, 153, 153);
   padding-top: 50px;
   padding-bottom: 30px;
+}
+
+.hotel-info, .room-info{
+  border-bottom: 2px solid rgb(156, 153, 153);
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+
+.room{
+  border-bottom: 2px dashed rgb(156, 153, 153);
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+
+.pay-btn{
+  width: 100%;
+  margin-bottom: 50px;
 }
