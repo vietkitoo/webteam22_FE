@@ -52,21 +52,41 @@ function Login() {
     // console.log(e);
     setCredentials((prev) => ({ ...prev, [e.target.id]: e.target.value }));
   };
+  // const handlelogin = async (e) => {
+  //   e.preventDefault();
+  //   dispatch({type: 'LOGIN_START'});
+
+  //   try {
+  //     const res = await axiosInstance.post(
+  //       "/author/login",
+  //       credentials
+  //     );
+  //     dispatch({ type: 'LOGIN_SUCCESS', payload: res.data });
+  //     navigate('/');
+  //   } catch (error) {
+  //     dispatch({ type: 'LOGIN_FAIL', payload: error.response.data });
+  //   }
+  // };
   const handlelogin = async (e) => {
     e.preventDefault();
-    dispatch({type: 'LOGIN_START'});
+    dispatch({type: "LOGIN_START"})
 
     try {
-      const res = await axiosInstance.post(
-        "/author/login",
-        credentials
-      );
-      dispatch({ type: 'LOGIN_SUCCESS', payload: res.data });
-      navigate('/');
-    } catch (error) {
-      dispatch({ type: 'LOGIN_FAIL', payload: error.response.data });
+
+        const res = await axios.post("/api/author/login", credentials);
+        if (res.data.isAdmin) {
+          dispatch({type: "LOGIN_SUCCESS", payload: res.data})
+          navigate("/");}
+        else 
+        {
+            dispatch({type: "LOGIN_SUCCESS", payload: res.data})
+            navigate("/home");}
+
+    }  catch(error) {
+        dispatch({type: "LOGIN_FAIL", payload: error.response.data})
     }
-  };
+       
+};
   const handleregister = async (e) => {
     e.preventDefault();
     dispatch({type: 'REGISTER_START'});

@@ -5,11 +5,6 @@
     grid-gap: 20px;
 }
 
-.info-nav{
-    position: fixed;
-    width: 340px;
-}
-
 .user-info{
     position: relative;
     left: 350px;
@@ -44,5 +39,23 @@
 .item-info .item-content{
     padding: 10px;
     padding-left: 20px;
+}
 
+.nav-menu{
+    position: fixed;
+    top: 250px;
+    width: 340px;
+}
+
+.top-filter{
+    
+    padding-bottom: 50px;
+}
+
+.nav-menu .nav-item{
+    height: 40px;
+}
+
+.nav-menu .nav-item:hover{
+    cursor: pointer;
 }

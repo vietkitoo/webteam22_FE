@@ -1,41 +1,61 @@
-import './App.css';
-import Home from './page/home/Home';
-import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
-import Login from './page/login/Login';
-import List from './page/list/List';
-import New from './page/new/New';
-import Single from './page/single/Single';
+import './styles/css/bootstrap.min.css';
+import Login from './page/login/login';
+import Home from './page/home/home';
+import Regishotel from './page/registerhotel/regishotel';
+import Regispartner from './page/regispartner/regispartner';
+import Support from './page/support/support';
+import Searchresult  from './page/searchresult/searchresult';
+import Visit from './page/visit/visit';
+import Hotel from './page/hotel/hotel';
+import Booking from './page/booking/booking';
+import HomeAdmin from './admin/page/home/HomeAdmin';
+import LoginAdmin from './admin/page/login/LoginAdmin';
+import { hotelColumns, roomColumns, userColumns } from "./admin/datatablesource";
+import List from './admin/page/list/List';
+import New from './admin/page/new/New';
+import Single from './admin/page/single/Single';
+import NewRoom from './admin/page/newRoom/NewRoom';
+import NewHotel from './admin/page/newHotel/NewHotel';
+import { userInputs } from "./admin/formSource";
+import { AuthContext } from './admin/context/AuthContext';
 import { useContext } from 'react';
-import { AuthContext } from './context/AuthContext';
-import { hotelColumns, roomColumns, userColumns } from "./datatablesource";
-import { productInputs, userInputs } from "./formSource";
-import NewHotel from './page/newHotel/NewHotel';
-import NewRoom from './page/newRoom/NewRoom'
 
+import {
+  BrowserRouter,
+  Routes,
+  Route,
+  Navigate 
+} from "react-router-dom";
 
 function App() {
-
- 
-
   const ProtectedRoute = ({ children }) => {
     const { user } = useContext(AuthContext);
 
     if (!user) {
-      return <Navigate to="/login" />;
+      return <Navigate to="/home" />;
     }
-
     return children;
   };
-
   return (
-    <div className="App">
+    <main className="App">
       <BrowserRouter>
         <Routes>
+          <Route path="/home" element={<Home />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/register-hotel" element = {<Regishotel />} />
+          <Route path="/register-partner" element = {<Regispartner />} />
+          <Route path="/support" element = {<Support />} />
+          <Route path="/searchresult" element = {<Searchresult  />} />
+          <Route path="/visit" element = {<Visit  />} />
+          <Route path="/hotel" element = {<Hotel />} />
+          <Route path="/booking" element = {<Booking />} />
+          
+
           <Route path="/">
-            <Route path="login" element={<Login />} />
+          <Route path="/loginadmin" element={<LoginAdmin />} />
             <Route index element={
                 <ProtectedRoute>
-                  <Home />
+                  <HomeAdmin />
                 </ProtectedRoute>
               }
             />
@@ -118,7 +138,7 @@ function App() {
           </Route>
         </Routes>
       </BrowserRouter>
-    </div>
+    </main>
   );
 }
 

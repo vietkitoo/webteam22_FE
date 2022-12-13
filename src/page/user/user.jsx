@@ -16,7 +16,12 @@ function User() {
     const [password, setPassword] = useState();
     const [newPassword, setNewPassword] = useState();
     const [confirmNewPassword, setConfirmNewPassword] = useState();
+    const [click, setClick] = useState(false);
     const navigate = useNavigate();
+
+    const handleClick = () => setClick(!click);
+
+    const closeMenu = () => setClick(false);
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -32,19 +37,35 @@ function User() {
         }
     }
 
+
     return(
         <>
             <Header />
             <div className="content" >
-                
                 <div className="container main-info">
-                    <Nav defaultActiveKey="/home" className="flex-column info-nav">
+                    <ul className={click ? "nav-menu flex-column active" : "nav-menu flex-column"}>
                         <h2 className="top-filter">Quản lý tài khoản người dùng</h2>
-                        <Nav.Link href="#userInfo">Thông tin cá nhân</Nav.Link>
-                        <Nav.Link href="#changePassword">Thay đổi mật khẩu</Nav.Link>
-                        <Nav.Link eventKey="link-1">Thông tin đặt phòng</Nav.Link>
-                        <Nav.Link eventKey="link-2">Lịch sử</Nav.Link>
-                    </Nav>
+                        <li className="nav-item">
+                            <Link to="test1" spy={true} smooth={true} offset={-100} duration={500} onClick={closeMenu}>
+                            Thông tin cá nhân
+                            </Link>
+                        </li>
+                        <li className="nav-item">
+                            <Link to="test1" spy={true} smooth={true} offset={-100} duration={500} onClick={closeMenu}>
+                            Thay đổi mật khẩu
+                            </Link>
+                        </li>
+                        <li className="nav-item">
+                            <Link to="test1" spy={true} smooth={true} offset={0} duration={500} onClick={closeMenu}>
+                            Thông tin đặt phòng
+                            </Link>
+                        </li>
+                        <li className="nav-item">
+                            <Link to="test1" spy={true} smooth={true} offset={0} duration={500} onClick={closeMenu}>
+                            Lịch sử
+                            </Link>
+                        </li>
+                    </ul>
 
                     <div className="user-info">
                         <div className="list-search-item">
