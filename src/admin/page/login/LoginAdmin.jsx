@@ -24,7 +24,7 @@ const LoginAdmin = () => {
 
         try {
 
-            const res = await axios.post("/api/auth/login", credentials);
+            const res = await axios.post("/api/auth/admin", credentials);
             if (res.data.isAdmin) {
             dispatch({type: "LOGIN_SUCCESS", payload: res.data.details})
             navigate("/");}

@@ -1,9 +1,9 @@
 import React, { useContext, useState } from 'react';
 import axios from 'axios';
-import {axiosInstance} from '../../config'
+import { axiosInstance } from '../../config';
 import { BsFacebook, BsGoogle, BsTwitter, BsGithub } from 'react-icons/bs';
 import { useNavigate, Link } from 'react-router-dom';
-import './login.scss'
+import './login.scss';
 import {
   MDBContainer,
   MDBTabs,
@@ -54,28 +54,27 @@ function Login() {
   };
   const handlelogin = async (e) => {
     e.preventDefault();
-    dispatch({type: 'LOGIN_START'});
+    dispatch({ type: 'LOGIN_START' });
 
     try {
-      const res = await axiosInstance.post(
-        "/auth/login",
-        credentials
-      );
-      dispatch({ type: 'LOGIN_SUCCESS', payload: res.data });
-      navigate('/');
+      const res = await axios.post('/api/auth/login', credentials);
+      if (res.data.isAdmin) {
+        dispatch({ type: 'LOGIN_SUCCESS', payload: res.data });
+        navigate('/');
+      } else {
+        dispatch({ type: 'LOGIN_SUCCESS', payload: res.data });
+        navigate('/home');
+      }
     } catch (error) {
       dispatch({ type: 'LOGIN_FAIL', payload: error.response.data });
     }
   };
   const handleregister = async (e) => {
     e.preventDefault();
-    dispatch({type: 'REGISTER_START'});
+    dispatch({ type: 'REGISTER_START' });
 
     try {
-      const res = await axiosInstance.post(
-        "/auth/register",
-        credentials
-      );
+      const res = await axiosInstance.post('/auth/register', credentials);
       dispatch({ type: 'REGISTER_SUCCESS', payload: res.data });
       navigate('/');
     } catch (error) {
@@ -182,7 +181,6 @@ function Login() {
                     <Link to="../forgot">
                       <a href="#">Forgot password?</a>
                     </Link>
-                    
                   </div>
                   <div>
                     <button
@@ -251,7 +249,7 @@ function Login() {
                   <MDBInput
                     wrapperClass="mb-4"
                     label="Password"
-                     onChange={handleChange}
+                    onChange={handleChange}
                     id="password"
                     type="password"
                   />

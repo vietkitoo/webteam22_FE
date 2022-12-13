@@ -4,6 +4,7 @@ const INITIAL_STATE = {
   user: JSON.parse(localStorage.getItem('user')) || null,
   loading: false,
   error: null,
+  // isAdmin: null,
 };
 
 export const AuthContext = createContext(INITIAL_STATE);
@@ -55,6 +56,7 @@ const authReducer = (state, action) => {
         loading: false,
         error: action.payload,
       };
+      
     default:
       return state;
   }

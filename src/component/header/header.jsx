@@ -68,7 +68,7 @@ const Header = () => {
 
                 <Dropdown.Menu>
                   <Link to="../user">
-                    <Dropdown.Item href="#/"><BsPersonFill />{user.username}</Dropdown.Item>
+                    <Dropdown.Item href="#/"><BsPersonFill />{user.details.username}</Dropdown.Item>
                   </Link>
                   <Dropdown.Divider />
                   <Dropdown.Item href="#/action-2"><BsHouseFill />Phòng đã đặt</Dropdown.Item>

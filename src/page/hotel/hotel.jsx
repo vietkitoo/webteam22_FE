@@ -21,7 +21,7 @@ import { useLocation, useNavigate } from 'react-router-dom';
 import { Link } from 'react-router-dom';
 import { SearchContext } from '../../context/SearchContext';
 import { AuthContext } from '../../context/AuthContext';
-import {axiosInstance} from '../../config'
+import { axiosInstance } from '../../config';
 import format from 'date-fns/format';
 import axios from 'axios';
 import moment from 'moment';
@@ -29,6 +29,7 @@ function Hotel() {
   const navigate = useNavigate();
   const location = useLocation();
   const [open, setOpen] = useState(false);
+  // console.log(JSON.parse(localStorage.getItem('user')).details._id);
   const id = location.pathname.split('/')[2];
   const { data, loading, error, reFetch } = useFetch(`/api/hotels/find/${id}`);
   const { date } = useContext(SearchContext);
@@ -44,7 +45,7 @@ function Hotel() {
 
   //Lấy data của room của từng hotel
   const { data1, loading1 } = useFetch(`/api/hotels/room/${id}`);
-  // console.log(data1);
+  // console.log(data1);s
   const [OpenDate, setOpenDate] = useState(false);
 
   const [selectedRoom, setSelectedRoom] = useState([]);
@@ -88,34 +89,40 @@ function Hotel() {
         : selectedRoom.filter((item) => item !== value)
     );
   };
-
+  var s;
+  
   const handleClick = async () => {
     try {
       await Promise.all(
         selectedRoom.map((roomId) => {
-          // console.log(allDates);
+          s = roomId;
+          console.log(s);
           const res = axios.put(`/api/rooms/availability/${roomId}`, {
             date: allDates,
           });
           return res.data;
         })
       );
-      const res1 = await axiosInstance.post('/booking/booking', {
-        room: data1.title,
-        userId: JSON.parse(localStorage.getItem('user'))._id,
-        fromDate: moment(date[0].startDate).format('DD-MM-YY'),
-        toDate: moment(date[0].endDate).format('DD-MM-YY'),
+      setOpen(false);
+      navigate('/');
+    } catch (err) {};
+    try{
+      const res1 = await axiosInstance.get(`/rooms/typeroom/${s}`);
+      console.log(res1);
+      const res2 = await axios.post('/api/booking/', {
+        room: res1.data.title,
+        roomId: res1.data._id,
+        userId: JSON.parse(localStorage.getItem('user')).details._id,
+        // fromDate: moment(date[0].startDate).format('DD-MM-YY'),
+        fromDate: format(date[0].startDate, 'MM/dd/yyyy'),
+        // toDate: moment(date[0].endDate).format('DD-MM-YY'),
+        toDate: format(date[0].endDate, 'MM/dd/yyyy'),
         totalPrice: days * data.price,
         totalDays: days,
       });
-      setOpen(false);
-      navigate('/');
-    } catch (err) {}
+      return res2.data;
+    }catch (err) {};
   };
-  // console.log(JSON.parse(localStorage.getItem('user'))._id);
-  // console.log(format(date[0].startDate, 'MM/dd/yyyy'));
-  // console.log(days * data.price);
-  // console.log(days);
 
   return (
     <>
