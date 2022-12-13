@@ -29,7 +29,7 @@ function Hotel() {
   const navigate = useNavigate();
   const location = useLocation();
   const [open, setOpen] = useState(false);
-  // console.log(JSON.parse(localStorage.getItem('user')).details._id);
+  // console.log(JSON.parse(localStorage.getItem('user')).details.username);
   const id = location.pathname.split('/')[2];
   const { data, loading, error, reFetch } = useFetch(`/api/hotels/find/${id}`);
   const { date } = useContext(SearchContext);
@@ -113,6 +113,7 @@ function Hotel() {
         room: res1.data.title,
         roomId: res1.data._id,
         userId: JSON.parse(localStorage.getItem('user')).details._id,
+        username: JSON.parse(localStorage.getItem('user')).details.username,
         // fromDate: moment(date[0].startDate).format('DD-MM-YY'),
         fromDate: format(date[0].startDate, 'MM/dd/yyyy'),
         // toDate: moment(date[0].endDate).format('DD-MM-YY'),
