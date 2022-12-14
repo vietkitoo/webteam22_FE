@@ -42,17 +42,21 @@ const Datatable = ({columns}) => {
   return (
     <div className="datatable">
       <div className="datatableTitle">
-       
+      <hr/>
         <Link to={`/${path}/new`} className="link">
                    <span> Thêm mới </span> 
         </Link>
+
       </div>
+
+      <hr/>
+  
       <DataGrid
         className="datagrid"
         rows={data}
         columns={columns.concat(actionColumn)}
-        pageSize={10}
-        rowsPerPageOptions={[10]}
+        pageSize={8}
+        rowsPerPageOptions={[60]}
         getRowId={(row) => row._id}
       />
     </div>

@@ -26,7 +26,7 @@ import UpdateBooking from "./admin/page/updatebooking/UpdateBooking";
 import SingleHotel from "./admin/page/singlehotel/SingleHotel";
 import SingleRoom from "./admin/page/singleroom/SingleRoom";
 
-import { userInputs } from "./admin/formSource";
+import { userInputs, UpuserInputs } from "./admin/formSource";
 import { AuthContext } from './admin/context/AuthContext';
 
 import { useContext } from 'react';
@@ -96,7 +96,7 @@ function App() {
                   path="update"
                   element={
                   <ProtectedRoute>
-                   <UpdateUser inputs={userInputs} title="Add New User"/>
+                   <UpdateUser inputs={UpuserInputs} title="Update user"/>
                   </ProtectedRoute>
                   }
                   />
@@ -105,7 +105,7 @@ function App() {
                 path="new"
                 element={
                   <ProtectedRoute>
-                    <New inputs={userInputs} title="Update user" />
+                    <New inputs={userInputs} title="Add New User" />
                   </ProtectedRoute>
                 }
               />
