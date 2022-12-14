@@ -1,15 +1,19 @@
-import "./newHotel.scss";
+import "./update.scss";
 import Sidebar from "../../component/sidebar/Sidebar";
 import DriveFolderUploadOutlinedIcon from "@mui/icons-material/DriveFolderUploadOutlined";
 import { useState } from "react";
 import { hotelInputs } from "../../formSource";
 import useFetch from "../../hook/useFetch";
 import axios from "axios";
+import {  useLocation } from "react-router-dom";
 
 const NewHotel = () => {
   const [file, setFile] = useState("");
   const [info, setInfo] = useState({});
   const [rooms, setRooms] = useState([]);
+  const location = useLocation();
+  const path = location.pathname.split("/")[1];
+  const path2 = location.pathname.split("/")[2];
 
   const { data, loading, error } = useFetch("/api/rooms");
 
@@ -41,13 +45,13 @@ const NewHotel = () => {
       const { url } = uploadRes.data;
 
 
-      const newhotel = {
+      const updatehotel = {
         ...info,
         rooms,
         image:  url,
       };
 
-      await axios.post("/api/hotels", newhotel);
+      await axios.put(`/api/${path}/${path2}/update`, updatehotel);
     } catch (err) {console.log(err)}
   };
   return (
@@ -55,7 +59,7 @@ const NewHotel = () => {
       <Sidebar />
       <div className="newContainer">
         <div className="top">
-          <h1>Thêm khách sạn mới</h1>
+          <h1>Chỉnh sửa khách sạn</h1>
         </div>
         <div className="bottom">
           <div className="left">

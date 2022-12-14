@@ -3,7 +3,13 @@ export const userInputs = [
       id: "username",
       label: "Tên đăng nhập",
       type: "text",
-      placeholder: "NguyenVanA",
+      placeholder: "cheminhtung",
+    },
+    {
+      id: "fullname",
+      label: "Họ và tên",
+      type: "text",
+      placeholder: "Nguyen Van A",
     },
     {
       id: "email",
@@ -33,10 +39,6 @@ export const userInputs = [
       label: "City",
       type: "text",
       placeholder: "Nghệ An",
-    },
-    {id:"isadmin",
-    label: "true / false",
-    type: Boolean,
     },
   ];
   
@@ -96,7 +98,7 @@ export const userInputs = [
   export const roomInputs = [
     {
       id: "title",
-      label: "Title",
+      label: "Kiểu phòng",
       type: "text",
       placeholder: "2 dường ngủ",
     },
@@ -119,3 +121,14 @@ export const userInputs = [
       placeholder: "2",
     },
   ];
+
+  export const bookingInputs = [
+    {
+      id: "status",
+      label: "Trạng thái",
+      type: "text",
+      placeholder: "Đã thanh toán",
+    },
+  ]
+
+  

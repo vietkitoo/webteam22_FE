@@ -8,9 +8,7 @@ import axios from "axios";
 const Datatable = ({columns}) => {
   const location = useLocation();
   const path = location.pathname.split("/")[1];
-
   const { data, loading, error } = useFetch(`api/${path}`);
-
 
 
   const handleDelete = async (_id) => {
@@ -27,7 +25,7 @@ const Datatable = ({columns}) => {
       renderCell: (params) => {
         return (
           <div className="cellAction">
-            <Link to="/users/test" style={{ textDecoration: "none" }}>
+            <Link to={`/${path}/${params.row._id}`} style={{ textDecoration: "none" }}>
               <div className="viewButton">Xem</div>
             </Link>
             <div
@@ -44,18 +42,17 @@ const Datatable = ({columns}) => {
   return (
     <div className="datatable">
       <div className="datatableTitle">
-        {path}
+       
         <Link to={`/${path}/new`} className="link">
-          Add New
+                   <span> Thêm mới </span> 
         </Link>
       </div>
       <DataGrid
         className="datagrid"
         rows={data}
         columns={columns.concat(actionColumn)}
-        pageSize={9}
-        rowsPerPageOptions={[9]}
-        checkboxSelection
+        pageSize={10}
+        rowsPerPageOptions={[10]}
         getRowId={(row) => row._id}
       />
     </div>
