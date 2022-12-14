@@ -18,17 +18,17 @@ import New from './admin/page/new/New';
 import Single from './admin/page/single/Single';
 import NewRoom from './admin/page/newRoom/NewRoom';
 import NewHotel from './admin/page/newHotel/NewHotel';
-import LoginAdmin from './admin/page/login/LoginAdmin';
-import { userInputs } from "./admin/formSource";
-import { AuthContext } from './admin/context/AuthContext';
-
-import SingleHotel from "./admin/page/singlehotel/SingleHotel";
-import SingleRoom from "./admin/page/singleroom/SingleRoom";
 import UpdateHotel from "./admin/page/updatehotel/Updatehotel";
 import UpdateUser from "./admin/page/update/UpdateUser";
 import UpdateRoom from "./admin/page/updateroom/UpdateRoom";
 import SingleBooking from "./admin/page/singlebooking/SingleBooking";
 import UpdateBooking from "./admin/page/updatebooking/UpdateBooking";
+import SingleHotel from "./admin/page/singlehotel/SingleHotel";
+import SingleRoom from "./admin/page/singleroom/SingleRoom";
+
+import { userInputs } from "./admin/formSource";
+import { AuthContext } from './admin/context/AuthContext';
+
 import { useContext } from 'react';
 import {
   BrowserRouter,
@@ -66,7 +66,7 @@ function App() {
           <Route path="/forgot" element = {<Forgot />} />
 
           <Route path="/">
-            <Route path="/admin" element={<LoginAdmin />} />
+            <Route path="/login" element={<Login />} />
             <Route index element={
                 <ProtectedRoute>
                   <HomeAdmin />
@@ -218,6 +218,7 @@ function App() {
               />
             </Route>
           </Route>
+      
    
         </Routes>
       </BrowserRouter>
