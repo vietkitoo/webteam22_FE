@@ -32,7 +32,6 @@ function Hotel() {
   // console.log(JSON.parse(localStorage.getItem('user')).details.username);
   const id = location.pathname.split('/')[2];
   const { data, loading, error, reFetch } = useFetch(`/api/hotels/find/${id}`);
-  // console.log(data.name);
   const { date } = useContext(SearchContext);
   // console.log(date);
   const MILLISECONDS_PER_DAYS = 1000 * 60 * 60 * 24;
@@ -46,7 +45,7 @@ function Hotel() {
 
   //Lấy data của room của từng hotel
   const { data1, loading1 } = useFetch(`/api/hotels/room/${id}`);
-  console.log(data1);
+  // console.log(data1);s
   const [OpenDate, setOpenDate] = useState(false);
 
   const [selectedRoom, setSelectedRoom] = useState([]);
@@ -91,7 +90,7 @@ function Hotel() {
     );
   };
   var s;
-  // console.log(format(new Date(),'MM/dd/yyyy'));
+  
   const handleClick = async () => {
     try {
       await Promise.all(
@@ -105,13 +104,12 @@ function Hotel() {
         })
       );
       setOpen(false);
-      navigate(`/booking`);
+      navigate('/');
     } catch (err) {};
     try{
       const res1 = await axiosInstance.get(`/rooms/typeroom/${s}`);
-      // console.log(res1);
+      console.log(res1);
       const res2 = await axios.post('/api/booking/', {
-        hotel: data.name,
         room: res1.data.title,
         roomId: res1.data._id,
         userId: JSON.parse(localStorage.getItem('user')).details._id,
@@ -119,9 +117,7 @@ function Hotel() {
         // fromDate: moment(date[0].startDate).format('DD-MM-YY'),
         fromDate: format(date[0].startDate, 'MM/dd/yyyy'),
         // toDate: moment(date[0].endDate).format('DD-MM-YY'),
-        
         toDate: format(date[0].endDate, 'MM/dd/yyyy'),
-        timepayment:format(new Date(),'MM/dd/yyyy'),
         totalPrice: days * data.price,
         totalDays: days,
       });
@@ -395,11 +391,11 @@ Vung Tau Melody Apartment đã chào đón khách Booking.com từ 23 tháng 4 2
             <h2>Loading...</h2>
           ) : (
             data1.map((item) => (
-              console.log(item),
+              // console.log(item),
               <tbody>
                 <tr>
                   <td>
-                    <a>{item.title}</a>
+                    <a href="#">{item.title}</a>
                   </td>
                   <td>
                     <IoIosMan /> x {item.maxPeople}
