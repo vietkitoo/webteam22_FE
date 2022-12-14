@@ -4,31 +4,10 @@ import Navbar from '../../component/navbar/Navbar'
 import Chart from '../../component/chart/Chart';
 import List from '../../component/table/Table';
 import useFetch from "../../hook/useFetch";
-import { useLocation } from "react-router-dom";
-import { useState } from "react";
-import Datatable from '../../component/datatable/Datatable';
-import { bookingColumns } from "../../datatablesource";
-import { Link } from 'react-router-dom';
 
 
-
-const Single = (  ) => {
-  const [user, setUser] = useState([]);
-  const handleSelect = (e) => {
-    const value = Array.from(
-      e.target.selectedOptions,
-      (option) => option.value
-    );
-    setUser(value);
-  };
-  const location = useLocation();
-  const path = location.pathname.split("/")[1];
-  const path2 = location.pathname.split("/")[2];
-  console.log(path);
-  console.log(path2);
-  const { data, loading, error } = useFetch(`/api/${path}/${path2}`);
-  console.log(data);
-
+const Single = (id) => {
+  const { data, loading, error } = useFetch(`api/users/${id}`);
   return (
     <div className="single">
       <Sidebar />
@@ -36,37 +15,33 @@ const Single = (  ) => {
         <Navbar />
         <div className="top">
           <div className="left">
-          <Link to={`/${path}/${path2}/update`}>
             <div className="editButton">Chỉnh sửa</div>
-            </Link>
             <h1 className="title">Thông tin cá nhân</h1>
             <div className="item">
               <img
-                src={data.img}
+                src="https://images.pexels.com/photos/733872/pexels-photo-733872.jpeg?auto=compress&cs=tinysrgb&dpr=3&h=750&w=1260"
                 alt=""
                 className="itemImg"
               />
               <div className="details">
-                <h1 className="itemTitle">
-                <span className="itemValue">{data.username}</span>
-                </h1>
+                <h1 className="itemTitle">{data}</h1>
                 <div className="detailItem">
                   <span className="itemKey">Email:</span>
-                  <span className="itemValue">{data.email}</span>
+                  <span className="itemValue">19522490@ms.uit.edu</span>
                 </div>
                 <div className="detailItem">
                   <span className="itemKey">Số điện thoại:</span>
-                  <span className="itemValue">{data.phone}</span>
+                  <span className="itemValue">0356333201</span>
                 </div>
                 <div className="detailItem">
                   <span className="itemKey">Địa chỉ:</span>
                   <span className="itemValue">
-                  {data.city}
+                    Dĩ An, Bình Dương
                   </span>
                 </div>
                 <div className="detailItem">
                   <span className="itemKey">Quốc gia:</span>
-                  <span className="itemValue">{data.country}</span>
+                  <span className="itemValue">USA</span>
                 </div>
               </div>
             </div>
@@ -76,11 +51,9 @@ const Single = (  ) => {
           </div>
         </div>
         <div className="bottom">
-             
-          <h1 className="title">Giao dịch gần đây</h1>
-          <Datatable columns={bookingColumns}/>
+        <h1 className="title">Giao dịch gần đây</h1>
+          <List/>
         </div>
-
       </div>
     </div>
   );
