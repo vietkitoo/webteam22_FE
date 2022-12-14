@@ -32,6 +32,7 @@ function Hotel() {
   const id = location.pathname.split('/')[2];
   const { data, loading, error, reFetch } = useFetch(`/api/hotels/find/${id}`);
   // console.log(data.name);
+  // console.log(data.name);
   const { date } = useContext(SearchContext);
   // console.log(date);
   const MILLISECONDS_PER_DAYS = 1000 * 60 * 60 * 24;
