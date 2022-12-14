@@ -13,6 +13,7 @@ const New = ({ inputs, title }) => {
     setInfo((prev) => ({ ...prev, [e.target.id]: e.target.value }));
   };
 
+  
   const handleClick = async (e) => {
     e.preventDefault();
     const data = new FormData();
@@ -81,7 +82,15 @@ const New = ({ inputs, title }) => {
                     id={input.id}
                   />
                 </div>
+              
               ))}
+              <div className="formInput">
+                <label>Quản trị viên</label>
+                <select id="isAdmin" onChange={handleChange}>
+                  <option value={false}>No</option>
+                  <option value={true}>Yes</option>
+                </select>
+              </div>
               <button onClick={handleClick}>Gửi</button>
             </form>
           </div>

@@ -42,35 +42,13 @@ const Sidebar = () => {
             </li>  <li>
             <Link to="/rooms" > 
                 <HotelIcon/>
-                <span>Phòng</span>
+                <span url='/rooms'>Phòng</span>
                 </Link>
             </li>
             <li>
                 <CreditCardIcon/>
+                <Link to="/booking" > 
                 <span>Đơn hàng</span>
-            </li>
-            <p className="title"> Tiện ích</p>
-            <li>
-                <EqualizerIcon/>
-                <span>Thống kê</span>
-            </li>
-            <li>
-                <NotificationsActiveIcon/>
-                <span>Thông báo</span>
-            </li>
-            <li>
-                <WorkHistoryIcon/>
-                <span>Nhật ký</span>
-            </li>
-            <li>
-                <SettingsIcon/>
-                <span>Cài đặt</span>
-            </li>
-            <p className="title"> Người dùng</p>
-            <li>
-                <Link to="/users/test" > 
-                <AccountCircleIcon/>
-                <span>Thông tin cá nhân</span>
                 </Link>
             </li>
             <li>

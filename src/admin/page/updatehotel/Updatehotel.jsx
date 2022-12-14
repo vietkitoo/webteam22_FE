@@ -1,58 +1,70 @@
-import "./newRoom.scss";
+import "./update.scss";
 import Sidebar from "../../component/sidebar/Sidebar";
 import Navbar from "../../component/navbar/Navbar";
+import DriveFolderUploadOutlinedIcon from "@mui/icons-material/DriveFolderUploadOutlined";
 import { useState } from "react";
-import { roomInputs } from "../../formSource";
+import { hotelInputs } from "../../formSource";
 import useFetch from "../../hook/useFetch";
 import axios from "axios";
-import DriveFolderUploadOutlinedIcon from "@mui/icons-material/DriveFolderUploadOutlined";
+import {  useLocation } from "react-router-dom";
 
-const NewRoom = () => {
+const NewHotel = () => {
   const [file, setFile] = useState("");
   const [info, setInfo] = useState({});
-  const [hotelId, setHotelId] = useState(undefined);
   const [rooms, setRooms] = useState([]);
+  const location = useLocation();
+  const path = location.pathname.split("/")[1];
+  const path2 = location.pathname.split("/")[2];
 
-  const { data, loading, error } = useFetch("/api/hotels");
+  const { data, loading, error } = useFetch("/api/rooms");
 
   const handleChange = (e) => {
     setInfo((prev) => ({ ...prev, [e.target.id]: e.target.value }));
   };
 
+  const handleSelect = (e) => {
+    const value = Array.from(
+      e.target.selectedOptions,
+      (option) => option.value
+    );
+    setRooms(value);
+  };
+  
+  console.log(file)
+
   const handleClick = async (e) => {
     e.preventDefault();
     const data = new FormData();
-      data.append("file", file);
-      data.append("upload_preset", "upload");
-    const roomNumbers = rooms.split(",").map((room) => ({ number: room }));
+    data.append("file", file);
+    data.append("upload_preset", "upload");
     try {
-        const uploadRes = await axios.post(
-          "https://api.cloudinary.com/v1_1/dypkrcusa/image/upload",
-          data
-        );
-        const { url } = uploadRes.data;
-      const newroom = {
-        ...info,
-        roomNumbers,
-        image: url,
-      };
-      await axios.post(`/api/rooms/${hotelId}`,  newroom);
-    } catch (err) {
-      console.log(err);
-    }
-  };
+      const uploadRes = await axios.post(
+        "https://api.cloudinary.com/v1_1/dypkrcusa/image/upload",
+        data
+      );
 
-  console.log(info)
+      const { url } = uploadRes.data;
+
+
+      const updatehotel = {
+        ...info,
+        rooms,
+        image:  url,
+      };
+
+      await axios.put(`/api/${path}/${path2}/update`, updatehotel);
+    } catch (err) {console.log(err)}
+  };
   return (
     <div className="new">
       <Sidebar />
       <div className="newContainer">
         <Navbar />
         <div className="top">
-          <h1>Thêm phòng mới</h1>
+          <h1>Chỉnh sửa khách sạn</h1>
         </div>
         <div className="bottom">
-        <div className="left">
+          <div className="left">
           <img
               src={
                 file
@@ -61,9 +73,8 @@ const NewRoom = () => {
               }
               alt=""
             />
-            </div>
+          </div>
           <div className="right">
-            
             <form>
             <div className="formInput">
                 <label htmlFor="file">
@@ -75,36 +86,36 @@ const NewRoom = () => {
                   onChange={(e) => setFile(e.target.files[0])}
                   style={{ display: "none" }}
                 />
-              </div> 
-              {roomInputs.map((input) => (
+              </div>
+
+              {hotelInputs.map((input) => (
                 <div className="formInput" key={input.id}>
                   <label>{input.label}</label>
                   <input
                     id={input.id}
+                    onChange={handleChange}
                     type={input.type}
                     placeholder={input.placeholder}
-                    onChange={handleChange}
                   />
                 </div>
               ))}
               <div className="formInput">
-                <label>Rooms</label>
-                <textarea
-                  onChange={(e) => setRooms(e.target.value)}
-                  placeholder="thêm dấu phẩy sau mỗi phòng"
-                />
+                <label>Featured</label>
+                <select id="featured" onChange={handleChange}>
+                  <option value={false}>No</option>
+                  <option value={true}>Yes</option>
+                </select>
               </div>
-              <div className="formInput">
-                <label>Chọn khách sạn</label>
-                <select
-                  id="hotelId"
-                  onChange={(e) => setHotelId(e.target.value)}
-                >
+              <div className="selectRooms">
+                <label>Rooms</label>
+                <select id="rooms" multiple onChange={handleSelect}>
                   {loading
                     ? "loading"
                     : data &&
-                      data.map((hotel) => (
-                        <option key={hotel._id} value={hotel._id}>{hotel.name}</option>
+                      data.map((room) => (
+                        <option key={room._id} value={room._id}>
+                          {room.title}
+                        </option>
                       ))}
                 </select>
               </div>
@@ -117,4 +128,4 @@ const NewRoom = () => {
   );
 };
 
-export default NewRoom;
+export default NewHotel;

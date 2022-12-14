@@ -12,7 +12,7 @@ import { Link } from 'react-router-dom';
 
 
 
-const Single = (  ) => {
+const SingleBooking = (  ) => {
   const [user, setUser] = useState([]);
   const handleSelect = (e) => {
     const value = Array.from(
@@ -37,36 +37,57 @@ const Single = (  ) => {
         <div className="top">
           <div className="left">
           <Link to={`/${path}/${path2}/update`}>
-            <div className="editButton">Chỉnh sửa</div>
+            <div className="editButton">Chỉnh sửa trạng thái đơn hàng</div>
             </Link>
-            <h1 className="title">Thông tin cá nhân</h1>
+            <h1 className="title">Thông tin đặt phòng</h1>
             <div className="item">
-              <img
-                src={data.img}
-                alt=""
-                className="itemImg"
-              />
+           
+                
               <div className="details">
                 <h1 className="itemTitle">
-                <span className="itemValue">{data.username}</span>
-                </h1>
                 <div className="detailItem">
-                  <span className="itemKey">Email:</span>
-                  <span className="itemValue">{data.email}</span>
-                </div>
+                 
+                 <span className="itemValue">{data.fullname}</span>
+               </div>
+               
+                </h1>
                 <div className="detailItem">
                   <span className="itemKey">Số điện thoại:</span>
                   <span className="itemValue">{data.phone}</span>
                 </div>
                 <div className="detailItem">
-                  <span className="itemKey">Địa chỉ:</span>
+                  <span className="itemKey">Khách sạn:</span>
                   <span className="itemValue">
-                  {data.city}
+                  {data.hotelname}
                   </span>
                 </div>
                 <div className="detailItem">
-                  <span className="itemKey">Quốc gia:</span>
-                  <span className="itemValue">{data.country}</span>
+                <span className="itemKey">Kiểu phòng:</span>
+                <span className="itemValue">{data.room}</span>
+                <div className="detailItem">
+                  </div>
+                  <span className="itemKey">Số tiền thanh toán:</span>
+                  <span className="itemValue">{data.totalPrice}</span>
+                </div>
+                <div className="detailItem">
+                  <span className="itemKey">Ngày đặt:</span>
+                  <span className="itemValue">{data.paymentDate}</span>
+                </div>
+                <div className="detailItem">
+                  <span className="itemKey">Ngày nhận phòng:</span>
+                  <span className="itemValue">{data.fromDate}</span>
+                </div>
+                <div className="detailItem">
+                  <span className="itemKey">Ngày trả phòng:</span>
+                  <span className="itemValue">{data.toDate}</span>
+                </div>
+                <div className="detailItem">
+                  <span className="itemKey">Số ngày thuê:</span>
+                  <span className="itemValue">{data.totalDays}</span>
+                </div>
+                <div className="detailItem">
+                  <span className="itemKey">Trạng thái đặt hàng:</span>
+                  <span className="itemValue">{data.status}</span>
                 </div>
               </div>
             </div>
@@ -86,4 +107,4 @@ const Single = (  ) => {
   );
 };
 
-export default Single;
+export default SingleBooking;
