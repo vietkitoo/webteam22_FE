@@ -4,7 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../context/AuthContext';
 import "./login.css"
 
-const LoginAdmin = () => {
+const Login = () => {
 
     const [credentials, setCredentials] = useState({
         username: undefined,
@@ -24,13 +24,14 @@ const LoginAdmin = () => {
 
         try {
 
-            const res = await axios.post("/api/auth/admin", credentials);
+            const res = await axios.post("/api/auth/login", credentials);
             if (res.data.isAdmin) {
-            dispatch({type: "LOGIN_SUCCESS", payload: res.data.details})
+            dispatch({type: "LOGIN_SUCCESS", payload: res.data})
             navigate("/");}
             else 
-            dispatch({type: "LOGIN_FAIL", payload: {message: "Bạn không có quyền truy cập"},})
-
+            {
+                dispatch({type: "LOGIN_SUCCESS", payload: res.data})
+                navigate("/home");}  
         }  catch(error) {
             dispatch({type: "LOGIN_FAIL", payload: error.response.data})
         }
@@ -59,4 +60,4 @@ const LoginAdmin = () => {
   )
 }
 
-export default LoginAdmin
+export default Login

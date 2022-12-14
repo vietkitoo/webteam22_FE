@@ -1,6 +1,5 @@
 import "./new.scss";
 import Sidebar from "../../component/sidebar/Sidebar";
-import Navbar from "../../component/navbar/Navbar";
 import DriveFolderUploadOutlinedIcon from "@mui/icons-material/DriveFolderUploadOutlined";
 import { useState } from "react";
 import axios from "axios";
@@ -13,6 +12,7 @@ const New = ({ inputs, title }) => {
     setInfo((prev) => ({ ...prev, [e.target.id]: e.target.value }));
   };
 
+  
   const handleClick = async (e) => {
     e.preventDefault();
     const data = new FormData();
@@ -42,7 +42,6 @@ const New = ({ inputs, title }) => {
     <div className="new">
       <Sidebar />
       <div className="newContainer">
-        <Navbar />
         <div className="top">
           <h1>Thêm nhân viên mới</h1>
         </div>
@@ -81,7 +80,15 @@ const New = ({ inputs, title }) => {
                     id={input.id}
                   />
                 </div>
+              
               ))}
+              <div className="formInput">
+                <label>Quản trị viên</label>
+                <select id="isAdmin" onChange={handleChange}>
+                  <option value={false}>No</option>
+                  <option value={true}>Yes</option>
+                </select>
+              </div>
               <button onClick={handleClick}>Gửi</button>
             </form>
           </div>
