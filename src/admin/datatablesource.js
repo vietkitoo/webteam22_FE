@@ -1,5 +1,5 @@
 export const userColumns = [
-  
+    { field: "_id", headerName: "ID", width: 70 },
     {
       field: "user",
       headerName: "Tên người dùng",
@@ -14,14 +14,9 @@ export const userColumns = [
       },
     },
     {
-      field: "fullname",
-      headerName: "Họ và tên",
-      width: 230,
-    },
-    {
       field: "email",
       headerName: "Email",
-      width: 200,
+      width: 230,
     },
   
     {
@@ -47,15 +42,15 @@ export const userColumns = [
   ];
   
   export const hotelColumns = [
-   
+    { field: "_id", headerName: "ID", width: 60 },
     {
       field: "name",
       headerName: "Name",
-      width: 200,
+      width: 150,
       renderCell: (params) => {
         return (
           <div className="cellWithImg">
-            <img className="cellImg" src={params.row.image || "https://i.ibb.co/MBtjqXQ/no-avatar.gif"} alt="avatar" />
+            <img className="cellImg" src={params.row.img || "https://i.ibb.co/MBtjqXQ/no-avatar.gif"} alt="avatar" />
             {params.row.name}
           </div>
         );
@@ -79,30 +74,34 @@ export const userColumns = [
     {
       field: "address",
       headerName: "Địa chỉ",
-      width: 300,
+      width: 100,
     },
-    
-  ];
-  
-  export const roomColumns = [
- 
     {
-      field: "title",
-      headerName: "Tiêu đề",
+      field: "rooms",
+      headerName: "phòng",
       width: 200,
       renderCell: (params) => {
         return (
-          <div className="cellWithImg">
-            <img className="cellImg" src={params.row.image || "https://i.ibb.co/MBtjqXQ/no-avatar.gif"} alt="avatar" />
-            {params.row.title}
-          </div>
+          <div> {params.row.rooms} </div>
+           
+            
+        
         );
       },
+    },
+  ];
+  
+  export const roomColumns = [
+    { field: "_id", headerName: "ID", width: 300 },
+    {
+      field: "title",
+      headerName: "Tiêu đề",
+      width: 230,
     },
     {
       field: "desc",
       headerName: "Mô tả",
-      width: 250,
+      width: 200,
     },
     {
       field: "price",
@@ -112,44 +111,7 @@ export const userColumns = [
     {
       field: "maxPeople",
       headerName: "Số người tối đa",
-      width: 150,
+      width: 100,
     },
   ];
   
-  export const bookingColumns= [
-    {
-      field: "name",
-      headerName: "Tên phòng",
-      width: 100,
-    },
-    {
-      field: "username",
-      headerName: "Tên khách hàng",
-      width: 100,
-    },
-    {
-      field: "fromDate",
-      headerName: "Ngày đặt",
-      width: 100,
-    },
-    {
-      field: "toDate",
-      headerName: "Ngày hết hạn thuê ",
-      width: 100,
-    },
-    {
-      field: "totalDays",
-      headerName: "Số ngày thuê",
-      width: 100,
-    },
-    {
-      field: "totalPrice",
-      headerName: "Tổng thanh toán",
-      width: 100,
-    },
-    {
-      field: "status",
-      headerName: "Trạng thái",
-      width: 300,
-    },
-  ];

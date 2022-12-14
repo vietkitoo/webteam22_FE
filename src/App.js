@@ -12,20 +12,13 @@ import Booking from './page/booking/booking';
 import User from './page/user/user';
 import Forgot from './page/forgot/forgot';
 
-import { hotelColumns, roomColumns, userColumns, bookingColumns } from "./admin/datatablesource";
+import { hotelColumns, roomColumns, userColumns } from "./admin/datatablesource";
 import List from './admin/page/list/List';
 import New from './admin/page/new/New';
 import Single from './admin/page/single/Single';
 import NewRoom from './admin/page/newRoom/NewRoom';
 import NewHotel from './admin/page/newHotel/NewHotel';
-import UpdateHotel from "./admin/page/updatehotel/Updatehotel";
-import UpdateUser from "./admin/page/update/UpdateUser";
-import UpdateRoom from "./admin/page/updateroom/UpdateRoom";
-import SingleBooking from "./admin/page/singlebooking/SingleBooking";
-import UpdateBooking from "./admin/page/updatebooking/UpdateBooking";
-import SingleHotel from "./admin/page/singlehotel/SingleHotel";
-import SingleRoom from "./admin/page/singleroom/SingleRoom";
-
+import LoginAdmin from './admin/page/login/LoginAdmin';
 import { userInputs } from "./admin/formSource";
 import { AuthContext } from './admin/context/AuthContext';
 import { useContext } from 'react';
@@ -65,7 +58,7 @@ function App() {
           <Route path="/forgot" element = {<Forgot />} />
 
           <Route path="/">
-            <Route path="/login" element={<Login />} />
+            <Route path="/admin" element={<LoginAdmin />} />
             <Route index element={
                 <ProtectedRoute>
                   <HomeAdmin />
@@ -82,62 +75,21 @@ function App() {
                 }
               />
               <Route
-                path=":id">
-                    <Route index
-                    element={
+                path=":userId"
+                element={
                   <ProtectedRoute>
                     <Single />
                   </ProtectedRoute>
-                  }
-                  />
-                 
-                  <Route
-                  path="update"
-                  element={
-                  <ProtectedRoute>
-                   <UpdateUser inputs={userInputs} title="Add New User"/>
-                  </ProtectedRoute>
-                  }
-                  />
-                </Route>
+                }
+              />
               <Route
                 path="new"
                 element={
                   <ProtectedRoute>
-                    <New inputs={userInputs} title="Update user" />
+                    <New inputs={userInputs} title="Add New User" />
                   </ProtectedRoute>
                 }
               />
-            </Route>
-            <Route path="booking">
-            <Route
-                index
-                element={
-                  <ProtectedRoute>
-                    <List columns={bookingColumns} />
-                  </ProtectedRoute>
-                }
-              />
-              <Route
-                path=":_id">
-                    <Route index
-                    element={
-                  <ProtectedRoute>
-                    <SingleBooking />
-                  </ProtectedRoute>
-                  }
-                  />
-                 
-                  <Route
-                  path="update"
-                  element={
-                  <ProtectedRoute>
-                    <UpdateBooking/>
-                  </ProtectedRoute>
-                  }
-                  />
-            
-              </Route>
             </Route>
             <Route path="hotels">
               <Route
@@ -149,34 +101,19 @@ function App() {
                 }
               />
               <Route
-                path=":_id">
-                    <Route index
-                    element={
-                  <ProtectedRoute>
-                    <SingleHotel />
-                  </ProtectedRoute>
-                  }
-                  />
-                 
-                  <Route
-                  path="update"
-                  element={
-                  <ProtectedRoute>
-                    <UpdateHotel/>
-                  </ProtectedRoute>
-                  }
-                  />
-            
-              </Route>
-              <Route
-                path="new"
+                path=":productId"
                 element={
                   <ProtectedRoute>
-                    <NewHotel  />
+                    <Single />
                   </ProtectedRoute>
                 }
               />
-              
+              <Route path="new" element={
+              <ProtectedRoute>
+                    <NewHotel/>
+                  </ProtectedRoute>
+                }
+              />
             </Route>
             <Route path="rooms">
               <Route
@@ -187,37 +124,24 @@ function App() {
                   </ProtectedRoute>
                 }
               />
-               <Route
-                path=":_id">
-                    <Route index
-                    element={
+              <Route
+                path=":productId"
+                element={
                   <ProtectedRoute>
-                    <SingleRoom />
+                    <Single />
                   </ProtectedRoute>
-                  }
-                  />
-                 
-                  <Route
-                  path="update"
-                  element={
-                  <ProtectedRoute>
-                    <UpdateRoom/>
-                  </ProtectedRoute>
-                  }
-                  />
-            
-              </Route>
+                }
+              />
               <Route
                 path="new"
                 element={
                   <ProtectedRoute>
-                    <NewRoom  />
+                     <NewRoom  />
                   </ProtectedRoute>
                 }
               />
             </Route>
           </Route>
-      
    
         </Routes>
       </BrowserRouter>
