@@ -2,14 +2,20 @@ import Header from '../../component/header/header';
 import './booking.scss';
 import Footer from '../../component/Footer/Footer';
 import { BsFillCaretLeftFill } from 'react-icons/bs';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import React, { useContext, useState } from 'react';
 import Form from 'react-bootstrap/Form';
 import { Button } from 'react-bootstrap';
 import { AuthContext } from '../../context/AuthContext';
+import { useEffect } from 'react';
 
 function Searchresult_app() {
   const { user } = useContext(AuthContext);
+  const location = useLocation();
+
+  useEffect(() => {
+    console.log(location.state);
+  },[]);
   return (
     <>
       <Header />
@@ -50,19 +56,21 @@ function Searchresult_app() {
                 <div className="form-block">
                   <h4>Yêu cầu đặt phòng của bạn</h4>
                   <div className="hotel-info">
-                    <h5>Khách sạn</h5>
-                    <div className="">Nhận phòng:</div>
-                    <div className="">Trả phòng:</div>
+                    <h5>{location.state.hotelname}</h5>
+                    <div className="">Nhận phòng: {location.state.fromDate}</div>
+                    <div className="">Trả phòng: {location.state.toDate}</div>
                   </div>
                   <div className="room-info">
                     <h5>Thông tin phòng</h5>
-                    <div className="room">
-                      Phòng 1:
-                      <div className="d-md-flex justify-content-md-end">(Giá tiền)</div>
-                    </div>
-                    <div className="room">
-                      Phòng 2:
-                      <div className="d-md-flex justify-content-md-end">(Giá tiền)</div>
+                    <div>
+                    {
+                      location.state.selectedRoom.map((roomId) => (
+                        <div className="room">
+                          Phòng {roomId}
+                          <div className="d-md-flex justify-content-md-end">VND</div>
+                        </div>
+                      ))
+                    }
                     </div>
                   </div>
                   <div className="mt-4 mb-4 total-price d-flex justify-content-center">
