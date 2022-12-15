@@ -1,11 +1,11 @@
 import "./update.scss";
 import Sidebar from "../../component/sidebar/Sidebar";
-import { useState } from "react";
 import { roomInputs } from "../../formSource";
 import useFetch from "../../hook/useFetch";
 import axios from "axios";
 import DriveFolderUploadOutlinedIcon from "@mui/icons-material/DriveFolderUploadOutlined";
-import {  useLocation } from "react-router-dom";
+import { Link ,useLocation,useNavigate} from 'react-router-dom';
+import { useContext, useState } from 'react';
 
 const UpdateRoom = () => {
   
@@ -19,7 +19,7 @@ const UpdateRoom = () => {
   const handleChange = (e) => {
     setInfo((prev) => ({ ...prev, [e.target.id]: e.target.value }));
   };
-
+  const navigate = useNavigate();
   const handleClick = async (e) => {
     e.preventDefault();
     const data = new FormData();
@@ -31,6 +31,7 @@ const UpdateRoom = () => {
         roomNumbers,
       };
       await axios.put(`/api/${path}/${path2}/update`,  updateroom);
+      navigate('/rooms');
     } catch (err) {
       console.log(err);
     }
