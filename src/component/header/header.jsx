@@ -51,14 +51,14 @@ const Header = () => {
         
         
         <form className="form-inline d-flex">
-          <Link to="../register-hotel">
+          {/* <Link to="../register-hotel">
             <button
               type="button"
               className="btn btn-outline-info color_hover_btn_outline_info"
             >
               Đăng thông tin phòng nghỉ của quý khách
             </button>
-          </Link>
+          </Link> */}
 
           <Link to="../support">
             <BsFillQuestionCircleFill 

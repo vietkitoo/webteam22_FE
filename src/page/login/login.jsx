@@ -259,6 +259,13 @@ function Login() {
                   />
                   <MDBInput
                     wrapperClass="mb-4"
+                    label="FullName"
+                    onChange={handleChange}
+                    id="fullname"
+                    type="text"
+                  />
+                  <MDBInput
+                    wrapperClass="mb-4"
                     label="Email"
                     onChange={handleChange}
                     id="email"

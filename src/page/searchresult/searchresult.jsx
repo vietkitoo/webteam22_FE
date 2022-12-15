@@ -32,7 +32,7 @@ function Searchresult_app() {
     console.log(date[0]);
     return () => document.body.removeEventListener('click', closecalendar);
   }, []);
-  
+
   const [options, setOptions] = useState(location.state.options);
   const [min, setMin] = useState(undefined);
   const [max, setMax] = useState(undefined);
@@ -40,7 +40,9 @@ function Searchresult_app() {
     `/api/hotels?city=${destination}&min=${min || 0}&max=${max || 9999}`
   );
   const { data1 } = useFetch(
-    `/api/hotels/bycity?cities=${destination}&min=${min || 0}&max=${max || 9999}`
+    `/api/hotels/bycity?cities=${destination}&min=${min || 0}&max=${
+      max || 9999
+    }`
   );
   const navigate = useNavigate();
   const handleSearch = () => {
@@ -50,15 +52,16 @@ function Searchresult_app() {
   };
 
   const handleClick = (item) => {
-    navigate(`/hotel/${item._id}`,
-    {state : {
-      hotelname: item.name,
-      address: item.address,
-      rating: item.rating,
-      price: item.price,
-      hotelId: item._id,
-      date: date,
-    }})
+    navigate(`/hotel/${item._id}`, {
+      state: {
+        hotelname: item.name,
+        address: item.address,
+        rating: item.rating,
+        price: item.price,
+        hotelId: item._id,
+        date: date,
+      },
+    });
   };
 
   return (
@@ -66,8 +69,7 @@ function Searchresult_app() {
       <Header />
       <div className="content search-result">
         {/* <SearchBar /> */}
-        
-        
+
         <div className="container main-search">
           <div className="list-filter">
             {/* <div className="box-position">
@@ -94,9 +96,12 @@ function Searchresult_app() {
                     <input
                       type="text"
                       className="form-control"
-                      placeholder={destination} 
+                      placeholder={destination}
                       aria-describedby="basic-addon1"
-                      onChange={(e) => {setDestination(e.target.value); handleSearch();}}
+                      onChange={(e) => {
+                        setDestination(e.target.value);
+                        handleSearch();
+                      }}
                     />
                   </div>
                   <div>Ngày nhận phòng</div>
@@ -221,14 +226,13 @@ function Searchresult_app() {
                       label="Tôi đi công tác"
                     />
                   </div> */}
-                    {/* <button
+                  {/* <button
                       className="btn btn-primary input-group "
                       type="submit"
                       onClick={handleSearch}
                     >
                       Tìm
                     </button> */}
-
                 </div>
               </div>
             </div>
@@ -248,53 +252,32 @@ function Searchresult_app() {
                   <>
                     {data.map((item) => (
                       <div className="item-hotel bg-box">
-                      <img src={item.image} alt={item.name} />
-                      
-                      <div className="item-content">
-                        {/* <Link to={{
-                          pathname: `/hotel/${item._id}`,
-                          state: {
-                            hotelname: item.name,
-                            address: item.address,
-                            rating: item.rating,
-                            price: item.price,
-                            hotelId: item._id,
-                            date,
-                          }
-                          }}> */}
-                          <Link onClick={() => handleClick(item)}>
+                        <img src={item.image} alt={item.name} />
+                        <div className="item-content">
+                          <a href="" onClick={() => handleClick(item)}>
                             <h4>{item.name}</h4>
-                          </Link>
-                          
-                        <p className="address">
-                          <BsGeoAlt />
-                          <>{(item.address)}</>
-                        </p>
-                        <div className="rate">{(item.rating)}</div>
-                      </div>
-                      <div className="price">
-                        <div className="content-price">
-                          <div className="d-price">
-                            <p>Chỉ từ</p>
-                            <p className="c-price">{(item.price)}VND</p>
-                            <span>VNĐ</span>
-                            <p>phòng/đêm</p>
+                          </a>
+
+                          <p className="address">
+                            <BsGeoAlt />
+                            <>{item.address}</>
+                          </p>
+                          <div className="rate">{item.rating}</div>
+                        </div>
+                        <div className="price">
+                          <div className="content-price">
+                            <div className="d-price">
+                              <p>Chỉ từ</p>
+                              <p className="c-price">{item.price}VND</p>
+                              <span>VNĐ</span>
+                              <p>phòng/đêm</p>
+                            </div>
+                            <Button onClick={() => handleClick(item)}>
+                              Đặt ngay
+                            </Button>
                           </div>
-                          {/* <Link to={{
-                          pathname: `/hotel/${item._id}`,
-                          state: {
-                            hotelname: item.name,
-                            address: item.address,
-                            rating: item.rating,
-                            price: item.price,
-                            hotelId: item._id,
-                            date,
-                          }
-                          }}> */}
-                            <Button onClick={() => handleClick(item)}> Đặt ngay </Button>
                         </div>
                       </div>
-                    </div>
                     ))}
                   </>
                 )}

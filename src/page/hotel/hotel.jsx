@@ -142,7 +142,7 @@ function Hotel() {
     <>
       <Header />
       <div className="content w-100 d-flex content-hotel-page">
-        <div className="d-flex w-75 my-4">
+        <div className="d-flex w-75 my-4 setmargin">
           {/* Thông tin hotel */}
           <div className="w-75 ">
             <div className="m-4">
@@ -170,78 +170,53 @@ function Hotel() {
               </div>
               {/* description picture */}
               <div className="description_picture">
-                <div className="d-flex">
-                  <div className=" description_picture_left">
+                <div className="d-flex h-66">
+                  <div className="row description_picture_left">
                     <span>
                       <img
-                        className="col w-100"
-                        src={data.image2}
+                        className="col h-100 w-100"
+                        src={data.image1}
                         alt={data.name}
                         crop="scale"
                       />
                     </span>
                     <span>
                       <img
-                        className="col w-100"
+                        className="col h-100 w-100"
+                        src={data.image2}
+                        alt={data.name}
+                        crop="scale"
+                      />
+                    </span>
+                  </div>
+                  <div className=" description_picture_right">
+                    <span>
+                      <img
+                        className="h-100 w-100"
                         src={data.image3}
                         alt={data.name}
                         crop="scale"
                       />
                     </span>
                   </div>
-                  <div className="description_picture_right">
-                    <span>
-                      <img
-                        className="col w-100"
-                        src={data.image4}
-                        alt={data.name}
-                        crop="scale"
-                      />
-                    </span>
-                  </div>
                 </div>
-                <div className="col d-flex">
-                  <span>
+                <div className="h-25 row description_picture_bottom">
+                  <span className="col ">
                     <img
-                      className="col w-100"
+                      src={data.image4}
+                      alt={data.name}
+                    /> 
+                  </span>
+                  <span className="col ">
+                     <img
                       src={data.image5}
                       alt={data.name}
                     />
                   </span>
-                  <span>
-                    <Image
-                      cloudName="dxivl2lh5"
-                      publicId="rest/nha-nghi-o-que-3_rhizkm"
-                      className="col w-100"
-                      crop="scale"
-                      alt="image canho"
-                    />
-                  </span>
-                  <span>
-                    <Image
-                      cloudName="dxivl2lh5"
-                      publicId="rest/nha-go-cap-4-dep_qe5wjy"
-                      className="col w-100"
-                      crop="scale"
-                      alt="image canho"
-                    />
-                  </span>
-                  <span>
-                    <Image
-                      cloudName="dxivl2lh5"
-                      publicId="rest/nha-nghi-o-que-3_rhizkm"
-                      className="col w-100"
-                      crop="scale"
-                      alt="image canho"
-                    />
-                  </span>
-                  <span>
-                    <Image
-                      cloudName="dxivl2lh5"
-                      publicId="rest/nha-nghi-o-que-3_rhizkm"
-                      className="col w-100"
-                      crop="scale"
-                      alt="image canho"
+                  <span className="col ">
+                     <img
+                      src={data.image6}
+                      alt={data.name}
                     />
                   </span>
                 </div>
@@ -328,6 +303,7 @@ Bãi Dứa nằm trong bán kính 2,7 km từ Vung Tau Melody Apartment trong kh
 2,4 km. Sân bay gần nhất là Sân bay Vũng Tàu,cách chỗ nghỉ 6 km.
 Các cặp đôi đặc biệt thích địa điểm này — họ cho điểm 8,9 cho kỳ nghỉ dành cho 2 người.
 Vung Tau Melody Apartment đã chào đón khách Booking.com từ 23 tháng 4 2019.`}</pre>
+            {/* <pre>{data.desc}</pre>  */}
             <div>
               <strong>
                 Vung Tau Melody Apartment đã chào đón khách Booking.com từ 23
