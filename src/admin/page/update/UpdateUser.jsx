@@ -1,32 +1,22 @@
-import "./newHotel.scss";
+import "./update.scss";
 import Sidebar from "../../component/sidebar/Sidebar";
 import DriveFolderUploadOutlinedIcon from "@mui/icons-material/DriveFolderUploadOutlined";
 import { useState } from "react";
-import { hotelInputs } from "../../formSource";
-import useFetch from "../../hook/useFetch";
 import axios from "axios";
+import {  useLocation } from "react-router-dom";
 
-const NewHotel = () => {
+const UpdateUser = ({ inputs, title }) => {
   const [file, setFile] = useState("");
   const [info, setInfo] = useState({});
-  const [rooms, setRooms] = useState([]);
-
-  const { data, loading, error } = useFetch("/api/rooms");
+  const location = useLocation();
+  const path = location.pathname.split("/")[1];
+  const path2 = location.pathname.split("/")[2];
 
   const handleChange = (e) => {
     setInfo((prev) => ({ ...prev, [e.target.id]: e.target.value }));
   };
 
-  const handleSelect = (e) => {
-    const value = Array.from(
-      e.target.selectedOptions,
-      (option) => option.value
-    );
-    setRooms(value);
-  };
   
-  console.log(file)
-
   const handleClick = async (e) => {
     e.preventDefault();
     const data = new FormData();
@@ -40,26 +30,28 @@ const NewHotel = () => {
 
       const { url } = uploadRes.data;
 
-
-      const newhotel = {
+      const updateUser = {
         ...info,
-        rooms,
-        image:  url,
+        img: url,
       };
 
-      await axios.post("/api/hotels", newhotel);
-    } catch (err) {console.log(err)}
+      await axios.put(`/api/${path}/${path2}/update`, updateUser);
+    } catch (err) {
+      console.log(err);
+    }
   };
+
+  console.log(info);
   return (
     <div className="new">
       <Sidebar />
       <div className="newContainer">
         <div className="top">
-          <h1>Thêm khách sạn mới</h1>
+          <h1>Cập nhật thông tin người dùng</h1>
         </div>
         <div className="bottom">
           <div className="left">
-          <img
+            <img
               src={
                 file
                   ? URL.createObjectURL(file)
@@ -70,7 +62,7 @@ const NewHotel = () => {
           </div>
           <div className="right">
             <form>
-            <div className="formInput">
+              <div className="formInput">
                 <label htmlFor="file">
                   Image: <DriveFolderUploadOutlinedIcon className="icon" />
                 </label>
@@ -82,38 +74,26 @@ const NewHotel = () => {
                 />
               </div>
 
-              {hotelInputs.map((input) => (
+              {inputs.map((input) => (
                 <div className="formInput" key={input.id}>
                   <label>{input.label}</label>
                   <input
-                    id={input.id}
                     onChange={handleChange}
                     type={input.type}
                     placeholder={input.placeholder}
+                    id={input.id}
                   />
                 </div>
+              
               ))}
               <div className="formInput">
-                <label>Featured</label>
-                <select id="featured" onChange={handleChange}>
+                <label>Quản trị viên</label>
+                <select id="isAdmin" onChange={handleChange}>
                   <option value={false}>No</option>
                   <option value={true}>Yes</option>
                 </select>
               </div>
-              <div className="selectRooms">
-                <label>Rooms</label>
-                <select id="rooms" multiple onChange={handleSelect}>
-                  {loading
-                    ? "loading"
-                    : data &&
-                      data.map((room) => (
-                        <option key={room._id} value={room._id}>
-                          {room.title}
-                        </option>
-                      ))}
-                </select>
-              </div>
-              <button onClick={handleClick}>Send</button>
+              <button onClick={handleClick}>Gửi</button>
             </form>
           </div>
         </div>
@@ -122,4 +102,4 @@ const NewHotel = () => {
   );
 };
 
-export default NewHotel;
+export default UpdateUser;

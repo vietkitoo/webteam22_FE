@@ -1,80 +1,48 @@
-import "./table.scss"
-import Table from "@mui/material/Table";
-import TableBody from "@mui/material/TableBody";
-import TableCell from "@mui/material/TableCell";
-import TableContainer from "@mui/material/TableContainer";
-import TableHead from "@mui/material/TableHead";
-import TableRow from "@mui/material/TableRow";
-import Paper from "@mui/material/Paper";
 
-const List = () => {
-  const rows = [
-    {
-      username: "ad_NVQViet",
-      fullname: "Nguyễn Văn Quốc Việt",
-      email: "vietnv@gmail.com",
-      hotel: "Sunny House Da Lat",
-      location: "Đà Lạt",
-      date: "01-11-2022",
-      start: "20-12-2022",
-      end: "26-12-2022",
-      
-    },
-    {
-      username: "ad_CMTung",
-      fullname: "Chế Nguyễn Minh Tùng",
-      email: "tungcm@gmail.com",
-      hotel: "Crystal Boutique Hotel",
-      location: "Đà Nẵng",
-      date: "25-10-2022",
-      start: "26-12-2022",
-      end: "03-01-2023",
-    },
-    {
-      username: "ad_NQTuan",
-      fullname: "Nguyễn Quốc Tùng",
-      email: "tuannq@gmail.com",
-      hotel: "Moc Hotel Sapa",
-      location: "Lào Cai",
-      date: "15-11-2022",
-      start: "23-12-2022",
-      end: "03-01-2023",
-    },
+import { DataGrid } from '@mui/x-data-grid';
+import useFetch from "../../hook/useFetch";
+import { Link, useLocation } from "react-router-dom";
+import axios from "axios";
+import { bookingColumns } from '../../datatablesource';
 
+
+const Datatable = ({columns}) => {
+  const location = useLocation();
+  const path = location.pathname.split("/")[1];
+  const path2 = location.pathname.split("/")[2];
+  const { data, loading, error } = useFetch(`api/booking/${path2}`);
+
+console.log(path2)
+
+  const actionColumn = [
+    {
+      field: "action",
+      headerName: "Hoạt động",
+      width: 200,
+      renderCell: (params) => {
+        return (
+          <div className="cellAction">
+            <Link to={`booking/${path2}`} style={{ textDecoration: "none" }}>
+              <div className="viewButton">Xem</div>
+            </Link>
+          </div>
+        );
+      },
+    },
   ];
-
   return (
-    <TableContainer component={Paper} className="table">
-      <Table sx={{ minWidth: 650 }} aria-label="simple table">
-        <TableHead>
-          <TableRow>
-            <TableCell className="tableCell">Tài khoản</TableCell>
-            <TableCell className="tableCell">Họ và Tên</TableCell>
-            <TableCell className="tableCell">Email</TableCell>
-            <TableCell className="tableCell">Khách sạn</TableCell>
-            <TableCell className="tableCell">Địa điểm</TableCell>
-            <TableCell className="tableCell">Ngày đặt</TableCell>
-            <TableCell className="tableCell">Ngày nhận phòng</TableCell>
-            <TableCell className="tableCell">Ngày trả phòng</TableCell>
-          </TableRow>
-        </TableHead>
-        <TableBody>
-          {rows.map((row) => (
-            <TableRow key={row.username}>
-              <TableCell className="tableCell">{row.username}</TableCell>
-              <TableCell className="tableCell">{row.fullname}</TableCell>
-              <TableCell className="tableCell">{row.email}</TableCell>
-              <TableCell className="tableCell">{row.hotel}</TableCell>
-              <TableCell className="tableCell">{row.location}</TableCell>
-              <TableCell className="tableCell">{row.date}</TableCell>
-              <TableCell className="tableCell">{row.start}</TableCell>
-              <TableCell className="tableCell">{row.end}</TableCell>
-            </TableRow>
-          ))}
-        </TableBody>
-      </Table>
-    </TableContainer>
+    <div className="datatable">
+      <DataGrid
+        className="datagrid"
+        rows={data}
+        columns={columns.concat(bookingColumns)}
+        pageSize={10}
+        rowsPerPageOptions={[10]}
+        checkboxSelection
+        getRowId={(row) => row._id}
+      />
+    </div>
   );
 };
 
-export default List;
+export default Datatable;

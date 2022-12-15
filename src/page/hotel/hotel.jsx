@@ -12,8 +12,7 @@ import { FcCheckmark } from 'react-icons/fc';
 import { BsWifi, BsSnow } from 'react-icons/bs';
 import { GoLocation } from 'react-icons/go';
 import { RiSecurePaymentLine } from 'react-icons/ri';
-import React, { useContext, useState } from 'react';
-import { useEffect } from 'react';
+import React, { useContext, useState, useEffect } from 'react';
 import { IoIosMan } from 'react-icons/io';
 import { Image } from 'cloudinary-react';
 import useFetch from '../../hooks/useFetch';
@@ -32,6 +31,7 @@ function Hotel() {
   // console.log(JSON.parse(localStorage.getItem('user')).details.username);
   const id = location.pathname.split('/')[2];
   const { data, loading, error, reFetch } = useFetch(`/api/hotels/find/${id}`);
+  // console.log(data.name);
   // console.log(data.name);
   const { date } = useContext(SearchContext);
   // console.log(date);
@@ -84,11 +84,13 @@ function Hotel() {
   const handleSelect = (e) => {
     const selected = e.target.checked;
     const value = e.target.value;
+
     setSelectedRoom(
       selected
         ? [...selectedRoom, value]
         : selectedRoom.filter((item) => item !== value)
     );
+    console.log(value);
   };
   var s;
   // console.log(format(new Date(),'MM/dd/yyyy'));
@@ -104,29 +106,31 @@ function Hotel() {
           return res.data;
         })
       );
-      setOpen(false);
-      navigate(`/booking`);
-    } catch (err) {};
-    try{
-      const res1 = await axiosInstance.get(`/rooms/typeroom/${s}`);
+      // const res1 = await axiosInstance.get(`/rooms/typeroom/${s}`);
       // console.log(res1);
-      const res2 = await axios.post('/api/booking/', {
-        hotel: data.name,
-        room: res1.data.title,
-        roomId: res1.data._id,
-        userId: JSON.parse(localStorage.getItem('user')).details._id,
-        username: JSON.parse(localStorage.getItem('user')).details.username,
-        // fromDate: moment(date[0].startDate).format('DD-MM-YY'),
-        fromDate: format(date[0].startDate, 'MM/dd/yyyy'),
-        // toDate: moment(date[0].endDate).format('DD-MM-YY'),
-        
-        toDate: format(date[0].endDate, 'MM/dd/yyyy'),
-        timepayment:format(new Date(),'MM/dd/yyyy'),
-        totalPrice: days * data.price,
-        totalDays: days,
+      // const res2 = await axios.post('/api/booking/', {
+      //   room: res1.data.title,
+      //   roomId: res1.data._id,
+      //   userId: JSON.parse(localStorage.getItem('user')).details._id,
+      //   username: JSON.parse(localStorage.getItem('user')).details.username,
+      //   // fromDate: moment(date[0].startDate).format('DD-MM-YY'),
+      //   fromDate: format(date[0].startDate, 'MM/dd/yyyy'),
+      //   // toDate: moment(date[0].endDate).format('DD-MM-YY'),
+      //   toDate: format(date[0].endDate, 'MM/dd/yyyy'),
+      //   totalPrice: days * data.price,
+      //   totalDays: days,
+      // });
+      setOpen(false);
+      await navigate('/booking', {
+        state: {
+          hotelname: data.name,
+          fromDate: format(date[0].startDate, 'MM/dd/yyyy'),
+          toDate: format(date[0].endDate, 'MM/dd/yyyy'),
+          selectedRoom,
+        }
       });
-      return res2.data;
-    }catch (err) {};
+      
+    } catch (err) {};
   };
 
   return (
@@ -416,7 +420,7 @@ Vung Tau Melody Apartment đã chào đón khách Booking.com từ 23 tháng 4 2
                             disabled={!isAvailable(roomNumber)}
                             // disabled={false}
                             id={roomNumber.number}
-                            value={roomNumber._id}
+                            value={ roomNumber._id }
                             onChange={handleSelect}
                           />
                           <label htmlFor={roomNumber.number}>
@@ -427,7 +431,7 @@ Vung Tau Melody Apartment đã chào đón khách Booking.com từ 23 tháng 4 2
                     </div>
                   </td>
                   <td>
-                    <Link to="../booking">
+
                       <button
                         type="button"
                         className="w-100 btn btn-primary"
@@ -435,7 +439,7 @@ Vung Tau Melody Apartment đã chào đón khách Booking.com từ 23 tháng 4 2
                       >
                         Đặt chỗ
                       </button>
-                    </Link>
+
                   </td>
                 </tr>
               </tbody>

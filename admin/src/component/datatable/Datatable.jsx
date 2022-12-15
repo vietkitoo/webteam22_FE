@@ -53,8 +53,8 @@ const Datatable = ({columns}) => {
         className="datagrid"
         rows={data}
         columns={columns.concat(actionColumn)}
-        pageSize={9}
-        rowsPerPageOptions={[9]}
+        pageSize={8}
+        rowsPerPageOptions={[8]}
         checkboxSelection
         getRowId={(row) => row._id}
       />
