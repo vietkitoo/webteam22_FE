@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useContext, useState, useEffect } from 'react';
 import Footer from '../../component/Footer/Footer';
 import Header from '../../component/header/header';
 import './home.scss';
@@ -9,8 +9,29 @@ import 'react-date-range/dist/theme/default.css';
 
 import { Image } from 'cloudinary-react';
 import SearchBar from '../../component/searchbar/searchbar';
-
+import { SearchContext } from '../../context/SearchContext';
+import { useNavigate } from 'react-router-dom';
 function Home() {
+  const [destination, setDestination] = useState('');
+  const [date, setDate] = useState([
+    {
+      startDate: new Date(),
+      endDate: new Date(),
+      key: 'selection',
+    },
+  ]);
+  const [ChoosePeople, setChoosePeople] = useState(false);
+  const [People, setPeople] = useState({
+    Adult: 1,
+    Children: 0,
+    Room: 1,
+  });
+  const navigate = useNavigate();
+  const { dispatch } = useContext(SearchContext);
+  const handleSearch = () => {
+    dispatch({ type: 'NEW_SEARCH', payload: { destination, date, People } });
+    navigate('/searchresult', { state: { destination, date, People } });
+  };
   return (
     <>
       <Header />
@@ -135,26 +156,40 @@ function Home() {
         </div>
         {/* Phần Khám phá Việt Nam */}
         <div className="justify-content-center offset-lg-2 ps-5 pb-md-5">
-          <div className="fw-bold fs-3" id="discover">Khám phá Việt Nam</div>
+          <div className="fw-bold fs-3" id="discover">
+            Khám phá Việt Nam
+          </div>
           <div className="figure-caption">
             Các điểm đến phổ biến này có nhiều điều chờ đón bạn
           </div>
           <div className="row w-75">
-            <div className=" pt-3 w-50 col-xs-10 ">
-              <Link to="../searchresult">
-                <div className="Sites Ha_noi d-flex  ">
-                  <div className="px-1 fw-bold fs-3">Hà Nội </div>
-                  <div className="National_flag ">
-                    <Image
-                      cloudName="dxivl2lh5"
-                      publicId="places/vietnam_fseacf"
-                      crop="scale"
-                    />
-                  </div>
+            <div
+              className=" pt-3 w-50 col-xs-10 "
+              onClick={() => {
+                navigate('/searchresult', {
+                  state: { destination: 'Hà Nội', date, People },
+                });
+              }}
+            >
+              <div className="Sites Ha_noi d-flex  ">
+                <div className="px-1 fw-bold fs-3">Hà Nội</div>
+                <div className="National_flag ">
+                  <Image
+                    cloudName="dxivl2lh5"
+                    publicId="places/vietnam_fseacf"
+                    crop="scale"
+                  />
                 </div>
-              </Link>
+              </div>
             </div>
-            <div className="pt-3 w-50 col-xs-10 ">
+            <div
+              className="pt-3 w-50 col-xs-10 "
+              onClick={() => {
+                navigate('/searchresult', {
+                  state: { destination: 'Hội An', date, People },
+                });
+              }}
+            >
               <Link to="../searchresult">
                 <div className="Sites Hoi_an d-flex">
                   <div className="px-1 fw-bold fs-3">Hội An </div>
@@ -170,7 +205,14 @@ function Home() {
             </div>
           </div>
           <div className="row w-75">
-            <div className="pt-3 col-xs-10 col ">
+            <div
+              className="pt-3 col-xs-10 col "
+              onClick={() => {
+                navigate('/searchresult', {
+                  state: { destination: 'HCM', date, People },
+                });
+              }}
+            >
               <div className="Sites TPHCM d-flex   ">
                 <div className="px-1 fw-bold fs-3">TP. Hồ Chí Minh </div>
                 <div className="National_flag ">
@@ -182,7 +224,14 @@ function Home() {
                 </div>
               </div>
             </div>
-            <div className=" pt-3  col-xs-10 col">
+            <div
+              className=" pt-3  col-xs-10 col"
+              onClick={() => {
+                navigate('/searchresult', {
+                  state: { destination: 'Huế', date, People },
+                });
+              }}
+            >
               <div className="Sites Hue d-flex">
                 <div className="px-1 fw-bold fs-3">Huế </div>
                 <div className="National_flag ">
@@ -194,7 +243,14 @@ function Home() {
                 </div>
               </div>
             </div>
-            <div className=" pt-3 col-xs-10  col ">
+            <div
+              className=" pt-3 col-xs-10  col "
+              onClick={() => {
+                navigate('/searchresult', {
+                  state: { destination: 'Nha Trang', date, People },
+                });
+              }}
+            >
               <div className="Sites NhaTrang d-flex">
                 <div className="px-1 fw-bold fs-3">Nha Trang </div>
                 <div className="National_flag ">
@@ -216,7 +272,14 @@ function Home() {
               <div className="carousel-inner">
                 <div className="carousel-item active">
                   <div className="d-flex row">
-                    <div className="col">
+                    <div
+                      className="col"
+                      onClick={() => {
+                        navigate('/searchresult', {
+                          state: { destination: 'Đà Lạt', date, People },
+                        });
+                      }}
+                    >
                       <div className="type_of_r_place">
                         <Image
                           cloudName="dxivl2lh5"
@@ -230,7 +293,14 @@ function Home() {
                         <div>Đà Lạt</div>
                       </div>
                     </div>
-                    <div className="col">
+                    <div
+                      className="col"
+                      onClick={() => {
+                        navigate('/searchresult', {
+                          state: { destination: 'Phú Quốc', date, People },
+                        });
+                      }}
+                    >
                       <div className="type_of_r_place">
                         <Image
                           cloudName="dxivl2lh5"
@@ -244,7 +314,14 @@ function Home() {
                         <div>Phú Quốc</div>
                       </div>
                     </div>
-                    <div className="col">
+                    <div
+                      className="col"
+                      onClick={() => {
+                        navigate('/searchresult', {
+                          state: { destination: 'Sapa', date, People },
+                        });
+                      }}
+                    >
                       <div className="type_of_r_place">
                         <Image
                           cloudName="dxivl2lh5"
@@ -258,7 +335,14 @@ function Home() {
                         <div>Sapa</div>
                       </div>
                     </div>
-                    <div className="col">
+                    <div
+                      className="col"
+                      onClick={() => {
+                        navigate('/searchresult', {
+                          state: { destination: 'Vũng Tàu', date, People },
+                        });
+                      }}
+                    >
                       <div className="type_of_r_place">
                         <Image
                           cloudName="dxivl2lh5"
@@ -276,7 +360,14 @@ function Home() {
                 </div>
                 <div className="carousel-item">
                   <div className="d-flex row">
-                    <div className="col">
+                    <div
+                      className="col"
+                      onClick={() => {
+                        navigate('/searchresult', {
+                          state: { destination: 'Đà Nẵng', date, People },
+                        });
+                      }}
+                    >
                       <div className="type_of_r_place">
                         <Image
                           cloudName="dxivl2lh5"
@@ -290,7 +381,14 @@ function Home() {
                         <div>Đà Nẵng</div>
                       </div>
                     </div>
-                    <div className="col">
+                    <div
+                      className="col"
+                      onClick={() => {
+                        navigate('/searchresult', {
+                          state: { destination: 'Quy Nhơn', date, People },
+                        });
+                      }}
+                    >
                       <div className="type_of_r_place">
                         <Image
                           cloudName="dxivl2lh5"
@@ -304,7 +402,14 @@ function Home() {
                         <div>Quy Nhơn</div>
                       </div>
                     </div>
-                    <div className="col">
+                    <div
+                      className="col"
+                      onClick={() => {
+                        navigate('/searchresult', {
+                          state: { destination: 'Quảng Bình', date, People },
+                        });
+                      }}
+                    >
                       <div className="type_of_r_place">
                         <Image
                           cloudName="dxivl2lh5"
@@ -318,7 +423,14 @@ function Home() {
                         <div>Quảng Bình</div>
                       </div>
                     </div>
-                    <div className="col">
+                    <div
+                      className="col"
+                      onClick={() => {
+                        navigate('/searchresult', {
+                          state: { destination: 'Quảng Ninh', date, People },
+                        });
+                      }}
+                    >
                       <div className="type_of_r_place">
                         <Image
                           cloudName="dxivl2lh5"

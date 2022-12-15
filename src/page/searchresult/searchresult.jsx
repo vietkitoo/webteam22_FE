@@ -29,6 +29,14 @@ function Searchresult_app() {
   }, []);
 
   const [date, setDate] = useState(location.state.date);
+  // const [date, setDate] = useState([
+  //   {
+  //     startDate: new Date(),
+  //     endDate: new Date(),
+  //     key: 'selection',
+  //   },
+  // ]);
+  
   const [options, setOptions] = useState(location.state.options);
   const [min, setMin] = useState(undefined);
   const [max, setMax] = useState(undefined);
@@ -38,25 +46,34 @@ function Searchresult_app() {
   const { data1 } = useFetch(
     `api/hotels/bycity?cities=${destination}&min=${min || 0}&max=${max || 9999}`
   );
-  const handleSearch = () => {
-    reFetch();
-  };
-
-
-  const [ChoosePeople, setChoosePeople] = useState(false);
   const [People, setPeople] = useState({
     Adult: 1,
     Children: 0,
     Room: 1,
   });
-  const handlePeople = (name, operation) => {
-    setPeople((prev) => {
-      return {
-        ...prev,
-        [name]: operation === 'i' ? People[name] + 1 : People[name] - 1,
-      };
-    });
+  const navigate = useNavigate();
+  const { dispatch } = useContext(SearchContext);
+  const handleSearch = () => {
+    // reFetch();
+    // dispatch({ type: 'NEW_SEARCH', payload: { destination, date, People } });
+    navigate('/searchresult', { state: { destination, date, People } });
   };
+
+
+  // const [ChoosePeople, setChoosePeople] = useState(false);
+  // const [People, setPeople] = useState({
+  //   Adult: 1,
+  //   Children: 0,
+  //   Room: 1,
+  // });
+  // const handlePeople = (name, operation) => {
+  //   setPeople((prev) => {
+  //     return {
+  //       ...prev,
+  //       [name]: operation === 'i' ? People[name] + 1 : People[name] - 1,
+  //     };
+  //   });
+  // };
 
   return (
     <>
@@ -132,7 +149,7 @@ function Searchresult_app() {
                       className="date date_location"
                     />
                   )}
-                  <div>Số thành viên và số phòng</div>
+                  {/* <div>Số thành viên và số phòng</div>
                   <div className="input-group mb-3" type="button">
                     <span className="input-group-text" id="basic-addon1">
                       <FaBed />
@@ -212,7 +229,7 @@ function Searchresult_app() {
                       id="flexCheckDefault1"
                       label="Tôi đi công tác"
                     />
-                  </div>
+                  </div> */}
                   <Link to="../searchresult">
                     <button
                       className="btn btn-primary input-group "
