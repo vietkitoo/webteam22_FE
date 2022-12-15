@@ -50,6 +50,10 @@ svg{
   height: 15rem;
   -webkit-transition: .3s ease-in-out;
 	transition: .3s ease-in-out;
+  cursor: pointer;
+}
+.carousel-item{
+  cursor: pointer;
 }
 .Sites:hover{
   -webkit-transform: scale(1.0005);

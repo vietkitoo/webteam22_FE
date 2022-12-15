@@ -72,7 +72,7 @@ function Login() {
     dispatch({type: 'LOGIN_START'});
 
     try {
-      const res = await axios.post('/api/auth/login', credentials);
+      const res = await axiosInstance.post('/api/auth/login', credentials);
       if (res.data.isAdmin) {
         dispatch({ type: 'LOGIN_SUCCESS', payload: res.data });
         navigate('/');
@@ -90,7 +90,7 @@ function Login() {
     dispatch({ type: 'REGISTER_START' });
 
     try {
-      const res = await axiosInstance.post('/auth/register', credentials);
+      const res = await axiosInstance.post('/api/auth/register', credentials);
       dispatch({ type: 'REGISTER_SUCCESS', payload: res.data });
       navigate('/');
     } catch (error) {
