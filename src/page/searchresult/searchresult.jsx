@@ -13,11 +13,15 @@ import ItemHotels from '../../component/itemhotels/itemhotel';
 import { FaBed } from 'react-icons/fa';
 import { DateRange } from 'react-date-range';
 import { useEffect } from 'react';
-import { SearchContext } from '../../context/SearchContext';
+import { BsGeoAlt } from 'react-icons/bs';
+import { Button } from 'react-bootstrap';
+import '../../component/itemhotels/itemhotel.scss';
+
 function Searchresult_app() {
   const location = useLocation();
   const [destination, setDestination] = useState(location.state.destination);
   const [openDate, setOpenDate] = useState(false);
+  const [date, setDate] = useState(location.state.date);
   useEffect(() => {
     const closecalendar = (e) => {
       if (e.path[0].tagName !== 'SPAN') {
@@ -25,17 +29,9 @@ function Searchresult_app() {
       }
     };
     document.body.addEventListener('click', closecalendar);
+    console.log(date[0]);
     return () => document.body.removeEventListener('click', closecalendar);
   }, []);
-
-  const [date, setDate] = useState(location.state.date);
-  // const [date, setDate] = useState([
-  //   {
-  //     startDate: new Date(),
-  //     endDate: new Date(),
-  //     key: 'selection',
-  //   },
-  // ]);
   
   const [options, setOptions] = useState(location.state.options);
   const [min, setMin] = useState(undefined);
@@ -46,34 +42,24 @@ function Searchresult_app() {
   const { data1 } = useFetch(
     `api/hotels/bycity?cities=${destination}&min=${min || 0}&max=${max || 9999}`
   );
-  const [People, setPeople] = useState({
-    Adult: 1,
-    Children: 0,
-    Room: 1,
-  });
   const navigate = useNavigate();
-  const { dispatch } = useContext(SearchContext);
   const handleSearch = () => {
-    // reFetch();
+    reFetch();
     // dispatch({ type: 'NEW_SEARCH', payload: { destination, date, People } });
-    navigate('/searchresult', { state: { destination, date, People } });
+    // navigate('/searchresult', { state: { destination, date } });
   };
 
-
-  // const [ChoosePeople, setChoosePeople] = useState(false);
-  // const [People, setPeople] = useState({
-  //   Adult: 1,
-  //   Children: 0,
-  //   Room: 1,
-  // });
-  // const handlePeople = (name, operation) => {
-  //   setPeople((prev) => {
-  //     return {
-  //       ...prev,
-  //       [name]: operation === 'i' ? People[name] + 1 : People[name] - 1,
-  //     };
-  //   });
-  // };
+  const handleClick = (item) => {
+    navigate(`/hotel/${item._id}`,
+    {state : {
+      hotelname: item.name,
+      address: item.address,
+      rating: item.rating,
+      price: item.price,
+      hotelId: item._id,
+      date: date,
+    }})
+  };
 
   return (
     <>
@@ -110,7 +96,7 @@ function Searchresult_app() {
                       className="form-control"
                       placeholder={destination} 
                       aria-describedby="basic-addon1"
-                      onChange={(e) => setDestination(e.target.value)}
+                      onChange={(e) => {setDestination(e.target.value); handleSearch();}}
                     />
                   </div>
                   <div>Ngày nhận phòng</div>
@@ -139,7 +125,11 @@ function Searchresult_app() {
                   </div>
                   {openDate && (
                     <DateRange
-                      onChange={(item) => setDate([item.selection])}
+                      onChange={async (item) => {
+                        await setDate([item.selection]);
+                        handleSearch();
+                        //console.log(date);
+                      }}
                       showSelectionPreview={true}
                       moveRangeOnFirstSelection={false}
                       months={2}
@@ -149,6 +139,7 @@ function Searchresult_app() {
                       className="date date_location"
                     />
                   )}
+
                   {/* <div>Số thành viên và số phòng</div>
                   <div className="input-group mb-3" type="button">
                     <span className="input-group-text" id="basic-addon1">
@@ -237,6 +228,7 @@ function Searchresult_app() {
                     >
                       Tìm
                     </button> */}
+
                 </div>
               </div>
             </div>
@@ -255,7 +247,54 @@ function Searchresult_app() {
                 ) : (
                   <>
                     {data.map((item) => (
-                      <ItemHotels item={item} key={item._id} />
+                      <div className="item-hotel bg-box">
+                      <img src={item.image} alt={item.name} />
+                      
+                      <div className="item-content">
+                        {/* <Link to={{
+                          pathname: `/hotel/${item._id}`,
+                          state: {
+                            hotelname: item.name,
+                            address: item.address,
+                            rating: item.rating,
+                            price: item.price,
+                            hotelId: item._id,
+                            date,
+                          }
+                          }}> */}
+                          <Link onClick={() => handleClick(item)}>
+                            <h4>{item.name}</h4>
+                          </Link>
+                          
+                        <p className="address">
+                          <BsGeoAlt />
+                          <>{(item.address)}</>
+                        </p>
+                        <div className="rate">{(item.rating)}</div>
+                      </div>
+                      <div className="price">
+                        <div className="content-price">
+                          <div className="d-price">
+                            <p>Chỉ từ</p>
+                            <p className="c-price">{(item.price)}VND</p>
+                            <span>VNĐ</span>
+                            <p>phòng/đêm</p>
+                          </div>
+                          {/* <Link to={{
+                          pathname: `/hotel/${item._id}`,
+                          state: {
+                            hotelname: item.name,
+                            address: item.address,
+                            rating: item.rating,
+                            price: item.price,
+                            hotelId: item._id,
+                            date,
+                          }
+                          }}> */}
+                            <Button onClick={() => handleClick(item)}> Đặt ngay </Button>
+                        </div>
+                      </div>
+                    </div>
                     ))}
                   </>
                 )}

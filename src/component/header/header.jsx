@@ -107,6 +107,7 @@ const Header = () => {
           <button
             type="button"
             className="btn btn-light button-navbar btn_sign btn_select_list"
+            href={"/home"}
           >
             <FontAwesomeIcon icon={faBed} />
             Lưu Trú
@@ -121,21 +122,15 @@ const Header = () => {
             Khách sạn
           </button>
         </Link>
-        <Link
-          to="/home#discover"
-          spy={true}
-          smooth={true}
-          offset={-150}
-          duration={300}
-        >
           <button
             type="button"
             className="btn btn-light button-navbar btn_sign btn_select_list"
+            href={"/home#discover"}
           >
             <FontAwesomeIcon icon={faCamera} className="headerIcon" />
             Địa điểm tham quan
           </button>
-        </Link>
+
 
       </nav>
     </header>

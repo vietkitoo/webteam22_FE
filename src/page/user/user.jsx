@@ -26,7 +26,7 @@ function User() {
   const [confirmNewPassword, setConfirmNewPassword] = useState();
   const id = JSON.parse(localStorage.getItem('user')).details._id;
   //   console.log(id);
-  const { data, loading, error, reFetch } = useFetch(`/api/booking/${id}`);
+  const { data, loading, error, reFetch } = useFetch(`/api/users/${id}/booking`);
   //   console.log(data);
   const [click, setClick] = useState(false);
   const navigate = useNavigate();
