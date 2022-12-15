@@ -121,7 +121,7 @@ function Hotel() {
       //   totalDays: days,
       // });
       setOpen(false);
-      await navigate('/booking', {
+      await navigate('/payment', {
         state: {
           hotelname: data.name,
           fromDate: format(date[0].startDate, 'MM/dd/yyyy'),

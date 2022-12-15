@@ -8,7 +8,7 @@ import Support from './page/support/support';
 import Searchresult  from './page/searchresult/searchresult';
 import Visit from './page/visit/visit';
 import Hotel from './page/hotel/hotel';
-import Booking from './page/booking/booking';
+import Payment from './page/booking/booking';
 import User from './page/user/user';
 import Forgot from './page/forgot/forgot';
 
@@ -61,7 +61,7 @@ function App() {
           <Route path="/searchresult" element = {<Searchresult  />} />
           <Route path="/visit" element = {<Visit  />} />
           <Route path="/hotel/:id" element = {<Hotel />} />
-          <Route path="/booking" element = {<Booking />} />
+          <Route path="/payment" element = {<Payment />} />
           <Route path="/user" element = {<User />} />
           <Route path="/forgot" element = {<Forgot />} />
 
