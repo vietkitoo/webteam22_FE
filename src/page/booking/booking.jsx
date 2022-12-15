@@ -9,7 +9,7 @@ import { Button } from 'react-bootstrap';
 import { AuthContext } from '../../context/AuthContext';
 import { useEffect } from 'react';
 
-function Searchresult_app() {
+function Payment() {
   const { user } = useContext(AuthContext);
   const location = useLocation();
 
@@ -99,4 +99,4 @@ function Searchresult_app() {
   );
 }
 
-export default Searchresult_app;
+export default Payment;

@@ -37,11 +37,17 @@ const Header = () => {
     <header className="App-header">
       <nav className="navbar navbar-light justify-content-center">
        
-          <a href="/#" className="navbar-brand logo_team">
-            <Link to="../">
+            <Link
+            to="/home"
+            spy={true}
+            smooth={true}
+            offset={-150}
+            duration={300}
+            className="navbar-brand logo_team"
+            >
               STYLISH HOTEL
             </Link>
-          </a>
+
         
         
         <form className="form-inline d-flex">
@@ -91,7 +97,13 @@ const Header = () => {
       </nav>
 
       <nav className="navbar navbar-light justify-content-center">
-        <Link to="/">
+        <Link
+          to="/home"
+          spy={true}
+          smooth={true}
+          offset={-150}
+          duration={300}
+        >
           <button
             type="button"
             className="btn btn-light button-navbar btn_sign btn_select_list"
@@ -100,7 +112,7 @@ const Header = () => {
             Lưu Trú
           </button>
         </Link>
-        <Link to="/">
+        <Link to="rest">
           <button
             type="button"
             className="btn btn-light button-navbar btn_sign btn_select_list"
@@ -109,7 +121,13 @@ const Header = () => {
             Khách sạn
           </button>
         </Link>
-        <Link to="/visit">
+        <Link
+          to="/home#discover"
+          spy={true}
+          smooth={true}
+          offset={-150}
+          duration={300}
+        >
           <button
             type="button"
             className="btn btn-light button-navbar btn_sign btn_select_list"
@@ -119,13 +137,6 @@ const Header = () => {
           </button>
         </Link>
 
-        <button
-          type="button"
-          className="btn btn-light button-navbar btn_sign btn_select_list"
-        >
-          <FontAwesomeIcon icon={faTaxi} className="headerIcon" />
-          Taxi sân bay
-        </button>
       </nav>
     </header>
   );
