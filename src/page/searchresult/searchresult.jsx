@@ -37,10 +37,10 @@ function Searchresult_app() {
   const [min, setMin] = useState(undefined);
   const [max, setMax] = useState(undefined);
   const { data, loading, error, reFetch } = useFetch(
-    `api/hotels?city=${destination}&min=${min || 0}&max=${max || 9999}`
+    `/api/hotels?city=${destination}&min=${min || 0}&max=${max || 9999}`
   );
   const { data1 } = useFetch(
-    `api/hotels/bycity?cities=${destination}&min=${min || 0}&max=${max || 9999}`
+    `/api/hotels/bycity?cities=${destination}&min=${min || 0}&max=${max || 9999}`
   );
   const navigate = useNavigate();
   const handleSearch = () => {

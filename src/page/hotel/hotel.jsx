@@ -30,7 +30,7 @@ function Hotel() {
   const location = useLocation();
   // console.log(JSON.parse(localStorage.getItem('user')).details.username);
   const id = location.pathname.split('/')[2];
-  
+  // console.log(id);
   // const {
   //   hotelname,
   //   address,
@@ -47,9 +47,9 @@ function Hotel() {
   const hotelId = location.state.hotelId;
   const date = location.state.date;
 
-  const data = useFetch(`/api/hotels/find/${id}`);
-  // console.log(data.name);
-  // console.log(data.name);
+  const {data,loading} = useFetch(`/api/hotels/find/${id}`);
+  console.log(data);
+  // console.log((data.image));
   // console.log(date);
   const MILLISECONDS_PER_DAYS = 1000 * 60 * 60 * 24;
   function dayDifference(date1, date2) {
@@ -158,7 +158,7 @@ function Hotel() {
                   <div className=" d-block mx-2">
                     <>Gía chỉ: </>
                     <span>
-                      {days * price} cho {days} ngày{' '}
+                      {days * price} cho {days} ngày
                     </span>
                   </div>
                 </div>
@@ -404,7 +404,7 @@ Vung Tau Melody Apartment đã chào đón khách Booking.com từ 23 tháng 4 2
             <h2>Loading...</h2>
           ) : (
             data1.map((item) => (
-              console.log(item),
+              // console.log(item),
               <tbody>
                 <tr>
                   <td>

@@ -15,7 +15,7 @@ function Payment() {
 
   useEffect(() => {
     console.log(location.state);
-  },[]);
+  }, []);
   return (
     <>
       <Header />
@@ -34,22 +34,35 @@ function Payment() {
               <div className="grid-item ">
                 <div className="form-block">
                   <h4>Thông tin người đặt phòng</h4>
-                  <Form.Group className="mb-3 " >
+                  <Form.Group className="mb-3 ">
                     <Form.Label>Địa chỉ email</Form.Label>
-                    <Form.Control type="email" defaultValue={user.details.email} />
+                    <Form.Control
+                      type="email"
+                      defaultValue={user.details.email}
+                    />
                   </Form.Group>
-                  <Form.Group className="mb-3 " >
-                      <Form.Label>Tên người dùng</Form.Label>
-                      <Form.Control type="text" defaultValue={user.details.username} />
+                  <Form.Group className="mb-3 ">
+                    <Form.Label>Tên người dùng</Form.Label>
+                    <Form.Control
+                      type="text"
+                      defaultValue={user.details.username}
+                    />
                   </Form.Group>
-                  <Form.Group className="mb-3 " >
+                  <Form.Group className="mb-3 ">
                     <Form.Label>Số điện thoại</Form.Label>
-                    <Form.Control type="text" defaultValue={user.details.phonenum} placeholder="+84 987654321" />
+                    <Form.Control
+                      type="text"
+                      defaultValue={user.details.phonenum}
+                      placeholder="+84 987654321"
+                    />
                   </Form.Group>
-                  <Form.Group className="mb-4" controlId="exampleForm.ControlTextarea1">
+                  <Form.Group
+                    className="mb-4"
+                    controlId="exampleForm.ControlTextarea1"
+                  >
                     <Form.Label>Yêu cầu thêm</Form.Label>
                     <Form.Control as="textarea" rows={3} />
-                  </Form.Group> 
+                  </Form.Group>
                 </div>
               </div>
               <div className="grid-item">
@@ -57,41 +70,37 @@ function Payment() {
                   <h4>Yêu cầu đặt phòng của bạn</h4>
                   <div className="hotel-info">
                     <h5>{location.state.hotelname}</h5>
-                    <div className="">Nhận phòng: {location.state.fromDate}</div>
+                    <div className="">
+                      Nhận phòng: {location.state.fromDate}
+                    </div>
                     <div className="">Trả phòng: {location.state.toDate}</div>
                   </div>
                   <div className="room-info">
                     <h5>Thông tin phòng</h5>
                     <div>
-                    {
-                      location.state.selectedRoom.map((roomId) => (
+                      {location.state.selectedRoom.map((roomId) => (
                         <div className="room">
                           Phòng {roomId}
-                          <div className="d-md-flex justify-content-md-end">VND</div>
+                          <div className="d-md-flex justify-content-md-end">
+                            VND
+                          </div>
                         </div>
-                      ))
-                    }
+                      ))}
                     </div>
                   </div>
                   <div className="mt-4 mb-4 total-price d-flex justify-content-center">
                     (Total price)
                   </div>
-                  
                 </div>
                 <div className="mt-2 d-md-flex justify-content-center">
-                    <Button type="submit" className="pay-btn">
-                        Lưu thay đổi
-                    </Button>
-                  </div>
+                  <Button type="submit" className="pay-btn">
+                    Lưu thay đổi
+                  </Button>
+                </div>
               </div>
-              
             </div>
-            
-            
           </Form>
-          
         </div>
-
       </div>
 
       <Footer />
