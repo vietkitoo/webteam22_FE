@@ -1,11 +1,11 @@
 import "./update.scss";
 import Sidebar from "../../component/sidebar/Sidebar";
-import { useState } from "react";
 import { bookingInputs } from "../../formSource";
 import useFetch from "../../hook/useFetch";
 import axios from "axios";
 import DriveFolderUploadOutlinedIcon from "@mui/icons-material/DriveFolderUploadOutlined";
-import {  useLocation } from "react-router-dom";
+import { Link ,useLocation,useNavigate} from 'react-router-dom';
+import { useContext, useState } from 'react';
 
 const UpdateBooking = () => {
   
@@ -19,7 +19,7 @@ const UpdateBooking = () => {
   const handleChange = (e) => {
     setInfo((prev) => ({ ...prev, [e.target.id]: e.target.value }));
   };
-
+  const navigate = useNavigate();
   const handleClick = async (e) => {
     e.preventDefault();
     const data = new FormData();
@@ -29,6 +29,7 @@ const UpdateBooking = () => {
         ...info,
       };
       await axios.put(`/api/${path}/${path2}/update`,  updatebooking);
+      navigate('/booking');
     } catch (err) {
       console.log(err);
     }

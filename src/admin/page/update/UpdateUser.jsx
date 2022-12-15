@@ -1,9 +1,9 @@
 import "./update.scss";
 import Sidebar from "../../component/sidebar/Sidebar";
 import DriveFolderUploadOutlinedIcon from "@mui/icons-material/DriveFolderUploadOutlined";
-import { useState } from "react";
 import axios from "axios";
-import {  useLocation } from "react-router-dom";
+import { Link ,useLocation,useNavigate} from 'react-router-dom';
+import { useContext, useState } from 'react';
 
 const UpdateUser = ({ inputs, title }) => {
   const [file, setFile] = useState("");
@@ -15,8 +15,8 @@ const UpdateUser = ({ inputs, title }) => {
   const handleChange = (e) => {
     setInfo((prev) => ({ ...prev, [e.target.id]: e.target.value }));
   };
+  const navigate = useNavigate();
 
-  
   const handleClick = async (e) => {
     e.preventDefault();
     const data = new FormData();
@@ -36,6 +36,7 @@ const UpdateUser = ({ inputs, title }) => {
       };
 
       await axios.put(`/api/${path}/${path2}/update`, updateUser);
+      navigate('/users');
     } catch (err) {
       console.log(err);
     }

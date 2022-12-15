@@ -1,11 +1,11 @@
 import "./update.scss";
 import Sidebar from "../../component/sidebar/Sidebar";
 import DriveFolderUploadOutlinedIcon from "@mui/icons-material/DriveFolderUploadOutlined";
-import { useState } from "react";
 import { hotelInputs } from "../../formSource";
 import useFetch from "../../hook/useFetch";
 import axios from "axios";
-import {  useLocation } from "react-router-dom";
+import { Link ,useLocation,useNavigate} from 'react-router-dom';
+import { useContext, useState } from 'react';
 
 const NewHotel = () => {
   const [file, setFile] = useState("");
@@ -20,7 +20,7 @@ const NewHotel = () => {
   const handleChange = (e) => {
     setInfo((prev) => ({ ...prev, [e.target.id]: e.target.value }));
   };
-
+  const navigate = useNavigate();
   const handleSelect = (e) => {
     const value = Array.from(
       e.target.selectedOptions,
@@ -52,6 +52,7 @@ const NewHotel = () => {
       };
 
       await axios.put(`/api/${path}/${path2}/update`, updatehotel);
+      navigate('/hotels');
     } catch (err) {console.log(err)}
   };
   return (
