@@ -230,15 +230,13 @@ function Searchresult_app() {
                       label="Tôi đi công tác"
                     />
                   </div> */}
-                  <Link to="../searchresult">
-                    <button
+                    {/* <button
                       className="btn btn-primary input-group "
                       type="submit"
                       onClick={handleSearch}
                     >
                       Tìm
-                    </button>
-                  </Link>
+                    </button> */}
                 </div>
               </div>
             </div>

@@ -41,7 +41,7 @@ function User() {
       console.log('Wrong confirm new password');
     } else {
       const res = await axiosInstance.put('/users/password', {
-        userId,
+        userId: id,
         password,
         newPassword,
       });
