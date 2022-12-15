@@ -171,17 +171,19 @@ function Login() {
 
                     <p className="text-center mt-3">or:</p>
                   </div>
+                  <h5>Tài Khoản</h5>
                   <MDBInput
                     wrapperClass="mb-4"
-                    label="User Name"
+                    // label="User Name"
                     id="username"
                     placeholder="User Name"
                     type="text"
                     onChange={handleChange}
                   />
+                  <h5>Mật Khẩu</h5>
                   <MDBInput
                     wrapperClass="mb-4"
-                    label="Password"
+                    // label="Password"
                     placeholder="Password"
                     type="password"
                     id="password"
