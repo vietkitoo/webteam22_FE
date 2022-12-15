@@ -1,9 +1,30 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import './itemhotel.scss';
 import { BsGeoAlt } from 'react-icons/bs';
 import { Button } from 'react-bootstrap';
-const ItemHotels = ({ item }) => {
+import { useEffect } from 'react';
+
+const ItemHotels = (props) => {
+  const item = props.item;
+
+  useEffect(() => {
+    console.log(props.fromDate);
+  },[])
+
+  const navigate = useNavigate();
+  const handleClick = () => {
+    navigate(`/hotel/${item._id}`,
+    {state : {
+      hotelname: item.name,
+      address: item.address,
+      rating: item.rating,
+      price: item.price,
+      hotelId: item._id,
+      date: props.fromDate,
+    }})
+  }
+
   return (
     /* <div className='itemHotels'>
       <div className="itemHotelsCol">
@@ -43,9 +64,19 @@ const ItemHotels = ({ item }) => {
       <img src={item.image} alt={item.name} />
       
       <div className="item-content">
-        <Link to={`/hotel/${item._id}`}>
-          <h4>{item.name}</h4>
-        </Link>
+        {/* <Link to={{
+          pathname: `/hotel/${item._id}`,
+          state: {
+            hotelname: item.name,
+            address: item.address,
+            rating: item.rating,
+            price: item.price,
+            hotelId: item._id,
+            date,
+          }
+          }}> */}
+          <h4 onClick={handleClick}>{item.name}</h4>
+
         <p className="address">
           <BsGeoAlt />
           <>{(item.address)}</>
@@ -60,9 +91,18 @@ const ItemHotels = ({ item }) => {
             <span>VNĐ</span>
             <p>phòng/đêm</p>
           </div>
-          <Link to={`/hotel/${item._id}`}>
-            <Button> Đặt ngay </Button>
-          </Link>
+          {/* <Link to={{
+          pathname: `/hotel/${item._id}`,
+          state: {
+            hotelname: item.name,
+            address: item.address,
+            rating: item.rating,
+            price: item.price,
+            hotelId: item._id,
+            date,
+          }
+          }}> */}
+            <Button onClick={handleClick}> Đặt ngay </Button>
         </div>
       </div>
     </div>

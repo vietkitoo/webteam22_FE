@@ -24,16 +24,32 @@ import { axiosInstance } from '../../config';
 import format from 'date-fns/format';
 import axios from 'axios';
 import moment from 'moment';
-function Hotel() {
+
+function Hotel() {  
   const navigate = useNavigate();
   const location = useLocation();
-  const [open, setOpen] = useState(false);
   // console.log(JSON.parse(localStorage.getItem('user')).details.username);
   const id = location.pathname.split('/')[2];
-  const { data, loading, error, reFetch } = useFetch(`/api/hotels/find/${id}`);
+  
+  // const {
+  //   hotelname,
+  //   address,
+  //   rating,
+  //   price,
+  //   hotelId,
+  //   date,
+  // } = location.state;
+
+  const hotelname = location.state.hotelname;
+  const address = location.state.address;
+  const rating = location.state.rating;
+  const price = location.state.price;
+  const hotelId = location.state.hotelId;
+  const date = location.state.date;
+
+  const data = useFetch(`/api/hotels/find/${id}`);
   // console.log(data.name);
   // console.log(data.name);
-  const { date } = useContext(SearchContext);
   // console.log(date);
   const MILLISECONDS_PER_DAYS = 1000 * 60 * 60 * 24;
   function dayDifference(date1, date2) {
@@ -46,8 +62,7 @@ function Hotel() {
 
   //Lấy data của room của từng hotel
   const { data1, loading1 } = useFetch(`/api/hotels/room/${id}`);
-  console.log(data1);
-  const [OpenDate, setOpenDate] = useState(false);
+  //console.log(data1);
 
   const [selectedRoom, setSelectedRoom] = useState([]);
 
@@ -64,15 +79,6 @@ function Hotel() {
   };
 
   const allDates = getDates(date[0].startDate, date[0].endDate);
-  useEffect(() => {
-    const closecalendar = (e) => {
-      if (e.path[0].tagName !== 'SPAN') {
-        setOpenDate(false);
-      }
-    };
-    document.body.addEventListener('click', closecalendar);
-    return () => document.body.removeEventListener('click', closecalendar);
-  }, []);
 
   const isAvailable = (roomNumber) => {
     const isFound = roomNumber.unavailableDates.some((date) =>
@@ -90,10 +96,10 @@ function Hotel() {
         ? [...selectedRoom, value]
         : selectedRoom.filter((item) => item !== value)
     );
-    console.log(value);
+    //console.log(value);
   };
   var s;
-  // console.log(format(new Date(),'MM/dd/yyyy'));
+
   const handleClick = async () => {
     try {
       await Promise.all(
@@ -120,10 +126,9 @@ function Hotel() {
       //   totalPrice: days * data.price,
       //   totalDays: days,
       // });
-      setOpen(false);
       await navigate('/payment', {
         state: {
-          hotelname: data.name,
+          hotelname,
           fromDate: format(date[0].startDate, 'MM/dd/yyyy'),
           toDate: format(date[0].endDate, 'MM/dd/yyyy'),
           selectedRoom,
@@ -144,16 +149,16 @@ function Hotel() {
               <div className=" m-2 d-flex">
                 <div className="w-75">
                   <div className=" h4 d-block mx-2">
-                    <span>{data.name}</span>
+                    <span>{hotelname}</span>
                   </div>
                   <div className=" d-block mx-2">
                     <SiGooglemaps />
-                    <span>{data.address}</span>
+                    <span>{address}</span>
                   </div>
                   <div className=" d-block mx-2">
                     <>Gía chỉ: </>
                     <span>
-                      {days * data.price} cho {days} ngày{' '}
+                      {days * price} cho {days} ngày{' '}
                     </span>
                   </div>
                 </div>
@@ -418,7 +423,6 @@ Vung Tau Melody Apartment đã chào đón khách Booking.com từ 23 tháng 4 2
                           <input
                             type="checkbox"
                             disabled={!isAvailable(roomNumber)}
-                            // disabled={false}
                             id={roomNumber.number}
                             value={ roomNumber._id }
                             onChange={handleSelect}
