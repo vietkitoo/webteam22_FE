@@ -17,8 +17,10 @@ import {
 import Header from '../../component/header/header';
 import Footer from '../../component/Footer/Footer';
 import { AuthContext } from '../../context/AuthContext';
+import { useCookies } from 'react-cookie';
 function Login() {
   const [justifyActive, setJustifyActive] = useState('tab1');
+  const [cookies, setCookie] = useCookies(['cookie']);
 
   const [credentials, setCredentials] = useState({
     username: undefined,
@@ -73,13 +75,9 @@ function Login() {
 
     try {
       const res = await axiosInstance.post('/api/auth/login', credentials);
-      if (res.data.isAdmin) {
-        dispatch({ type: 'LOGIN_SUCCESS', payload: res.data });
-        navigate('/');
-      } else {
-        dispatch({ type: 'LOGIN_SUCCESS', payload: res.data });
-        navigate('/home');
-      }
+      setCookie('access_token', res.data.token);
+      dispatch({ type: 'LOGIN_SUCCESS', payload: res.data });
+      navigate(res.data.isAdmin ? '/' : '/home');
     } catch (error) {
       dispatch({ type: 'LOGIN_FAIL', payload: error.response.data });
     }

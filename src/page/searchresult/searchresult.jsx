@@ -46,7 +46,7 @@ function Searchresult_app() {
   );
   const navigate = useNavigate();
   const handleSearch = () => {
-    reFetch();
+    // reFetch();
     // dispatch({ type: 'NEW_SEARCH', payload: { destination, date, People } });
     // navigate('/searchresult', { state: { destination, date } });
   };

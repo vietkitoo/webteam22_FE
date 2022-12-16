@@ -65,6 +65,8 @@ const authReducer = (state, action) => {
 export const AuthContextProvider = ({ children }) => {
   const [state, dispatch] = useReducer(authReducer, INITIAL_STATE);
 
+  //call api is this
+
   //when refresh the page not to be a null user, than set in LocalStorage if exists user if not than is null
   useEffect(() => {
     localStorage.setItem('user', JSON.stringify(state.user));
