@@ -1,18 +1,46 @@
 {
   "files": {
-    "main.css": "/static/css/main.5a4b2f90.css",
-    "main.js": "/static/js/main.35054045.js",
+    "main.css": "/static/css/main.57b31327.css",
+    "main.js": "/static/js/main.0c793085.js",
+    "static/media/riad.jpg": "/static/media/riad.34eb042386b3b0261184.jpg",
+    "static/media/resort.jpg": "/static/media/resort.48f93e103bdbf4e608a4.jpg",
+    "static/media/danang.jpg": "/static/media/danang.bf4d0e77f2109ca12392.jpg",
+    "static/media/thanh-pho-thu-duc-tp-ho-chi-minh-41120.jpg": "/static/media/thanh-pho-thu-duc-tp-ho-chi-minh-41120.64307ed845477db8964e.jpg",
+    "static/media/hue.jpeg": "/static/media/hue.5cd2671d3482e7e13fb9.jpeg",
+    "static/media/quangninh.png": "/static/media/quangninh.008c75b8355ad61710b2.png",
+    "static/media/vungtau.jpg": "/static/media/vungtau.b7eca5b9715879288033.jpg",
+    "static/media/nhatrang.jpg": "/static/media/nhatrang.6894d1489920ee19daed.jpg",
+    "static/media/hoguom.jpg": "/static/media/hoguom.8086f8cdfb9497d4fef1.jpg",
+    "static/media/sapa.jpg": "/static/media/sapa.af5dc0c713bf211067ff.jpg",
+    "static/media/2.jpg": "/static/media/2.d4ce9f08f45fb140792a.jpg",
+    "static/media/glamping.jpg": "/static/media/glamping.dcb5fc48860c04f6fee8.jpg",
+    "static/media/3.jpg": "/static/media/3.aa1a02de21be0f5f7690.jpg",
+    "static/media/quynhon.jpg": "/static/media/quynhon.e33af235594d3bebc952.jpg",
+    "static/media/khachsan.jpg": "/static/media/khachsan.51c4c074f208cbe3bc03.jpg",
     "static/media/world-map-gray.png": "/static/media/world-map-gray.dff233f504a885b7ab86.png",
+    "static/media/bietthu.jpg": "/static/media/bietthu.024b851d45787c98f471.jpg",
     "static/media/long_stays_banner_wide.a1b12d47.png": "/static/media/long_stays_banner_wide.a1b12d47.a1b12d475be06948f29c.png",
+    "static/media/canho.jpg": "/static/media/canho.722a7561ea22f080cab6.jpg",
+    "static/media/ryokan.jpeg": "/static/media/ryokan.4a233cd628891bc96c10.jpeg",
+    "static/media/nha-go-cap-4-dep.jpg": "/static/media/nha-go-cap-4-dep.20780fd47c10b3b5631f.jpg",
+    "static/media/quangbinh.jpg": "/static/media/quangbinh.7292104a408f9c7fad81.jpg",
+    "static/media/Hoi-An.jpeg": "/static/media/Hoi-An.9b3099dead4a5d53b905.jpeg",
+    "static/media/1.jpg": "/static/media/1.cf78aaf32a5a794f83c5.jpg",
+    "static/media/khu-cam-trai.jpg": "/static/media/khu-cam-trai.9952044592b99afca0bd.jpg",
+    "static/media/phuquoc.jpg": "/static/media/phuquoc.024f86c7202088a727f3.jpg",
+    "static/media/da-lat.jpg": "/static/media/da-lat.b8ca0e5477e61fa8a19b.jpg",
     "static/media/meet_elivra.1a77fdf3.jpg": "/static/media/meet_elivra.1a77fdf3.1a77fdf3a6833027f181.jpg",
+    "static/media/nha-nghi-o-que-3.jpg": "/static/media/nha-nghi-o-que-3.cf96efdbcb8d9b45abec.jpg",
+    "static/media/nha-thuyen.jpg": "/static/media/nha-thuyen.adb2d0ed8d50269fc3bd.jpg",
+    "static/media/b&b.jpg": "/static/media/b&b.624b8252bd20baa614ee.jpg",
     "static/media/meet-guests.0e575a58.png": "/static/media/meet-guests.0e575a58.5e11278d5fb6e20b7316.png",
     "static/media/register-partner.png": "/static/media/register-partner.dae9aebde7c016c7800b.png",
     "index.html": "/index.html",
-    "main.5a4b2f90.css.map": "/static/css/main.5a4b2f90.css.map",
-    "main.35054045.js.map": "/static/js/main.35054045.js.map"
+    "main.57b31327.css.map": "/static/css/main.57b31327.css.map",
+    "main.0c793085.js.map": "/static/js/main.0c793085.js.map"
   },
   "entrypoints": [
-    "static/css/main.5a4b2f90.css",
-    "static/js/main.35054045.js"
+    "static/css/main.57b31327.css",
+    "static/js/main.0c793085.js"
   ]
 }

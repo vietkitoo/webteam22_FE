@@ -1,3 +1,4 @@
+import './styles/css/bootstrap.min.css';
 import Login from './page/login/login';
 import HomeAdmin from './admin/page/home/HomeAdmin';
 import Home from './page/home/home';
