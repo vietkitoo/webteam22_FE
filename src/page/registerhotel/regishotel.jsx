@@ -1,5 +1,4 @@
 import './regishotel.scss';
-import '../../styles/css/App.css';
 import register_image from '../../image/register-partner.png';
 import { FcCheckmark } from 'react-icons/fc';
 import { BsCheckCircle } from 'react-icons/bs';
