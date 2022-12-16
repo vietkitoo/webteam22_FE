@@ -102,16 +102,16 @@ function Hotel() {
 
   const handleClick = async () => {
     try {
-      // await Promise.all(
-      //   selectedRoom.map((roomId) => {
-      //     s = roomId;
-      //     console.log(s);
-      //     const res = axios.put(`/api/rooms/availability/${roomId}`, {
-      //       date: allDates,
-      //     });
-      //     return res.data;
-      //   })
-      // );
+      await Promise.all(
+        selectedRoom.map((roomId) => {
+          s = roomId;
+          console.log(s);
+          const res = axios.put(`/api/rooms/availability/${roomId}`, {
+            date: allDates,
+          });
+          return res.data;
+        })
+      );
       // const res1 = await axiosInstance.get(`/rooms/typeroom/${s}`);
       // console.log(res1);
       // const res2 = await axios.post('/api/booking/', {

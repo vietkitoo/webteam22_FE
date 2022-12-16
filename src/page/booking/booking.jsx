@@ -8,12 +8,10 @@ import Form from 'react-bootstrap/Form';
 import { Button } from 'react-bootstrap';
 import { AuthContext } from '../../context/AuthContext';
 import { useEffect } from 'react';
-import useFetch from '../../hooks/useFetch';
 
 function Payment() {
   const { user } = useContext(AuthContext);
   const location = useLocation();
-  //const userdata = useFetch(`/api/users/${user.}`)
 
   useEffect(() => {
     console.log(location.state);
@@ -80,10 +78,7 @@ function Payment() {
                   <div className="room-info">
                     <h5>Thông tin phòng</h5>
                     <div>
-                      {location.state.selectedRoom.map((roomId) => 
-
-
-                        (
+                      {location.state.selectedRoom.map((roomId) => (
                         <div className="room">
                           Phòng {roomId}
                           <div className="d-md-flex justify-content-md-end">
