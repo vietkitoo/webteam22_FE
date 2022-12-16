@@ -55,8 +55,8 @@ const Datatable = ({columns}) => {
         className="datagrid"
         rows={data}
         columns={columns.concat(actionColumn)}
-        pageSize={8}
-        rowsPerPageOptions={[60]}
+        pageSize={10}
+        rowsPerPageOptions={[10]}
         getRowId={(row) => row._id}
       />
     </div>
