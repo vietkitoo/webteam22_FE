@@ -4,8 +4,9 @@ import { roomInputs } from "../../formSource";
 import useFetch from "../../hook/useFetch";
 import axios from "axios";
 import DriveFolderUploadOutlinedIcon from "@mui/icons-material/DriveFolderUploadOutlined";
-import { Link ,useLocation,useNavigate} from 'react-router-dom';
-import { useContext, useState } from 'react';
+import {useNavigate} from 'react-router-dom';
+import {  useState } from 'react';
+import { axiosInstance } from "../../../config";
 
 const NewRoom = () => {
   const [file, setFile] = useState("");
@@ -35,7 +36,7 @@ const NewRoom = () => {
         roomNumbers,
         image: url,
       };
-      await axios.post(`/api/rooms/${hotelId}`,  newroom);
+      await axiosInstance.post(`/api/rooms/${hotelId}`,  newroom);
       navigate('/rooms');
     } catch (err) {
       console.log(err);

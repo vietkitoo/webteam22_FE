@@ -28,8 +28,7 @@ const Header = () => {
 
   const handleLogout = () => {
     localStorage.removeItem('user');
-    navigate('/login');
-    window.location.reload();
+    window.location.href = "/login";
   };
 
   const { dispatch } = useContext(SearchContext);

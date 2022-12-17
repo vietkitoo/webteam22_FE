@@ -2,8 +2,9 @@ import "./update.scss";
 import Sidebar from "../../component/sidebar/Sidebar";
 import DriveFolderUploadOutlinedIcon from "@mui/icons-material/DriveFolderUploadOutlined";
 import axios from "axios";
-import { Link ,useLocation,useNavigate} from 'react-router-dom';
-import { useContext, useState } from 'react';
+import {useLocation,useNavigate} from 'react-router-dom';
+import {useState } from 'react';
+import { axiosInstance } from "../../../config";
 
 const UpdateUser = ({ inputs, title }) => {
   const [file, setFile] = useState("");
@@ -35,7 +36,7 @@ const UpdateUser = ({ inputs, title }) => {
         img: url,
       };
 
-      await axios.put(`/api/${path}/${path2}/update`, updateUser);
+      await axiosInstance.put(`/api/${path}/${path2}/update`, updateUser);
       navigate('/users');
     } catch (err) {
       console.log(err);

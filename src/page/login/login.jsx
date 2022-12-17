@@ -18,6 +18,7 @@ import Header from '../../component/header/header';
 import Footer from '../../component/Footer/Footer';
 import { AuthContext } from '../../context/AuthContext';
 import { useCookies } from 'react-cookie';
+import { EnumKey } from '../../utils/enum';
 function Login() {
   const [justifyActive, setJustifyActive] = useState('tab1');
   const [cookies, setCookie] = useCookies(['cookie']);
@@ -76,7 +77,7 @@ function Login() {
 
     try {
       const res = await axiosInstance.post('/api/auth/login', credentials);
-      setCookie('access_token', res.data.token);
+      setCookie(EnumKey.access_token, res.data.token);
       dispatch({ type: 'LOGIN_SUCCESS', payload: res.data });
       navigate(res.data.isAdmin ? '/' : '/home');
     } catch (error) {
