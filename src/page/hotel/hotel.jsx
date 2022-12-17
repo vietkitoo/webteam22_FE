@@ -380,7 +380,7 @@ Vung Tau Melody Apartment đã chào đón khách Booking.com từ 23 tháng 4 2
             <h2>Loading...</h2>
           ) : (
             data1.map((item) => (
-              // console.log(item),
+              console.log(item),
               <tbody>
                 <tr>
                   <td>
