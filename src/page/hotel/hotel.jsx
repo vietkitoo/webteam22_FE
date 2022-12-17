@@ -46,6 +46,7 @@ function Hotel() {
   const price = location.state.price;
   const hotelId = location.state.hotelId;
   const date = location.state.date;
+  const [room, setRoom] = useState({roomNumber: "", roomId: "", roomTitle: "", price: undefined});
 
   const {data,loading} = useFetch(`/api/hotels/find/${id}`);
   console.log(data);
@@ -102,16 +103,16 @@ function Hotel() {
 
   const handleClick = async () => {
     try {
-      await Promise.all(
-        selectedRoom.map((roomId) => {
-          s = roomId;
-          console.log(s);
-          const res = axios.put(`/api/rooms/availability/${roomId}`, {
-            date: allDates,
-          });
-          return res.data;
-        })
-      );
+      // await Promise.all(
+      //   selectedRoom.map((roomId) => {
+      //     s = roomId;
+      //     console.log(s);
+      //     const res = axios.put(`/api/rooms/availability/${roomId}`, {
+      //       date: allDates,
+      //     });
+      //     return res.data;
+      //   })
+      // );
       // const res1 = await axiosInstance.get(`/rooms/typeroom/${s}`);
       // console.log(res1);
       // const res2 = await axios.post('/api/booking/', {
@@ -126,6 +127,17 @@ function Hotel() {
       //   totalPrice: days * data.price,
       //   totalDays: days,
       // });
+
+      data1.map((item) => {
+        item.roomNumbers.map((roomNumber) => {
+          const checkbox = document.getElementById(roomNumber);
+          
+          if (checkbox.checked){
+            setSelectedRoom([...selectedRoom, checkbox.value])
+          }
+        })
+      })
+
       await navigate('/payment', {
         state: {
           hotelname,
@@ -394,20 +406,21 @@ Vung Tau Melody Apartment đã chào đón khách Booking.com từ 23 tháng 4 2
                   </td>
                   <td>
                     <div>
-                      {item.roomNumbers.map((roomNumber) => (
-                        <div>
-                          <input
-                            type="checkbox"
-                            disabled={!isAvailable(roomNumber)}
-                            id={roomNumber.number}
-                            value={ roomNumber._id }
-                            onChange={handleSelect}
-                          />
-                          <label htmlFor={roomNumber.number}>
-                            Number of Room: <strong>{roomNumber.number}</strong>
-                          </label>
-                        </div>
-                      ))}
+                      {item.roomNumbers.map((roomNumber) => {
+                        setRoom({roomNumber: roomNumber.number, roomId: roomNumber._id, roomTitle: item.title, price: item.price});
+                        return (
+                          <div>
+                            <input
+                              type="checkbox"
+                              disabled={!isAvailable(roomNumber)}
+                              id={roomNumber.number}
+                              value={ room }
+                            />
+                            <label htmlFor={roomNumber.number}>
+                              Number of Room: <strong>{roomNumber.number}</strong>
+                            </label>
+                          </div>
+                        )})}
                     </div>
                   </td>
                   <td>

@@ -24,6 +24,7 @@ function Login() {
 
   const [credentials, setCredentials] = useState({
     username: undefined,
+    fullname: undefined,
     email: undefined,
     password: undefined,
   });

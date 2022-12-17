@@ -78,11 +78,11 @@ function Payment() {
                   <div className="room-info">
                     <h5>Thông tin phòng</h5>
                     <div>
-                      {location.state.selectedRoom.map((roomId) => (
+                      {location.state.selectedRoom.map((room) => (
                         <div className="room">
-                          Phòng {roomId}
+                          Phòng {room.roomNumber}
                           <div className="d-md-flex justify-content-md-end">
-                            VND
+                            <span>{location.state.days * room.price}</span> VND
                           </div>
                         </div>
                       ))}

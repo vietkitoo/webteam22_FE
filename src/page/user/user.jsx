@@ -24,6 +24,8 @@ function User() {
   const [password, setPassword] = useState();
   const [newPassword, setNewPassword] = useState();
   const [confirmNewPassword, setConfirmNewPassword] = useState();
+  const [phone, setPhone] = useState(user.details.phone);
+  const [fullname, setFullname] = useState(user.details.fullname);
   const id = JSON.parse(localStorage.getItem('user')).details._id;
   //   console.log(id);
   const { data, loading, error, reFetch } = useFetch(`/api/users/${id}/booking`);
@@ -141,12 +143,30 @@ function User() {
                           disabled
                         />
                       </Form.Group>
+                      <Form.Group className="mb-3">
+                        <Form.Label>Tên đầy đủ</Form.Label>
+                        <Form.Control
+                          type="text"
+                          defaultValue={user.details.fullname}
+                          value={fullname}
+                          onChange={(e) => setFullname(e.target.value)}
+                        />
+                      </Form.Group>
+                      <Form.Group className="mb-3">
+                        <Form.Label>Số điện thoại</Form.Label>
+                        <Form.Control
+                          type="text"
+                          defaultValue={user.details.phone}
+                          value={phone}
+                          onChange={(e) => setPhone(e.target.value)}
+                        />
+                      </Form.Group>
                       <div className="d-md-flex justify-content-md-end">
                         <Button
                           variant="primary"
                           type="submit"
                           className="me-md-2"
-                          disabled
+                          disabled={(phone === user.details.phone && fullname === user.details.fullname)}
                         >
                           Lưu thay đổi
                         </Button>
