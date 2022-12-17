@@ -4,8 +4,9 @@ import DriveFolderUploadOutlinedIcon from "@mui/icons-material/DriveFolderUpload
 import { hotelInputs } from "../../formSource";
 import useFetch from "../../hook/useFetch";
 import axios from "axios";
-import { Link ,useLocation,useNavigate} from 'react-router-dom';
-import { useContext, useState } from 'react';
+import { useLocation,useNavigate} from 'react-router-dom';
+import { useState } from 'react';
+import { axiosInstance } from "../../../config";
 
 const NewHotel = () => {
   const [file, setFile] = useState("");
@@ -51,7 +52,7 @@ const NewHotel = () => {
         image:  url,
       };
 
-      await axios.put(`/api/${path}/${path2}/update`, updatehotel);
+      await axiosInstance.put(`/api/${path}/${path2}/update`, updatehotel);
       navigate('/hotels');
     } catch (err) {console.log(err)}
   };

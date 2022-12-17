@@ -1,11 +1,9 @@
 import "./update.scss";
 import Sidebar from "../../component/sidebar/Sidebar";
 import { bookingInputs } from "../../formSource";
-import useFetch from "../../hook/useFetch";
-import axios from "axios";
-import DriveFolderUploadOutlinedIcon from "@mui/icons-material/DriveFolderUploadOutlined";
 import { Link ,useLocation,useNavigate} from 'react-router-dom';
 import { useContext, useState } from 'react';
+import { axiosInstance } from "../../../config";
 
 const UpdateBooking = () => {
   
@@ -28,7 +26,7 @@ const UpdateBooking = () => {
       const updatebooking = {
         ...info,
       };
-      await axios.put(`/api/${path}/${path2}/update`,  updatebooking);
+      await axiosInstance.put(`/api/${path}/${path2}/update`,  updatebooking);
       navigate('/booking');
     } catch (err) {
       console.log(err);

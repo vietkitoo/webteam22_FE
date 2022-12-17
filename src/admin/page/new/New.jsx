@@ -2,8 +2,9 @@ import "./new.scss";
 import Sidebar from "../../component/sidebar/Sidebar";
 import DriveFolderUploadOutlinedIcon from "@mui/icons-material/DriveFolderUploadOutlined";
 import axios from "axios";
-import { Link ,useLocation,useNavigate} from 'react-router-dom';
-import { useContext, useState } from 'react';
+import { useNavigate} from 'react-router-dom';
+import { useState } from 'react';
+import { axiosInstance } from "../../../config";
 
 const New = ({ inputs, title }) => {
   const [file, setFile] = useState("");
@@ -32,7 +33,7 @@ const New = ({ inputs, title }) => {
         img: url,
       };
 
-      await axios.post("/api/auth/register", newUser);
+      await axiosInstance.post("/api/auth/register", newUser);
       navigate('/users');
     } catch (err) {
       console.log(err);
