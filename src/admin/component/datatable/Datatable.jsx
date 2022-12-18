@@ -2,7 +2,6 @@ import "./datatable.scss";
 import { DataGrid } from '@mui/x-data-grid';
 import useFetch from "../../hook/useFetch";
 import { Link, useLocation } from "react-router-dom";
-import axios from "axios";
 import { axiosInstance } from "../../../config";
 
 const Datatable = ({columns}) => {
