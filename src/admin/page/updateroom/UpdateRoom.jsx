@@ -20,7 +20,6 @@ const UpdateRoom = () => {
   const navigate = useNavigate();
   const handleClick = async (e) => {
     e.preventDefault();
-    const data = new FormData();
     const roomNumbers = rooms.split(",").map((room) => ({ number: room }));
     try {
         

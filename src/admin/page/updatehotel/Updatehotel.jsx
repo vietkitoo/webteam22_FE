@@ -16,7 +16,7 @@ const NewHotel = () => {
   const path = location.pathname.split("/")[1];
   const path2 = location.pathname.split("/")[2];
 
-  const { data, loading, error } = useFetch("/api/rooms");
+  const { data, loading } = useFetch("/api/rooms");
 
   const handleChange = (e) => {
     setInfo((prev) => ({ ...prev, [e.target.id]: e.target.value }));

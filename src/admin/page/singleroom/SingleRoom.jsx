@@ -3,8 +3,7 @@ import Sidebar from '../../component/sidebar/Sidebar'
 import useFetch from "../../hook/useFetch";
 import {  useLocation } from "react-router-dom";
 import { Link } from 'react-router-dom';
-import { roomColumns } from '../../datatablesource';
-import Datatable from '../../component/table/Table';
+
 
 
 const Singlehotel = () => {

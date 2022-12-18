@@ -1,12 +1,10 @@
 import './single.scss'
 import Sidebar from '../../component/sidebar/Sidebar'
-import Chart from '../../component/chart/Chart';
-import List from '../../component/table/Table';
+
 import useFetch from "../../hook/useFetch";
 import { useLocation } from "react-router-dom";
 import { useState } from "react";
-import Datatable from '../../component/datatable/Datatable';
-import { bookingColumns } from "../../datatablesource";
+
 import { Link } from 'react-router-dom';
 
 

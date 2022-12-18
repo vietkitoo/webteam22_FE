@@ -1,14 +1,13 @@
 import "./update.scss";
 import Sidebar from "../../component/sidebar/Sidebar";
 import { bookingInputs } from "../../formSource";
-import { Link ,useLocation,useNavigate} from 'react-router-dom';
-import { useContext, useState } from 'react';
+import { useLocation,useNavigate} from 'react-router-dom';
+import { useState } from 'react';
 import { axiosInstance } from "../../../config";
 
 const UpdateBooking = () => {
   
   const [info, setInfo] = useState({});
-  const [rooms, setRooms] = useState([]);
   const location = useLocation();
   const path = location.pathname.split("/")[1];
   const path2 = location.pathname.split("/")[2];
@@ -20,7 +19,6 @@ const UpdateBooking = () => {
   const navigate = useNavigate();
   const handleClick = async (e) => {
     e.preventDefault();
-    const data = new FormData();
     try {
         
       const updatebooking = {

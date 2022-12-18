@@ -1,12 +1,8 @@
 import './single.scss';
 import Sidebar from '../../component/sidebar/Sidebar';
-import Chart from '../../component/chart/Chart';
-import List from '../../component/table/Table';
 import useFetch from '../../../hooks/useFetch';
 import { useLocation } from 'react-router-dom';
 import { useState } from 'react';
-import Datatable from '../../component/datatable/Datatable';
-import { bookingColumns } from '../../datatablesource';
 import { Link } from 'react-router-dom';
 
 const Single = () => {
@@ -73,7 +69,7 @@ const Single = () => {
                           </h6>
                         </div>
                         <div className="col-sm-6">
-                          <p className="m-b-10 f-w-600">phone</p>
+                          <p className="m-b-10 f-w-600">Số điện thoại</p>
                           <h6 className="text-muted f-w-400">{data.phone}</h6>
                         </div>
                       </div>
@@ -82,11 +78,11 @@ const Single = () => {
                       </h6>
                       <div className="row">
                         <div className="col-sm-6">
-                          <p className="m-b-10 f-w-600">City</p>
+                          <p className="m-b-10 f-w-600">Tỉnh, thành phố</p>
                           <h6 className="text-muted f-w-400">{data.city}</h6>
                         </div>
                         <div className="col-sm-6">
-                          <p className="m-b-10 f-w-600">Country</p>
+                          <p className="m-b-10 f-w-600">Quốc tịch</p>
                           <h6 className="text-muted f-w-400">
                             {data.country}
                           </h6>
