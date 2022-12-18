@@ -17,9 +17,6 @@ import { IoIosMan } from 'react-icons/io';
 import { Image } from 'cloudinary-react';
 import useFetch from '../../hooks/useFetch';
 import { useLocation, useNavigate } from 'react-router-dom';
-import { Link } from 'react-router-dom';
-import { SearchContext } from '../../context/SearchContext';
-import { AuthContext } from '../../context/AuthContext';
 import { axiosInstance } from '../../config';
 import format from 'date-fns/format';
 import axios from 'axios';
@@ -30,15 +27,6 @@ function Hotel() {
   const location = useLocation();
   // console.log(JSON.parse(localStorage.getItem('user')).details.username);
   const id = location.pathname.split('/')[2];
-  // console.log(id);
-  // const {
-  //   hotelname,
-  //   address,
-  //   rating,
-  //   price,
-  //   hotelId,
-  //   date,
-  // } = location.state;
 
   const hotelname = location.state.hotelname;
   const address = location.state.address;
@@ -46,26 +34,32 @@ function Hotel() {
   const price = location.state.price;
   const hotelId = location.state.hotelId;
   const date = location.state.date;
-  const [room, setRoom] = useState({roomNumber: "", roomId: "", roomTitle: "", price: undefined});
 
   const {data,loading} = useFetch(`/api/hotels/find/${id}`);
   console.log(data);
   // console.log((data.image));
   // console.log(date);
   const MILLISECONDS_PER_DAYS = 1000 * 60 * 60 * 24;
+  const [selectedRoom, setSelectedRoom] = useState([]);
+  const [room, setRoom] = useState([]);
   function dayDifference(date1, date2) {
     const timeDifferent = Math.abs(date2.getTime() - date1.getTime());
     const differentDays = Math.ceil(timeDifferent / MILLISECONDS_PER_DAYS);
     return differentDays;
   }
-  const days = dayDifference(date[0].endDate, date[0].startDate);
+  const days = dayDifference(date[0].endDate, date[0].startDate) || 1;
   // Lấy data hotel
 
   //Lấy data của room của từng hotel
-  const { data1, loading1 } = useFetch(`/api/hotels/room/${id}`);
+  const [data1, setData1] = useState([]);
+  useEffect(() => {
+    const proceed = async () => {
+      const data2 = await axiosInstance.get(`/api/hotels/room/${id}`);
+      setData1(data2.data);
+    }
+    proceed();
+  },[])
   //console.log(data1);
-
-  const [selectedRoom, setSelectedRoom] = useState([]);
 
   const getDates = (startDate, endDate) => {
     const start = new Date(startDate);
@@ -88,17 +82,6 @@ function Hotel() {
     return !isFound;
   };
 
-  const handleSelect = (e) => {
-    const selected = e.target.checked;
-    const value = e.target.value;
-
-    setSelectedRoom(
-      selected
-        ? [...selectedRoom, value]
-        : selectedRoom.filter((item) => item !== value)
-    );
-    //console.log(value);
-  };
   var s;
 
   const handleClick = async () => {
@@ -127,27 +110,41 @@ function Hotel() {
       //   totalPrice: days * data.price,
       //   totalDays: days,
       // });
-
+      var tot = 0;
       data1.map((item) => {
+        
         item.roomNumbers.map((roomNumber) => {
-          const checkbox = document.getElementById(roomNumber);
-          
-          if (checkbox.checked){
-            setSelectedRoom([...selectedRoom, checkbox.value])
-          }
-        })
-      })
+          const checkbox = document.getElementById(roomNumber.number);
 
-      await navigate('/payment', {
+          if (checkbox.checked === true){
+            const value = checkbox.value;
+            const name = checkbox.name;
+            const id = checkbox.id;
+            selectedRoom.push(value);
+            room.push({price: name, roomnum: id});
+            tot = tot + Number(name);
+          }
+          return room, selectedRoom;
+        })
+        return room, selectedRoom;
+      })
+      console.log(tot);
+
+      navigate('/payment', {
         state: {
           hotelname,
           fromDate: format(date[0].startDate, 'MM/dd/yyyy'),
           toDate: format(date[0].endDate, 'MM/dd/yyyy'),
-          selectedRoom
+          days,
+          room,
+          selectedRoom,
+          tot,
         }
       });
       
-    } catch (err) {};
+    } catch (err) {
+      console.log(err);
+    };
   };
 
   return (
@@ -388,9 +385,7 @@ Vung Tau Melody Apartment đã chào đón khách Booking.com từ 23 tháng 4 2
               <th scope="flex-fill"></th>
             </tr>
           </thead>
-          {loading1 ? (
-            <h2>Loading...</h2>
-          ) : (
+          {
             data1.map((item) => (
               console.log(item),
               <tbody>
@@ -406,21 +401,20 @@ Vung Tau Melody Apartment đã chào đón khách Booking.com từ 23 tháng 4 2
                   </td>
                   <td>
                     <div>
-                      {item.roomNumbers.map((roomNumber) => {
-                        setRoom({roomNumber: roomNumber.number, roomId: roomNumber._id, roomTitle: item.title, price: item.price});
-                        return (
-                          <div>
-                            <input
-                              type="checkbox"
-                              disabled={!isAvailable(roomNumber)}
-                              id={roomNumber.number}
-                              value={ room }
-                            />
-                            <label htmlFor={roomNumber.number}>
-                              Number of Room: <strong>{roomNumber.number}</strong>
-                            </label>
-                          </div>
-                        )})}
+                      {item.roomNumbers.map((roomNumber) => (
+                        <div>
+                          <input
+                            type="checkbox"
+                            disabled={!isAvailable(roomNumber)}
+                            id={roomNumber.number}
+                            value={ roomNumber._id }
+                            name={ item.price }
+                          />
+                          <label htmlFor={roomNumber.number}>
+                            Number of Room: <strong>{roomNumber.number}</strong>
+                          </label>
+                        </div>
+                      ))}
                     </div>
                   </td>
                   <td>
@@ -437,7 +431,7 @@ Vung Tau Melody Apartment đã chào đón khách Booking.com từ 23 tháng 4 2
                 </tr>
               </tbody>
             ))
-          )}
+          }
         </table>
       </div>
       <Footer />

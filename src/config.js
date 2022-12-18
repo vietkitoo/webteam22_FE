@@ -3,7 +3,7 @@ import { EnumKey } from './utils/enum';
 import Cookies from 'js-cookie';
 
 export const axiosInstance = axios.create({
-  baseURL: 'https://webteam22-be.vercel.app/',
+  baseURL: 'http://localhost:5000/',
   withCredentials: true
 });
 

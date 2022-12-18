@@ -5,13 +5,18 @@ import { BsFillCaretLeftFill } from 'react-icons/bs';
 import { Link, useLocation } from 'react-router-dom';
 import React, { useContext, useState } from 'react';
 import Form from 'react-bootstrap/Form';
-import { Button } from 'react-bootstrap';
+import { Button, Modal } from 'react-bootstrap';
 import { AuthContext } from '../../context/AuthContext';
 import { useEffect } from 'react';
+import qr from '../../image/qr copy.jpg'
 
 function Payment() {
   const { user } = useContext(AuthContext);
   const location = useLocation();
+  const [show, setShow] = useState(false);
+
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
 
   useEffect(() => {
     console.log(location.state);
@@ -78,24 +83,43 @@ function Payment() {
                   <div className="room-info">
                     <h5>Thông tin phòng</h5>
                     <div>
-                      {location.state.selectedRoom.map((room) => (
+                      {location.state.room.map((room) => (
                         <div className="room">
-                          Phòng {room.roomNumber}
+                          Phòng {room.roomnum}
                           <div className="d-md-flex justify-content-md-end">
-                            <span>{location.state.days * room.price}</span> VND
+                            <span>{room.price} </span>
+                            <span> VND</span>
                           </div>
                         </div>
                       ))}
+                      <div className="days">
+                        Số ngày: 
+                        <span>{location.state.days}</span>
+                      </div>
                     </div>
                   </div>
+                  <div className="days">
+                    <h5></h5>
+                  </div>
                   <div className="mt-4 mb-4 total-price d-flex justify-content-center">
-                    (Total price)
+                    {location.state.tot * location.state.days}
                   </div>
                 </div>
                 <div className="mt-2 d-md-flex justify-content-center">
-                  <Button type="submit" className="pay-btn">
-                    Lưu thay đổi
+                  <Button variant="primary" onClick={handleShow} className="pay-btn">
+                    Thanh toán
                   </Button>
+                  <Modal show={show} onHide={handleClose}>
+                  <Modal.Header closeButton>
+                    <Modal.Title>ZaloPay QR</Modal.Title>
+                  </Modal.Header>
+                  <Modal.Body><img src={qr} alt='qrcode' width={450} height={700} /></Modal.Body>
+                  <Modal.Footer>
+                    <Button variant="secondary" onClick={handleClose}>
+                      Đóng
+                    </Button>
+                  </Modal.Footer>
+                </Modal>
                 </div>
               </div>
             </div>
