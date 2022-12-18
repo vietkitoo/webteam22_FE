@@ -69,7 +69,8 @@ const Single = () => {
                           </h6>
                         </div>
                         <div className="col-sm-6">
-                          <p className="m-b-10 f-w-600">phone</p>
+                          <p className="m-b-10 f-w-600">Số điện thoại</p>
+                          <h6 className="text-muted f-w-400">{data.phone}</h6>
                         </div>
                       </div>
                       <h6 className="m-b-20 m-t-40 p-b-5 b-b-default f-w-600">
@@ -77,11 +78,11 @@ const Single = () => {
                       </h6>
                       <div className="row">
                         <div className="col-sm-6">
-                          <p className="m-b-10 f-w-600">City</p>
+                          <p className="m-b-10 f-w-600">Tỉnh, thành phố</p>
                           <h6 className="text-muted f-w-400">{data.city}</h6>
                         </div>
                         <div className="col-sm-6">
-                          <p className="m-b-10 f-w-600">Country</p>
+                          <p className="m-b-10 f-w-600">Quốc tịch</p>
                           <h6 className="text-muted f-w-400">
                             {data.country}
                           </h6>
