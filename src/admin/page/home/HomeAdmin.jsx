@@ -1,5 +1,5 @@
 import Sidebar from '../../component/sidebar/Sidebar';
-import '.home.scss'
+import './homeadmin.scss'
 const HomeAdmin = () => {
   return (
     <div className='homeadmin'>
