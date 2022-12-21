@@ -29,7 +29,7 @@ function User() {
   const id = JSON.parse(localStorage.getItem('user')).details._id;
   //   console.log(id);
   const { data, loading, error, reFetch } = useFetch(`/api/users/${id}/booking`);
-  //   console.log(data);
+    console.log(data);
   const [click, setClick] = useState(false);
   const navigate = useNavigate();
 
@@ -257,11 +257,12 @@ function User() {
                         <h2>Loading...</h2>
                       ) : (
                         data.map((item) => {
-                          if (moment(item.toDate, "DD-MM-YYYY") > moment(today, "DD-MM-YY")) {
-                            console.log(item.toDate)
-                            console.log(moment(item.toDate, "DD-MM-YYYY").toString())
-                            console.log(moment(today, "DD-MM-YY").toString())
-                            console.log(moment(item.toDate, "DD-MM-YYYY") < moment(today, "DD-MM-YY"))
+                          console.log(item);
+                          console.log(item.toDate);
+                          console.log(today);
+                          console.log(moment(item.toDate, "MM/DD/YYYY") > moment(today, "DD-MM-YY"))
+                          if (moment(item.toDate, "MM/DD/YYYY") > moment(today, "DD-MM-YY")) {
+
                             return (
                               <tbody>
                                 <tr>
@@ -296,7 +297,7 @@ function User() {
                         <h2>Loading...</h2>
                       ) : (
                         data.map((item) => {
-                          if (moment(item.toDate, "DD-MM-YYYY") < moment(today, "DD-MM-YY")) { 
+                          if (moment(item.toDate, "MM/DD/YYYY") < moment(today, "DD-MM-YY")) { 
                             return (
                               <tbody>
                                 <tr>

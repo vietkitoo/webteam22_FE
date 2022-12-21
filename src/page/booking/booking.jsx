@@ -24,16 +24,23 @@ function Payment() {
   const [phone, setPhone] = useState(JSON.parse(localStorage.getItem('user')).details.phone);
   const [request, setRequest] = useState();
   var s;
+  console.log(selectedRoom);
 
   const handleClose = () => {
     setShow(false);
   }
+
   const handleShow = async () => {
     setShow(true);
     try{
-      // const res = axios.put(`/api/rooms/availability/${roomId}`, {
-      //   date: location.state.allDates,
-      // });
+
+        selectedRoom.map(async (roomId) => {
+          const res = await axios.put(`/api/rooms/availability/${roomId}`, {
+            date: location.state.allDates,
+          });
+
+        })
+
       const res2 = await axiosInstance.post('/api/booking/', {
         hotel: location.state.hotelname,
         roomId: selectedRoom,
