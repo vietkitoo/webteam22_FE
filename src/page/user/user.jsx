@@ -12,6 +12,7 @@ import {Link} from 'react-scroll';
 import { BsPerson, BsShieldLock, BsHouseDoor, BsArrowCounterclockwise } from 'react-icons/bs'
 
 function User() {
+<<<<<<< HEAD
     const { user } = useContext(AuthContext);
     const [userId, setUserId] = useState([user._id]);
     const [password, setPassword] = useState();
@@ -19,11 +20,27 @@ function User() {
     const [confirmNewPassword, setConfirmNewPassword] = useState();
     const [click, setClick] = useState(false);
     const navigate = useNavigate();
+=======
+  const { user } = useContext(AuthContext);
+  const [userId, setUserId] = useState([user._id]);
+  const [password, setPassword] = useState();
+  const [newPassword, setNewPassword] = useState();
+  const [confirmNewPassword, setConfirmNewPassword] = useState();
+  const [phone, setPhone] = useState(user.details.phone);
+  const [fullname, setFullname] = useState(user.details.fullname);
+  const id = JSON.parse(localStorage.getItem('user')).details._id;
+  //   console.log(id);
+  const { data, loading, error, reFetch } = useFetch(`/api/users/${id}/booking`);
+  //   console.log(data);
+  const [click, setClick] = useState(false);
+  const navigate = useNavigate();
+>>>>>>> d4a02a1ed3e2e3f5a22b2f0d3ac3464163d32e93
 
     const handleClick = () => setClick(!click);
 
     const closeMenu = () => setClick(false);
 
+<<<<<<< HEAD
     const handleSubmit = async (e) => {
         e.preventDefault();
         if (newPassword !== confirmNewPassword){
@@ -36,8 +53,23 @@ function User() {
             console.log("Succeed");
             navigate('/home');
         }
+=======
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    if (newPassword !== confirmNewPassword) {
+      console.log('Wrong confirm new password');
+    } else {
+      const res = await axiosInstance.put('/users/password', {
+        userId: id,
+        password,
+        newPassword,
+      });
+      console.log('Succeed');
+      navigate('/home');
+>>>>>>> d4a02a1ed3e2e3f5a22b2f0d3ac3464163d32e93
     }
 
+<<<<<<< HEAD
 
     return(
         <>
@@ -157,6 +189,63 @@ function User() {
                         
                     </div>
                 
+=======
+          <div className="user-info">
+            <div className="list-search-item">
+              <div id="list-infos" className="list-infos">
+                <div className="item-info bg-box">
+                  <div className="item-info-intro">
+                    <h2 id="userInfo">Thông tin cá nhân</h2>
+                  </div>
+                  <div className="item-content">
+                    <Form>
+                      <Form.Group className="mb-3">
+                        <Form.Label>Địa chỉ email</Form.Label>
+                        <Form.Control
+                          type="email"
+                          defaultValue={user.details.email}
+                          disabled
+                        />
+                      </Form.Group>
+                      <Form.Group className="mb-3">
+                        <Form.Label>Tên người dùng</Form.Label>
+                        <Form.Control
+                          type="text"
+                          defaultValue={user.details.username}
+                          disabled
+                        />
+                      </Form.Group>
+                      <Form.Group className="mb-3">
+                        <Form.Label>Tên đầy đủ</Form.Label>
+                        <Form.Control
+                          type="text"
+                          defaultValue={user.details.fullname}
+                          value={fullname}
+                          onChange={(e) => setFullname(e.target.value)}
+                        />
+                      </Form.Group>
+                      <Form.Group className="mb-3">
+                        <Form.Label>Số điện thoại</Form.Label>
+                        <Form.Control
+                          type="text"
+                          defaultValue={user.details.phone}
+                          value={phone}
+                          onChange={(e) => setPhone(e.target.value)}
+                        />
+                      </Form.Group>
+                      <div className="d-md-flex justify-content-md-end">
+                        <Button
+                          variant="primary"
+                          type="submit"
+                          className="me-md-2"
+                          disabled={(phone === user.details.phone && fullname === user.details.fullname)}
+                        >
+                          Lưu thay đổi
+                        </Button>
+                      </div>
+                    </Form>
+                  </div>
+>>>>>>> d4a02a1ed3e2e3f5a22b2f0d3ac3464163d32e93
                 </div>
 
             </div>

@@ -32,31 +32,12 @@ const SearchBar = () => {
       key: 'selection',
     },
   ]);
-  const [ChoosePeople, setChoosePeople] = useState(false);
-  const [People, setPeople] = useState({
-    Adult: 1,
-    Children: 0,
-    Room: 1,
-  });
   const navigate = useNavigate();
-  const handlePeople = (name, operation) => {
-    setPeople((prev) => {
-      return {
-        ...prev,
-        [name]: operation === 'i' ? People[name] + 1 : People[name] - 1,
-      };
-    });
-  };
-  const [min, setMin] = useState(undefined);
-  const [max, setMax] = useState(undefined);
-  const { data, loading, error, reFetch } = useFetch(
-    `api/hotels?city=${destination}&min=${min || 0}&max=${max || 9999}`
-  );
   const { dispatch } = useContext(SearchContext);
 
   const handleSearch = () => {
-    dispatch({ type: 'NEW_SEARCH', payload: { destination, date, People } });
-    navigate('/searchresult', { state: { destination, date, People } });
+    // dispatch({ type: 'NEW_SEARCH', payload: { destination, date, People } });
+    navigate('/searchresult', { state: { destination, date } });
   };
   const handllesubmit = (e) => {
     e.preventDefault();

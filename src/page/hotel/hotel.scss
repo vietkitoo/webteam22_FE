@@ -1,5 +1,3 @@
-/* LOCATION */
-
 .date_location {
   margin-top: 14rem;
   z-index: 1;
@@ -7,9 +5,11 @@
 .search {
   padding: 10%;
 }
-.setbackgroundsearch {
-  background-color: #99fcb1;
-  height: 30rem;
+.h-88 {
+  height: 88%;
+}
+.h-66 {
+  height: 66%;
 }
 .people {
   z-index: 1;
@@ -22,28 +22,42 @@
   width: 15rem !important;
   height: 10rem !important;
 }
-.description_picture{
-    height: 30rem;
-    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 1.02) !important;
+.description_picture {
+  height: 33rem;
+  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 1.02) !important;
 }
 .description_picture_left {
   width: 22rem !important;
   height: 22rem !important;
 }
 .description_picture_right {
+  object-fit: cover;
+  padding: 10px;
   width: 44.5rem !important;
-  height: 22rem !important;
 }
-.content-hotel-page{
-    padding-left: 20rem;
-    height: 40rem;
+.setmargin{
+  margin-left: 10%;
 }
-.table{
+.content-hotel-page {
+  padding-left: 20rem;
+  height: 44rem;
+}
+.description_picture_bottom span {
+  object-fit: cover;
+  width: 24%;
+  padding: 10px;
+}
+.description_picture_bottom span img {
+  height: 144px;
+  padding: 10px;
+  width: 100%;
+}
+.table {
   padding-left: 20rem;
 }
-.color-text-green{
-  color: #1AA37A;
+.color-text-green {
+  color: #1aa37a;
 }
-.bg-custom-1{
-  background-color: #DEF5E5;
+.bg-custom-1 {
+  background-color: #def5e5;
 }

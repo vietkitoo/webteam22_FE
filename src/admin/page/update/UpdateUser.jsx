@@ -1,10 +1,10 @@
 import "./update.scss";
 import Sidebar from "../../component/sidebar/Sidebar";
-import Navbar from "../../component/navbar/Navbar";
 import DriveFolderUploadOutlinedIcon from "@mui/icons-material/DriveFolderUploadOutlined";
-import { useState } from "react";
 import axios from "axios";
-import {  useLocation } from "react-router-dom";
+import {useLocation,useNavigate} from 'react-router-dom';
+import {useState } from 'react';
+import { axiosInstance } from "../../../config";
 
 const UpdateUser = ({ inputs, title }) => {
   const [file, setFile] = useState("");
@@ -16,8 +16,8 @@ const UpdateUser = ({ inputs, title }) => {
   const handleChange = (e) => {
     setInfo((prev) => ({ ...prev, [e.target.id]: e.target.value }));
   };
+  const navigate = useNavigate();
 
-  
   const handleClick = async (e) => {
     e.preventDefault();
     const data = new FormData();
@@ -36,7 +36,8 @@ const UpdateUser = ({ inputs, title }) => {
         img: url,
       };
 
-      await axios.put(`/api/${path}/${path2}/update`, updateUser);
+      await axiosInstance.put(`/api/${path}/${path2}/update`, updateUser);
+      navigate('/users');
     } catch (err) {
       console.log(err);
     }
@@ -47,7 +48,6 @@ const UpdateUser = ({ inputs, title }) => {
     <div className="new">
       <Sidebar />
       <div className="newContainer">
-        <Navbar />
         <div className="top">
           <h1>Cập nhật thông tin người dùng</h1>
         </div>

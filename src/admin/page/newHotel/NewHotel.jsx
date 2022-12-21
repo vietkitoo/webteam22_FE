@@ -1,22 +1,24 @@
 import "./newHotel.scss";
 import Sidebar from "../../component/sidebar/Sidebar";
-import Navbar from "../../component/navbar/Navbar";
 import DriveFolderUploadOutlinedIcon from "@mui/icons-material/DriveFolderUploadOutlined";
-import { useState } from "react";
 import { hotelInputs } from "../../formSource";
 import useFetch from "../../hook/useFetch";
 import axios from "axios";
+import {useNavigate} from 'react-router-dom';
+import {useState } from 'react';
+import { axiosInstance } from "../../../config";
 
 const NewHotel = () => {
   const [file, setFile] = useState("");
   const [info, setInfo] = useState({});
   const [rooms, setRooms] = useState([]);
 
-  const { data, loading, error } = useFetch("/api/rooms");
+  const { data, loading } = useFetch("/api/rooms");
 
   const handleChange = (e) => {
     setInfo((prev) => ({ ...prev, [e.target.id]: e.target.value }));
   };
+  const navigate = useNavigate();
 
   const handleSelect = (e) => {
     const value = Array.from(
@@ -48,14 +50,14 @@ const NewHotel = () => {
         image:  url,
       };
 
-      await axios.post("/api/hotels", newhotel);
+      await axiosInstance.post("/api/hotels", newhotel);
+      navigate('/hotels');
     } catch (err) {console.log(err)}
   };
   return (
     <div className="new">
       <Sidebar />
       <div className="newContainer">
-        <Navbar />
         <div className="top">
           <h1>Thêm khách sạn mới</h1>
         </div>
@@ -96,14 +98,14 @@ const NewHotel = () => {
                 </div>
               ))}
               <div className="formInput">
-                <label>Featured</label>
+                <label>Phòng Vip</label>
                 <select id="featured" onChange={handleChange}>
                   <option value={false}>No</option>
                   <option value={true}>Yes</option>
                 </select>
               </div>
               <div className="selectRooms">
-                <label>Rooms</label>
+                <label>Kiểu Phòng</label>
                 <select id="rooms" multiple onChange={handleSelect}>
                   {loading
                     ? "loading"

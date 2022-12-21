@@ -123,7 +123,7 @@ export const userColumns = [
       width: 100,
     },
     {
-      field: "username",
+      field: "fullname",
       headerName: "Tên khách hàng",
       width: 100,
     },

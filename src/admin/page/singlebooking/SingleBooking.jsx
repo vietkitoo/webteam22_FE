@@ -1,13 +1,10 @@
 import './single.scss'
 import Sidebar from '../../component/sidebar/Sidebar'
-import Navbar from '../../component/navbar/Navbar'
-import Chart from '../../component/chart/Chart';
-import List from '../../component/table/Table';
+
 import useFetch from "../../hook/useFetch";
 import { useLocation } from "react-router-dom";
 import { useState } from "react";
-import Datatable from '../../component/datatable/Datatable';
-import { bookingColumns } from "../../datatablesource";
+
 import { Link } from 'react-router-dom';
 
 
@@ -32,77 +29,92 @@ const SingleBooking = (  ) => {
   return (
     <div className="single">
       <Sidebar />
-      <div className="singleContainer">
-        <Navbar />
-        <div className="top">
-          <div className="left">
-          <Link to={`/${path}/${path2}/update`}>
-            <div className="editButton">Chỉnh sửa trạng thái đơn hàng</div>
-            </Link>
-            <h1 className="title">Thông tin đặt phòng</h1>
-            <div className="item">
-           
-                
-              <div className="details">
-                <h1 className="itemTitle">
-                <div className="detailItem">
-                 
-                 <span className="itemValue">{data.fullname}</span>
-               </div>
-               
-                </h1>
-                <div className="detailItem">
-                  <span className="itemKey">Số điện thoại:</span>
-                  <span className="itemValue">{data.phone}</span>
-                </div>
-                <div className="detailItem">
-                  <span className="itemKey">Khách sạn:</span>
-                  <span className="itemValue">
-                  {data.hotelname}
-                  </span>
-                </div>
-                <div className="detailItem">
-                <span className="itemKey">Kiểu phòng:</span>
-                <span className="itemValue">{data.room}</span>
-                <div className="detailItem">
+      <div className=" singleContainer page-content page-container" id="page-content">
+        <div className="padding">
+          <div className="row container d-flex justify-content-center">
+            <div className="col-xl-6 col-md-12 w-100">
+              <div className="card user-card-full">
+                <div className="row m-l-0 m-r-0">
+                  <div className="col-sm-4 bg-c-lite-green user-profile">
+                    <div className="card-block text-center text-white">
+                      <div className="m-b-25">
+                        <img
+                          src='https://res.cloudinary.com/dypkrcusa/image/upload/v1671256656/upload/jjtexszmqhgzb1pxhnpc.png'
+                          className="img-radius"
+                          alt="User-Profile-Image"
+                        />
+                      </div>
+                      </div>
                   </div>
-                  <span className="itemKey">Số tiền thanh toán:</span>
-                  <span className="itemValue">{data.totalPrice}</span>
-                </div>
-                <div className="detailItem">
-                  <span className="itemKey">Ngày đặt:</span>
-                  <span className="itemValue">{data.paymentDate}</span>
-                </div>
-                <div className="detailItem">
-                  <span className="itemKey">Ngày nhận phòng:</span>
-                  <span className="itemValue">{data.fromDate}</span>
-                </div>
-                <div className="detailItem">
-                  <span className="itemKey">Ngày trả phòng:</span>
-                  <span className="itemValue">{data.toDate}</span>
-                </div>
-                <div className="detailItem">
-                  <span className="itemKey">Số ngày thuê:</span>
-                  <span className="itemValue">{data.totalDays}</span>
-                </div>
-                <div className="detailItem">
-                  <span className="itemKey">Trạng thái đặt hàng:</span>
-                  <span className="itemValue">{data.status}</span>
+                  <div className="col-sm-8">
+                     <Link to={`/${path}/${path2}/update`}>
+                       <h5 className="editButton" color='yellow'>Cập nhật</h5>
+                        </Link>
+                    <div className="card-block">
+              
+                      <h3 className="m-b-20 p-b-5 b-b-default f-w-600">
+                        Thông tin thuê phòng
+                      </h3>
+
+
+                      <div className="row">
+                      <div className="col-sm-6">
+                          <p className="m-b-10 f-w-600">Tên người dùng</p>
+                          <h6 className="text-muted f-w-400">
+                            {data.fullname}
+                          </h6>
+                        </div>
+                        <div className="col-sm-6">
+                          <p className="m-b-10 f-w-600">Số điện thoại</p>
+                          <h6 className="text-muted f-w-400">{data.phone}</h6>
+                        </div>
+                      </div>
+              
+                      <div className="row">
+                        <div className="col-sm-6">
+                          <p className="m-b-10 f-w-600">Ngày đặt</p>
+                          <h6 className="text-muted f-w-400">{data.paymentDate}</h6>
+                        </div>
+                        <div className="col-sm-6">
+                          <p className="m-b-10 f-w-600">Ngày nhận phòng</p>
+                          <h6 className="text-muted f-w-400">
+                            {data.fromDate}
+                          </h6>
+                        </div>
+                        <div className="col-sm-6">
+                          <p className="m-b-10 f-w-600">Ngày trả phòng</p>
+                          <h6 className="text-muted f-w-400">
+                            {data.toDate}
+                          </h6>
+                        </div>
+                        <div className="col-sm-6">
+                          <p className="m-b-10 f-w-600">Số ngày thuê</p>
+                          <h6 className="text-muted f-w-400">
+                            {data.totalDays}
+                          </h6>
+                        </div>
+                        <div className="col-sm-6">
+                          <p className="m-b-10 f-w-600">Tổng giá tiền</p>
+                          <h6 className="text-muted f-w-400">
+                            {data.totalPrice}
+                          </h6>
+                        </div>
+                        <div className="col-sm-6">
+                          <p className="m-b-10 f-w-600">Trạng thái</p>
+                          <h6 className="text-muted f-w-400">
+                            {data.status}
+                          </h6>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
           </div>
-          <div className="right">
-            <Chart aspect={3 / 1} title="User Spending ( Last 6 Months)" />
-          </div>
         </div>
-        <div className="bottom">
-             
-          <h1 className="title">Giao dịch gần đây</h1>
-          <Datatable columns={bookingColumns}/>
-        </div>
-
       </div>
+      
     </div>
   );
 };

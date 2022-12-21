@@ -1,12 +1,12 @@
 import "./update.scss";
 import Sidebar from "../../component/sidebar/Sidebar";
-import Navbar from "../../component/navbar/Navbar";
 import DriveFolderUploadOutlinedIcon from "@mui/icons-material/DriveFolderUploadOutlined";
-import { useState } from "react";
 import { hotelInputs } from "../../formSource";
 import useFetch from "../../hook/useFetch";
 import axios from "axios";
-import {  useLocation } from "react-router-dom";
+import { useLocation,useNavigate} from 'react-router-dom';
+import { useState } from 'react';
+import { axiosInstance } from "../../../config";
 
 const NewHotel = () => {
   const [file, setFile] = useState("");
@@ -16,12 +16,12 @@ const NewHotel = () => {
   const path = location.pathname.split("/")[1];
   const path2 = location.pathname.split("/")[2];
 
-  const { data, loading, error } = useFetch("/api/rooms");
+  const { data, loading } = useFetch("/api/rooms");
 
   const handleChange = (e) => {
     setInfo((prev) => ({ ...prev, [e.target.id]: e.target.value }));
   };
-
+  const navigate = useNavigate();
   const handleSelect = (e) => {
     const value = Array.from(
       e.target.selectedOptions,
@@ -52,14 +52,14 @@ const NewHotel = () => {
         image:  url,
       };
 
-      await axios.put(`/api/${path}/${path2}/update`, updatehotel);
+      await axiosInstance.put(`/api/${path}/${path2}/update`, updatehotel);
+      navigate('/hotels');
     } catch (err) {console.log(err)}
   };
   return (
     <div className="new">
       <Sidebar />
       <div className="newContainer">
-        <Navbar />
         <div className="top">
           <h1>Chỉnh sửa khách sạn</h1>
         </div>

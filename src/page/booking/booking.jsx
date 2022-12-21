@@ -2,14 +2,60 @@ import Header from '../../component/header/header';
 import './booking.scss';
 import Footer from '../../component/Footer/Footer';
 import { BsFillCaretLeftFill } from 'react-icons/bs';
-import { Link } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import React, { useContext, useState } from 'react';
 import Form from 'react-bootstrap/Form';
-import { Button } from 'react-bootstrap';
+import { Button, Card, Modal } from 'react-bootstrap';
 import { AuthContext } from '../../context/AuthContext';
+import { useEffect } from 'react';
+import qr from '../../image/qr copy.jpg';
+import format from 'date-fns/format';
+import axios from 'axios';
+import { axiosInstance } from '../../config';
 
-function Searchresult_app() {
+function Payment() {
   const { user } = useContext(AuthContext);
+  const location = useLocation();
+  const navigate = useNavigate();
+  const [show, setShow] = useState(false);
+  const selectedRoom = location.state.selectedRoom;
+  const [email, setEmail] = useState(JSON.parse(localStorage.getItem('user')).details.email);
+  const [fullname, setFullname] = useState(JSON.parse(localStorage.getItem('user')).details.fullname);
+  const [phone, setPhone] = useState(JSON.parse(localStorage.getItem('user')).details.phone);
+  const [request, setRequest] = useState();
+  var s;
+
+  const handleClose = () => {
+    setShow(false);
+  }
+  const handleShow = async () => {
+    setShow(true);
+    try{
+      // const res = axios.put(`/api/rooms/availability/${roomId}`, {
+      //   date: location.state.allDates,
+      // });
+      const res2 = await axiosInstance.post('/api/booking/', {
+        hotel: location.state.hotelname,
+        roomId: selectedRoom,
+        userId: JSON.parse(localStorage.getItem('user')).details._id,
+        fullname: fullname,
+        email: email,
+        phone: phone,
+        request: request,
+        fromDate: location.state.fromDate,
+        toDate: location.state.toDate,
+        totalPrice: location.state.tot * location.state.days,
+        totalDays: location.state.days,
+      });
+    } catch (err){
+      console.log(err);
+    }
+    
+  }
+
+  useEffect(() => {
+    console.log(location.state);
+  }, []);
   return (
     <>
       <Header />
@@ -28,62 +74,101 @@ function Searchresult_app() {
               <div className="grid-item ">
                 <div className="form-block">
                   <h4>Thông tin người đặt phòng</h4>
-                  <Form.Group className="mb-3 " >
+                  <Form.Group className="mb-3 ">
                     <Form.Label>Địa chỉ email</Form.Label>
-                    <Form.Control type="email" defaultValue={user.details.email} />
+                    <Form.Control
+                      type="email"
+                      defaultValue={user.details.email}
+                      value={email}
+                      onChange={(e) => setEmail(e.target.value)}
+                    />
                   </Form.Group>
-                  <Form.Group className="mb-3 " >
-                      <Form.Label>Tên người dùng</Form.Label>
-                      <Form.Control type="text" defaultValue={user.details.username} />
+                  <Form.Group className="mb-3 ">
+                    <Form.Label>Tên người dùng</Form.Label>
+                    <Form.Control
+                      type="text"
+                      defaultValue={user.details.fullname}
+                      value={fullname}
+                      onChange={(e) => setFullname(e.target.value)}
+                    />
                   </Form.Group>
-                  <Form.Group className="mb-3 " >
+                  <Form.Group className="mb-3 ">
                     <Form.Label>Số điện thoại</Form.Label>
-                    <Form.Control type="text" defaultValue={user.details.phonenum} placeholder="+84 987654321" />
+                    <Form.Control
+                      type="text"
+                      defaultValue={user.details.phonenum}
+                      placeholder="+84 987654321"
+                      value={phone}
+                      onChange={(e) => setPhone(e.target.value)}
+                    />
                   </Form.Group>
-                  <Form.Group className="mb-4" controlId="exampleForm.ControlTextarea1">
+                  <Form.Group
+                    className="mb-4"
+                    controlId="exampleForm.ControlTextarea1"
+                  >
                     <Form.Label>Yêu cầu thêm</Form.Label>
-                    <Form.Control as="textarea" rows={3} />
-                  </Form.Group> 
+                    <Form.Control as="textarea" rows={3} 
+                      value={request}
+                      onChange={(e) => setRequest(e.target.value)}
+                    />
+                  </Form.Group>
                 </div>
               </div>
               <div className="grid-item">
                 <div className="form-block">
                   <h4>Yêu cầu đặt phòng của bạn</h4>
                   <div className="hotel-info">
-                    <h5>Khách sạn</h5>
-                    <div className="">Nhận phòng:</div>
-                    <div className="">Trả phòng:</div>
+                    <h5>{location.state.hotelname}</h5>
+                    <div className="">
+                      Nhận phòng: {location.state.fromDate}
+                    </div>
+                    <div className="">Trả phòng: {location.state.toDate}</div>
                   </div>
                   <div className="room-info">
                     <h5>Thông tin phòng</h5>
-                    <div className="room">
-                      Phòng 1:
-                      <div className="d-md-flex justify-content-md-end">(Giá tiền)</div>
+                    <div>
+                      {location.state.room.map((room) => (
+                        <div className="room">
+                          Phòng {room.roomnum}
+                          <div className="d-md-flex justify-content-md-end">
+                            <span>{room.price} </span>
+                            <span> VND</span>
+                          </div>
+                        </div>
+                      ))}
+                      <div className="days">
+                        Số ngày: 
+                        <span>{location.state.days}</span>
+                      </div>
                     </div>
-                    <div className="room">
-                      Phòng 2:
-                      <div className="d-md-flex justify-content-md-end">(Giá tiền)</div>
-                    </div>
+                  </div>
+                  <div className="days">
+                    <h5></h5>
                   </div>
                   <div className="mt-4 mb-4 total-price d-flex justify-content-center">
-                    (Total price)
+                    {location.state.tot * location.state.days}
                   </div>
-                  
                 </div>
                 <div className="mt-2 d-md-flex justify-content-center">
-                    <Button type="submit" className="pay-btn">
-                        Lưu thay đổi
+                  <Button variant="primary" onClick={handleShow} className="pay-btn">
+                    Thanh toán
+                  </Button>
+                  <Modal show={show} onHide={handleClose}  backdrop="static" keyboard={false}>
+                  <Modal.Header closeButton>
+                    <Modal.Title>ZaloPay QR</Modal.Title>
+                  </Modal.Header>
+                  <Modal.Body><img src={qr} alt='qrcode' width={450} height={700} /></Modal.Body>
+                  <Modal.Footer>
+                    <Button variant="primary" onClick={() => navigate("/home")} >
+                      Trở về trang chủ
                     </Button>
-                  </div>
+                  </Modal.Footer>
+                </Modal>
+                </div>
               </div>
-              
             </div>
-            
-            
           </Form>
-          
         </div>
-
       </div>
 
       <Footer />
@@ -91,4 +176,4 @@ function Searchresult_app() {
   );
 }
 
-export default Searchresult_app;
+export default Payment;

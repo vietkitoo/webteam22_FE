@@ -1,74 +1,47 @@
-import Login from './page/login/login';
-import HomeAdmin from './admin/page/home/HomeAdmin';
-import Home from './page/home/home';
-import Regishotel from './page/registerhotel/regishotel';
-import Regispartner from './page/regispartner/regispartner';
-import Support from './page/support/support';
-import Searchresult  from './page/searchresult/searchresult';
-import Visit from './page/visit/visit';
-import Hotel from './page/hotel/hotel';
-import Payment from './page/booking/booking';
-import User from './page/user/user';
-import Forgot from './page/forgot/forgot';
-
-import { hotelColumns, roomColumns, userColumns, bookingColumns } from "./admin/datatablesource";
-import List from './admin/page/list/List';
-import New from './admin/page/new/New';
-import Single from './admin/page/single/Single';
-import NewRoom from './admin/page/newRoom/NewRoom';
-import NewHotel from './admin/page/newHotel/NewHotel';
-import UpdateHotel from "./admin/page/updatehotel/Updatehotel";
-import UpdateUser from "./admin/page/update/UpdateUser";
-import UpdateRoom from "./admin/page/updateroom/UpdateRoom";
-import SingleBooking from "./admin/page/singlebooking/SingleBooking";
-import UpdateBooking from "./admin/page/updatebooking/UpdateBooking";
-import SingleHotel from "./admin/page/singlehotel/SingleHotel";
-import SingleRoom from "./admin/page/singleroom/SingleRoom";
-
-import { userInputs, UpuserInputs } from "./admin/formSource";
-import { AuthContext } from './admin/context/AuthContext';
-
-import { useContext } from 'react';
-import {
-  BrowserRouter,
-  Routes,
-  Route,
-  Navigate
-} from "react-router-dom";
+import Home from "./page/home/Home";
+import Login from "./page/login/Login";
+import List from "./page/list/List";
+import Single from "./page/single/Single";
+import New from "./page/new/New";
+import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
+import { productInputs, userInputs } from "./formSource";
+import { useContext } from "react";
+import { AuthContext } from "./context/AuthContext";
+import { hotelColumns, roomColumns, userColumns, bookingColumns } from "./datatablesource";
+import NewHotel from "./page/newHotel/NewHotel";
+import NewRoom from "./page/newRoom/NewRoom";
+import SingleHotel from "./page/singlehotel/SingleHotel";
+import SingleRoom from "./page/singleroom/SingleRoom";
+import UpdateHotel from "./page/updatehotel/Updatehotel";
+import UpdateUser from "./page/update/UpdateUser";
+import UpdateRoom from "./page/updateroom/UpdateRoom";
+import SingleBooking from "./page/singlebooking/SingleBooking";
+import UpdateBooking from "./page/updatebooking/UpdateBooking";
 
 function App() {
+
+
   const ProtectedRoute = ({ children }) => {
     const { user } = useContext(AuthContext);
 
     if (!user) {
-      return <Navigate to="/home" />;
+      return <Navigate to="/login" />;
     }
-    if (!user.isAdmin) {
-      return <Navigate to="/home" />;
-    }
+
     return children;
   };
+
   return (
-    <main className="App">
+    <div >
       <BrowserRouter>
         <Routes>
-          <Route path="/home" element={<Home />} />
-          <Route path="/login" element={<Login />} />
-          <Route path="/register-hotel" element = {<Regishotel />} />
-          <Route path="/register-partner" element = {<Regispartner />} />
-          <Route path="/support" element = {<Support />} />
-          <Route path="/searchresult" element = {<Searchresult  />} />
-          <Route path="/visit" element = {<Visit  />} />
-          <Route path="/hotel/:id" element = {<Hotel />} />
-          <Route path="/payment" element = {<Payment />} />
-          <Route path="/user" element = {<User />} />
-          <Route path="/forgot" element = {<Forgot />} />
-
           <Route path="/">
-            <Route path="/login" element={<Login />} />
-            <Route index element={
+            <Route path="login" element={<Login />} />
+            <Route
+              index
+              element={
                 <ProtectedRoute>
-                  <HomeAdmin />
+                  <Home />
                 </ProtectedRoute>
               }
             />
@@ -82,7 +55,7 @@ function App() {
                 }
               />
               <Route
-                path=":_id">
+                path=":id">
                     <Route index
                     element={
                   <ProtectedRoute>
@@ -95,7 +68,7 @@ function App() {
                   path="update"
                   element={
                   <ProtectedRoute>
-                   <UpdateUser inputs={UpuserInputs} title="Update user"/>
+                   <UpdateUser inputs={userInputs} title="Add New User"/>
                   </ProtectedRoute>
                   }
                   />
@@ -104,7 +77,7 @@ function App() {
                 path="new"
                 element={
                   <ProtectedRoute>
-                    <New inputs={userInputs} title="Add New User" />
+                    <New inputs={userInputs} title="Update user" />
                   </ProtectedRoute>
                 }
               />
@@ -217,11 +190,9 @@ function App() {
               />
             </Route>
           </Route>
-      
-   
         </Routes>
       </BrowserRouter>
-    </main>
+    </div>
   );
 }
 

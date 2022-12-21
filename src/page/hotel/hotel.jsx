@@ -12,43 +12,67 @@ import { FcCheckmark } from 'react-icons/fc';
 import { BsWifi, BsSnow } from 'react-icons/bs';
 import { GoLocation } from 'react-icons/go';
 import { RiSecurePaymentLine } from 'react-icons/ri';
-import React, { useContext, useState } from 'react';
-import { useEffect } from 'react';
+import React, { useContext, useState, useEffect } from 'react';
 import { IoIosMan } from 'react-icons/io';
 import { Image } from 'cloudinary-react';
 import useFetch from '../../hooks/useFetch';
 import { useLocation, useNavigate } from 'react-router-dom';
-import { Link } from 'react-router-dom';
-import { SearchContext } from '../../context/SearchContext';
-import { AuthContext } from '../../context/AuthContext';
 import { axiosInstance } from '../../config';
 import format from 'date-fns/format';
 import axios from 'axios';
 import moment from 'moment';
-function Hotel() {
+
+function Hotel() {  
   const navigate = useNavigate();
   const location = useLocation();
-  const [open, setOpen] = useState(false);
   // console.log(JSON.parse(localStorage.getItem('user')).details.username);
   const id = location.pathname.split('/')[2];
+<<<<<<< HEAD
   const { data, loading, error, reFetch } = useFetch(`/api/hotels/find/${id}`);
   const { date } = useContext(SearchContext);
+=======
+
+  const hotelname = location.state.hotelname;
+  const address = location.state.address;
+  const rating = location.state.rating;
+  const price = location.state.price;
+  const hotelId = location.state.hotelId;
+  const date = location.state.date;
+
+  const {data,loading} = useFetch(`/api/hotels/find/${id}`);
+  console.log(data);
+  // console.log((data.image));
+>>>>>>> d4a02a1ed3e2e3f5a22b2f0d3ac3464163d32e93
   // console.log(date);
   const MILLISECONDS_PER_DAYS = 1000 * 60 * 60 * 24;
+  const [selectedRoom, setSelectedRoom] = useState([]);
+  const [room, setRoom] = useState([]);
   function dayDifference(date1, date2) {
     const timeDifferent = Math.abs(date2.getTime() - date1.getTime());
     const differentDays = Math.ceil(timeDifferent / MILLISECONDS_PER_DAYS);
     return differentDays;
   }
-  const days = dayDifference(date[0].endDate, date[0].startDate);
+  const days = dayDifference(date[0].endDate, date[0].startDate) || 1;
   // Lấy data hotel
 
   //Lấy data của room của từng hotel
+<<<<<<< HEAD
   const { data1, loading1 } = useFetch(`/api/hotels/room/${id}`);
   // console.log(data1);s
   const [OpenDate, setOpenDate] = useState(false);
 
   const [selectedRoom, setSelectedRoom] = useState([]);
+=======
+  const [data1, setData1] = useState([]);
+  useEffect(() => {
+    const proceed = async () => {
+      const data2 = await axiosInstance.get(`/api/hotels/room/${id}`);
+      setData1(data2.data);
+    }
+    proceed();
+  },[])
+  //console.log(data1);
+>>>>>>> d4a02a1ed3e2e3f5a22b2f0d3ac3464163d32e93
 
   const getDates = (startDate, endDate) => {
     const start = new Date(startDate);
@@ -63,15 +87,6 @@ function Hotel() {
   };
 
   const allDates = getDates(date[0].startDate, date[0].endDate);
-  useEffect(() => {
-    const closecalendar = (e) => {
-      if (e.path[0].tagName !== 'SPAN') {
-        setOpenDate(false);
-      }
-    };
-    document.body.addEventListener('click', closecalendar);
-    return () => document.body.removeEventListener('click', closecalendar);
-  }, []);
 
   const isAvailable = (roomNumber) => {
     const isFound = roomNumber.unavailableDates.some((date) =>
@@ -80,6 +95,7 @@ function Hotel() {
     return !isFound;
   };
 
+<<<<<<< HEAD
   const handleSelect = (e) => {
     const selected = e.target.checked;
     const value = e.target.value;
@@ -120,32 +136,80 @@ function Hotel() {
         toDate: format(date[0].endDate, 'MM/dd/yyyy'),
         totalPrice: days * data.price,
         totalDays: days,
+=======
+
+  const handleClick = async () => {
+    try {
+      // await Promise.all(
+      //   selectedRoom.map((roomId) => {
+      //     s = roomId;
+      //     console.log(s);
+      //     const res = axios.put(`/api/rooms/availability/${roomId}`, {
+      //       date: allDates,
+      //     });
+      //     return res.data;
+      //   })
+      // );
+      
+      var tot = 0;
+      data1.map((item) => {
+        
+        item.roomNumbers.map((roomNumber) => {
+          const checkbox = document.getElementById(roomNumber.number);
+
+          if (checkbox.checked === true){
+            const value = checkbox.value;
+            const name = checkbox.name;
+            const id = checkbox.id;
+            selectedRoom.push(value);
+            room.push({price: name, roomnum: id});
+            tot = tot + Number(name);
+          }
+          return room, selectedRoom;
+        })
+        return room, selectedRoom;
+      })
+      console.log(tot);
+
+      navigate('/payment', {
+        state: {
+          hotelname,
+          fromDate: format(date[0].startDate, 'MM/dd/yyyy'),
+          toDate: format(date[0].endDate, 'MM/dd/yyyy'),
+          days,
+          room,
+          selectedRoom,
+          tot,
+        }
+>>>>>>> d4a02a1ed3e2e3f5a22b2f0d3ac3464163d32e93
       });
-      return res2.data;
-    }catch (err) {};
+      
+    } catch (err) {
+      console.log(err);
+    };
   };
 
   return (
     <>
       <Header />
       <div className="content w-100 d-flex content-hotel-page">
-        <div className="d-flex w-75 my-4">
+        <div className="d-flex w-75 my-4 setmargin">
           {/* Thông tin hotel */}
           <div className="w-75 ">
             <div className="m-4">
               <div className=" m-2 d-flex">
                 <div className="w-75">
                   <div className=" h4 d-block mx-2">
-                    <span>{data.name}</span>
+                    <span>{hotelname}</span>
                   </div>
                   <div className=" d-block mx-2">
                     <SiGooglemaps />
-                    <span>{data.address}</span>
+                    <span>{address}</span>
                   </div>
                   <div className=" d-block mx-2">
                     <>Gía chỉ: </>
                     <span>
-                      {days * data.price} cho {days} ngày{' '}
+                      {days * price} cho {days} ngày
                     </span>
                   </div>
                 </div>
@@ -157,78 +221,53 @@ function Hotel() {
               </div>
               {/* description picture */}
               <div className="description_picture">
-                <div className="d-flex">
-                  <div className=" description_picture_left">
+                <div className="d-flex h-66">
+                  <div className="row description_picture_left">
                     <span>
                       <img
-                        className="col w-100"
-                        src={data.image2}
+                        className="col h-100 w-100"
+                        src={data.image1}
                         alt={data.name}
                         crop="scale"
                       />
                     </span>
                     <span>
                       <img
-                        className="col w-100"
+                        className="col h-100 w-100"
+                        src={data.image2}
+                        alt={data.name}
+                        crop="scale"
+                      />
+                    </span>
+                  </div>
+                  <div className=" description_picture_right">
+                    <span>
+                      <img
+                        className="h-100 w-100"
                         src={data.image3}
                         alt={data.name}
                         crop="scale"
                       />
                     </span>
                   </div>
-                  <div className="description_picture_right">
-                    <span>
-                      <img
-                        className="col w-100"
-                        src={data.image4}
-                        alt={data.name}
-                        crop="scale"
-                      />
-                    </span>
-                  </div>
                 </div>
-                <div className="col d-flex">
-                  <span>
+                <div className="h-25 row description_picture_bottom">
+                  <span className="col ">
                     <img
-                      className="col w-100"
+                      src={data.image4}
+                      alt={data.name}
+                    /> 
+                  </span>
+                  <span className="col ">
+                     <img
                       src={data.image5}
                       alt={data.name}
                     />
                   </span>
-                  <span>
-                    <Image
-                      cloudName="dxivl2lh5"
-                      publicId="rest/nha-nghi-o-que-3_rhizkm"
-                      className="col w-100"
-                      crop="scale"
-                      alt="image canho"
-                    />
-                  </span>
-                  <span>
-                    <Image
-                      cloudName="dxivl2lh5"
-                      publicId="rest/nha-go-cap-4-dep_qe5wjy"
-                      className="col w-100"
-                      crop="scale"
-                      alt="image canho"
-                    />
-                  </span>
-                  <span>
-                    <Image
-                      cloudName="dxivl2lh5"
-                      publicId="rest/nha-nghi-o-que-3_rhizkm"
-                      className="col w-100"
-                      crop="scale"
-                      alt="image canho"
-                    />
-                  </span>
-                  <span>
-                    <Image
-                      cloudName="dxivl2lh5"
-                      publicId="rest/nha-nghi-o-que-3_rhizkm"
-                      className="col w-100"
-                      crop="scale"
-                      alt="image canho"
+                  <span className="col ">
+                     <img
+                      src={data.image6}
+                      alt={data.name}
                     />
                   </span>
                 </div>
@@ -315,6 +354,7 @@ Bãi Dứa nằm trong bán kính 2,7 km từ Vung Tau Melody Apartment trong kh
 2,4 km. Sân bay gần nhất là Sân bay Vũng Tàu,cách chỗ nghỉ 6 km.
 Các cặp đôi đặc biệt thích địa điểm này — họ cho điểm 8,9 cho kỳ nghỉ dành cho 2 người.
 Vung Tau Melody Apartment đã chào đón khách Booking.com từ 23 tháng 4 2019.`}</pre>
+            {/* <pre>{data.desc}</pre>  */}
             <div>
               <strong>
                 Vung Tau Melody Apartment đã chào đón khách Booking.com từ 23
@@ -387,9 +427,7 @@ Vung Tau Melody Apartment đã chào đón khách Booking.com từ 23 tháng 4 2
               <th scope="flex-fill"></th>
             </tr>
           </thead>
-          {loading1 ? (
-            <h2>Loading...</h2>
-          ) : (
+          {
             data1.map((item) => (
               // console.log(item),
               <tbody>
@@ -410,10 +448,9 @@ Vung Tau Melody Apartment đã chào đón khách Booking.com từ 23 tháng 4 2
                           <input
                             type="checkbox"
                             disabled={!isAvailable(roomNumber)}
-                            // disabled={false}
                             id={roomNumber.number}
-                            value={roomNumber._id}
-                            onChange={handleSelect}
+                            value={ roomNumber._id }
+                            name={ item.price }
                           />
                           <label htmlFor={roomNumber.number}>
                             Number of Room: <strong>{roomNumber.number}</strong>
@@ -423,7 +460,7 @@ Vung Tau Melody Apartment đã chào đón khách Booking.com từ 23 tháng 4 2
                     </div>
                   </td>
                   <td>
-                    <Link to="../booking">
+
                       <button
                         type="button"
                         className="w-100 btn btn-primary"
@@ -431,12 +468,12 @@ Vung Tau Melody Apartment đã chào đón khách Booking.com từ 23 tháng 4 2
                       >
                         Đặt chỗ
                       </button>
-                    </Link>
+
                   </td>
                 </tr>
               </tbody>
             ))
-          )}
+          }
         </table>
       </div>
       <Footer />

@@ -21,6 +21,8 @@ import {
   BsHouseFill,
   BsPersonFill } from 'react-icons/bs'
 import Dropdown from 'react-bootstrap/Dropdown';
+import { HashLink } from 'react-router-hash-link';
+import { NavHashLink } from 'react-router-hash-link';
 
 const Header = () => {
   const { user } = useContext(AuthContext);
@@ -28,8 +30,7 @@ const Header = () => {
 
   const handleLogout = () => {
     localStorage.removeItem('user');
-    navigate('/login');
-    window.location.reload();
+    window.location.href = "/login";
   };
 
   const { dispatch } = useContext(SearchContext);
@@ -37,22 +38,28 @@ const Header = () => {
     <header className="App-header">
       <nav className="navbar navbar-light justify-content-center">
        
-          <a href="/#" className="navbar-brand logo_team">
-            <Link to="../">
+            <Link
+            to="/home"
+            spy={true}
+            smooth={true}
+            offset={-150}
+            duration={300}
+            className="navbar-brand logo_team"
+            >
               STYLISH HOTEL
             </Link>
-          </a>
+
         
         
         <form className="form-inline d-flex">
-          <Link to="../register-hotel">
+          {/* <Link to="../register-hotel">
             <button
               type="button"
               className="btn btn-outline-info color_hover_btn_outline_info"
             >
               Đăng thông tin phòng nghỉ của quý khách
             </button>
-          </Link>
+          </Link> */}
 
           <Link to="../support">
             <BsFillQuestionCircleFill 
@@ -91,7 +98,7 @@ const Header = () => {
       </nav>
 
       <nav className="navbar navbar-light justify-content-center">
-        <Link to="/">
+        <HashLink smooth to="/home#stay">
           <button
             type="button"
             className="btn btn-light button-navbar btn_sign btn_select_list"
@@ -99,8 +106,8 @@ const Header = () => {
             <FontAwesomeIcon icon={faBed} />
             Lưu Trú
           </button>
-        </Link>
-        <Link to="/">
+        </HashLink>
+        <HashLink smooth to="/home#hotel">
           <button
             type="button"
             className="btn btn-light button-navbar btn_sign btn_select_list"
@@ -108,24 +115,19 @@ const Header = () => {
             <FontAwesomeIcon icon={faBed} className="headerIcon" />
             Khách sạn
           </button>
-        </Link>
-        <Link to="/visit">
+        </HashLink>
+        <HashLink smooth to="/home#discover">
           <button
             type="button"
             className="btn btn-light button-navbar btn_sign btn_select_list"
+            href={"/home#discover"}
           >
             <FontAwesomeIcon icon={faCamera} className="headerIcon" />
             Địa điểm tham quan
           </button>
-        </Link>
+        </HashLink>
 
-        <button
-          type="button"
-          className="btn btn-light button-navbar btn_sign btn_select_list"
-        >
-          <FontAwesomeIcon icon={faTaxi} className="headerIcon" />
-          Taxi sân bay
-        </button>
+
       </nav>
     </header>
   );

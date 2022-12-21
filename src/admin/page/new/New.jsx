@@ -1,9 +1,10 @@
 import "./new.scss";
 import Sidebar from "../../component/sidebar/Sidebar";
-import Navbar from "../../component/navbar/Navbar";
 import DriveFolderUploadOutlinedIcon from "@mui/icons-material/DriveFolderUploadOutlined";
-import { useState } from "react";
 import axios from "axios";
+import { useNavigate} from 'react-router-dom';
+import { useState } from 'react';
+import { axiosInstance } from "../../../config";
 
 const New = ({ inputs, title }) => {
   const [file, setFile] = useState("");
@@ -12,7 +13,7 @@ const New = ({ inputs, title }) => {
   const handleChange = (e) => {
     setInfo((prev) => ({ ...prev, [e.target.id]: e.target.value }));
   };
-
+  const navigate = useNavigate();
   
   const handleClick = async (e) => {
     e.preventDefault();
@@ -32,7 +33,8 @@ const New = ({ inputs, title }) => {
         img: url,
       };
 
-      await axios.post("/api/auth/register", newUser);
+      await axiosInstance.post("/api/auth/register", newUser);
+      navigate('/users');
     } catch (err) {
       console.log(err);
     }
@@ -43,7 +45,6 @@ const New = ({ inputs, title }) => {
     <div className="new">
       <Sidebar />
       <div className="newContainer">
-        <Navbar />
         <div className="top">
           <h1>Thêm nhân viên mới</h1>
         </div>

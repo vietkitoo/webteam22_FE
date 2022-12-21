@@ -1,12 +1,9 @@
 import "./update.scss";
 import Sidebar from "../../component/sidebar/Sidebar";
-import Navbar from "../../component/navbar/Navbar";
-import { useState } from "react";
 import { roomInputs } from "../../formSource";
-import useFetch from "../../hook/useFetch";
-import axios from "axios";
-import DriveFolderUploadOutlinedIcon from "@mui/icons-material/DriveFolderUploadOutlined";
-import {  useLocation } from "react-router-dom";
+import { useLocation,useNavigate} from 'react-router-dom';
+import {  useState } from 'react';
+import { axiosInstance } from "../../../config";
 
 const UpdateRoom = () => {
   
@@ -20,10 +17,9 @@ const UpdateRoom = () => {
   const handleChange = (e) => {
     setInfo((prev) => ({ ...prev, [e.target.id]: e.target.value }));
   };
-
+  const navigate = useNavigate();
   const handleClick = async (e) => {
     e.preventDefault();
-    const data = new FormData();
     const roomNumbers = rooms.split(",").map((room) => ({ number: room }));
     try {
         
@@ -31,7 +27,8 @@ const UpdateRoom = () => {
         ...info,
         roomNumbers,
       };
-      await axios.put(`/api/${path}/${path2}/update`,  updateroom);
+      await axiosInstance.put(`/api/${path}/${path2}/update`,  updateroom);
+      navigate('/rooms');
     } catch (err) {
       console.log(err);
     }
@@ -42,7 +39,6 @@ const UpdateRoom = () => {
     <div className="new">
       <Sidebar />
       <div className="newContainer">
-        <Navbar />
         <div className="top">
           <h1>Chỉnh sửa thông tin phòng </h1>
         </div>
