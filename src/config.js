@@ -3,7 +3,7 @@ import { EnumKey } from './utils/enum';
 import Cookies from 'js-cookie';
 
 export const axiosInstance = axios.create({
-  baseURL: 'http://localhost:5000/',
+  baseURL: 'https://bookingbe.onrender.com/',
   withCredentials: true
 });
 
