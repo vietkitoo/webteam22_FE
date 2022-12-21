@@ -2,7 +2,7 @@ import Header from '../../component/header/header';
 import './booking.scss';
 import Footer from '../../component/Footer/Footer';
 import { BsFillCaretLeftFill } from 'react-icons/bs';
-import { Link, useLocation } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import React, { useContext, useState } from 'react';
 import Form from 'react-bootstrap/Form';
 import { Button, Card, Modal } from 'react-bootstrap';
@@ -16,6 +16,7 @@ import { axiosInstance } from '../../config';
 function Payment() {
   const { user } = useContext(AuthContext);
   const location = useLocation();
+  const navigate = useNavigate();
   const [show, setShow] = useState(false);
   const selectedRoom = location.state.selectedRoom;
   const [email, setEmail] = useState(JSON.parse(localStorage.getItem('user')).details.email);
@@ -24,7 +25,9 @@ function Payment() {
   const [request, setRequest] = useState();
   var s;
 
-  const handleClose = () => setShow(false);
+  const handleClose = () => {
+    setShow(false);
+  }
   const handleShow = async () => {
     setShow(true);
     try{
@@ -39,9 +42,7 @@ function Payment() {
         email: email,
         phone: phone,
         request: request,
-        // fromDate: moment(date[0].startDate).format('DD-MM-YY'),
         fromDate: location.state.fromDate,
-        // toDate: moment(date[0].endDate).format('DD-MM-YY'),
         toDate: location.state.toDate,
         totalPrice: location.state.tot * location.state.days,
         totalDays: location.state.days,
@@ -152,14 +153,14 @@ function Payment() {
                   <Button variant="primary" onClick={handleShow} className="pay-btn">
                     Thanh toán
                   </Button>
-                  <Modal show={show} onHide={handleClose}>
+                  <Modal show={show} onHide={handleClose}  backdrop="static" keyboard={false}>
                   <Modal.Header closeButton>
                     <Modal.Title>ZaloPay QR</Modal.Title>
                   </Modal.Header>
                   <Modal.Body><img src={qr} alt='qrcode' width={450} height={700} /></Modal.Body>
                   <Modal.Footer>
-                    <Button variant="secondary" onClick={handleClose}>
-                      Đóng
+                    <Button variant="primary" onClick={() => navigate("/home")} >
+                      Trở về trang chủ
                     </Button>
                   </Modal.Footer>
                 </Modal>
