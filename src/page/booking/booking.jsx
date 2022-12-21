@@ -5,18 +5,52 @@ import { BsFillCaretLeftFill } from 'react-icons/bs';
 import { Link, useLocation } from 'react-router-dom';
 import React, { useContext, useState } from 'react';
 import Form from 'react-bootstrap/Form';
-import { Button, Modal } from 'react-bootstrap';
+import { Button, Card, Modal } from 'react-bootstrap';
 import { AuthContext } from '../../context/AuthContext';
 import { useEffect } from 'react';
-import qr from '../../image/qr copy.jpg'
+import qr from '../../image/qr copy.jpg';
+import format from 'date-fns/format';
+import axios from 'axios';
+import { axiosInstance } from '../../config';
 
 function Payment() {
   const { user } = useContext(AuthContext);
   const location = useLocation();
   const [show, setShow] = useState(false);
+  const selectedRoom = location.state.selectedRoom;
+  const [email, setEmail] = useState(JSON.parse(localStorage.getItem('user')).details.email);
+  const [fullname, setFullname] = useState(JSON.parse(localStorage.getItem('user')).details.fullname);
+  const [phone, setPhone] = useState(JSON.parse(localStorage.getItem('user')).details.phone);
+  const [request, setRequest] = useState();
+  var s;
 
   const handleClose = () => setShow(false);
-  const handleShow = () => setShow(true);
+  const handleShow = async () => {
+    setShow(true);
+    try{
+      // const res = axios.put(`/api/rooms/availability/${roomId}`, {
+      //   date: location.state.allDates,
+      // });
+      const res2 = await axiosInstance.post('/api/booking/', {
+        hotel: location.state.hotelname,
+        roomId: selectedRoom,
+        userId: JSON.parse(localStorage.getItem('user')).details._id,
+        fullname: fullname,
+        email: email,
+        phone: phone,
+        request: request,
+        // fromDate: moment(date[0].startDate).format('DD-MM-YY'),
+        fromDate: location.state.fromDate,
+        // toDate: moment(date[0].endDate).format('DD-MM-YY'),
+        toDate: location.state.toDate,
+        totalPrice: location.state.tot * location.state.days,
+        totalDays: location.state.days,
+      });
+    } catch (err){
+      console.log(err);
+    }
+    
+  }
 
   useEffect(() => {
     console.log(location.state);
@@ -44,13 +78,17 @@ function Payment() {
                     <Form.Control
                       type="email"
                       defaultValue={user.details.email}
+                      value={email}
+                      onChange={(e) => setEmail(e.target.value)}
                     />
                   </Form.Group>
                   <Form.Group className="mb-3 ">
                     <Form.Label>Tên người dùng</Form.Label>
                     <Form.Control
                       type="text"
-                      defaultValue={user.details.username}
+                      defaultValue={user.details.fullname}
+                      value={fullname}
+                      onChange={(e) => setFullname(e.target.value)}
                     />
                   </Form.Group>
                   <Form.Group className="mb-3 ">
@@ -59,6 +97,8 @@ function Payment() {
                       type="text"
                       defaultValue={user.details.phonenum}
                       placeholder="+84 987654321"
+                      value={phone}
+                      onChange={(e) => setPhone(e.target.value)}
                     />
                   </Form.Group>
                   <Form.Group
@@ -66,7 +106,10 @@ function Payment() {
                     controlId="exampleForm.ControlTextarea1"
                   >
                     <Form.Label>Yêu cầu thêm</Form.Label>
-                    <Form.Control as="textarea" rows={3} />
+                    <Form.Control as="textarea" rows={3} 
+                      value={request}
+                      onChange={(e) => setRequest(e.target.value)}
+                    />
                   </Form.Group>
                 </div>
               </div>

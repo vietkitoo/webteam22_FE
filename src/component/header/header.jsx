@@ -21,6 +21,8 @@ import {
   BsHouseFill,
   BsPersonFill } from 'react-icons/bs'
 import Dropdown from 'react-bootstrap/Dropdown';
+import { HashLink } from 'react-router-hash-link';
+import { NavHashLink } from 'react-router-hash-link';
 
 const Header = () => {
   const { user } = useContext(AuthContext);
@@ -96,23 +98,16 @@ const Header = () => {
       </nav>
 
       <nav className="navbar navbar-light justify-content-center">
-        <Link
-          to="/home"
-          spy={true}
-          smooth={true}
-          offset={-150}
-          duration={300}
-        >
+        <HashLink smooth to="/home#stay">
           <button
             type="button"
             className="btn btn-light button-navbar btn_sign btn_select_list"
-            href={"/home"}
           >
             <FontAwesomeIcon icon={faBed} />
             Lưu Trú
           </button>
-        </Link>
-        <Link to="rest">
+        </HashLink>
+        <HashLink smooth to="/home#hotel">
           <button
             type="button"
             className="btn btn-light button-navbar btn_sign btn_select_list"
@@ -120,7 +115,8 @@ const Header = () => {
             <FontAwesomeIcon icon={faBed} className="headerIcon" />
             Khách sạn
           </button>
-        </Link>
+        </HashLink>
+        <HashLink smooth to="/home#discover">
           <button
             type="button"
             className="btn btn-light button-navbar btn_sign btn_select_list"
@@ -129,6 +125,7 @@ const Header = () => {
             <FontAwesomeIcon icon={faCamera} className="headerIcon" />
             Địa điểm tham quan
           </button>
+        </HashLink>
 
 
       </nav>

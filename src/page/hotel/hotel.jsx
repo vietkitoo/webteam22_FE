@@ -82,7 +82,6 @@ function Hotel() {
     return !isFound;
   };
 
-  var s;
 
   const handleClick = async () => {
     try {
@@ -96,20 +95,7 @@ function Hotel() {
       //     return res.data;
       //   })
       // );
-      // const res1 = await axiosInstance.get(`/rooms/typeroom/${s}`);
-      // console.log(res1);
-      // const res2 = await axios.post('/api/booking/', {
-      //   room: res1.data.title,
-      //   roomId: res1.data._id,
-      //   userId: JSON.parse(localStorage.getItem('user')).details._id,
-      //   username: JSON.parse(localStorage.getItem('user')).details.username,
-      //   // fromDate: moment(date[0].startDate).format('DD-MM-YY'),
-      //   fromDate: format(date[0].startDate, 'MM/dd/yyyy'),
-      //   // toDate: moment(date[0].endDate).format('DD-MM-YY'),
-      //   toDate: format(date[0].endDate, 'MM/dd/yyyy'),
-      //   totalPrice: days * data.price,
-      //   totalDays: days,
-      // });
+      
       var tot = 0;
       data1.map((item) => {
         

@@ -38,7 +38,7 @@ function Home() {
       <div className="content home">
         <div className="content1">
           <div
-            id="carouselExampleIndicators"
+            id="stay"
             className="carousel slide setheight28rem"
             data-bs-ride="true"
           >
@@ -483,7 +483,7 @@ function Home() {
               className="carousel slide "
               data-bs-ride="true"
             >
-              <div className="carousel-inner">
+              <div className="carousel-inner" id='hotel'>
                 <div className="carousel-item active">
                   <div className="d-flex row">
                     <div className="col">
