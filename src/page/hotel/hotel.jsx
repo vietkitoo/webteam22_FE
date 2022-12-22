@@ -87,11 +87,13 @@ function Hotel() {
   };
 
   const allDates = getDates(date[0].startDate, date[0].endDate);
+  console.log(allDates);
 
   const isAvailable = (roomNumber) => {
     const isFound = roomNumber.unavailableDates.some((date) =>
       allDates.includes(new Date(date).getTime())
     );
+    console.log(isFound, roomNumber);
     return !isFound;
   };
 
@@ -140,16 +142,6 @@ function Hotel() {
 
   const handleClick = async () => {
     try {
-      // await Promise.all(
-      //   selectedRoom.map((roomId) => {
-      //     s = roomId;
-      //     console.log(s);
-      //     const res = axios.put(`/api/rooms/availability/${roomId}`, {
-      //       date: allDates,
-      //     });
-      //     return res.data;
-      //   })
-      // );
       
       var tot = 0;
       data1.map((item) => {
@@ -180,6 +172,7 @@ function Hotel() {
           room,
           selectedRoom,
           tot,
+          allDates,
         }
 >>>>>>> d4a02a1ed3e2e3f5a22b2f0d3ac3464163d32e93
       });

@@ -6,11 +6,8 @@ const Footer = () => {
     return (
         <footer className="text-center text-lg-start text-light font-weight-bold footer">
             <section className="d-flex justify-content-center justify-content-lg-between p-4 border-bottom">
-                <div className="me-5 d-none d-lg-block mg-auto">
-                    <span>Get connected with us on social networks:</span>
-                </div>
 
-                <div>
+                <div className='media'>
                     <a href={"#"} className="me-4 text-reset">
                         <BsFacebook />
                     </a>
@@ -29,11 +26,17 @@ const Footer = () => {
                     <div className="row mt-3">
                         <div className="col-md-3 col-lg-4 col-xl-3 mx-auto mb-4">
                             <h6 className="text-uppercase fw-bold mb-4">
-                                <i className="fas fa-gem me-3"></i>Tour & Travel
+                                <i className="fas fa-gem me-3"></i>Stylish Hotel
                             </h6>
                             <p>
                                 Giúp bạn đặt phòng mọi lúc, mọi nơi.
                             </p>
+                        </div>
+
+                        <div className="col-md-3 col-lg-4 col-xl-3 mx-auto mb-4">
+                            <h6 className="text-uppercase fw-bold mb-4">
+                                <i className="fas fa-gem me-3"></i>Group 22
+                            </h6>
                         </div>
 
                         <div className="col-md-3 col-lg-2 col-xl-2 mx-auto mb-4">
@@ -41,10 +44,10 @@ const Footer = () => {
                                 Các đường dẫn hữu ích
                             </h6>
                             <p>
-                                <a href="/support" className="text-reset">Trợ giúp Đối tác</a>
+                                <a href="/support" className="text-reset">Trợ giúp khách hàng</a>
                             </p>
                             <p>
-                                <a href="/register-partner" className="text-reset">Đăng ký Đối tác</a>
+                                <a href="/register-partner" className="text-reset">Đăng ký</a>
                             </p>
                             <p>
                                 <a href="/support#privacy" className="text-reset">An toàn và bảo mật</a>

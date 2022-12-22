@@ -73,7 +73,7 @@ const SingleBooking = (  ) => {
                       <div className="row">
                         <div className="col-sm-6">
                           <p className="m-b-10 f-w-600">Ngày đặt</p>
-                          <h6 className="text-muted f-w-400">{data.paymentDate}</h6>
+                          <h6 className="text-muted f-w-400">{data.updateAt}</h6>
                         </div>
                         <div className="col-sm-6">
                           <p className="m-b-10 f-w-600">Ngày nhận phòng</p>

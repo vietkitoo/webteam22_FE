@@ -31,7 +31,7 @@ function User() {
   const id = JSON.parse(localStorage.getItem('user')).details._id;
   //   console.log(id);
   const { data, loading, error, reFetch } = useFetch(`/api/users/${id}/booking`);
-  //   console.log(data);
+    console.log(data);
   const [click, setClick] = useState(false);
   const navigate = useNavigate();
 >>>>>>> d4a02a1ed3e2e3f5a22b2f0d3ac3464163d32e93
@@ -247,7 +247,151 @@ function User() {
                   </div>
 >>>>>>> d4a02a1ed3e2e3f5a22b2f0d3ac3464163d32e93
                 </div>
+<<<<<<< HEAD
 
+=======
+                <div className="item-info bg-box">
+                  <div className="item-info-intro">
+                    <h2 id="changePassword">Thay đổi mật khẩu</h2>
+                  </div>
+                  <div className="item-content">
+                    <Form onSubmit={handleSubmit}>
+                      <Form.Group className="mb-3">
+                        <Form.Label>Mật khẩu hiện tại</Form.Label>
+                        <Form.Control
+                          required
+                          type="password"
+                          value={password}
+                          onChange={(e) => setPassword(e.target.value)}
+                        />
+                      </Form.Group>
+                      <Form.Group className="mb-3">
+                        <Form.Label>Mật khẩu mới</Form.Label>
+                        <Form.Control
+                          type="password"
+                          value={newPassword}
+                          onChange={(e) => setNewPassword(e.target.value)}
+                          required
+                        />
+                      </Form.Group>
+                      <Form.Group className="mb-3">
+                        <Form.Label>Xác nhận mật khẩu mới</Form.Label>
+                        <Form.Control
+                          type="password"
+                          value={confirmNewPassword}
+                          onChange={(e) =>
+                            setConfirmNewPassword(e.target.value)
+                          }
+                        />
+                      </Form.Group>
+                      <div className="d-md-flex justify-content-md-end">
+                        <Button
+                          variant="primary"
+                          className="me-md-2"
+                          onClick={(e) => {
+                            e.preventDefault();
+                            setPassword('');
+                            setNewPassword('');
+                            setConfirmNewPassword('');
+                          }}
+                          disabled={
+                            !(password || newPassword || confirmNewPassword)
+                          }
+                        >
+                          Hủy
+                        </Button>
+                        <Button
+                          variant="primary"
+                          type="submit"
+                          className="me-md-2"
+                          onClick={handleSubmit}
+                          disabled={
+                            !(password && newPassword && confirmNewPassword)
+                          }
+                        >
+                          Lưu thay đổi
+                        </Button>
+                      </div>
+                    </Form>
+                  </div>
+                </div>
+                <div className="item-info bg-box">
+                  <div className="item-info-intro">
+                    <h2>Thông tin đặt phòng</h2>
+                  </div>
+                  <div className="item-content">
+                    <table class="table">
+                      <thead>
+                        <tr>
+                          <th scope="col">Hotel</th>
+                          <th scope="col">Ngày nhận phòng</th>
+                          <th scope="col">Ngày trả phòng</th>
+                          <th scope="col">Giá tiền</th>
+                        </tr>
+                      </thead>
+                      {loading ? (
+                        <h2>Loading...</h2>
+                      ) : (
+                        data.map((item) => {
+                          console.log(item);
+                          console.log(item.toDate);
+                          console.log(today);
+                          console.log(moment(item.toDate, "MM/DD/YYYY") > moment(today, "DD-MM-YY"))
+                          if (moment(item.toDate, "MM/DD/YYYY") > moment(today, "DD-MM-YY")) {
+
+                            return (
+                              <tbody>
+                                <tr>
+                                  <td>{item.hotel}</td>
+                                  <td>{item.fromDate}</td>
+                                  <td>{item.toDate}</td>
+                                  <td>{item.totalPrice} VND</td>
+                                </tr>
+                              </tbody>
+                            );
+                          }
+                        })
+                      )}
+                    </table>
+                  </div>
+                </div>
+                <div className="item-info bg-box">
+                  <div className="item-info-intro">
+                    <h2>Lịch sử</h2>
+                  </div>
+                  <div className="item-content">
+                    <table class="table">
+                      <thead>
+                        <tr>
+                          <th scope="col">Hotel</th>
+                          <th scope="col">Ngày nhận phòng</th>
+                          <th scope="col">Ngày trả phòng</th>
+                          <th scope="col">Giá tiền</th>
+                        </tr>
+                      </thead>
+                      {loading ? (
+                        <h2>Loading...</h2>
+                      ) : (
+                        data.map((item) => {
+                          if (moment(item.toDate, "MM/DD/YYYY") < moment(today, "DD-MM-YY")) { 
+                            return (
+                              <tbody>
+                                <tr>
+                                  <td>{item.hotel}</td>
+                                  <td>{item.fromDate}</td>
+                                  <td>{item.toDate}</td>
+                                  <td>{item.totalPrice} VND</td>
+                                </tr>
+                              </tbody>
+                            );
+                          }
+                        })
+                      )}
+                    </table>
+                  </div>
+                </div>
+              </div>
+>>>>>>> 08e7174b42517c389b87bcc675150b0023680c22
             </div>
             
         </>

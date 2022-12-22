@@ -131,7 +131,7 @@ function Login() {
                     onClick={() => handleJustifyClick('tab1')}
                     active={justifyActive === 'tab1'}
                   >
-                    Login
+                    Đăng nhập
                   </MDBTabsLink>
                 </MDBTabsItem>
                 <MDBTabsItem>
@@ -139,7 +139,7 @@ function Login() {
                     onClick={() => handleJustifyClick('tab2')}
                     active={justifyActive === 'tab2'}
                   >
-                    Register
+                    Đăng ký
                   </MDBTabsLink>
                 </MDBTabsItem>
               </MDBTabs>
@@ -194,10 +194,10 @@ function Login() {
                       name="flexCheck"
                       value=""
                       id="flexCheckDefault"
-                      label="Remember me"
+                      label="Nhớ tài khoản"
                     />
                     <Link to="../forgot">
-                      <a href="#">Forgot password?</a>
+                      <a href="#">Quên mật khẩu?</a>
                     </Link>
                   </div>
                   <div>
@@ -207,19 +207,19 @@ function Login() {
                       disabled={loading}
                       onClick={handlelogin}
                     >
-                      Sign in
+                      Đăng nhập
                     </button>
                     {error && <h2>{error.message}</h2>}
                   </div>
 
                   <p className="text-center">
-                    Not a member?
+                    Không phải là thành viên? 
                     <a
                       href="#!"
                       onClick={() => handleJustifyClick('tab2')}
                       active={justifyActive === 'tab2'}
                     >
-                      Register
+                      Đăng ký
                     </a>
                   </p>
                 </MDBTabsPane>
@@ -250,30 +250,30 @@ function Login() {
                     </div>
                     <p className="text-center mt-3">or:</p>
                   </div>
+                  <h5>Tài Khoản</h5>
                   <MDBInput
                     wrapperClass="mb-4"
-                    label="UserName"
                     onChange={handleChange}
                     id="username"
                     type="text"
                   />
+                  <h5>Tên đầy đủ</h5>
                   <MDBInput
                     wrapperClass="mb-4"
-                    label="FullName"
                     onChange={handleChange}
                     id="fullname"
                     type="text"
                   />
+                  <h5>Email</h5>
                   <MDBInput
                     wrapperClass="mb-4"
-                    label="Email"
                     onChange={handleChange}
                     id="email"
                     type="email"
                   />
+                  <h5>Mật khẩu</h5>
                   <MDBInput
                     wrapperClass="mb-4"
-                    label="Password"
                     onChange={handleChange}
                     id="password"
                     type="password"
@@ -282,7 +282,7 @@ function Login() {
                     <MDBCheckbox
                       name="flexCheck"
                       id="flexCheckDefault"
-                      label="I have read and agree to the terms"
+                      label="Tôi đồng ý với quy định và điều khoản đăng ký"
                     />
                   </div>
                   <button
@@ -290,7 +290,7 @@ function Login() {
                     className="btn btn-primary mb-4 w-100 color-btn"
                     onClick={handleregister}
                   >
-                    Sign up
+                    Đăng ký
                   </button>
                 </MDBTabsPane>
               </MDBTabsContent>
