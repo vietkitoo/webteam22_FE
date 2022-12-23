@@ -57,7 +57,7 @@ const UpdateBooking = () => {
               ))}
              
              
-              <button onClick={handleClick}>Send</button>
+              <button onClick={handleClick}>Xác nhận</button>
             </form>
           </div>
         </div>

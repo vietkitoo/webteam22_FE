@@ -61,12 +61,6 @@ const Header = () => {
             </button>
           </Link> */}
 
-          <Link to="../support">
-            <BsFillQuestionCircleFill 
-              className='ms-2'
-            />
-          </Link>
-
           {user ? (
             <>
               <Dropdown>
@@ -78,7 +72,9 @@ const Header = () => {
                     <Dropdown.Item href="#/"><BsPersonFill />{user.details.username}</Dropdown.Item>
                   </Link>
                   <Dropdown.Divider />
-                  <Dropdown.Item href="#/action-2"><BsHouseFill />Phòng đã đặt</Dropdown.Item>
+                  <Link to="../user">
+                    <Dropdown.Item href="#/action-2"><BsHouseFill />Phòng đã đặt</Dropdown.Item>
+                  </Link>
                   <Link to="../support">
                     <Dropdown.Item href="#/"><BsQuestionLg />Hỗ trợ</Dropdown.Item>
                   </Link>

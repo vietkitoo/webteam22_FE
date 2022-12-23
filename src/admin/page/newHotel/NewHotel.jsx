@@ -48,6 +48,12 @@ const NewHotel = () => {
         ...info,
         rooms,
         image:  url,
+        image1:  url,
+        image2:  url,
+        image3:  url,
+        image4:  url,
+        image5:  url,
+        image6:  url,
       };
 
       await axiosInstance.post("/api/hotels", newhotel);
@@ -117,7 +123,7 @@ const NewHotel = () => {
                       ))}
                 </select>
               </div>
-              <button onClick={handleClick}>Send</button>
+              <button onClick={handleClick}>Xác nhận</button>
             </form>
           </div>
         </div>

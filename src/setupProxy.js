@@ -4,7 +4,7 @@ module.exports = function(app) {
   app.use(
     '/api',
     createProxyMiddleware({
-      target: 'https://bookingbe.onrender.com/',
+      target: 'https://bookingbe.onrender.com',
       changeOrigin: true,
     })
   ); 

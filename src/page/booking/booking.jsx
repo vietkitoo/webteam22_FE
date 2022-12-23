@@ -68,10 +68,6 @@ function Payment() {
       <Header />
       <div className="content content-booking">
         <div className="content-top position-relative d-flex align-items-center justify-content-center">
-          <Link to="#" className="back">
-            <BsFillCaretLeftFill />
-            Quay lại
-          </Link>
           <h2>Thông tin đặt phòng</h2>
         </div>
 
@@ -160,8 +156,8 @@ function Payment() {
                   <Button variant="primary" onClick={handleShow} className="pay-btn">
                     Thanh toán
                   </Button>
-                  <Modal show={show} onHide={handleClose}  backdrop="static" keyboard={false}>
-                  <Modal.Header closeButton>
+                  <Modal show={show} backdrop="static" keyboard={false}>
+                  <Modal.Header>
                     <Modal.Title>ZaloPay QR</Modal.Title>
                   </Modal.Header>
                   <Modal.Body><img src={qr} alt='qrcode' width={450} height={700} /></Modal.Body>

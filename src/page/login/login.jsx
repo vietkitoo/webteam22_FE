@@ -26,6 +26,7 @@ function Login() {
   const [credentials, setCredentials] = useState({
     username: undefined,
     fullname: undefined,
+    phone: undefined,
     email: undefined,
     password: undefined,
   });
@@ -145,32 +146,7 @@ function Login() {
               </MDBTabs>
               <MDBTabsContent>
                 <MDBTabsPane show={justifyActive === 'tab1'}>
-                  <div className="text-center mb-3">
-                    <p>Sign in with:</p>
-                    <div
-                      className="d-flex justify-content-between mx-auto"
-                      style={{ width: '40%' }}
-                    >
-                      <BsFacebook
-                        className="icon-link"
-                        style={{ color: '#00aa76' }}
-                      />
-                      <BsGoogle
-                        className="icon-link"
-                        style={{ color: '#00aa76' }}
-                      />
-                      <BsTwitter
-                        className="icon-link"
-                        style={{ color: '#00aa76' }}
-                      />
-                      <BsGithub
-                        className="icon-link"
-                        style={{ color: '#00aa76' }}
-                      />
-                    </div>
-
-                    <p className="text-center mt-3">or:</p>
-                  </div>
+                  
                   <h5>Tài Khoản</h5>
                   <MDBInput
                     wrapperClass="mb-4"
@@ -196,9 +172,6 @@ function Login() {
                       id="flexCheckDefault"
                       label="Nhớ tài khoản"
                     />
-                    <Link to="../forgot">
-                      <a href="#">Quên mật khẩu?</a>
-                    </Link>
                   </div>
                   <div>
                     <button
@@ -224,32 +197,7 @@ function Login() {
                   </p>
                 </MDBTabsPane>
                 <MDBTabsPane show={justifyActive === 'tab2'}>
-                  <div className="text-center mb-3">
-                    <p>Sign up with:</p>
-
-                    <div
-                      className="d-flex justify-content-between mx-auto"
-                      style={{ width: '40%' }}
-                    >
-                      <BsFacebook
-                        className="icon-link"
-                        style={{ color: '#00aa76' }}
-                      />{' '}
-                      <BsGoogle
-                        className="icon-link"
-                        style={{ color: '#00aa76' }}
-                      />{' '}
-                      <BsTwitter
-                        className="icon-link"
-                        style={{ color: '#00aa76' }}
-                      />{' '}
-                      <BsGithub
-                        className="icon-link"
-                        style={{ color: '#00aa76' }}
-                      />
-                    </div>
-                    <p className="text-center mt-3">or:</p>
-                  </div>
+                  
                   <h5>Tài Khoản</h5>
                   <MDBInput
                     wrapperClass="mb-4"
@@ -262,6 +210,13 @@ function Login() {
                     wrapperClass="mb-4"
                     onChange={handleChange}
                     id="fullname"
+                    type="text"
+                  />
+                  <h5>Số điện thoại</h5>
+                  <MDBInput
+                    wrapperClass="mb-4"
+                    onChange={handleChange}
+                    id="phone"
                     type="text"
                   />
                   <h5>Email</h5>

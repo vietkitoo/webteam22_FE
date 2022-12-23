@@ -11,122 +11,106 @@ import { axiosInstance } from '../../config';
 import { Link } from 'react-scroll';
 import useFetch from '../../hooks/useFetch';
 import moment from 'moment';
-import {
-  BsPerson,
-  BsShieldLock,
-  BsHouseDoor,
-  BsArrowCounterclockwise,
-} from 'react-icons/bs';
 import format from 'date-fns/format';
+import { Box, Tab, Tabs, Typography } from '@mui/material';
+import Modal from 'react-bootstrap/Modal';
+
 function User() {
   const { user } = useContext(AuthContext);
-  const [userId, setUserId] = useState([user._id]);
-  const [password, setPassword] = useState();
-  const [newPassword, setNewPassword] = useState();
-  const [confirmNewPassword, setConfirmNewPassword] = useState();
+  const [password, setPassword] = useState("");
+  const [newPassword, setNewPassword] = useState("");
+  const [confirmNewPassword, setConfirmNewPassword] = useState("");
   const [phone, setPhone] = useState(user.details.phone);
   const [fullname, setFullname] = useState(user.details.fullname);
-  const id = JSON.parse(localStorage.getItem('user')).details._id;
-  //   console.log(id);
+  const [show, setShow] = useState(false);
+
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
+  const id = user.details._id;
+  console.log(id);
   const { data, loading, error, reFetch } = useFetch(`/api/users/${id}/booking`);
     console.log(data);
   const [click, setClick] = useState(false);
   const navigate = useNavigate();
 
-  const handleClick = () => setClick(!click);
+  const [tabIndex, setTabIndex] = useState(0);
 
-  const closeMenu = () => setClick(false);
+  const handleTabChange = (event, newTabIndex) => {
+    setTabIndex(newTabIndex);
+  };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     if (newPassword !== confirmNewPassword) {
-      console.log('Wrong confirm new password');
+      alert('Sai mật khẩu xác nhận!');
     } else {
-      const res = await axiosInstance.put('/users/password', {
-        userId: id,
-        password,
-        newPassword,
-      });
-      console.log('Succeed');
-      navigate('/home');
+      try{
+        const res = await axiosInstance.put('/api/users/password', {
+          userId: id,
+          password: password,
+          newPassword: newPassword,
+        });
+        alert('Đổi mật khẩu thành công');
+        navigate('/home');
+        if (res.status == 400)
+        alert('Sai mật khẩu hiện tại!');
+      }
+      catch (err){
+        alert('Đã xảy ra lỗi!');
+      }
     }
   };
+  const handleUpdate = async (e) => {
+    e.preventDefault();
+    try{
+      const res = await axiosInstance.put(`/api/users/${id}/update`, {
+        fullname: fullname,
+        phone: phone
+      });
+      alert('Cập nhật thông tin thành công');
+
+    }catch (err){
+      alert('Đã xảy ra lỗi!');
+    }
+  };
+  const handleDelete = async (e) => {
+    e.preventDefault();
+    const bookingId = e.target.id;
+    try{
+      const res = await axiosInstance.delete(`/api/booking/${bookingId}/delete`);
+      reFetch();
+    } catch (err){
+      alert('Đã xảy ra lỗi!');
+    }
+  }
   var today = format(new Date(), 'dd-MM-yy');
   console.log(today);
   return (
     <>
       <Header />
       <div className="content">
-        <div className="container main-info">
-          <ul
-            className={
-              click ? 'nav-menu flex-column active' : 'nav-menu flex-column'
-            }
+        <Box>
+        <Box sx={{ display: 'grid', gridGap: '50px', gridTemplateColumns: '30% 65%' }}>
+          <Tabs
+            value={tabIndex}
+            onChange={handleTabChange}
+            sx={{paddingTop: 30}}
+            orientation="vertical"
           >
-            <h2 className="top-filter">Quản lý tài khoản người dùng</h2>
-            <li className="nav-item">
-              <Link
-                to="userInfo"
-                spy={true}
-                smooth={true}
-                offset={-150}
-                duration={300}
-                onClick={closeMenu}
-              >
-                <BsPerson />
-                Thông tin cá nhân
-              </Link>
-            </li>
-            <li className="nav-item">
-              <Link
-                to="changePassword"
-                spy={true}
-                smooth={true}
-                offset={-200}
-                duration={300}
-                onClick={closeMenu}
-              >
-                <BsShieldLock />
-                Thay đổi mật khẩu
-              </Link>
-            </li>
-            <li className="nav-item">
-              <Link
-                to="test1"
-                spy={true}
-                smooth={true}
-                offset={0}
-                duration={300}
-                onClick={closeMenu}
-              >
-                <BsHouseDoor />
-                Thông tin đặt phòng
-              </Link>
-            </li>
-            <li className="nav-item">
-              <Link
-                to="test1"
-                spy={true}
-                smooth={true}
-                offset={0}
-                duration={300}
-                onClick={closeMenu}
-              >
-                <BsArrowCounterclockwise />
-                Lịch sử
-              </Link>
-            </li>
-          </ul>
-
-          <div className="user-info">
-            <div className="list-search-item">
-              <div id="list-infos" className="list-infos">
-                <div className="item-info bg-box">
+            <Tab label="Thông tin cá nhân" />
+            <Tab label="Thông tin đặt phòng" />
+            <Tab label="Lịch sử" />
+          </Tabs>
+          <Box sx={{ margin: 2}}>
+            {tabIndex === 0 && (
+              <Box>
+                <Typography>
+                <div className="item-info">
                   <div className="item-info-intro">
                     <h2 id="userInfo">Thông tin cá nhân</h2>
                   </div>
-                  <div className="item-content">
-                    <Form>
+                  <div className="item-content bg-box">
+                    <Form onSubmit={handleUpdate}>
                       <Form.Group className="mb-3">
                         <Form.Label>Địa chỉ email</Form.Label>
                         <Form.Control
@@ -174,76 +158,18 @@ function User() {
                     </Form>
                   </div>
                 </div>
-                <div className="item-info bg-box">
-                  <div className="item-info-intro">
-                    <h2 id="changePassword">Thay đổi mật khẩu</h2>
-                  </div>
-                  <div className="item-content">
-                    <Form onSubmit={handleSubmit}>
-                      <Form.Group className="mb-3">
-                        <Form.Label>Mật khẩu hiện tại</Form.Label>
-                        <Form.Control
-                          required
-                          type="password"
-                          value={password}
-                          onChange={(e) => setPassword(e.target.value)}
-                        />
-                      </Form.Group>
-                      <Form.Group className="mb-3">
-                        <Form.Label>Mật khẩu mới</Form.Label>
-                        <Form.Control
-                          type="password"
-                          value={newPassword}
-                          onChange={(e) => setNewPassword(e.target.value)}
-                          required
-                        />
-                      </Form.Group>
-                      <Form.Group className="mb-3">
-                        <Form.Label>Xác nhận mật khẩu mới</Form.Label>
-                        <Form.Control
-                          type="password"
-                          value={confirmNewPassword}
-                          onChange={(e) =>
-                            setConfirmNewPassword(e.target.value)
-                          }
-                        />
-                      </Form.Group>
-                      <div className="d-md-flex justify-content-md-end">
-                        <Button
-                          variant="primary"
-                          className="me-md-2"
-                          onClick={(e) => {
-                            e.preventDefault();
-                            setPassword('');
-                            setNewPassword('');
-                            setConfirmNewPassword('');
-                          }}
-                          disabled={
-                            !(password || newPassword || confirmNewPassword)
-                          }
-                        >
-                          Hủy
-                        </Button>
-                        <Button
-                          variant="primary"
-                          type="submit"
-                          className="me-md-2"
-                          onClick={handleSubmit}
-                          disabled={
-                            !(password && newPassword && confirmNewPassword)
-                          }
-                        >
-                          Lưu thay đổi
-                        </Button>
-                      </div>
-                    </Form>
-                  </div>
-                </div>
-                <div className="item-info bg-box">
+                </Typography>
+              </Box>
+            )}
+            
+            {tabIndex === 1 && (
+              <Box>
+                <Typography>
+                <div className="item-info">
                   <div className="item-info-intro">
                     <h2>Thông tin đặt phòng</h2>
                   </div>
-                  <div className="item-content">
+                  <div className="item-content bg-box">
                     <table class="table">
                       <thead>
                         <tr>
@@ -251,6 +177,7 @@ function User() {
                           <th scope="col">Ngày nhận phòng</th>
                           <th scope="col">Ngày trả phòng</th>
                           <th scope="col">Giá tiền</th>
+                          <th scope="col">Hoạt động</th>
                         </tr>
                       </thead>
                       {loading ? (
@@ -261,17 +188,37 @@ function User() {
                           console.log(item.toDate);
                           console.log(today);
                           console.log(moment(item.toDate, "MM/DD/YYYY") > moment(today, "DD-MM-YY"))
-                          if (moment(item.toDate, "MM/DD/YYYY") > moment(today, "DD-MM-YY")) {
+                          if (moment(item.toDate, "MM/DD/YYYY") >= moment(today, "DD-MM-YY")) {
 
                             return (
+                              <>
                               <tbody>
                                 <tr>
                                   <td>{item.hotel}</td>
                                   <td>{item.fromDate}</td>
                                   <td>{item.toDate}</td>
                                   <td>{item.totalPrice} VND</td>
+                                  <td><Button
+                                  onClick={handleShow}
+                                  >Xóa</Button></td>
                                 </tr>
                               </tbody>
+
+                              <Modal show={show} onHide={handleClose}>
+                                <Modal.Header closeButton>
+                                  <Modal.Title>Xác nhận xóa</Modal.Title>
+                                </Modal.Header>
+                                <Modal.Body>Bạn có chắc muốn xóa?</Modal.Body>
+                                <Modal.Footer>
+                                  <Button variant="secondary"  onClick={handleClose}>
+                                    Đóng
+                                  </Button>
+                                  <Button variant="primary" id={item._id} onClick={handleDelete}>
+                                    Xác nhận
+                                  </Button>
+                                </Modal.Footer>
+                              </Modal>
+                              </>
                             );
                           }
                         })
@@ -279,11 +226,17 @@ function User() {
                     </table>
                   </div>
                 </div>
-                <div className="item-info bg-box">
+                </Typography>
+              </Box>
+            )}
+            {tabIndex === 2 && (
+              <Box>
+                <Typography>
+                <div className="item-info">
                   <div className="item-info-intro">
                     <h2>Lịch sử</h2>
                   </div>
-                  <div className="item-content">
+                  <div className="item-content bg-box">
                     <table class="table">
                       <thead>
                         <tr>
@@ -291,6 +244,7 @@ function User() {
                           <th scope="col">Ngày nhận phòng</th>
                           <th scope="col">Ngày trả phòng</th>
                           <th scope="col">Giá tiền</th>
+                          <th scope="col">Hoạt động</th>
                         </tr>
                       </thead>
                       {loading ? (
@@ -299,14 +253,33 @@ function User() {
                         data.map((item) => {
                           if (moment(item.toDate, "MM/DD/YYYY") < moment(today, "DD-MM-YY")) { 
                             return (
+                              <>
                               <tbody>
                                 <tr>
                                   <td>{item.hotel}</td>
                                   <td>{item.fromDate}</td>
                                   <td>{item.toDate}</td>
                                   <td>{item.totalPrice} VND</td>
+                                  <td><Button
+                                  onClick={handleShow}
+                                  >Xóa</Button></td>
                                 </tr>
                               </tbody>
+                              <Modal show={show} onHide={handleClose}>
+                                <Modal.Header closeButton>
+                                  <Modal.Title>Xác nhận xóa</Modal.Title>
+                                </Modal.Header>
+                                <Modal.Body>Bạn có chắc muốn xóa?</Modal.Body>
+                                <Modal.Footer>
+                                  <Button variant="secondary" onClick={handleClose}>
+                                    Đóng
+                                  </Button>
+                                  <Button variant="primary" id={item._id} onClick={handleDelete}>
+                                    Xác nhận
+                                  </Button>
+                                </Modal.Footer>
+                              </Modal>
+                              </>
                             );
                           }
                         })
@@ -314,10 +287,13 @@ function User() {
                     </table>
                   </div>
                 </div>
-              </div>
-            </div>
-          </div>
-        </div>
+                </Typography>
+              </Box>
+            )}
+          </Box>
+        </Box>
+        </Box>
+
       </div>
     </>
   );

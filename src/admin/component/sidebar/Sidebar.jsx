@@ -51,11 +51,6 @@ const Sidebar = () => {
                 <span>Đơn hàng</span>
                 </Link>
             </li>
-            <li>
-            
-                <ExitToAppIcon/>
-                <span>Đăng xuất</span>
-            </li>
         </ul>
       </div>
       <div className="bottom"></div>

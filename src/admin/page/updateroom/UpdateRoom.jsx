@@ -66,7 +66,7 @@ const UpdateRoom = () => {
                 />
               </div>
              
-              <button onClick={handleClick}>Send</button>
+              <button onClick={handleClick}>Xác nhận</button>
             </form>
           </div>
         </div>
